@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/716.bf62a6d3.chunk.js","mappings":"oLAIA,EAJoB,WAClB,OAAO,wCACR,C","sources":["pages/WelcomePage/WelcomePage.jsx"],"sourcesContent":["const WelcomePage = () => {\n  return <div>WelcomePage</div>;\n};\n\nexport default WelcomePage;\n"],"names":[],"sourceRoot":""}
