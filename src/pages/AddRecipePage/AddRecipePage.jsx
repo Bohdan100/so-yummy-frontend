@@ -1,5 +1,7 @@
+const { AddRecipeForm } = require('components/AddRecipeForm/AddRecipeForm');
+
 const AddRecipePage = () => {
-  return <div>AddRecipePage</div>;
+  return <AddRecipeForm />;
 };
 
 export default AddRecipePage;
