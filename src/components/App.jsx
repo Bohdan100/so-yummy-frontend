@@ -7,7 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import SharedLayout from 'components/SharedLayout';
 import CategoriesByName from 'components/CategoriesByName';
-import Recipe from 'components/Recipe';
+import Recipe from 'pages/RecipePage';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
