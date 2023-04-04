@@ -1,9 +1,7 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import * as Yup from 'yup';
 import FormikControl from './FormikControls';
 import { TextError } from './TextError';
-import { nanoid } from 'nanoid';
 
 const Schema = Yup.object({
   item: Yup.string().required('Required'),
@@ -13,9 +11,7 @@ const Schema = Yup.object({
 });
 
 export const AddRecipeForm = () => {
-  const [ingredients, setIngredients] = useState([]);
-
-  console.log(ingredients);
+  // const [ingredients, setIngredients] = useState([]);
 
   const dropdownOptions = [
     { key: 'Category', value: '' },
@@ -37,22 +33,22 @@ export const AddRecipeForm = () => {
     { key: '90 min', value: '90 min' },
   ];
 
-  const ingrediens = [
+  const ingrediensArray = [
     { key: 'choose ingredien', value: '' },
     { key: 'apple', value: 'apple' },
     { key: 'orange', value: 'orange' },
     { key: 'banana', value: 'banana' },
   ];
 
-  const addSelect = () => {
-    setIngredients([...ingredients, { id: nanoid(), ingredients }]);
-  };
+  // const addSelect = () => {
+  //   setIngredients([...ingredients, { id: nanoid(), ingredients }]);
+  // };
 
-  const removeSelect = () => {
-    if (ingredients) {
-      setIngredients(ingredients.slice(1));
-    }
-  };
+  // const removeSelect = () => {
+  //   if (ingredients) {
+  //     setIngredients(ingredients.slice(1));
+  //   }
+  // };
 
   return (
     <div>
@@ -63,7 +59,7 @@ export const AddRecipeForm = () => {
           about: '',
           selectCategory: '',
           selectTime: '',
-          ingredient: [''],
+          ingredients: [],
         }}
         onSubmit={values => {
           // same shape as initial values
@@ -96,7 +92,7 @@ export const AddRecipeForm = () => {
                   options={cookingTime}
                 />
               </div>
-              <div>
+              {/* <div>
                 <button type="button" onClick={removeSelect}>
                   -
                 </button>
@@ -106,14 +102,58 @@ export const AddRecipeForm = () => {
                 </button>
               </div>
               <div>
-                {ingredients.map(({ id }) => (
+                {ingredients.map(({ id, index }) => (
                   <FormikControl
                     key={id}
                     control="select"
-                    name="ingredient[index]"
-                    options={ingrediens}
+                    name={`ingredients[${id}]`}
+                    options={ingrediensArray}
                   />
                 ))}
+              </div> */}
+              <div>
+                <FieldArray name="ingredients">
+                  {fieldArrayProps => {
+                    const { push, remove, form } = fieldArrayProps;
+                    const { values } = form;
+                    const { ingredients } = values;
+
+                    const addSelect = () => {
+                      push('');
+                    };
+
+                    return (
+                      <div>
+                        {ingredients.map((_, index) => (
+                          <div key={index}>
+                            <FormikControl
+                              control="select"
+                              name={`ingredients[${index}].ingredient`}
+                              options={ingrediensArray}
+                            />
+                            <FormikControl
+                              control="select"
+                              name={`ingredients[${index}].weight`}
+                              options={ingrediensArray}
+                            />
+                            {index >= 0 && (
+                              <button
+                                type="button"
+                                onClick={() => remove(index)}
+                              >
+                                -
+                              </button>
+                            )}
+                          </div>
+                        ))}
+                        <span>{ingredients.length}</span>
+                        <button type="button" onClick={addSelect}>
+                          +
+                        </button>
+                      </div>
+                    );
+                  }}
+                </FieldArray>
               </div>
               <div>
                 <FormikControl
