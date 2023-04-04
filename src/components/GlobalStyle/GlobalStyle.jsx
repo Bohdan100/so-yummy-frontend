@@ -20,6 +20,11 @@ export const GlobalStyle = createGlobalStyle`
 
     color: ${p => p.theme.colors.primaryText};
     background-color: ${p => p.theme.colors.mainWhite};
+    
+    &.open-modal{
+      overflow: hidden;
+    }
+  
   }
 
   h1,h2,h3,h4,h5,h6,p {
