@@ -1,7 +1,18 @@
-import { Container } from './MainContainer.styled';
+import React from 'react';
+import MainPageTitle from '../MainPageTitle/MainPageTitle';
+import { MainContainerWrapper } from './MainContainer.styled';
+import './MainContainer.styled';
+
 
 const MainContainer = ({ children }) => {
-  return <Container>{children}</Container>;
+  return (
+    <main style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <MainContainerWrapper>
+        <MainPageTitle />
+        {children}
+      </MainContainerWrapper>
+    </main>
+  );
 };
 
 export default MainContainer;
