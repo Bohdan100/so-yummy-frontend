@@ -7,7 +7,6 @@ import { Route, Routes } from 'react-router-dom';
 
 import SharedLayout from 'components/SharedLayout';
 import CategoriesByName from 'components/CategoriesByName';
-import Recipe from 'components/Recipe';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
@@ -20,6 +19,7 @@ const FavoritePage = lazy(() => import('pages/FavoritePage'));
 const ShoppingListPage = lazy(() => import('pages/ShoppingListPage'));
 const SearchPage = lazy(() => import('pages/SearchPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
+const RecipePage = lazy(() => import('pages/RecipePage'));
 
 export const App = () => {
   return (
@@ -68,7 +68,7 @@ export const App = () => {
           <Route path="/favorite" element={<FavoritePage />} />
           <Route path="/shopping-list" element={<ShoppingListPage />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/recipes/:recipeId" element={<Recipe />} />
+          <Route path="/recipe/:recipeId" element={<RecipePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
