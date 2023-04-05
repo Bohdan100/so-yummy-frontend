@@ -7,12 +7,12 @@ import {
 } from './RecipeCard.styled';
 
 const RecipeCard = ({ dish }) => {
-  const { _id: id, title, thumb } = dish;
+  const { _id: id, title, preview } = dish;
 
   return (
     <RecipeCardWrapper>
       <Link to={`/recipes/${id}`}>
-        <RecipeCardImg src={thumb} alt={title} />
+        <RecipeCardImg src={preview} alt={title} />
         <TitleWrapper>
           <RecipeTitle>{title}</RecipeTitle>
         </TitleWrapper>
