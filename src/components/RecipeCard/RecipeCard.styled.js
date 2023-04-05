@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const RecipeCardWrapper = styled.li`
   position: relative;
@@ -8,12 +7,17 @@ export const RecipeCardWrapper = styled.li`
   border-radius: ${p => p.theme.radii.image};
   transition: ${p => p.theme.transitions.main};
 
-  & ${Link} {
-    :hover,
-    :focus {
-      transform: scale(1.04);
-      filter: contrast(140%);
+  & a {
+    display: block;
+    overflow: hidden;
+    :hover {
+      transform: scale(1.05);
     }
+    /* Для збільшення img пр ховері */
+    /* :hover img {
+      transform: scale(1.25);
+      filter: contrast(130%);
+    } */
   }
 
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
@@ -29,7 +33,7 @@ export const RecipeCardImg = styled.img`
   width: 343px;
   border-radius: ${p => p.theme.radii.image};
   object-fit: cover;
-
+  transition: ${p => p.theme.transitions.main};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 336px;
   }
