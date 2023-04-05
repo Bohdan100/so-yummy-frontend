@@ -1,6 +1,6 @@
 // TODO: добавить в initialState name из редакса и аватарку
 import { useState } from 'react';
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import getColor from 'helpers/getColor';
 import sprite from '../../../images/icons/sprite.svg';
