@@ -1,15 +1,18 @@
+import Loader from 'components/Loader/Loader';
 import Container from '../../components/MainContainer/MainContainer';
 import CategoriesList from 'components/CategoriesList/CategoriesList';
-import CategoriesByName from 'components/CategoriesByName/CategoriesByName';
 import ReusableTitle from 'components/ReusableTitle/ReusableTitle';
-
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 const CategoriesPage = () => {
   return (
     <div>
       <Container>
         <ReusableTitle>Categories</ReusableTitle>
         <CategoriesList />
-        <CategoriesByName />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </Container>
     </div>
   );
