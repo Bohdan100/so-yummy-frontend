@@ -5,7 +5,9 @@ import MainContainer from 'components/MainContainer';
 import Logo from 'components/Logo';
 import Navigation from './Navigation';
 import UserLogo from './UserLogo';
+import ThemeToggler from './ThemeToggler';
 import MobileMenu from './MobileMenu';
+import Modal from 'components/Modal';
 
 import {
   HeaderStyled,
@@ -31,7 +33,7 @@ const Header = () => {
     <HeaderStyled>
       <MainContainer>
         <HeaderWrapper>
-          <Logo inv />
+          <Logo inv={'true'} />
 
           {!isMobileDevice && <Navigation />}
 
@@ -40,11 +42,14 @@ const Header = () => {
             <BurgerBtn type="button" onClick={openMobMenu}>
               <BurgerIconStyled />
             </BurgerBtn>
+            {!isMobileDevice && <ThemeToggler />}
           </UserMenuWrapper>
         </HeaderWrapper>
 
         {isMobileDevice && isMobMenuOpen && (
-          <MobileMenu isShown={isMobMenuOpen} closeMobMenu={closeMobMenu} />
+          <Modal onClose={closeMobMenu}>
+            <MobileMenu isShown={isMobMenuOpen} closeMobMenu={closeMobMenu} />
+          </Modal>
         )}
       </MainContainer>
     </HeaderStyled>

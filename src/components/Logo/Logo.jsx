@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { SvgLogoStyled, SvgLogoInvStyled } from './Logo.styled';
 
-const Logo = ({ inv, footer }) => {
+const Logo = ({ inv, footer, closeMobMenu }) => {
   const { pathname } = useLocation();
   const isMobile = useMedia('(max-width: 767px)');
 
@@ -17,7 +17,7 @@ const Logo = ({ inv, footer }) => {
     );
   }
   return (
-    <Link to="/main">
+    <Link to="/main" onClick={closeMobMenu}>
       <SvgLogoStyled />
     </Link>
   );
