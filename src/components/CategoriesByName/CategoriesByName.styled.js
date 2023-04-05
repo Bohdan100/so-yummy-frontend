@@ -8,13 +8,13 @@ export const RecipesList = styled.ul`
   margin-top: 32px;
   gap: 28px;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-bottom: 200px;
     margin-top: 50px;
     gap: 32px;
   }
 
-  @media (min-width: 1440px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     gap: 14px;
     row-gap: 100px;
   }
