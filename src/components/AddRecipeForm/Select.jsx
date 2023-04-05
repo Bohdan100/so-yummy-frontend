@@ -1,11 +1,12 @@
-import { Field, ErrorMessage } from 'formik';
+import { ErrorMessage, Field } from 'formik';
 import { TextError } from './TextError';
+import { SelectInput } from './AddRecipePage.styled';
 
 export const Select = props => {
   const { label, name, options, ...rest } = props;
   return (
     <div className="form-control">
-      <Field as="select" id={name} name={name} {...rest}>
+      <SelectInput as="select" id={name} name={name} {...rest}>
         {options.map(option => {
           return (
             <option key={option.value} value={option.value}>
@@ -13,7 +14,7 @@ export const Select = props => {
             </option>
           );
         })}
-      </Field>
+      </SelectInput>
       <ErrorMessage component={TextError} name={name} />
     </div>
   );

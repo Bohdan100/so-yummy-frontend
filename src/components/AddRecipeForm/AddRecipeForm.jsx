@@ -1,17 +1,28 @@
-import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
+import { Formik, Form, ErrorMessage, FieldArray } from 'formik';
+import { useRef } from 'react';
 import * as Yup from 'yup';
+import {
+  Input,
+  InputContainer,
+  SelectIngredienContainer,
+  IngredienControler,
+  IngredienLenght,
+  ButtonClickIngredient,
+} from './AddRecipePage.styled';
 import FormikControl from './FormikControls';
+import { PreviewImage } from './PreviewImage';
 import { TextError } from './TextError';
 
 const Schema = Yup.object({
   item: Yup.string().required('Required'),
   about: Yup.string().required('Required'),
-  selectCategory: Yup.string().required('Required'),
-  selectTime: Yup.string().required('Required'),
+  selectCategory: Yup.mixed().required('Required'),
+  selectTime: Yup.mixed().required('Required'),
+  file: Yup.mixed().required('File is required'),
 });
 
 export const AddRecipeForm = () => {
-  // const [ingredients, setIngredients] = useState([]);
+  const fileRef = useRef(null);
 
   const dropdownOptions = [
     { key: 'Category', value: '' },
@@ -34,21 +45,11 @@ export const AddRecipeForm = () => {
   ];
 
   const ingrediensArray = [
-    { key: 'choose ingredien', value: '' },
+    { key: '', value: '' },
     { key: 'apple', value: 'apple' },
     { key: 'orange', value: 'orange' },
     { key: 'banana', value: 'banana' },
   ];
-
-  // const addSelect = () => {
-  //   setIngredients([...ingredients, { id: nanoid(), ingredients }]);
-  // };
-
-  // const removeSelect = () => {
-  //   if (ingredients) {
-  //     setIngredients(ingredients.slice(1));
-  //   }
-  // };
 
   return (
     <div>
@@ -60,9 +61,9 @@ export const AddRecipeForm = () => {
           selectCategory: '',
           selectTime: '',
           ingredients: [],
+          file: null,
         }}
         onSubmit={values => {
-          // same shape as initial values
           console.log(values);
         }}
         validationSchema={Schema}
@@ -70,28 +71,57 @@ export const AddRecipeForm = () => {
         {formik => {
           return (
             <Form>
-              <div>
-                <Field type="text" name="item" />
+              <InputContainer>
+                <input
+                  type="file"
+                  name="file"
+                  hidden
+                  ref={fileRef}
+                  onChange={event => {
+                    formik.setFieldValue('file', event.target.files[0]);
+                  }}
+                />
+                {formik.values.file && (
+                  <PreviewImage file={formik.values.file} />
+                )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    fileRef.current.click();
+                  }}
+                >
+                  Upload
+                </button>
+                <ErrorMessage name="file" component={TextError} />
+              </InputContainer>
+              <InputContainer>
+                <Input type="text" name="item" placeholder="Enter item title" />
                 <ErrorMessage name="item" component={TextError} />
-              </div>
-              <div>
-                <Field type="text" name="about" />
+              </InputContainer>
+              <InputContainer>
+                <Input
+                  type="text"
+                  name="about"
+                  placeholder="Enter
+                  about
+                  recipe"
+                />
                 <ErrorMessage name="about" component={TextError} />
-              </div>
-              <div>
+              </InputContainer>
+              <InputContainer>
                 <FormikControl
                   control="select"
                   name="selectCategory"
                   options={dropdownOptions}
                 />
-              </div>
-              <div>
+              </InputContainer>
+              <InputContainer>
                 <FormikControl
                   control="select"
                   name="selectTime"
                   options={cookingTime}
                 />
-              </div>
+              </InputContainer>
               {/* <div>
                 <button type="button" onClick={removeSelect}>
                   -
@@ -117,15 +147,40 @@ export const AddRecipeForm = () => {
                     const { push, remove, form } = fieldArrayProps;
                     const { values } = form;
                     const { ingredients } = values;
+                    console.log(ingredients);
 
                     const addSelect = () => {
                       push('');
                     };
 
+                    const deleteSelect = () => {
+                      ingredients.pop();
+                    };
+
                     return (
                       <div>
+                        <IngredienControler>
+                          <h2>Ingredients</h2>
+                          <IngredienLenght>
+                            {ingredients.length > 0 && (
+                              <ButtonClickIngredient
+                                type="buttom"
+                                onClick={deleteSelect}
+                              >
+                                -
+                              </ButtonClickIngredient>
+                            )}
+                            <span>{ingredients.length}</span>
+                            <ButtonClickIngredient
+                              type="buttom"
+                              onClick={addSelect}
+                            >
+                              +
+                            </ButtonClickIngredient>
+                          </IngredienLenght>
+                        </IngredienControler>
                         {ingredients.map((_, index) => (
-                          <div key={index}>
+                          <SelectIngredienContainer key={index}>
                             <FormikControl
                               control="select"
                               name={`ingredients[${index}].ingredient`}
@@ -137,31 +192,27 @@ export const AddRecipeForm = () => {
                               options={ingrediensArray}
                             />
                             {index >= 0 && (
-                              <button
+                              <ButtonClickIngredient
                                 type="button"
                                 onClick={() => remove(index)}
                               >
-                                -
-                              </button>
+                                X
+                              </ButtonClickIngredient>
                             )}
-                          </div>
+                          </SelectIngredienContainer>
                         ))}
-                        <span>{ingredients.length}</span>
-                        <button type="button" onClick={addSelect}>
-                          +
-                        </button>
                       </div>
                     );
                   }}
                 </FieldArray>
               </div>
-              <div>
+              <InputContainer>
                 <FormikControl
                   control="textarea"
                   label="Recipe Preparation"
                   name="textarea"
                 />
-              </div>
+              </InputContainer>
               <button
                 type="submit"
                 disabled={!(formik.dirty && formik.isValid)}

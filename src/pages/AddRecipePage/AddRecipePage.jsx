@@ -1,7 +1,13 @@
+import { Container } from 'components/MainContainer/MainContainer.styled';
+
 const { AddRecipeForm } = require('components/AddRecipeForm/AddRecipeForm');
 
 const AddRecipePage = () => {
-  return <AddRecipeForm />;
+  return (
+    <Container>
+      <AddRecipeForm />;
+    </Container>
+  );
 };
 
 export default AddRecipePage;
