@@ -26,7 +26,13 @@ export const Container = styled.div`
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url(${imgDeskX2});
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.6) 58.58%,
+        rgba(0, 0, 0, 0.345172) 78.98%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      url(${imgDeskX2});
   }
 
   background-repeat: no-repeat;
@@ -46,7 +52,13 @@ export const Container = styled.div`
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(${imgTabX2});
+      background-image: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.6) 58.58%,
+          rgba(0, 0, 0, 0.345172) 78.98%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        url(${imgTabX2});
     }
   }
 
@@ -63,13 +75,19 @@ export const Container = styled.div`
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(${imgMobX2});
+      background-image: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.6) 58.58%,
+          rgba(0, 0, 0, 0.345172) 78.98%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        url(${imgMobX2});
     }
   }
 `;
 
 export const Box = styled.div`
-  padding-top: 30vh;
+  padding-top: 25vh;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -96,7 +114,7 @@ export const TextBox = styled.div`
   margin-bottom: 40px;
   flex-direction: column;
   width: 544px;
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 768px) {
     width: 305px;
   }
 `;
