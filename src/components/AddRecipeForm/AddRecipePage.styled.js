@@ -56,6 +56,11 @@ export const SelectInput = styled(Field)`
   height: 48px;
 `;
 
+export const SelectInputIngredient = styled(Field)`
+  border: none;
+  outline: none;
+`;
+
 export const ListStyle = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;

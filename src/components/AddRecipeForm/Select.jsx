@@ -1,4 +1,4 @@
-import { ErrorMessage, Field } from 'formik';
+import { ErrorMessage } from 'formik';
 import { TextError } from './TextError';
 import { SelectInput } from './AddRecipePage.styled';
 

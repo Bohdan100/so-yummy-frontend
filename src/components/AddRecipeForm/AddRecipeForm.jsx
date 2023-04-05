@@ -1,4 +1,4 @@
-import { Formik, Form, ErrorMessage, FieldArray } from 'formik';
+import { Formik, Form, ErrorMessage, FieldArray, Field } from 'formik';
 import { useRef } from 'react';
 import * as Yup from 'yup';
 import {
@@ -42,13 +42,6 @@ export const AddRecipeForm = () => {
     { key: '50 min', value: '50 min' },
     { key: '60 min', value: '60 min' },
     { key: '90 min', value: '90 min' },
-  ];
-
-  const ingrediensArray = [
-    { key: '', value: '' },
-    { key: 'apple', value: 'apple' },
-    { key: 'orange', value: 'orange' },
-    { key: 'banana', value: 'banana' },
   ];
 
   return (
@@ -181,16 +174,30 @@ export const AddRecipeForm = () => {
                         </IngredienControler>
                         {ingredients.map((_, index) => (
                           <SelectIngredienContainer key={index}>
-                            <FormikControl
+                            {/* <FormikControl
                               control="select"
+                              name="selectTime"
+                              options={ingrediensArray}
+                            /> */}
+                            <Field
+                              type="text"
                               name={`ingredients[${index}].ingredient`}
-                              options={ingrediensArray}
-                            />
-                            <FormikControl
-                              control="select"
+                            ></Field>
+                            <Field
+                              as="select"
                               name={`ingredients[${index}].weight`}
-                              options={ingrediensArray}
-                            />
+                            >
+                              {cookingTime.map(option => {
+                                return (
+                                  <option
+                                    key={option.value}
+                                    value={option.value}
+                                  >
+                                    {option.key}
+                                  </option>
+                                );
+                              })}
+                            </Field>
                             {index >= 0 && (
                               <ButtonClickIngredient
                                 type="button"
