@@ -7,7 +7,6 @@ import {
 } from './RecipePageHero.styled';
 
 const RecipePageHero = ({ recipeObj }) => {
-  console.log(recipeObj);
   const { title, description, time } = recipeObj;
   return (
     <RecipeHeroConteiner>

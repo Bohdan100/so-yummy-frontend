@@ -1,14 +1,15 @@
-const RecipeInngredientsItem = obj => {
+const RecipeInngredientsItem = ({ image, nameIngredient, weight }) => {
   // пропом отримую інгрідієнти та айді рецепту
   return (
-    <>
-      <div>RecipeInngredientsItem</div>
+    <div>
       <li>
         <div>
-          <img src="" alt="" />
+          <img src={image} alt={nameIngredient} />
         </div>
+        <p>{nameIngredient}</p>
+        <p>{weight}</p>
       </li>
-    </>
+    </div>
   );
 };
 
