@@ -68,7 +68,7 @@ export const App = () => {
           <Route path="/favorite" element={<FavoritePage />} />
           <Route path="/shopping-list" element={<ShoppingListPage />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/recipe/:recipeId" element={<Recipe />} />
+          <Route path="/recipes/:recipeId" element={<Recipe />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
