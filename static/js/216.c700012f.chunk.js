@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkso_yummy_frontend=self.webpackChunkso_yummy_frontend||[]).push([[216],{7216:function(n,e,u){u.r(e),u.d(e,{default:function(){return t}});var r=u(184),t=function(){return(0,r.jsx)("div",{children:"SigninPage"})}}}]);
+//# sourceMappingURL=216.c700012f.chunk.js.map

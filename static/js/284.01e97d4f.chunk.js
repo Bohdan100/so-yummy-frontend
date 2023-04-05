@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkso_yummy_frontend=self.webpackChunkso_yummy_frontend||[]).push([[284],{284:function(n,e,u){u.r(e),u.d(e,{default:function(){return r}});var t=u(184),r=function(){return(0,t.jsx)("div",{children:"ShoppingListPage"})}}}]);
-//# sourceMappingURL=284.01e97d4f.chunk.js.map
