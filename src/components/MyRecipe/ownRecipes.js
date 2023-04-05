@@ -4,9 +4,9 @@ export const data = [
     category: 'beef',
     instructions: 'ghfjhgdfghkdhf',
     description:
-      'hfhgdhgfsghvjdhfkihujbvjfbh nhvsjkbhudfvjhywsbrvjgs  jsbhfjvhsjhbdsv bsjvbhsjhfvbsfh bjsv hbsjhfbvs gjhf',
+      'A festive twist on a classic flapjack recipe, with added spices and dried fruit.',
     preview:
-      'https://www.themealdb.com/images/media/meals/sutysw1468247559.jpg',
+      'https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560622/qrecr0nbdtjxjsmtfy7u.jpg',
     time: '15',
     popularity: 0,
     favorites: [],
@@ -23,9 +23,10 @@ export const data = [
     title: 'coffe',
     category: 'beef',
     instructions: 'ghfjhgdfghkdhf',
-    description: 'hfhgdhgfsghvjdhfgjhf',
+    description:
+      'A simple yet delicious pudding made with suet pastry and jam, often served with custard.',
     preview:
-      'https://res.cloudinary.com/db5awxaxs/image/upload/v1680438156/cld-sample-4.jpg',
+      'https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560622/qrecr0nbdtjxjsmtfy7u.jpg',
     time: '15',
     popularity: 0,
     favorites: [],
@@ -42,9 +43,9 @@ export const data = [
     title: 'coffe',
     category: 'beef',
     instructions: 'ghfjhgdfghkdhf',
-    description: 'hfhgdhgfsghvjdhfgjhf',
+    description: 'hfhgdhgfsghvjdh fkhujhjguthbe,u ahb,gbhtagej, uhbaggjhf',
     preview:
-      'https://res.cloudinary.com/db5awxaxs/image/upload/v1680438156/cld-sample-4.jpg',
+      'https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560622/qrecr0nbdtjxjsmtfy7u.jpg',
     time: '15',
     popularity: 0,
     favorites: [],
@@ -62,9 +63,9 @@ export const data = [
     category: 'beef',
     instructions: 'ghfjhgdfghkdhf',
     description:
-      'hfhgdhgfsghvjdjgvgcfghv hvhgvgcfcnnhgj fjkdnvdkjnbjdf hjxfbvsgfjhbv sjkfhv jbvjdxfhbvghxdfbghfgjhf',
+      'hfhgdhgfsg hvjdjgvgcfghv hvhgvgcfcnnhgj fjkdnvdkjnbjdf hjxfbvsgfjhbv sjkfhv jbvjdxfhbvgh xdfbghfgjhf',
     preview:
-      'https://res.cloudinary.com/db5awxaxs/image/upload/v1680438156/cld-sample-4.jpg',
+      'https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560537/hhhqiogombfk5e002zrm.jpg',
     time: '15',
     popularity: 0,
     favorites: [],
@@ -78,4 +79,3 @@ export const data = [
     updatedAt: '2023-04-04T19:36:13.312Z',
   },
 ];
-// export default data;

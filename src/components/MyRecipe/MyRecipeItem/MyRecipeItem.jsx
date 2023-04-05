@@ -12,11 +12,13 @@ import {
   Container,
   ImageContainer,
   Image,
+  // IconBtn,
 } from './MyRecipeItem.styled';
-import { ReactComponent as BtnIconDelete } from '../../../images/icons/delete-white.svg';
+
+import { ReactComponent as BtnIconDelete } from '../../../images/icons/btn-delete-recipe.svg';
 
 const MyRecipeItem = ({
-  category,
+  // category,
   description,
   preview,
   time,
@@ -28,7 +30,7 @@ const MyRecipeItem = ({
     <Item key={id}>
       <MainBox>
         <ImageContainer>
-          <Image src={preview} alt="recipe" />
+          <Image src={preview} alt={title} />
         </ImageContainer>
         <Container>
           <WrapperBox>
