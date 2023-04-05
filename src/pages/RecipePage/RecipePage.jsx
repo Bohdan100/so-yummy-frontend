@@ -2,7 +2,7 @@
 
 import MainContainer from 'components/MainContainer/MainContainer';
 import RecipePageHero from 'components/RecipePageHero';
-import RecipeInngredientsList from 'components/RecipeInngredientsList';
+import RecipeIngredientsList from 'components/RecipeIngredientsList';
 import RecipePreparation from 'components/RecipePreparation';
 
 import { HeaderTable } from './RecipePage.styled';
@@ -101,9 +101,11 @@ const RecipePage = () => {
           </p>
         </HeaderTable>
 
-        <RecipeInngredientsList ingredients={recipeObj.ingredients} />
+        <RecipeIngredientsList ingredients={recipeObj.ingredients} />
         <RecipePreparation
-        //передаю пропом посилання на картинку рецепту та опис рецепту
+          image={recipeObj.thumb}
+          instructions={recipeObj.instructions}
+          //передаю пропом посилання на картинку рецепту та опис рецепту
         />
       </MainContainer>
     </>
