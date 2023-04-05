@@ -6,16 +6,15 @@ import {
   TitleWrapper,
 } from './RecipeCard.styled';
 
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ dish }) => {
+  const { _id: id, title, thumb } = dish;
+
   return (
     <RecipeCardWrapper>
-      <Link to={`/recipes/640cd5ac2d9fecf12e8897fc`}>
-        <RecipeCardImg
-          src="https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560401/huqdxgwkvbhsfjqtexsm.jpg"
-          alt="Spaghetti Bolognese"
-        />
+      <Link to={`/recipes/${id}`}>
+        <RecipeCardImg src={thumb} alt={title} />
         <TitleWrapper>
-          <RecipeTitle>Spaghetti Bolognese</RecipeTitle>
+          <RecipeTitle>{title}</RecipeTitle>
         </TitleWrapper>
       </Link>
     </RecipeCardWrapper>

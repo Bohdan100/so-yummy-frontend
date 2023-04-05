@@ -6,7 +6,7 @@ const CategoriesByName = () => {
   return (
     <RecipesList>
       {recipes.data.result.map(recipe => {
-        return <RecipeCard meal={recipe} key={recipe._id} />;
+        return <RecipeCard dish={recipe} key={recipe._id} />;
       })}
     </RecipesList>
   );

@@ -6,8 +6,8 @@ import { useState } from 'react';
 const CategoriesList = () => {
   const [value, setValue] = useState(1);
 
-  const handleChange = (e, newV) => {
-    setValue(newV);
+  const handleChange = (e, newCategory) => {
+    setValue(newCategory);
   };
 
   return (
@@ -64,10 +64,10 @@ const CategoriesList = () => {
           },
         }}
       >
-        {categoriesList.map((cat, idx) => {
+        {categoriesList.map((category, idx) => {
           return (
             <Tab
-              label={cat.toLowerCase()}
+              label={category.toLowerCase()}
               key={idx}
               sx={{
                 padding: '0',

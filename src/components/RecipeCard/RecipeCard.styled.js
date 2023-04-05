@@ -42,10 +42,10 @@ export const TitleWrapper = styled.div`
 export const RecipeTitle = styled.p`
   font-family: ${p => p.theme.fonts.main};
   font-style: normal;
-  font-weight: 500;
+  font-weight: {p => p.theme.fontWeights[1]};
   font-size: 16px;
-  line-height: 20px;
-  letter-spacing: -0.24px;
+  line-height: ${p => p.theme.lineHeights.description};
+  letter-spacing: ${p => p.theme.letterSpacings.subheader};
   color: ${p => p.theme.colors.mainHeaderText};
   padding: 16px;
 
