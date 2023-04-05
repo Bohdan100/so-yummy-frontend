@@ -10,6 +10,7 @@ export const RecipeCardWrapper = styled.li`
   & a {
     display: block;
     overflow: hidden;
+    transition: ${p => p.theme.transitions.main};
     :hover {
       transform: scale(1.05);
     }
