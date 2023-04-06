@@ -1,3 +1,5 @@
+import RecipePageBtn from '../RecipePageBtn';
+
 import {
   RecipeHeroConteiner,
   RecipeHeroTitle,
@@ -50,6 +52,8 @@ const RecipePageHero = ({ recipeObj }) => {
     <RecipeHeroConteiner>
       <RecipeHeroTitle>{title}</RecipeHeroTitle>
       <RecipeHeroText>{description}</RecipeHeroText>
+      <RecipePageBtn text={'Add to favorite recipes'} />
+      <RecipePageBtn text={'Remove from favorite recipes'} />
 
       <CookingTime>
         <ClockIconStyled />
