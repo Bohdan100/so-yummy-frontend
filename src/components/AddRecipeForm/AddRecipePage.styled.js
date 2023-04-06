@@ -6,7 +6,7 @@ export const Error = styled.p`
 `;
 
 export const InputContainer = styled.div`
-  margin: 0 0 16px 0;
+  margin: 16px 0;
 `;
 
 export const SelectIngredienContainer = styled.div`
@@ -67,4 +67,35 @@ export const ListStyle = styled.div`
   grid-template-rows: 1fr 1fr;
   row-gap: 20px;
   column-gap: 20px;
+`;
+
+export const TextAreaContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 44px 0 16px 0;
+`;
+
+export const Area = styled(Field)`
+  padding: 16px 22px;
+  width: 505px;
+  height: 224px;
+  background: #d9d9d9;
+  border-radius: 6px;
+  resize: none;
+  outline: none;
+`;
+
+export const Title = styled.h2`
+  margin-bottom: 24px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  /* identical to box height, or 100% */
+
+  letter-spacing: -0.02em;
+  font-feature-settings: 'liga' off;
+
+  color: #3e4462;
 `;

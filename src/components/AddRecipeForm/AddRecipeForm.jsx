@@ -8,6 +8,9 @@ import {
   IngredienControler,
   IngredienLenght,
   ButtonClickIngredient,
+  TextAreaContainer,
+  Area,
+  Title,
 } from './AddRecipePage.styled';
 import FormikControl from './FormikControls';
 import { PreviewImage } from './PreviewImage';
@@ -16,9 +19,10 @@ import { TextError } from './TextError';
 const Schema = Yup.object({
   item: Yup.string().required('Required'),
   about: Yup.string().required('Required'),
-  selectCategory: Yup.mixed().required('Required'),
-  selectTime: Yup.mixed().required('Required'),
+  selectCategory: Yup.string().required('Required'),
+  selectTime: Yup.string().required('Required'),
   file: Yup.mixed().required('File is required'),
+  textarea: Yup.string().required('Required'),
 });
 
 export const AddRecipeForm = () => {
@@ -115,25 +119,6 @@ export const AddRecipeForm = () => {
                   options={cookingTime}
                 />
               </InputContainer>
-              {/* <div>
-                <button type="button" onClick={removeSelect}>
-                  -
-                </button>
-                <span>{ingredients.length}</span>
-                <button type="button" onClick={addSelect}>
-                  +
-                </button>
-              </div>
-              <div>
-                {ingredients.map(({ id, index }) => (
-                  <FormikControl
-                    key={id}
-                    control="select"
-                    name={`ingredients[${id}]`}
-                    options={ingrediensArray}
-                  />
-                ))}
-              </div> */}
               <div>
                 <FieldArray name="ingredients">
                   {fieldArrayProps => {
@@ -151,9 +136,9 @@ export const AddRecipeForm = () => {
                     };
 
                     return (
-                      <div>
+                      <InputContainer>
                         <IngredienControler>
-                          <h2>Ingredients</h2>
+                          <Title>Ingredients</Title>
                           <IngredienLenght>
                             {ingredients.length > 0 && (
                               <ButtonClickIngredient
@@ -174,15 +159,21 @@ export const AddRecipeForm = () => {
                         </IngredienControler>
                         {ingredients.map((_, index) => (
                           <SelectIngredienContainer key={index}>
-                            {/* <FormikControl
-                              control="select"
-                              name="selectTime"
-                              options={ingrediensArray}
-                            /> */}
                             <Field
-                              type="text"
+                              as="select"
                               name={`ingredients[${index}].ingredient`}
-                            ></Field>
+                            >
+                              {cookingTime.map(option => {
+                                return (
+                                  <option
+                                    key={option.value}
+                                    value={option.value}
+                                  >
+                                    {option.key}
+                                  </option>
+                                );
+                              })}
+                            </Field>
                             <Field
                               as="select"
                               name={`ingredients[${index}].weight`}
@@ -208,18 +199,21 @@ export const AddRecipeForm = () => {
                             )}
                           </SelectIngredienContainer>
                         ))}
-                      </div>
+                      </InputContainer>
                     );
                   }}
                 </FieldArray>
               </div>
-              <InputContainer>
-                <FormikControl
-                  control="textarea"
-                  label="Recipe Preparation"
+              <TextAreaContainer>
+                <Title>Recipe Preparation</Title>
+                <Area
+                  as="textarea"
                   name="textarea"
+                  placeholder="Enter recipe"
                 />
-              </InputContainer>
+                <ErrorMessage name="textarea" component={TextError} />
+              </TextAreaContainer>
+
               <button
                 type="submit"
                 disabled={!(formik.dirty && formik.isValid)}
