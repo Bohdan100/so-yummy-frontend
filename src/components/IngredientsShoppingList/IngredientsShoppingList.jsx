@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -82,7 +82,7 @@ const DeleteButton = styled.button`
   }
 `;
 
-const IngredientsShoppingList = ({ shoppingList }) => {
+const IngredientsShoppingList = ({ ingredients }) => {
   const handleDelete = async (ingredientId) => {
     try {
       await axios.delete(`/api/shopping-lists/${ingredientId}`);
@@ -91,30 +91,33 @@ const IngredientsShoppingList = ({ shoppingList }) => {
       console.error(error);
     }
   };
+  console.log(ingredients);
 
   return (
     <StyledIngredientsShoppingList>
       <h2>Shopping List</h2>
-      {shoppingList.map((ingredient) => (
-        <IngredientItem key={ingredient.id}>
-          <IngredientImage src={ingredient.image} alt={ingredient.name} />
-          <IngredientQuantity>{ingredient.quantity} {ingredient.unit}</IngredientQuantity>
-          <IngredientName>{ingredient.name}</IngredientName>
-          <DeleteButton onClick={() => handleDelete(ingredient.id)}>Delete</DeleteButton>
+      {ingredients.map((ingredient) => (
+        <IngredientItem key={ingredient._id}>
+          <IngredientImage src={ingredient.image} alt={ingredient.strIngredient} />
+          <IngredientQuantity>{ingredient.weight} 
+          {/* {ingredient.unit} */}
+          </IngredientQuantity>
+          <IngredientName>{ingredient.recipeId}</IngredientName>
+          <DeleteButton onClick={() => handleDelete(ingredient._id)}>Delete</DeleteButton>
         </IngredientItem>
       ))}
     </StyledIngredientsShoppingList>
   );
 };
 
-IngredientsShoppingList.propTypes = {
-  shoppingList: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    quantity: PropTypes.number.isRequired,
-    unit: PropTypes.string.isRequired,
-  })).isRequired,
-};
+// IngredientsShoppingList.propTypes = {
+//   shoppingList: PropTypes.arrayOf(PropTypes.shape({
+//     id: PropTypes.number.isRequired,
+//     name: PropTypes.string.isRequired,
+//     image: PropTypes.string.isRequired,
+//     quantity: PropTypes.number.isRequired,
+//     unit: PropTypes.string.isRequired,
+//   })).isRequired,
+// };
 
 export default IngredientsShoppingList;
