@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-frontend/static/css/main.0d5b2924.css",
-    "main.js": "/so-yummy-frontend/static/js/main.909599cb.js",
+    "main.js": "/so-yummy-frontend/static/js/main.83784db3.js",
     "static/js/932.003dbc40.chunk.js": "/so-yummy-frontend/static/js/932.003dbc40.chunk.js",
     "static/js/644.efb00be9.chunk.js": "/so-yummy-frontend/static/js/644.efb00be9.chunk.js",
     "static/js/216.c700012f.chunk.js": "/so-yummy-frontend/static/js/216.c700012f.chunk.js",
@@ -30,11 +30,11 @@
     "static/media/leaves-mobile-menu-@1-1.png": "/so-yummy-frontend/static/media/leaves-mobile-menu-@1-1.94ab13c1f302b6f94cb9.png",
     "static/media/recipe_hero_tab@1x.jpg": "/so-yummy-frontend/static/media/recipe_hero_tab@1x.89822ca1d88df28eaeb9.jpg",
     "static/media/recipe_hero_mob@1x.jpg": "/so-yummy-frontend/static/media/recipe_hero_mob@1x.38cda25a5fb03631579c.jpg",
-    "static/media/sprite.svg": "/so-yummy-frontend/static/media/sprite.d5b5384cb95212f815b676ebf8628de0.svg",
     "static/media/leaves-mobile-menu@1x.png": "/so-yummy-frontend/static/media/leaves-mobile-menu@1x.b236250f3373e3cd26b8.png",
     "index.html": "/so-yummy-frontend/index.html",
     "static/media/logoInv.svg": "/so-yummy-frontend/static/media/logoInv.cb2ee2046e8dc8a3017f87fe46c6bae3.svg",
     "static/media/logo.svg": "/so-yummy-frontend/static/media/logo.3a6003aab9d5748d5e757f5a183c97e1.svg",
+    "static/media/user.svg": "/so-yummy-frontend/static/media/user.8eef99b101ee29af9797fcb1728cf86d.svg",
     "static/media/user-40.svg": "/so-yummy-frontend/static/media/user-40.57b9861b073ba03a551efb31de22d5b3.svg",
     "static/media/clock.svg": "/so-yummy-frontend/static/media/clock.5146b559adfd629e728ba916dba25f35.svg",
     "static/media/twitter.svg": "/so-yummy-frontend/static/media/twitter.21624c28a6d7ebadfd79b942999a0018.svg",
@@ -46,14 +46,13 @@
     "static/media/search.svg": "/so-yummy-frontend/static/media/search.808a38e2b42b6a770b17ffac2f38a2c4.svg",
     "static/media/pick.svg": "/so-yummy-frontend/static/media/pick.247b86d0e6a26346bf0885b5b0408bd8.svg",
     "static/media/facebook.svg": "/so-yummy-frontend/static/media/facebook.7ab58173506c2e7f9b64fd517d0ebec9.svg",
-    "static/media/user.svg": "/so-yummy-frontend/static/media/user.17d442f99497bff305dfe282adabb856.svg",
     "static/media/close-20.svg": "/so-yummy-frontend/static/media/close-20.65168c2857d064ff3004222ca9c2624a.svg",
     "static/media/plus.svg": "/so-yummy-frontend/static/media/plus.2b124f485a7da985715b3d7d56b1f159.svg",
     "static/media/close.svg": "/so-yummy-frontend/static/media/close.6c04e4d4c95e7aee59f07e4cbbb2f0c0.svg",
     "static/media/arrow-right.svg": "/so-yummy-frontend/static/media/arrow-right.828da05f548f4ad2c5e6cdb3379e45aa.svg",
     "static/media/burger-menu-mob.svg": "/so-yummy-frontend/static/media/burger-menu-mob.3d6d05170a0d39b9d007f333ce1d6ad7.svg",
     "main.0d5b2924.css.map": "/so-yummy-frontend/static/css/main.0d5b2924.css.map",
-    "main.909599cb.js.map": "/so-yummy-frontend/static/js/main.909599cb.js.map",
+    "main.83784db3.js.map": "/so-yummy-frontend/static/js/main.83784db3.js.map",
     "932.003dbc40.chunk.js.map": "/so-yummy-frontend/static/js/932.003dbc40.chunk.js.map",
     "644.efb00be9.chunk.js.map": "/so-yummy-frontend/static/js/644.efb00be9.chunk.js.map",
     "216.c700012f.chunk.js.map": "/so-yummy-frontend/static/js/216.c700012f.chunk.js.map",
@@ -70,6 +69,6 @@
   },
   "entrypoints": [
     "static/css/main.0d5b2924.css",
-    "static/js/main.909599cb.js"
+    "static/js/main.83784db3.js"
   ]
 }
