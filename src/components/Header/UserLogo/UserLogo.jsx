@@ -4,10 +4,12 @@ import { UserButton, UserAvatarImg } from './UserLogo.styled';
 import Modal from 'components/Modal';
 import UserLogoModal from '../UserLogoModal';
 import UserInfoModal from '../UserInfoModal';
+import LogoutModal from '../LogoutModal';
 
 const UserLogo = () => {
   const [isUserLogoModalOpen, setIsUserLogoModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   const closeUserLogoModal = () => {
     setIsUserLogoModalOpen(false);
@@ -19,6 +21,14 @@ const UserLogo = () => {
 
   const closeUserInfoModal = () => {
     setIsEditModalOpen(false);
+  };
+
+  const openLogoutModal = () => {
+    setIsLogoutModalOpen(true);
+  };
+
+  const closeLogoutModal = () => {
+    setIsLogoutModalOpen(false);
   };
 
   return (
@@ -40,6 +50,7 @@ const UserLogo = () => {
             closeUserLogoModal={closeUserLogoModal}
             isShown={isUserLogoModalOpen}
             openEditModal={openUserInfoModal}
+            openLogoutModal={openLogoutModal}
           />
         </Modal>
       )}
@@ -50,6 +61,12 @@ const UserLogo = () => {
             isShown={isEditModalOpen}
             closeUserInfoModal={closeUserInfoModal}
           />
+        </Modal>
+      )}
+
+      {isLogoutModalOpen && !isUserLogoModalOpen && (
+        <Modal onClose={closeLogoutModal}>
+          <LogoutModal closeLogoutModal={closeLogoutModal} />
         </Modal>
       )}
     </>

@@ -1,15 +1,25 @@
+import LogoutBtn from '../LogoutBtn';
+
 import {
   ModalWrapper,
   EditButton,
   EditIconStyled,
-  LogOutBtn,
-  ArrowIconStyled,
 } from './UserLogoModal.styled';
 
-const UserLogoModal = ({ isShown, openEditModal, closeUserLogoModal }) => {
+const UserLogoModal = ({
+  isShown,
+  openEditModal,
+  closeUserLogoModal,
+  openLogoutModal,
+}) => {
   const onEditBtnClick = () => {
     closeUserLogoModal();
     openEditModal();
+  };
+
+  const onLogoutBtn = () => {
+    openLogoutModal();
+    closeUserLogoModal();
   };
   return (
     <ModalWrapper isShown={isShown}>
@@ -17,10 +27,7 @@ const UserLogoModal = ({ isShown, openEditModal, closeUserLogoModal }) => {
         <span>Edit profile</span>
         <EditIconStyled width={'14px'} height={'14'} />
       </EditButton>
-      <LogOutBtn>
-        <span>Log out</span>
-        <ArrowIconStyled />
-      </LogOutBtn>
+      <LogoutBtn onLogoutClick={onLogoutBtn} />
     </ModalWrapper>
   );
 };

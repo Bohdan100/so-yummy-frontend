@@ -1,1 +1,1 @@
-export { default } from './getColor';
+export * from './updateUserValidationSchema';
