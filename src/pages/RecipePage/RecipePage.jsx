@@ -10,7 +10,7 @@ import Loader from 'components/Loader/Loader';
 
 import { HeaderTable } from './RecipePage.styled';
 
-import * as API from './api/favorite-API';
+import * as API from '../../services/favorite-API';
 
 const RecipePage = () => {
   const [recipeObj, setRecipeObj] = useState(null);
@@ -18,8 +18,8 @@ const RecipePage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   // const { recipeId } = useParams();
-  // const recipeId = '640cd5ac2d9fecf12e8897f2';
-  const recipeId = '640cd5ac2d9fecf12e8897f3';
+  const recipeId = '640cd5ac2d9fecf12e8897f2';
+  // const recipeId = '640cd5ac2d9fecf12e8897f3';
 
   useEffect(() => {
     async function getOneRecipe() {

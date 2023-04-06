@@ -1,8 +1,9 @@
 import axios from 'axios';
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmU3ZDVmYTVjZmIwNDI2YmFmZGQ3ZiIsImlhdCI6MTY4MDc2ODM1MSwiZXhwIjoxNjgwODU0NzUxfQ.e-WCqasd0HpXjEV0nduynumV2POg2yWkfwKVA5faLIY';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmVlODlkOTYzMzIyNjQyNDI2OWE2MyIsImlhdCI6MTY4MDc5NTgwNSwiZXhwIjoxNjgwODgyMjA1fQ.4QOpOIoAbSZz1cFG1_UZ3P5lqzfBToRJq231QAuA0Vw';
 
 axios.defaults.baseURL = 'https://so-yummy-98ev.onrender.com/api/';
+
 const config = {
   headers: { Authorization: 'Bearer ' + token },
 };
@@ -33,6 +34,7 @@ export const fetchFavoriteRacipes = async () => {
 export const addRecipeTоFavorites = async id => {
   console.log('відправив запит на бек');
   const url = `favorite/${id}`;
+  console.log(id);
   const { data } = await axios.post(url, config);
   return data;
 };

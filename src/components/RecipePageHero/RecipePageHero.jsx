@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import * as API from '../../pages/RecipePage/api/favorite-API';
+import * as API from '../../services/favorite-API';
 
 import RecipePageBtn from '../RecipePageBtn';
 
