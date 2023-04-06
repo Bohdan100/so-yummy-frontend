@@ -16,16 +16,14 @@ import {
 } from './MyRecipeItem.styled';
 
 import { ReactComponent as BtnIconDelete } from '../../../images/icons/btn-delete-recipe.svg';
+import { useDispatch } from 'react-redux';
+import { deleteOwnRecipe } from 'redux/OwnRecipes/OwnRecipesOperations';
 
-const MyRecipeItem = ({
-  // category,
-  description,
-  preview,
-  time,
-  title,
-  id,
-  //   handelDelete,
-}) => {
+const MyRecipeItem = ({ description, preview, time, title, id }) => {
+  const dispatch = useDispatch();
+  // const handelDelete = recipeId => {
+  //   dispatch(deleteOwnRecipe(recipeId));
+  // };
   return (
     <Item key={id}>
       <MainBox>
@@ -36,7 +34,10 @@ const MyRecipeItem = ({
           <WrapperBox>
             <TitleRecipe>{title}</TitleRecipe>
             <BtnBox>
-              <DeleteBtn>
+              <DeleteBtn
+                type="button"
+                onClick={() => dispatch(deleteOwnRecipe(id))}
+              >
                 <BtnIconDelete />
               </DeleteBtn>
             </BtnBox>
