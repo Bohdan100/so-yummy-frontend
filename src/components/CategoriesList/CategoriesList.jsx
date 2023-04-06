@@ -20,6 +20,7 @@ const CategoriesList = () => {
         aria-label="scrollable auto tabs example"
         sx={{
           marginTop: '50px',
+
           '@media (min-width: 768px)': {
             marginTop: '72px',
           },
@@ -30,6 +31,7 @@ const CategoriesList = () => {
           '& .MuiTabs-scroller': {
             '& .css-1aquho2-MuiTabs-indicator': { backgroundColor: '#8BAA36' },
             '& .css-ttwr4n': { backgroundColor: '#8BAA36' },
+            transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
             overflowX: 'auto',
             scrollbarWidth: 'none',
             '&::-webkit-scrollbar': {
@@ -37,6 +39,7 @@ const CategoriesList = () => {
             },
           },
           '& .MuiTabs-flexContainer': {
+            transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
             gap: '28px',
             '@media (min-width: 768px)': {
               gap: '55px',
@@ -54,6 +57,7 @@ const CategoriesList = () => {
             fontWeight: '400',
             lineHeight: '18px',
             borderColor: '#8BAA36',
+            transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
           },
 
           '& svg': {

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 import { TextError } from './TextError';
+import { TextAreaContainer } from './AddRecipePage.styled';
 
 export const TextArea = props => {
   const { label, name, ...rest } = props;
   return (
-    <div className="form-control">
+    <TextAreaContainer>
       <label htmlFor={name}>{label}</label>
       <Field
         as="textarea"
@@ -15,6 +16,6 @@ export const TextArea = props => {
         placeholder="Enter recipe"
       />
       <ErrorMessage component={TextError} name={name} />
-    </div>
+    </TextAreaContainer>
   );
 };

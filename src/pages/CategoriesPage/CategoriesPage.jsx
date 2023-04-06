@@ -1,7 +1,7 @@
 import Container from '../../components/MainContainer/MainContainer';
 import CategoriesList from 'components/CategoriesList/CategoriesList';
-import CategoriesByName from 'components/CategoriesByName/CategoriesByName';
 import ReusableTitle from 'components/ReusableTitle/ReusableTitle';
+import CategoriesByName from 'components/CategoriesByName';
 
 const CategoriesPage = () => {
   return (
