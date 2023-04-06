@@ -68,3 +68,13 @@ export const ListStyle = styled.div`
   row-gap: 20px;
   column-gap: 20px;
 `;
+
+export const TextAreaContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Area = styled(Field)`
+  width: 505px;
+  height: 224px;
+`;
