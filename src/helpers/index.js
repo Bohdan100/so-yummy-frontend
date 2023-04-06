@@ -1,1 +1,3 @@
-export {loginValidationSchema, registerValidationSchema, contactValidationSchema} from "./validationShemas";
+export { loginValidationSchema, registerValidationSchema } from "./authValidationShemas";
+
+export { ErrorStatus } from './ErrorStatus';

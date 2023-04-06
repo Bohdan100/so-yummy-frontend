@@ -160,3 +160,12 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
   }
 `;
+
+export const ErrorBox = styled.div`
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: ${p => p.theme.fontWeights[0]};
+  line-height: ${p => p.theme.lineHeights.searchSelect};
+  color: ${p => p.theme.colors.inputPh};
+  transition: ${p => p.theme.transitions.main};
+`;

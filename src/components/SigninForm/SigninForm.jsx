@@ -1,16 +1,11 @@
-// import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
-// import { FaEye, FaEyeSlash } from 'react-icons/fa';
-// import { selectIsLoading } from 'redux/Auth/authSelectors';
-// import { Button } from 'components/Button/Button';
-// import { register, login } from 'redux/Auth/authOperations';
-import { registerValidationSchema } from '../../helpers';
+import { selectIsLoading } from 'redux/Auth/authSelectors';
+import { login } from 'redux/Auth/authOperations';
+import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
+import { loginValidationSchema } from '../../helpers';
 
-import {
-  EmailIconStyled,
-  LockIconStyled,
-} from '../../components/AuthIcons';
+import { EmailIconStyled, LockIconStyled } from '../../components/AuthIcons';
 
 import {
   Container,
@@ -21,46 +16,47 @@ import {
   InputContainer,
   Button,
   StyledLink,
+  ErrorBox,
 } from './SigninForm.styled';
 
 const SigninForm = () => {
-  //   const [isShowPassword, setIsShowPassword] = useState(false);
-  //   const isLoading = useSelector(selectIsLoading);
-  //   const dispatch = useDispatch();
-  //   const { pathname } = useLocation();
+  const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
 
-  const handleSubmitForm = ({ email, password }, { resetForm }) => {
-    // dispatch(register({ name, email, password })).then(res =>
-    // res.error ? toast.error(ErrorStatus[res.payload]) : resetForm());
-    console.log(email, password);
+  const handleSubmitForm = async ({ email, password }, { resetForm }) => {
+   await dispatch(login({ email, password })).then(res =>
+      res.error ? console.log(res.payload) : resetForm()
+    );
+    await dispatch(fetchProducts()).then(res =>
+      res.error ? console.log(res.payload) : resetForm()
+    );
   };
-
 
   return (
     <Container>
       <Formik
         initialValues={{ name: '', email: '', password: '' }}
         onSubmit={handleSubmitForm}
-        validationSchema={registerValidationSchema}
+        validationSchema={loginValidationSchema}
         validateOnBlur
       >
-        {({ errors, touched }) => (
+        {({ errors, touched, isValid, dirty }) => (
           <StyledForm>
             <Title>Sign In</Title>
             <InputContainer>
-              <Label>
+              <Label htmlFor="email">
                 <Input
                   type="email"
                   name="email"
                   placeholder="Email"
-                  disabled={false}
+                  disabled={isLoading}
                 />
                 <EmailIconStyled />
                 {errors.email && touched.email ? (
-                  <div>{errors.email}</div>
+                  <ErrorBox>{errors.email}</ErrorBox>
                 ) : null}
               </Label>
-              <Label>
+              <Label htmlFor="password">
                 <Input
                   type="password"
                   name="password"
@@ -69,11 +65,15 @@ const SigninForm = () => {
                 />
                 <LockIconStyled />
                 {errors.password && touched.password ? (
-                  <div>{errors.password}</div>
+                  <ErrorBox>{errors.password}</ErrorBox>
                 ) : null}
               </Label>
             </InputContainer>
-            <Button type="submit" name="button">
+            <Button
+              type="submit"
+              name="button"
+              disabled={isLoading || !isValid || !dirty}
+            >
               Sign In
             </Button>
             <StyledLink to="/register">Registration</StyledLink>
