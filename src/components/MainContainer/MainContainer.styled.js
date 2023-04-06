@@ -1,22 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const TitleWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  font-size: 24px;
-  font-weight: 700;
+export const MainContainerWrapper = styled.div`
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 10px 25px rgba(18, 18, 18, 0.1);
+  padding: 30px;
+  margin: 50px auto;
+  max-width: 1100px;
+  min-height: 600px;
+
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 15px;
+    margin: 10px auto;
+  }
 `;
-
-const MainPageTitle = ({ title }) => {
-  return <TitleWrapper>{title}</TitleWrapper>;
-};
-
-MainPageTitle.propTypes = {
-  title: PropTypes.string.isRequired,
-};
-
-export default MainPageTitle;

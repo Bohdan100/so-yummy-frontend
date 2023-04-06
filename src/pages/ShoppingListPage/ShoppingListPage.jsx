@@ -1,24 +1,44 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchIngredients } from "../redux/shoppingList/actions";
-// import { addItem, deleteItem, deleteAllItems } from '../redux/shoppingList/actions';
-import MainPageTitle from '../../components/MainPageTitle/MainPageTitle';
-import IngredientsShoppingList from '../../components/IngredientsShoppingList/IngredientsShoppingList';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchShoppingList } from '../../redux/shoppingList/actions';
+
+import {
+  ShoppingListPageWrapper,
+  EmptyListMessage,
+  StyledLoaderWrapper,
+} from './ShoppingListPage.styled';
+import ReusableTitle from '../../components/ReusableTitle/ReusableTitle';
+import Loader from '../../components/Loader/Loader';
+import RecipeIngredientsList from '../../components/RecipeIngredientsList/RecipeIngredientsList';
 
 
 const ShoppingListPage = () => {
   const dispatch = useDispatch();
-  const ingredients = useSelector((state) => state.shoppingList.ingredients);
+  const shoppingList = useSelector((state) => state.shoppingList.shoppingList);
+  const isLoading = useSelector((state) => state.shoppingList.isLoading);
 
   useEffect(() => {
-    dispatch(fetchIngredients());
+    dispatch(fetchShoppingList());
   }, [dispatch]);
 
   return (
-    <>
-      <MainPageTitle title="Shopping List" />
-      <IngredientsShoppingList ingredients={ingredients} />
-    </>
+    <ShoppingListPageWrapper>
+      <ReusableTitle title="Shopping List" />
+      {isLoading ? (
+        <StyledLoaderWrapper>
+          <Loader />
+        </StyledLoaderWrapper>
+      ) : (
+        <>
+          {shoppingList.length === 0 ? (
+            <EmptyListMessage>Your shopping list is currently empty</EmptyListMessage>
+          ) : (
+            <RecipeIngredientsList ingredients={shoppingList} isShoppingList />
+          )}
+        </>
+      )}
+    </ShoppingListPageWrapper>
   );
 };
 

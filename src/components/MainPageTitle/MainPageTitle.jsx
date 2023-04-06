@@ -1,22 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { MainPageTitleWrapper } from './MainPageTitle.styled';
 
-const TitleWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  font-size: 24px;
-  font-weight: 700;
-`;
-
-const MainPageTitle = ({ title }) => {
-  return <TitleWrapper>{title}</TitleWrapper>;
-};
-
-MainPageTitle.propTypes = {
-  title: PropTypes.string.isRequired,
+const MainPageTitle = () => {
+  return (
+    <MainPageTitleWrapper>
+      <h1>So Yummy</h1>
+      <p>Discover the most delicious recipes</p>
+    </MainPageTitleWrapper>
+  );
 };
 
 export default MainPageTitle;

@@ -1,8 +1,6 @@
 import React from 'react';
 import MainPageTitle from '../MainPageTitle/MainPageTitle';
 import { MainContainerWrapper } from './MainContainer.styled';
-import './MainContainer.styled';
-
 
 const MainContainer = ({ children }) => {
   return (
