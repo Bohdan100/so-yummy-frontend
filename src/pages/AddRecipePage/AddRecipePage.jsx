@@ -5,7 +5,7 @@ const { AddRecipeForm } = require('components/AddRecipeForm/AddRecipeForm');
 const AddRecipePage = () => {
   return (
     <Container>
-      <AddRecipeForm />;
+      <AddRecipeForm />
     </Container>
   );
 };

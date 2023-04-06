@@ -10,6 +10,7 @@ import {
   ButtonClickIngredient,
   TextAreaContainer,
   Area,
+  Title,
 } from './AddRecipePage.styled';
 import FormikControl from './FormikControls';
 import { PreviewImage } from './PreviewImage';
@@ -137,7 +138,7 @@ export const AddRecipeForm = () => {
                     return (
                       <InputContainer>
                         <IngredienControler>
-                          <h2>Ingredients</h2>
+                          <Title>Ingredients</Title>
                           <IngredienLenght>
                             {ingredients.length > 0 && (
                               <ButtonClickIngredient
@@ -204,14 +205,15 @@ export const AddRecipeForm = () => {
                 </FieldArray>
               </div>
               <TextAreaContainer>
-                <label>Recipe Preparation</label>
+                <Title>Recipe Preparation</Title>
                 <Area
                   as="textarea"
                   name="textarea"
                   placeholder="Enter recipe"
                 />
+                <ErrorMessage name="textarea" component={TextError} />
               </TextAreaContainer>
-              <ErrorMessage name="textarea" component={TextError} />
+
               <button
                 type="submit"
                 disabled={!(formik.dirty && formik.isValid)}
