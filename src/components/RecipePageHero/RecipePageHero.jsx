@@ -15,22 +15,22 @@ const RecipePageHero = ({ recipeObj, recipeId }) => {
   const [isOwn, setIsOwn] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
+  // const [isLoading, setIsLoading] = useState(false);
 
   const { title, description, time } = recipeObj;
 
   async function delFromFavorite() {
     try {
       console.log('жмакнув на кнопку видалити в улюблені');
-      setIsLoading(true);
+      // setIsLoading(true);
 
       await API.removeRecipeFromFavorites(recipeId);
       setIsFavorite(false);
     } catch (error) {
-      setError({ error });
+      // setError({ error });
     } finally {
-      setIsLoading(false);
+      // setIsLoading(false);
     }
 
     return;
@@ -39,13 +39,13 @@ const RecipePageHero = ({ recipeObj, recipeId }) => {
   async function addToFavorite() {
     try {
       console.log('жмакнув на кнопку додати в улюблені');
-      setIsLoading(true);
+      // setIsLoading(true);
       await API.addRecipeTоFavorites(recipeId);
       setIsFavorite(true);
     } catch (error) {
-      setError({ error });
+      // setError({ error });
     } finally {
-      setIsLoading(false);
+      // setIsLoading(false);
     }
 
     return;
@@ -55,7 +55,7 @@ const RecipePageHero = ({ recipeObj, recipeId }) => {
     // отримую список власних рецептів та перевіряю чи є рецепт в в списку власних рецептів
     async function getOwnRacipes() {
       try {
-        setIsLoading(true);
+        // setIsLoading(true);
         const { data } = await API.fetchOwnRacipes();
         console.log('список власних рецептів', data.result);
 
@@ -68,9 +68,9 @@ const RecipePageHero = ({ recipeObj, recipeId }) => {
           setIsOwn(recipe);
         }
       } catch (error) {
-        setError({ error });
+        // setError({ error });
       } finally {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     }
 
@@ -79,7 +79,7 @@ const RecipePageHero = ({ recipeObj, recipeId }) => {
     // отримую список  рецептів зі favorite списку та перевіряю чи є рецепт в favorite списку
     async function getFavoriteRacipes() {
       try {
-        setIsLoading(true);
+        // setIsLoading(true);
         const { data } = await API.fetchFavoriteRacipes();
 
         console.log('список улюблених рецептів', data.result);
@@ -95,9 +95,9 @@ const RecipePageHero = ({ recipeObj, recipeId }) => {
           setIsFavorite(recipe);
         }
       } catch (error) {
-        setError({ error });
+        // setError({ error });
       } finally {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     }
 
