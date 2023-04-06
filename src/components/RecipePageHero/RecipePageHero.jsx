@@ -1,3 +1,6 @@
+import { useState, useEffect } from 'react';
+import * as API from '../../pages/RecipePage/api/favorite-API';
+
 import RecipePageBtn from '../RecipePageBtn';
 
 import {
@@ -8,52 +11,114 @@ import {
   ClockIconStyled,
 } from './RecipePageHero.styled';
 
-import axios from 'axios';
-const TOKEN =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmQxZmY0YmQ3MDBkZjEwZWUzN2E0OSIsImlhdCI6MTY4MDY3ODkwMCwiZXhwIjoxNjgwNzY1MzAwfQ.G84TmEKZd68ZWoInS5XAzMmfAAwvNIxCBuevJbuNwiU';
+const RecipePageHero = ({ recipeObj, recipeId }) => {
+  const [isOwn, setIsOwn] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
-axios.defaults.baseURL = 'https://so-yummy-98ev.onrender.com/api/';
-const config = {
-  headers: { Authorization: 'Bearer ' + TOKEN },
-};
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-// API запит на отримання списоку власних рецептів
-export const fetchOwnRacipes = async () => {
-  const url = `ownRecipe/`;
-  const { data } = await axios.get(url, config);
-  return data;
-};
-
-// API запит на отримання списку улюблених рецептів
-export const fetchFavoriteRacipes = async () => {
-  const url = `favorite/`;
-  const { data } = await axios.get(url, config);
-  return data;
-};
-
-// API запит на додавання рецепту до улюбленого списку
-export const addRecipeTоFavorites = async id => {
-  const url = `favorite/${id}`;
-  const { data } = await axios.post(url, config);
-  return data;
-};
-
-// API запит на видалення рецепту з улюбленого списку
-export const removeRecipeFromFavorites = async id => {
-  const url = `favorite/${id}`;
-  const { data } = await axios.delete(url, config);
-  return data;
-};
-
-const RecipePageHero = ({ recipeObj }) => {
   const { title, description, time } = recipeObj;
+
+  async function delFromFavorite() {
+    try {
+      console.log('жмакнув на кнопку видалити в улюблені');
+      setIsLoading(true);
+
+      await API.removeRecipeFromFavorites(recipeId);
+      setIsFavorite(false);
+    } catch (error) {
+      setError({ error });
+    } finally {
+      setIsLoading(false);
+    }
+
+    return;
+  }
+
+  async function addToFavorite() {
+    try {
+      console.log('жмакнув на кнопку додати в улюблені');
+      setIsLoading(true);
+      await API.addRecipeTоFavorites(recipeId);
+      setIsFavorite(true);
+    } catch (error) {
+      setError({ error });
+    } finally {
+      setIsLoading(false);
+    }
+
+    return;
+  }
+
+  useEffect(() => {
+    // отримую список власних рецептів та перевіряю чи є рецепт в в списку власних рецептів
+    async function getOwnRacipes() {
+      try {
+        setIsLoading(true);
+        const { data } = await API.fetchOwnRacipes();
+        console.log('список власних рецептів', data.result);
+
+        if (data.result !== undefined) {
+          const recipe = data.result.some(recipe => recipe === recipeId);
+          console.log(
+            'перевірка рецепту на наявність в списку власних рецептів',
+            recipe
+          );
+          setIsOwn(recipe);
+        }
+      } catch (error) {
+        setError({ error });
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    getOwnRacipes();
+
+    // отримую список  рецептів зі favorite списку та перевіряю чи є рецепт в favorite списку
+    async function getFavoriteRacipes() {
+      try {
+        setIsLoading(true);
+        const { data } = await API.fetchFavoriteRacipes();
+
+        console.log('список улюблених рецептів', data.result);
+        console.log(recipeId);
+
+        if (data.result !== undefined) {
+          const recipe = data.result.some(el => el.recipe._id === recipeId);
+
+          console.log(
+            'перевірка рецепту на наявність в списку улюблених рецептів',
+            recipe
+          );
+          setIsFavorite(recipe);
+        }
+      } catch (error) {
+        setError({ error });
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    getFavoriteRacipes();
+  }, [recipeId]);
 
   return (
     <RecipeHeroConteiner>
       <RecipeHeroTitle>{title}</RecipeHeroTitle>
       <RecipeHeroText>{description}</RecipeHeroText>
-      <RecipePageBtn text={'Add to favorite recipes'} />
-      <RecipePageBtn text={'Remove from favorite recipes'} />
+
+      {!isOwn && isFavorite && (
+        <RecipePageBtn
+          text={'Remove from favorite recipes'}
+          fn={delFromFavorite}
+        />
+      )}
+
+      {!isOwn && !isFavorite && (
+        <RecipePageBtn text={'Add to favorite recipes'} fn={addToFavorite} />
+      )}
 
       <CookingTime>
         <ClockIconStyled />
