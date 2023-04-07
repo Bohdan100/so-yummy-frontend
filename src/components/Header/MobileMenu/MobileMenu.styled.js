@@ -4,7 +4,6 @@ import bgMob2x from '../../../images/elements/leaves/leaves-mobile-menu@2x.png';
 import bgTab1x from '../../../images/elements/leaves/leaves-mobile-menu-@1-1.png';
 import bgTab2x from '../../../images/elements/leaves/leaves-mobile-menu-@2-2.png';
 
-// TODO: не работает плавная анимация на закрытие MobileContainer, пока не знаю почему
 const slideDown = keyframes`
   0% {
     transform: translateY(-100%);
