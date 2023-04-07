@@ -1,11 +1,12 @@
-import { ReactComponent as Facebook } from '../../../images/icons/facebook.svg';
-import { ReactComponent as Youtube } from '../../../images/icons/youtube.svg';
-import { ReactComponent as Twitter } from '../../../images/icons/twitter.svg';
-import { ReactComponent as Instagram } from '../../../images/icons/instagram.svg';
+import { Link } from 'react-router-dom';
 import {
   SocNetworksWraper,
   SocNetworksList,
   SocNetwoerksItem,
+  FacebookStyled,
+  YoutubeStyled,
+  TwitterStyled,
+  InstagramStyled,
 } from './SocNetworks.styled';
 
 const SocNetworks = () => {
@@ -13,40 +14,40 @@ const SocNetworks = () => {
     <SocNetworksWraper>
       <SocNetworksList>
         <SocNetwoerksItem>
-          <a
+          <Link
             href="https://www.facebook.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Facebook width="20" height="20" />
-          </a>
+            <FacebookStyled width="20" height="20" />
+          </Link>
         </SocNetwoerksItem>
         <SocNetwoerksItem>
-          <a
+          <Link
             href="https://www.youtube.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Youtube width="20" height="15" />
-          </a>
+            <YoutubeStyled width="20" height="15" />
+          </Link>
         </SocNetwoerksItem>
         <SocNetwoerksItem>
-          <a
+          <Link
             href="https://www.twitter.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Twitter width="20" height="16" />
-          </a>
+            <TwitterStyled width="20" height="16" />
+          </Link>
         </SocNetwoerksItem>
         <SocNetwoerksItem>
-          <a
+          <Link
             href="https://www.instagram.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Instagram />
-          </a>
+            <InstagramStyled width="20" height="20" />
+          </Link>
         </SocNetwoerksItem>
       </SocNetworksList>
     </SocNetworksWraper>

@@ -1,21 +1,29 @@
+import { useMedia } from 'react-use';
 import {
   Form,
-  FormWraper,
+  FormWrap,
+  TexrWrap,
   SubscribeTitle,
   SubscribeText,
   Input,
   SubscribeButton,
+  MailStyled,
 } from './SubscribeForm.styled';
 
 const SubscribeForm = () => {
+  const isDesktop = useMedia('(max-width: 1439px)');
   return (
     <Form action="#" autocomplete="off">
-      <FormWraper>
-        <SubscribeTitle>Subscribe to our Newsletter</SubscribeTitle>
-        <SubscribeText>
-          Subscribe up to our newsletter. Be in touch with latest news and
-          special offers, etc.
-        </SubscribeText>
+      <FormWrap>
+        {!isDesktop && (
+          <TexrWrap>
+            <SubscribeTitle>Subscribe to our Newsletter</SubscribeTitle>
+            <SubscribeText>
+              Subscribe up to our newsletter. Be in touch with latest news and
+              special offers, etc.
+            </SubscribeText>
+          </TexrWrap>
+        )}
         <label htmlFor="email">
           <Input
             type="email"
@@ -27,13 +35,11 @@ const SubscribeForm = () => {
             required
           />
           <span>
-            <svg width="18" height="18">
-              <use href="./images/icons.svg#icon-email-black"></use>
-            </svg>
+            <MailStyled width="20" height="16" />
           </span>
         </label>
         <SubscribeButton type="submit">Subcribe</SubscribeButton>
-      </FormWraper>
+      </FormWrap>
     </Form>
   );
 };

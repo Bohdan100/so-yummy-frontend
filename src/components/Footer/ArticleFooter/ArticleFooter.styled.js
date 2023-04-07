@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
-export const LogoFooter = styled.div`
+export const Div = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
 
-  font-family: Poppins;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: 700;
   font-size: 18px;
   line-height: 18px;
-  font-weight: 700;
   letter-spacing: 0.015em;
-  text-align: left;
+  color: ${p => p.theme.colors.mainWhite};
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
+    justify-content: start;
     font-size: 28px;
     line-height: 28px;
   }
@@ -28,27 +28,25 @@ export const Title = styled.span`
 `;
 
 export const List = styled.ul`
-  display: none;
-
   @media screen and (min-width: 768px) {
-    margin-top: 40px;
-    margin-right: 173px;
-    padding-left: 20px;
     list-style-type: disc;
-    display: flex;
-    flex-direction: column;
-
+    padding: 0;
+    margin: 0;
+    margin-top: 24px;
+    padding-left: 30px;
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
     line-height: 18px;
-    font-weight: 400;
     letter-spacing: -0.02em;
+    color: ${p => p.theme.colors.mainWhite};
+    text-align: left;
 
     @media screen and (min-width: 1440px) {
       margin-right: 159px;
-
+      margin-top: 40px;
       font-size: 18px;
       line-height: 24px;
-      max-width: 418px;
     }
   }
 `;
@@ -64,5 +62,10 @@ export const Item = styled.li`
     :not(:last-child) {
       margin-bottom: 12px;
     }
+  }
+`;
+export const ArticleContainer = styled.div`
+  @media screen and (min-width: 1440px) {
+    width: 418px;
   }
 `;
