@@ -9,7 +9,7 @@ export const fetchProducts = createAsyncThunk(
   'products/fetchAllProducts',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await getProducts();
+      const data = await getProducts();
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -21,9 +21,7 @@ export const addProduct = createAsyncThunk(
   'products/addProduct',
   async (body, { rejectWithValue }) => {
     try {
-      console.log(body);
       const data = await addProductAPI(body);
-      console.log('datac reateAsyncThunk', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

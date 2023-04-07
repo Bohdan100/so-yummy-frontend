@@ -136,7 +136,7 @@ export const PickIconStyled = styled(PickIcon)`
 `;
 
 export const RealCheckbox = styled.input`
-  /* display: none; */
+  display: none;
   &:checked + ${CustomCheckbox} svg {
     transform: translate(-50%, -50%) scale(1);
   }
