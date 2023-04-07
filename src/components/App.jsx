@@ -10,6 +10,8 @@ import { refresh } from 'redux/Auth/authOperations';
 
 import Layout from 'components/Layout';
 import SharedLayout from 'components/SharedLayout';
+import PublicRoute from './Routes/PublicRoute';
+import PrivateRoute from './Routes/PrivateRoute';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
@@ -38,35 +40,23 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route
             index
-            element={
-              // <PublicRoute restricted>
-              <WelcomePage />
-              // </PublicRoute>
-            }
+            element={<PublicRoute component={WelcomePage} redirectTo="/main" />}
           />
           <Route
             path="register"
             element={
-              // <PublicRoute restricted>
-              <RegisterPage />
-              // </PublicRoute>
+              <PublicRoute component={RegisterPage} redirectTo="/main" />
             }
           />
           <Route
             path="signin"
-            element={
-              // <PublicRoute restricted>
-              <SigninPage />
-              // </PublicRoute>
-            }
+            element={<PublicRoute component={SigninPage} redirectTo="/main" />}
           />
         </Route>
         <Route
           path="/"
           element={
-            // <PrivateRoute>
-            <SharedLayout />
-            // </PrivateRoute>
+            <PrivateRoute component={SharedLayout} redirectTo="/login" />
           }
         >
           <Route path="/main" element={<MainPage />} />
