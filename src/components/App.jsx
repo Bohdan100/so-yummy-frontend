@@ -4,7 +4,7 @@ import { GlobalStyle } from './GlobalStyle';
 
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
+import CategoriesByName from '../components/CategoriesByName';
 import SharedLayout from 'components/SharedLayout';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage'));
@@ -59,10 +59,9 @@ export const App = () => {
           }
         >
           <Route path="/main" element={<MainPage />} />
-          <Route
-            path="/categories/:categoryName"
-            element={<CategoriesPage />}
-          />
+          <Route path="/categories" element={<CategoriesPage />}>
+            <Route path=":categoryName" element={<CategoriesByName />} />
+          </Route>
           <Route path="/add" element={<AddRecipePage />} />
           <Route path="/my" element={<MyRecipesPage />} />
           <Route path="/favorite" element={<FavoritePage />} />
