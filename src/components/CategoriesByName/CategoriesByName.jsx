@@ -1,46 +1,47 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import axios from 'axios';
-import RecipeCard from 'components/RecipeCard/RecipeCard';
+import RecipeCard from 'components/ReusableComponents/RecipeCard';
 import { RecipesList } from './CategoriesByName.styled';
-
-export const getRecipesByCategory = async (
-  categoryName,
-  limit = 8,
-  page = 1
-) => {
-  try {
-    const data = await axios.get(
-      `/recipes/categories/${categoryName}?limit=${limit}&page=${page}`
-    );
-    return data;
-  } catch (error) {
-    console.log(error.message);
-    return null;
-  }
-};
+import * as API from '../../services/categories-API';
+import Loader from 'components/Loader/Loader';
 
 const CategoriesByName = () => {
   const { categoryName: category } = useParams();
-  const [items, setItems] = useState([]);
+  const [recipes, setRecipes] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getRecipesByCategory(category).then(data => {
-      const {
-        data: {
-          data: { result },
-        },
-      } = data;
-      setItems(result);
-    });
+    async function getRecipesByCategory() {
+      try {
+        setIsLoading(true);
+        const {
+          data: {
+            data: { result },
+          },
+        } = await API.fetchRecipesByCategory(category);
+        setRecipes(result);
+      } catch (error) {
+        setError({ error });
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    getRecipesByCategory();
   }, [category]);
 
   return (
-    <RecipesList>
-      {items.map(recipe => {
-        return <RecipeCard dish={recipe} key={recipe._id} />;
-      })}
-    </RecipesList>
+    <>
+      {error && <p>Whoops, something went wrong: {error.message}</p>}
+      {isLoading && <Loader />}
+      {recipes && (
+        <RecipesList>
+          {recipes.map(recipe => {
+            return <RecipeCard dish={recipe} key={recipe._id} />;
+          })}
+        </RecipesList>
+      )}
+    </>
   );
 };
 
