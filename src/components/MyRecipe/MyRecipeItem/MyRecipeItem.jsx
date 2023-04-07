@@ -10,7 +10,7 @@ import {
   WrapperUp,
   BtnBox,
   Container,
-  ImageContainer,
+  // ImageContainer,
   Image,
   // IconBtn,
 } from './MyRecipeItem.styled';
@@ -26,9 +26,9 @@ const MyRecipeItem = ({ description, preview, time, title, id }) => {
     <Item key={id}>
       <MainBox>
         {/* <ImageCard image={preview} /> */}
-        <ImageContainer>
-          <Image src={preview} alt={title} />
-        </ImageContainer>
+        {/* <ImageContainer> */}
+        <Image src={preview} alt={title} />
+        {/* </ImageContainer> */}
         <Container>
           <WrapperBox>
             <TitleRecipe>{title}</TitleRecipe>

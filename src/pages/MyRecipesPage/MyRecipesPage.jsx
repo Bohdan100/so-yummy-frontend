@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { PaginationComp } from '../../components/Pagination/pagination';
+import { WrapText } from 'components/WrapText/WrapText';
 import {
   getOwnRecipesList,
   getTotalOwnRecipes,
@@ -56,7 +57,7 @@ const MyRecipesPage = () => {
           {recipes && recipes.length > 0 ? (
             <MyRecipeList data={recipes} />
           ) : (
-            "You currently don't have any own recipes added. Let's add some!"
+            <WrapText />
           )}
           {recipes && recipes.length > 0 && (
             <PaginationComp
