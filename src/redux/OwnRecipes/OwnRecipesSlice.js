@@ -24,10 +24,11 @@ const ownRecipesSlice = createSlice({
       .addCase(addOwnRecipe.fulfilled, state => {
         state.isLoading = false;
       })
-      .addCase(deleteOwnRecipe.fulfilled, (state, { payload }) => {
-        state.ownRecipes = state.ownRecipes.filter(
-          recipe => recipe._id !== payload.id
+      .addCase(deleteOwnRecipe.fulfilled, (state, action) => {
+        const index = state.ownRecipes.findIndex(
+          recipe => recipe._id === action.payload.id
         );
+        state.ownRecipes.splice(index, 1);
         state.isLoading = false;
       })
       .addCase(getOwnRecipes.pending, state => {
