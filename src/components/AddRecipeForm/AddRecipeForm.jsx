@@ -11,10 +11,16 @@ import {
   TextAreaContainer,
   Area,
   Title,
+  InputContainerFile,
+  ButtonFile,
+  SelectContainer,
+  SelectTitle,
+  SelectStyled,
 } from './AddRecipePage.styled';
-import FormikControl from './FormikControls';
 import { PreviewImage } from './PreviewImage';
 import { TextError } from './TextError';
+import { ReactComponent as PhotoIcon } from '../../images/icons/photo.svg';
+import { ReactComponent as CrossIcon } from '../../images/icons/close.svg';
 
 const Schema = Yup.object({
   item: Yup.string().required('Required'),
@@ -22,14 +28,13 @@ const Schema = Yup.object({
   selectCategory: Yup.string().required('Required'),
   selectTime: Yup.string().required('Required'),
   file: Yup.mixed().required('File is required'),
-  textarea: Yup.string().required('Required'),
 });
 
 export const AddRecipeForm = () => {
   const fileRef = useRef(null);
 
   const dropdownOptions = [
-    { key: 'Category', value: '' },
+    { key: '', value: '' },
     { key: 'Breakfast', value: 'breakfast' },
     { key: 'Beef', value: 'beef' },
     { key: 'Miscellaneous', value: 'miscellaneous' },
@@ -39,7 +44,7 @@ export const AddRecipeForm = () => {
   ];
 
   const cookingTime = [
-    { key: 'Cooking time', value: '' },
+    { key: '', value: '' },
     { key: '20 min', value: '20 min' },
     { key: '30 min', value: '30 min' },
     { key: '40 min', value: '40 min' },
@@ -66,9 +71,13 @@ export const AddRecipeForm = () => {
         validationSchema={Schema}
       >
         {formik => {
+          console.log(formik.dirty);
+          console.log(formik.isValid);
+          console.log(formik.values.selectCategory);
+          console.log(formik.values.selectTime);
           return (
             <Form>
-              <InputContainer>
+              <InputContainerFile>
                 <input
                   type="file"
                   name="file"
@@ -81,16 +90,20 @@ export const AddRecipeForm = () => {
                 {formik.values.file && (
                   <PreviewImage file={formik.values.file} />
                 )}
-                <button
-                  type="button"
-                  onClick={() => {
-                    fileRef.current.click();
-                  }}
-                >
-                  Upload
-                </button>
+                {!formik.values.file && (
+                  <ButtonFile
+                    type="button"
+                    onClick={() => {
+                      fileRef.current.click();
+                    }}
+                  >
+                    <svg width="48px" height="48px">
+                      <use href={<PhotoIcon />}></use>
+                    </svg>
+                  </ButtonFile>
+                )}
                 <ErrorMessage name="file" component={TextError} />
-              </InputContainer>
+              </InputContainerFile>
               <InputContainer>
                 <Input type="text" name="item" placeholder="Enter item title" />
                 <ErrorMessage name="item" component={TextError} />
@@ -99,26 +112,44 @@ export const AddRecipeForm = () => {
                 <Input
                   type="text"
                   name="about"
-                  placeholder="Enter
-                  about
-                  recipe"
+                  placeholder="Enter about recipe"
                 />
                 <ErrorMessage name="about" component={TextError} />
               </InputContainer>
-              <InputContainer>
-                <FormikControl
-                  control="select"
-                  name="selectCategory"
-                  options={dropdownOptions}
-                />
-              </InputContainer>
-              <InputContainer>
-                <FormikControl
-                  control="select"
-                  name="selectTime"
-                  options={cookingTime}
-                />
-              </InputContainer>
+              <SelectContainer>
+                <SelectTitle>
+                  {formik.values.selectCategory
+                    ? formik.values.selectCategory
+                    : 'Enter item title'}
+                </SelectTitle>
+                <Field as={SelectStyled} name="selectCategory">
+                  {dropdownOptions.map(option => {
+                    return (
+                      <option key={option.value} value={option.value}>
+                        {option.key}
+                      </option>
+                    );
+                  })}
+                </Field>
+              </SelectContainer>
+              <ErrorMessage name="selectCategory" component={TextError} />
+              <SelectContainer>
+                <SelectTitle>
+                  {formik.values.selectTime
+                    ? formik.values.selectTime
+                    : 'Cooking time'}
+                </SelectTitle>
+                <Field as={SelectStyled} name="selectTime">
+                  {cookingTime.map(option => {
+                    return (
+                      <option key={option.value} value={option.value}>
+                        {option.key}
+                      </option>
+                    );
+                  })}
+                </Field>
+              </SelectContainer>
+              <ErrorMessage name="selectTime" component={TextError} />
               <div>
                 <FieldArray name="ingredients">
                   {fieldArrayProps => {
@@ -194,7 +225,9 @@ export const AddRecipeForm = () => {
                                 type="button"
                                 onClick={() => remove(index)}
                               >
-                                X
+                                <svg width="48px" height="48px">
+                                  <use href={CrossIcon}></use>
+                                </svg>
                               </ButtonClickIngredient>
                             )}
                           </SelectIngredienContainer>
