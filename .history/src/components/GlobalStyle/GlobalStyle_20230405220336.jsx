@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     letter-spacing: ${p => p.theme.letterSpacings.content};
 
     color: ${p => p.theme.colors.primaryText};
-    background-color: ${p => p.theme.colors.mainBg};
+    background-color: ${p => p.theme.colors.mainWhite};
 
     &.open-modal{
       overflow: hidden;
@@ -45,7 +45,6 @@ export const GlobalStyle = createGlobalStyle`
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 0;
   }
 
   button{
