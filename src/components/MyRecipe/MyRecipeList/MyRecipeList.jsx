@@ -1,8 +1,10 @@
 import { List } from './MyRecipeList.styled';
-import { data } from '../ownRecipes';
+// import { data } from '../ownRecipes';
 import MyRecipeItem from '../MyRecipeItem/MyRecipeItem';
 
-const MyRecipeList = () => {
+const MyRecipeList = ({ data }) => {
+  // console.log('dataList', data);
+
   return (
     <List>
       {data.map(({ category, description, preview, time, title, _id }) => {

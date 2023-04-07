@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import MainContainer from 'components/MainContainer/MainContainer';
 import RecipePageHero from 'components/RecipePageHero';
@@ -17,8 +17,8 @@ const RecipePage = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // const { recipeId } = useParams();
-  const recipeId = '640cd5ac2d9fecf12e8897f2';
+  const { recipeId } = useParams();
+  // const recipeId = '640cd5ac2d9fecf12e8897f2';
   // const recipeId = '640cd5ac2d9fecf12e8897f3';
 
   useEffect(() => {
@@ -54,11 +54,13 @@ const RecipePage = () => {
               </p>
             </HeaderTable>
 
-            <RecipeIngredientsList ingredients={recipeObj.ingredients} />
+            <RecipeIngredientsList
+              ingredients={recipeObj.ingredients}
+              recipeId={recipeId}
+            />
             <RecipePreparation
               image={recipeObj.thumb}
               instructions={recipeObj.instructions}
-              //передаю пропом посилання на картинку рецепту та опис рецепту
             />
           </MainContainer>
         </>

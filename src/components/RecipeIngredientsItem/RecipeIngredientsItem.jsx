@@ -1,3 +1,9 @@
+import { useDispatch } from 'react-redux';
+import {
+  addProduct,
+  deleteProduct,
+} from 'redux/ShoppingList/shoppingListOperations';
+
 import {
   RecipeItem,
   RecipeItemWrapper,
@@ -10,11 +16,25 @@ import {
   RealCheckbox,
 } from './RecipeIngredientsItem.styled';
 
-const RecipeIngredientsItem = ({ image, nameIngredient, weight }) => {
+const RecipeIngredientsItem = ({
+  image,
+  nameIngredient,
+  weight,
+  recipeId,
+  id,
+}) => {
+  const dispatch = useDispatch();
   // пропом отримую інгрідієнти та айді рецепту
+
+  // console.log({
+  //   strIngredient: nameIngredient,
+  //   weight,
+  //   image,
+  //   recipeId,
+  // });
   return (
     <RecipeItem>
-      <RecipeItemWrapper>
+      <RecipeItemWrapper onClick={() => dispatch(deleteProduct(id))}>
         <ImageWrapper>
           <img src={image} alt={nameIngredient} />
         </ImageWrapper>
@@ -25,7 +45,16 @@ const RecipeIngredientsItem = ({ image, nameIngredient, weight }) => {
         <WeighIngredient>{weight}</WeighIngredient>
         <RealCheckbox
           type="checkbox"
-          // onChange={}
+          onChange={() =>
+            dispatch(
+              addProduct({
+                strIngredient: nameIngredient,
+                weight,
+                image,
+                recipeId,
+              })
+            )
+          }
           // checked={}
         />
         <CustomCheckbox>

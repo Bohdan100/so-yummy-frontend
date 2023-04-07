@@ -1,9 +1,13 @@
+import { useSelector } from 'react-redux';
+
 import RecipeIngredientsItem from 'components/RecipeIngredientsItem';
 
 import { IngredientsListStyled } from './RecipeIngredientsList.styled';
+import { selectProducts } from 'redux/ShoppingList/shoppingListSelectors';
 
-const RecipeIngredientsList = ({ ingredients }) => {
-  console.log(ingredients);
+const RecipeIngredientsList = ({ ingredients, recipeId }) => {
+  const list = useSelector(selectProducts);
+  console.log(list);
 
   return (
     <IngredientsListStyled>
@@ -13,6 +17,7 @@ const RecipeIngredientsList = ({ ingredients }) => {
           image={ingredient.id.thb}
           nameIngredient={ingredient.id.ttl}
           weight={ingredient.measure ? ingredient.measure : 'any'}
+          recipeId={recipeId}
         />
       ))}
     </IngredientsListStyled>

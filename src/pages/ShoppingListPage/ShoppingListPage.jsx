@@ -8,7 +8,7 @@ import {
   EmptyListMessage,
   StyledLoaderWrapper,
 } from './ShoppingListPage.styled';
-import ReusableTitle from '../../components/ReusableTitle/ReusableTitle';
+import ReusableTitle from '../../components/ReusableComponents/ReusableTitle/ReusableTitle';
 import Loader from '../../components/Loader/Loader';
 import IngredientsShoppingList from '../../components/IngredientsShoppingList/IngredientsShoppingList';
 

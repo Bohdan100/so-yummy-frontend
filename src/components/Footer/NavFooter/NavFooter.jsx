@@ -1,17 +1,16 @@
-import { NavLink } from 'react-router-dom';
-import { List } from './NavFooter.styled';
+import { Link, NavWraper } from './NavFooter.styled';
 
 const NavFooter = () => {
   return (
-    <List>
-      <NavLink to="/search" state={{ ingredient: true }}>
+    <NavWraper>
+      <Link to="/search" state={{ ingredient: true }}>
         Ingredients
-      </NavLink>
-      <NavLink to="/add">Add recipes</NavLink>
-      <NavLink to="/my">My recipes</NavLink>
-      <NavLink to="/favorite">Favorite</NavLink>
-      <NavLink to="/shopping-list">Shopping list</NavLink>
-    </List>
+      </Link>
+      <Link to="/add">Add recipes</Link>
+      <Link to="/my">My recipes</Link>
+      <Link to="/favorite">Favorite</Link>
+      <Link to="/shopping-list">Shopping list</Link>
+    </NavWraper>
   );
 };
 
