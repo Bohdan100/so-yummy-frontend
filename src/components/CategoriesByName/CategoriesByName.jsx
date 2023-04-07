@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import RecipeCard from 'components/ReusableComponents/RecipeCard';
+import RecipeCard from 'components/ReusableComponents/RecipeCard/RecipeCard';
 import { RecipesList } from './CategoriesByName.styled';
 import * as API from '../../services/categories-API';
 import Loader from 'components/Loader/Loader';
