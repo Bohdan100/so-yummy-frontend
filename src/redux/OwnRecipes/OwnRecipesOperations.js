@@ -10,7 +10,7 @@ export const getOwnRecipes = createAsyncThunk(
   async ({ page, limit }, { rejectWithValue }) => {
     try {
       const data = await getOwnRecipesAPI(page ?? null, limit ?? null);
-      //   console.log('list', data.data.result);
+      console.log('list', data.data.result);
 
       return { ownRecipes: data.data.result, total: data.total };
     } catch (error) {

@@ -5,13 +5,14 @@ import MyRecipeList from 'components/MyRecipe/MyRecipeList/MyRecipeList';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { PaginationComp } from './pagination';
+import { PaginationComp } from '../../components/Pagination/pagination';
 import {
   getOwnRecipesList,
   getTotalOwnRecipes,
   // selectIsLoading,
 } from '../../redux/OwnRecipes/OwnRecipesSelectors';
 import { getOwnRecipes } from 'redux/OwnRecipes/OwnRecipesOperations';
+import ReusableTitle from '../../components/ReusableTitle/ReusableTitle';
 
 const MyRecipesPage = () => {
   const history = useNavigate();
@@ -42,10 +43,15 @@ const MyRecipesPage = () => {
     history(`?page=${pageNumber}`);
   }, [history, pageNumber]);
 
+  // useEffect(() => {
+  //   dispatch(getOwnRecipes());
+  // }, [dispatch]);
+
   return (
     <div>
       <MainContainer>
-        <h2>My Recipes</h2>
+        <ReusableTitle>My Recipes</ReusableTitle>
+        {/* <h2>My Recipes</h2> */}
         <>
           {recipes && recipes.length > 0 ? (
             <MyRecipeList data={recipes} />

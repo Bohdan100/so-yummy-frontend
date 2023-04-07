@@ -1,14 +1,15 @@
 import { Pagination } from '@mui/material';
+import { PaginationWrapper } from './pagination.styled';
 
 export const PaginationComp = ({ count, page, handleChange }) => {
   return (
-    <div>
+    <PaginationWrapper>
       <Pagination
         siblingCount={0}
         count={count}
         page={page}
         onChange={handleChange}
       />
-    </div>
+    </PaginationWrapper>
   );
 };

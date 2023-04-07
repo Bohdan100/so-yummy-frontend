@@ -25,7 +25,6 @@ const ownRecipesSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(deleteOwnRecipe.fulfilled, (state, { payload }) => {
-        console.log('payload', payload);
         state.ownRecipes = state.ownRecipes.filter(
           recipe => recipe._id !== payload.id
         );

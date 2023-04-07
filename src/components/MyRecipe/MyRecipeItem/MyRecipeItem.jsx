@@ -14,19 +14,18 @@ import {
   Image,
   // IconBtn,
 } from './MyRecipeItem.styled';
-
+// import ImageCard from '../ImgOwnRecipe/ImgOwnRecipe';
 import { ReactComponent as BtnIconDelete } from '../../../images/icons/btn-delete-recipe.svg';
 import { useDispatch } from 'react-redux';
 import { deleteOwnRecipe } from 'redux/OwnRecipes/OwnRecipesOperations';
 
 const MyRecipeItem = ({ description, preview, time, title, id }) => {
   const dispatch = useDispatch();
-  // const handelDelete = recipeId => {
-  //   dispatch(deleteOwnRecipe(recipeId));
-  // };
+
   return (
     <Item key={id}>
       <MainBox>
+        {/* <ImageCard image={preview} /> */}
         <ImageContainer>
           <Image src={preview} alt={title} />
         </ImageContainer>
@@ -41,7 +40,6 @@ const MyRecipeItem = ({ description, preview, time, title, id }) => {
                 <BtnIconDelete />
               </DeleteBtn>
             </BtnBox>
-
             <AboutRecipe>{description}</AboutRecipe>
           </WrapperBox>
 
