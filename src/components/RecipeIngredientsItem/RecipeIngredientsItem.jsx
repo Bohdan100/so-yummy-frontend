@@ -28,7 +28,7 @@ const RecipeIngredientsItem = ({
 }) => {
   const dispatche = useDispatch();
 
-  const addToShoppingList = () => {
+  const toggleToShoppingList = () => {
     if (inShoppingList) {
       const ingrid = list.find(item => item.recipeId === recipeId);
       dispatche(deleteProduct(ingrid._id));
@@ -59,7 +59,7 @@ const RecipeIngredientsItem = ({
         <WeighIngredient>{weight}</WeighIngredient>
         <RealCheckbox
           type="checkbox"
-          onChange={addToShoppingList}
+          onChange={toggleToShoppingList}
           checked={inShoppingList}
         />
         <CustomCheckbox>
