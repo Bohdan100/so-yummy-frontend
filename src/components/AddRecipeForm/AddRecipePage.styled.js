@@ -9,6 +9,31 @@ export const InputContainer = styled.div`
   margin: 16px 0;
 `;
 
+export const SelectContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 18px;
+`;
+
+export const SelectTitle = styled.span`
+  width: 80%;
+`;
+
+export const SelectStyled = styled.select`
+  border: none;
+  outline: none;
+  background-color: transparent;
+`;
+
+// export const Select = styled(Field)`
+//   border: none;
+//   outline: none;
+//   background-color: transparent;
+// `;
+
 export const SelectIngredienContainer = styled.div`
   display: grid;
   grid-template-columns: 60% 30% 10%;
@@ -98,4 +123,20 @@ export const Title = styled.h2`
   font-feature-settings: 'liga' off;
 
   color: #3e4462;
+`;
+
+export const InputContainerFile = styled.div`
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: #8baa36;
+  border-radius: 8px;
+`;
+
+export const ButtonFile = styled.button`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
 `;

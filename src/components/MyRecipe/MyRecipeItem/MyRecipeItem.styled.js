@@ -6,6 +6,7 @@ export const Item = styled.li`
   width: 100%;
   // border: 1px solid red;
   padding: 14px 9px;
+  background-color: ${p => p.theme.colors.mainWhite}
 
   &:not(:last-child) {
     margin-bottom: 18px;
@@ -78,11 +79,13 @@ export const Container = styled.div`
 
 export const WrapperBox = styled.div`
   position: relative;
+  // border: 1px solid pink;
+
   display: flex;
   flex-direction: column;
   // justify-content: space-between;
   align-items: flex-start;
-  //   margin-bottom: 10px;
+  // margin-bottom: 10px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     // margin-bottom: 14px;
   }
@@ -98,7 +101,7 @@ export const TitleRecipe = styled.p`
   font-size: 14px;
   line-height: ${p => p.theme.lineHeights.userLink};
   letter-spacing: ${p => p.theme.letterSpacings.subheader}
-  color: black;
+  color: ${p => p.theme.colors.secondaryDark};
   margin: 0px;
   text-align: left;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
@@ -176,15 +179,17 @@ export const AboutRecipe = styled.p`
 `;
 export const WrapperUp = styled.div`
   display: flex;
+  // border: 2px solid green;
+
   flex-grow: 2;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 24px;
+  // margin-top: 24px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    margin-top: 28px;
+    // margin-top: 28px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
-    margin-top: 66px;
+    // margin-top: 66px;
   }
 `;
 

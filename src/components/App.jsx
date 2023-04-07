@@ -2,9 +2,13 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from '../constants';
 import { GlobalStyle } from './GlobalStyle';
 
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import CategoriesByName from '../components/CategoriesByName';
+import { useDispatch } from 'react-redux';
+import { refresh } from 'redux/Auth/authOperations';
+
+import Layout from 'components/Layout';
 import SharedLayout from 'components/SharedLayout';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage'));
@@ -21,35 +25,42 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 const RecipePage = lazy(() => import('pages/RecipePage'));
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refresh());
+  }, [dispatch]);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Routes>
-        <Route
-          path="/"
-          element={
-            // <PublicRoute restricted>
-            <WelcomePage />
-            // </PublicRoute>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            // <PublicRoute restricted>
-            <RegisterPage />
-            // </PublicRoute>
-          }
-        />
-        <Route
-          path="/signin"
-          element={
-            // <PublicRoute restricted>
-            <SigninPage />
-            // </PublicRoute>
-          }
-        />
-        {/*  */}
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              // <PublicRoute restricted>
+              <WelcomePage />
+              // </PublicRoute>
+            }
+          />
+          <Route
+            path="register"
+            element={
+              // <PublicRoute restricted>
+              <RegisterPage />
+              // </PublicRoute>
+            }
+          />
+          <Route
+            path="signin"
+            element={
+              // <PublicRoute restricted>
+              <SigninPage />
+              // </PublicRoute>
+            }
+          />
+        </Route>
         <Route
           path="/"
           element={

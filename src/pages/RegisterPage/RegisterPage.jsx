@@ -1,5 +1,11 @@
+import RegisterForm from '../../components/RegisterForm';
+import AuthBody from '../../components/AuthBody';
+
+
 const RegisterPage = () => {
-  return <div>RegisterPage</div>;
+  return (
+    <AuthBody><RegisterForm /></AuthBody>
+  )
 };
 
 export default RegisterPage;
