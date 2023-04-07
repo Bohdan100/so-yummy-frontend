@@ -3,8 +3,6 @@ import RecipeIngredientsItem from 'components/RecipeIngredientsItem';
 import { IngredientsListStyled } from './RecipeIngredientsList.styled';
 
 const RecipeIngredientsList = ({ ingredients }) => {
-  console.log(ingredients);
-
   return (
     <IngredientsListStyled>
       {ingredients.map(ingredient => (

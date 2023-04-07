@@ -1,9 +1,13 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   fetchProducts,
+  addProduct,
+  deleteProduct,
 } from './shoppingListOperations';
 
-const extraActions = [fetchProducts];
+import { logout } from '../Auth/authOperations';
+
+const extraActions = [fetchProducts, addProduct, deleteProduct, logout];
 const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
 
 const fetchProductsFulfilledReducer = (state, action) => {
@@ -12,6 +16,27 @@ const fetchProductsFulfilledReducer = (state, action) => {
 
 const commonPendingReducer = state => {
   state.isLoading = true;
+};
+
+const addProductFulfilledReducer = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.items.push(action.payload);
+};
+
+const deleteProductFulfilledReducer = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  const index = state.items.findIndex(
+    contact => contact.id === action.payload.id
+  );
+  state.items.splice(index, 1);
+};
+
+const logoutFulfilledReducer = state => {
+  state.isLoading = false;
+  state.error = null;
+  state.items = [];
 };
 
 const anyRejectedReducer = (state, action) => {
@@ -34,8 +59,16 @@ const shoppingListSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(fetchProducts.fulfilled, fetchProductsFulfilledReducer)
+      .addCase(addProduct.fulfilled, addProductFulfilledReducer)
+      .addCase(deleteProduct.fulfilled, deleteProductFulfilledReducer)
+      .addCase(logout.fulfilled, logoutFulfilledReducer)
       .addMatcher(
-        isAnyOf(fetchProducts.pending),
+        isAnyOf(
+          fetchProducts.pending,
+          addProduct.pending,
+          deleteProduct.pending,
+          logout.pending
+        ),
         commonPendingReducer
       )
       .addMatcher(getActions('rejected'), anyRejectedReducer)
