@@ -12,7 +12,7 @@ import {
   // selectIsLoading,
 } from '../../redux/OwnRecipes/OwnRecipesSelectors';
 import { getOwnRecipes } from 'redux/OwnRecipes/OwnRecipesOperations';
-import ReusableTitle from '../../components/ReusableTitle/ReusableTitle';
+import ReusableTitle from '../../components/ReusableComponents/ReusableTitle/ReusableTitle';
 
 const MyRecipesPage = () => {
   const history = useNavigate();

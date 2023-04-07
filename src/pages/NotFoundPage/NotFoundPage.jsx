@@ -1,5 +1,5 @@
 import Container from '../../components/MainContainer/MainContainer';
-import ReusableTitle from 'components/ReusableTitle/ReusableTitle';
+import ReusableTitle from 'components/ReusableComponents/ReusableTitle/ReusableTitle';
 import { ImageCont, TextNotFound } from './NotFoundPage.styled';
 import notFoundDesktop from '../../images/bgPages/notFoundPage/not_found_desktop@1x.png';
 

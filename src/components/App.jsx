@@ -4,6 +4,7 @@ import { GlobalStyle } from './GlobalStyle';
 
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import CategoriesByName from '../components/CategoriesByName';
 import { useDispatch } from 'react-redux';
 import { refresh } from 'redux/Auth/authOperations';
 
@@ -69,10 +70,9 @@ export const App = () => {
           }
         >
           <Route path="/main" element={<MainPage />} />
-          <Route
-            path="/categories/:categoryName"
-            element={<CategoriesPage />}
-          />
+          <Route path="/categories" element={<CategoriesPage />}>
+            <Route path=":categoryName" element={<CategoriesByName />} />
+          </Route>
           <Route path="/add" element={<AddRecipePage />} />
           <Route path="/my" element={<MyRecipesPage />} />
           <Route path="/favorite" element={<FavoritePage />} />
