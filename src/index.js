@@ -11,12 +11,12 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/so-yummy-frontend">
-      <Provider store={store}>
+    <Provider store={store}>
+      <BrowserRouter basename="/so-yummy-frontend">
         <PersistGate loading={null} persistor={persistor}>
           <App />
         </PersistGate>
-      </Provider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );

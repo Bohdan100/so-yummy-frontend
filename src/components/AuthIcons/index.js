@@ -1,0 +1,1 @@
+export { UserIconStyled, EmailIconStyled, LockIconStyled } from './AuthIcons.styled';

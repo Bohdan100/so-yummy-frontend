@@ -6,8 +6,33 @@ export const Error = styled.p`
 `;
 
 export const InputContainer = styled.div`
-  margin: 0 0 16px 0;
+  margin: 16px 0;
 `;
+
+export const SelectContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 18px;
+`;
+
+export const SelectTitle = styled.span`
+  width: 80%;
+`;
+
+export const SelectStyled = styled.select`
+  border: none;
+  outline: none;
+  background-color: transparent;
+`;
+
+// export const Select = styled(Field)`
+//   border: none;
+//   outline: none;
+//   background-color: transparent;
+// `;
 
 export const SelectIngredienContainer = styled.div`
   display: grid;
@@ -67,4 +92,51 @@ export const ListStyle = styled.div`
   grid-template-rows: 1fr 1fr;
   row-gap: 20px;
   column-gap: 20px;
+`;
+
+export const TextAreaContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 44px 0 16px 0;
+`;
+
+export const Area = styled(Field)`
+  padding: 16px 22px;
+  width: 505px;
+  height: 224px;
+  background: #d9d9d9;
+  border-radius: 6px;
+  resize: none;
+  outline: none;
+`;
+
+export const Title = styled.h2`
+  margin-bottom: 24px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  /* identical to box height, or 100% */
+
+  letter-spacing: -0.02em;
+  font-feature-settings: 'liga' off;
+
+  color: #3e4462;
+`;
+
+export const InputContainerFile = styled.div`
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: #8baa36;
+  border-radius: 8px;
+`;
+
+export const ButtonFile = styled.button`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
 `;

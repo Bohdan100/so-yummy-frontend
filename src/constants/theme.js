@@ -41,6 +41,8 @@ export const theme = {
     iconHover: ' #1E1F28',
     switchBg: '#EFEFEF',
     burgerRecipeBtn: '#23262A',
+    formBgCol: '#2A2C36',
+    inputPh: '#FFFFFF',
   },
 
   fonts: {
@@ -69,6 +71,7 @@ export const theme = {
     mainSearchInput: '1px solid #F0F0F0',
     searchInput: '1px solid #F0F0F0',
     mainNavBord: '1px solid transparent',
+    inputStandart: '1px solid #FAFAFA30',
   },
   radii: {
     btnStandart: '6px',
@@ -79,6 +82,7 @@ export const theme = {
     pagination: '26px',
     modal: '24px',
     circle: '50%',
+    form: '30px',
   },
   transitions: {
     main: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
@@ -131,6 +135,8 @@ export const darkTheme = {
     iconHover: ' #1E1F28',
     switchBg: '#EFEFEF',
     burgerRecipeBtn: '#23262A',
+    formBgCol: '#2A2C36',
+    inputPh: '#FAFAFA',
   },
   fonts: {
     main: 'Poppins, sans-serif',
@@ -158,6 +164,7 @@ export const darkTheme = {
     mainSearchInput: '1px solid rgba(255, 255, 255, 0.2)',
     searchInput: '1px solid rgba(255, 255, 255, 0.2)',
     mainNavBord: '1px solid #8BAA36',
+    inputStandart: '1px solid #FAFAFA30',
   },
   radii: {
     btnStandart: '6px',
@@ -168,6 +175,7 @@ export const darkTheme = {
     pagination: '26px',
     modal: '24px',
     circle: '50%',
+    form: '30px',
   },
   transitions: {
     main: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
