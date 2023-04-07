@@ -54,7 +54,10 @@ const RecipePage = () => {
               </p>
             </HeaderTable>
 
-            <RecipeIngredientsList ingredients={recipeObj.ingredients} />
+            <RecipeIngredientsList
+              ingredients={recipeObj.ingredients}
+              recipeId={recipeId}
+            />
             <RecipePreparation
               image={recipeObj.thumb}
               instructions={recipeObj.instructions}
