@@ -25,10 +25,7 @@ const MyRecipeItem = ({ description, preview, time, title, id }) => {
   return (
     <Item key={id}>
       <MainBox>
-        {/* <ImageCard image={preview} /> */}
-        {/* <ImageContainer> */}
         <Image src={preview} alt={title} />
-        {/* </ImageContainer> */}
         <Container>
           <WrapperBox>
             <TitleRecipe>{title}</TitleRecipe>
@@ -37,6 +34,7 @@ const MyRecipeItem = ({ description, preview, time, title, id }) => {
                 type="button"
                 onClick={() => dispatch(deleteOwnRecipe(id))}
               >
+                {/* <IconBtn /> */}
                 <BtnIconDelete />
               </DeleteBtn>
             </BtnBox>
