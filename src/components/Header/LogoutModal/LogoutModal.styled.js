@@ -1,4 +1,3 @@
-//TODO анимация
 import styled, { keyframes } from 'styled-components';
 import { ReactComponent as CrossIcon } from '../../../images/icons/close-20.svg';
 
@@ -34,8 +33,8 @@ export const ModalWrapper = styled.div`
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
 
-  /* animation: ${p => (p.isShown ? slideDown : slideUpAndFadeOut)} 500ms
-    ease-in-out ${p => (p.isShown ? '0ms' : '250ms')}; */
+  animation: ${p => (p.isShown ? slideDown : slideUpAndFadeOut)} 500ms ease
+    ${p => (p.isShown ? '0ms' : '250ms')};
 
   @media screen and (min-width: 768px) {
     width: 480px;

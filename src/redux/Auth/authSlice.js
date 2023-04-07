@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { register, login, logout, refresh } from './authOperations';
+import { register, login, logout, refresh, updateUser } from './authOperations';
 
 const extraActions = [register, login, logout];
 const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
@@ -11,7 +11,7 @@ const authFulfilledReducer = (state, action) => {
   state.isLoading = false;
 };
 const logoutFulfilledReducer = state => {
-  state.user = { name: null, email: null };
+  state.user = { name: null, email: null, avatar: null };
   state.isLoggedIn = false;
   state.token = null;
   state.isLoading = false;
@@ -29,6 +29,12 @@ const refreshPendingReducer = state => {
 const refreshRejectedReducer = state => {
   state.isRefreshing = false;
 };
+
+const updateUserFullfilledReducer = (state, action) => {
+  console.log('action.payload в updateUserFullfilledReducer', action.payload);
+  state.user.name = action.payload.data.user.name;
+  state.user.avatar = action.payload.data.user.avatar;
+};
 const anyPendingReducer = state => {
   state.isLoading = true;
 };
@@ -40,7 +46,11 @@ const anyRejectedReducer = (state, action) => {
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: { name: null, email: null },
+    user: {
+      name: null,
+      email: null,
+      avatar: null,
+    },
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
@@ -59,6 +69,7 @@ const authSlice = createSlice({
       .addCase(refresh.rejected, refreshRejectedReducer)
       .addCase(refresh.fulfilled, refreshFulfilledReducer)
       .addCase(logout.fulfilled, logoutFulfilledReducer)
+      .addCase(updateUser.fulfilled, updateUserFullfilledReducer)
       .addMatcher(
         isAnyOf(register.fulfilled, login.fulfilled),
         authFulfilledReducer

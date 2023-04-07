@@ -205,7 +205,7 @@ export const UserIconStyled = styled(UserIcon)`
   position: absolute;
   width: 18px;
   height: 18px;
-  stroke: ${p => p.theme.colors.mainDark};
+  stroke: ${p => p.stroke};
   top: 50%;
   left: 16.5px;
   transform: translateY(-50%);
