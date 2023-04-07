@@ -68,11 +68,10 @@ export const RecipeTitle = styled.p`
   text-overflow: ellipsis;
   font-family: ${p => p.theme.fonts.main};
   font-style: normal;
-  font-weight: {p => p.theme.fontWeights[1]};
+  font-weight: ${p => p.theme.fontWeights[1]};
   font-size: 16px;
   line-height: ${p => p.theme.lineHeights.description};
   letter-spacing: ${p => p.theme.letterSpacings.subheader};
   padding: 16px;
-    color: ${p => p.theme.colors.mainHeaderText};
-
+  color: ${p => p.theme.colors.mainHeaderText};
 `;
