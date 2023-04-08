@@ -29,7 +29,6 @@ const CategoriesList = () => {
     getAllCategories();
   }, []);
 
-  // Пробую редірект на категорії.
   useEffect(() => {
     if (categories.length > 0) {
       const lowerCaseCategory = categories[tabValue].toLowerCase();
