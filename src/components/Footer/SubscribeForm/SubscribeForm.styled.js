@@ -1,177 +1,114 @@
-import { ReactComponent as Mail } from '../../../images/icons/mail.svg';
 import styled from 'styled-components';
+import { Form, Field } from 'formik';
+import { ReactComponent as Mail } from '../../../images/icons/mail-16.svg';
 
-export const Form = styled.form`
-  position: relative;
-  margin-top: 32px;
+export const FormStyled = styled(Form)`
   display: flex;
-  gap: 8px;
   flex-direction: column;
-  width: 204px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 44px;
 
   @media screen and (min-width: 768px) {
-    margin-top: 72px;
     flex-direction: row;
     justify-content: center;
-    width: 100%;
-    height: auto;
-    gap: 12px;
+    margin-bottom: 38px;
   }
+
   @media screen and (min-width: 1440px) {
-    margin-top: 0;
-    gap: 0;
     flex-direction: column;
-    width: 339px;
+    gap: 16px;
+    margin-bottom: 0;
   }
 `;
 
-export const FormWrap = styled.div`
-  display: block;
-  align-items: center;
-
-  @media only screen and (min-width: 1440px) {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    max-width: 338px;
-    margin-left: 235px;
-
-    font-family: Poppins;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18px;
-    letter-spacing: -0.02em;
-    text-align: left;
-
-    :not(:last-child) {
-      margin-bottom: 28px;
-    }
-  }
-`;
-export const TexrWrap = styled.div`
-  margin-bottom: 28px;
-`;
-export const SubscribeTitle = styled.h3`
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 27px;
-  color: ${p => p.theme.colors.mainWhite};
-  margin-bottom: 14px;
+export const InputWrapper = styled.div`
+  position: relative;
 `;
 
-export const SubscribeText = styled.p`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: -0.02em;
-  color: ${p => p.theme.colors.mainWhite};
-`;
-export const Input = styled.input`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 8px;
-
+export const Input = styled(Field)`
   width: 204px;
   height: 38px;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 15px;
-  letter-spacing: -0.02em;
-  color: ${p => p.theme.colors.mainWhite};
+  padding: 11.5px 40px 11.5px 42px;
   background-color: transparent;
-  border-radius: 6px;
-  padding-left: 42px;
-  padding-right: 38px;
-  border: 1px solid ${({ borderColor }) => borderColor};
-  outline: transparent;
-  transition: ${p => p.theme.transitions.main};
+  border: ${p => p.border};
+  border-radius: ${p => p.theme.radii.btnStandart};
+  outline: none;
+
+  font-size: 10px;
+  line-height: ${p => p.theme.lineHeights.searchSelect};
+  letter-spacing: ${p => p.theme.letterSpacings.content};
+  color: ${p => p.theme.colors.bodyBg};
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 259px;
     height: 50px;
-    padding-left: 51px;
+    padding: 15px 51px 15px 40px;
     font-size: 14px;
-    line-height: 21px;
   }
-  @media screen and (min-width: 1440px) {
-    padding-left: 51px;
-    margin-bottom: 16px;
 
+  @media screen and (min-width: 1440px) {
+    font-size: 18px;
     width: 338px;
     height: 59px;
-    margin-bottom: 16px;
-  }
-  :hover,
-  :focus {
-    border: 1px solid ${({ color }) => color};
-    &::placeholder {
-      opacity: 1;
-    }
-  }
-  ::placeholder {
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 15px;
-    letter-spacing: -0.02em;
-    color: ${p => p.theme.colors.mainWhite};
-    opacity: 0.8;
-    @media screen and (min-width: 768px) {
-      font-size: 14px;
-      line-height: 21px;
-    }
-  }
-  :-webkit-autofill {
-    transition: background-color 250s linear, color 250s linear;
-  }
-`;
-export const MailStyled = styled(Mail)`
-  position: absolute;
-  top: 50%;
-  left: 14px;
-  width: 16px;
-  height: 12px;
-  fill: ${({ color }) => color};
-  :hover {
-    opacity: 1;
-  }
-  @media screen and (min-width: 768px) {
-    width: 20px;
-    height: 16px;
-    top: 50%;
-    left: 15px;
-  }
-  @media screen and (min-width: 1440px) {
-    top: 50%;
-    left: 16px;
+    padding: 17.5px 52px 17.5px 40px;
   }
 `;
 
-export const SubscribeButton = styled.button`
-  width: 204px;
-  height: 38px;
-  background-color: ${p => p.theme.colors.footerBtnBg};
-  color: ${p => p.theme.colors.btnTextLight};
-  border-radius: 6px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-  cursor: pointer;
-  transition: ${p => p.theme.transitions.main};
+export const MailIconStyled = styled(Mail)`
+  position: absolute;
+  top: 13px;
+  left: 14px;
+
+  width: 16px;
+  height: 12px;
+  stroke: ${p => p.stroke};
+
   @media screen and (min-width: 768px) {
-    width: 171px;
-    height: 50px;
+    top: 17px;
+    left: 15px;
+
+    width: 20px;
+    height: 16px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    top: 21.5px;
+    left: 15.5px;
+  }
+`;
+
+export const ErrMsg = styled.p`
+  position: absolute;
+  top: 37px;
+  left: 6px;
+  font-size: 10px;
+  color: #e74a3b;
+
+  @media screen and (min-width: 768px) {
+    top: 51px;
   }
   @media screen and (min-width: 1440px) {
-    margin-top: 16px;
-    width: 100%;
-    height: 60px;
-    font-size: 16px;
-    line-height: 18px;
+    top: 59px;
   }
+`;
+
+export const SubscribeBtn = styled.button`
+  padding: 11px 71px;
+  border: none;
+  background-color: ${p => p.theme.colors.footerBtnBg};
+  border-radius: ${p => p.theme.radii.btnStandart};
+
+  width: 204px;
+  height: 38px;
+
+  font-size: 14px;
+  line-height: 1.14;
+  color: ${p => p.theme.colors.btnTextLight};
+
+  transition: ${p => p.theme.transitions.main};
+
   :hover:not([disabled]),
   :focus:not([disabled]) {
     color: ${p => p.theme.colors.btnHoverText};
@@ -179,5 +116,44 @@ export const SubscribeButton = styled.button`
 
   &[disabled] {
     opacity: 0.7;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: ${p => p.theme.lineHeights.btnText};
+    padding: 16px 50px;
+    width: 171px;
+    height: 50px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 21px 138px;
+    width: 339px;
+    height: 60px;
+  }
+`;
+
+export const SubscribeWrapper = styled.div`
+  @media screen and (min-width: 768px) {
+    margin-bottom: 28px;
+  }
+`;
+
+export const SubscribeTitle = styled.h3`
+  @media screen and (min-width: 768px) {
+    margin-bottom: 14px;
+    font-weight: ${p => p.theme.fontWeights[3]};
+    font-size: 18px;
+    line-height: ${p => p.theme.lineHeights.searchSelect};
+    color: ${p => p.theme.colors.btnTextLight};
+  }
+`;
+
+export const SubscribeText = styled.p`
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: ${p => p.theme.lineHeights.extraContent};
+    letter-spacing: ${p => p.theme.letterSpacings.content};
+    color: ${p => p.theme.colors.btnTextLight};
   }
 `;
