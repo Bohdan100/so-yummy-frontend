@@ -31,7 +31,6 @@ const refreshRejectedReducer = state => {
 };
 
 const updateUserFullfilledReducer = (state, action) => {
-  console.log('action.payload в updateUserFullfilledReducer', action.payload);
   state.user.name = action.payload.data.user.name;
   state.user.avatar = action.payload.data.user.avatar;
 };

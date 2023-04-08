@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { logout } from 'redux/Auth/authOperations';
 import {
   ModalWrapper,
@@ -11,11 +12,15 @@ import {
 } from './LogoutModal.styled';
 
 const LogoutModal = ({ isShown, closeLogoutModal }) => {
-  console.log(isShown);
   const dispatch = useDispatch();
 
   const handleLogoutBtn = () => {
-    dispatch(logout());
+    dispatch(logout())
+      .unwrap()
+      .then(() => toast.success('You have successfully logged out'))
+      .catch(() =>
+        toast.error('Something went wrong...Try reloading the page')
+      );
     closeLogoutModal();
   };
   return (

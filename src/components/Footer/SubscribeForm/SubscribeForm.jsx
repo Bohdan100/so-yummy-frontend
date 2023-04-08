@@ -1,9 +1,9 @@
-// TODO: добисать логику на подписку - handleSubmit
-
 import { useMedia } from 'react-use';
 import { Formik } from 'formik';
+import { toast } from 'react-toastify';
 import { subscripbeValidationSchema } from 'helpers/subscripbeValidationSchema';
 import { useAuth } from 'hooks';
+import { subscribeUser } from '../../../services/subscribe-API.js';
 import {
   FormStyled,
   InputWrapper,
@@ -20,7 +20,19 @@ const SubscribeForm = () => {
   const isMobile = useMedia('(max-width: 1439px)');
   const { user } = useAuth();
 
-  // const handleSubmit = () => {};
+  const handleSubmit = async values => {
+    try {
+      await subscribeUser({ email: values.email });
+      toast.success('You have successfully subscribed');
+    } catch (error) {
+      if (error.response.status === 409) {
+        toast.error(`This user have alredy subscribed`);
+      } else {
+        toast.error(`Something went wrong. Try again...`);
+      }
+    }
+  };
+
   return (
     <div>
       {!isMobile && (
@@ -38,11 +50,11 @@ const SubscribeForm = () => {
           email: user.email || '',
         }}
         validationSchema={subscripbeValidationSchema}
-        // onSubmit={(values, actions) => {
-        //   handleSubmit(values);
-        //   actions.setSubmitting(false);
-        //   actions.resetForm();
-        // }}
+        onSubmit={(values, actions) => {
+          handleSubmit(values);
+          actions.setSubmitting(false);
+          actions.resetForm();
+        }}
       >
         {props => (
           <FormStyled>
@@ -51,7 +63,6 @@ const SubscribeForm = () => {
                 type="email"
                 name="email"
                 placeholder="Enter your email address"
-                value={props.values.email}
                 border={
                   props.touched.email && props.errors.email
                     ? '1px solid #E74A3B'

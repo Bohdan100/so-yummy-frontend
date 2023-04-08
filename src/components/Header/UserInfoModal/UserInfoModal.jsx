@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks';
 import { Formik } from 'formik';
+import { toast } from 'react-toastify';
 import { updateUser } from 'redux/Auth/authOperations';
 
 import {
@@ -42,7 +43,12 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
     formData.append('name', values.name.trim());
     formData.append('avatar', values.avatar);
 
-    dispatch(updateUser(formData));
+    dispatch(updateUser(formData))
+      .unwrap()
+      .then(() => toast.success('You have successfully updated your details'))
+      .catch(() =>
+        toast.error('Something went wrong...Try reloading the page')
+      );
     closeUserInfoModal();
   };
 
