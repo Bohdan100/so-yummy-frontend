@@ -1,12 +1,14 @@
-// TODO: добавить в initialState name из редакса и аватарку
-// отпрака формы
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks';
 import { Formik } from 'formik';
+import { updateUser } from 'redux/Auth/authOperations';
 
 import {
   updateUserValidationSchema,
   SUPPORTED_FORMATS,
 } from '../../../helpers';
+
 import { ReactComponent as CrossIcon } from '../../../images/icons/close-20.svg';
 import { ReactComponent as DefaultAvatar } from '../../../images/icons/user-40.svg';
 import { ReactComponent as EditIcon } from '../../../images/icons/edit-01.svg';
@@ -27,14 +29,22 @@ import {
 } from './UserInfoModal.styled';
 
 const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
-  // TODO: взять из стейта name и avatar
-  // const dispatch = useDispatch();
-  // const userAvatar = useSelector(getAvatar);
-  // const [pathToUserAvatar, setPathToUserAvatar] = useState(userAvatar);
+  const { user } = useAuth();
+  const dispatch = useDispatch();
+  const [pathToUserAvatar, setPathToUserAvatar] = useState(user.avatar);
 
-  // const handleSubmit = values => {};
+  const handleSubmit = values => {
+    const formData = new FormData();
 
-  const [pathToUserAvatar, setPathToUserAvatar] = useState('');
+    if (values.avatar === '') {
+      values.avatar = user.avatar;
+    }
+    formData.append('name', values.name.trim());
+    formData.append('avatar', values.avatar);
+
+    dispatch(updateUser(formData));
+    closeUserInfoModal();
+  };
 
   return (
     <ModalWrapper isShown={isShown}>
@@ -45,13 +55,13 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
       <Formik
         initialValues={{
           avatar: '',
-          name: 'User Name',
+          name: user.name,
         }}
         validationSchema={updateUserValidationSchema}
         onSubmit={(values, actions) => {
-          //   handleSubmit(values);
-          //   actions.setSubmitting(false);
-          //   actions.resetForm();
+          handleSubmit(values);
+          actions.setSubmitting(false);
+          actions.resetForm();
         }}
       >
         {props => (
@@ -87,14 +97,15 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
                       );
                       props.setFieldValue('avatar', event.target.files[0]);
                     }
-                    props.setFieldValue('avatar', event.target.files[0]);
+                  } else {
+                    setPathToUserAvatar(user.avatar);
                   }
                 }}
               />
             </UserAvatarWrapper>
-            {props.errors.avatar && props.touched.avatar ? (
+            {props.errors.avatar && (
               <ErrorMessage location="file">{props.errors.avatar}</ErrorMessage>
-            ) : null}
+            )}
 
             <InputButtonWrapper>
               <NameLabel htmlFor="name" id="labelName">
@@ -122,7 +133,15 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
                     props.setFieldValue('name', event.target.value);
                   }}
                 />
-                <UserIconStyled />
+                <UserIconStyled
+                  stroke={
+                    props.touched.name && props.errors.name
+                      ? '#E74A3B'
+                      : props.touched.name && props.isValid
+                      ? '#3CBC81'
+                      : '#23262a'
+                  }
+                />
 
                 {props.values.name && (
                   <EditBtn
@@ -133,7 +152,7 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
                   </EditBtn>
                 )}
               </NameLabel>
-              {props.errors.name && props.touched.name ? (
+              {props.errors.name ? (
                 <ErrorMessage>{props.errors.name}</ErrorMessage>
               ) : null}
               <SubmitBtn

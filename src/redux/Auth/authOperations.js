@@ -6,6 +6,7 @@ import {
   refreshUser,
   setAuthHeader,
   clearAuthHeader,
+  updateUserInfo,
 } from 'services/auth-API';
 
 export const register = createAsyncThunk(
@@ -51,9 +52,21 @@ export const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   }
   try {
     setAuthHeader(token);
-    const {data} = await refreshUser();
+    const { data } = await refreshUser();
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const updateUser = createAsyncThunk(
+  '/auth/update',
+  async (credentials, thunkAPI) => {
+    try {
+      const data = await updateUserInfo(credentials);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

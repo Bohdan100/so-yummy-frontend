@@ -55,9 +55,7 @@ export const App = () => {
         </Route>
         <Route
           path="/"
-          element={
-            <PrivateRoute component={SharedLayout} redirectTo="/login" />
-          }
+          element={<PrivateRoute component={SharedLayout} redirectTo="/" />}
         >
           <Route path="/main" element={<MainPage />} />
           <Route path="/categories" element={<CategoriesPage />}>

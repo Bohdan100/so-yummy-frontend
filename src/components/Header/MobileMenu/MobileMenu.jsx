@@ -12,7 +12,7 @@ import {
 
 const MobileMenu = ({ isShown, closeMobMenu }) => {
   return (
-    <MobileContainer isShown={isShown}>
+    <MobileContainer mode isShown={isShown}>
       <LogoWrapper>
         <Logo closeMobMenu={closeMobMenu} />
       </LogoWrapper>
