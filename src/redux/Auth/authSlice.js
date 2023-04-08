@@ -62,6 +62,9 @@ const authSlice = createSlice({
     setTheme(state, action) {
       state.theme = action.payload;
     },
+    setError(state, action) {
+      state.error = action.payload;
+    },
   },
   extraReducers: builder =>
     builder
@@ -79,4 +82,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const { setTheme } = authSlice.actions;
+export const { setTheme, setError } = authSlice.actions;

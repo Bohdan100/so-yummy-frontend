@@ -1,4 +1,4 @@
-export { loginValidationSchema, registerValidationSchema } from "./authValidationShemas";
+export { loginValidationSchema, registerValidationSchema, ErrorMessages } from "./authValidationShemas";
 
 export * from './updateUserValidationSchema';
 
