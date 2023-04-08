@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import MainContainer from '../../components/MainContainer';
 import CategoriesList from 'components/CategoriesByName/CategoriesList/CategoriesList';
 import ReusableTitle from 'components/ReusableComponents/ReusableTitle/ReusableTitle';
+import Loader from 'components/Loader/Loader';
 
 const CategoriesPage = () => {
   return (
@@ -10,7 +11,7 @@ const CategoriesPage = () => {
       <MainContainer>
         <ReusableTitle>Categories</ReusableTitle>
         <CategoriesList />
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </MainContainer>
