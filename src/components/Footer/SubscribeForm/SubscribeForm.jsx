@@ -1,30 +1,36 @@
+// TODO: добисать логику на подписку - handleSubmit
+
 import { useMedia } from 'react-use';
-import { Formik, Form, Field } from 'formik';
+import { Formik } from 'formik';
 import { subscripbeValidationSchema } from 'helpers/subscripbeValidationSchema';
 import { useAuth } from 'hooks';
 import {
+  FormStyled,
   InputWrapper,
   Input,
   MailIconStyled,
   ErrMsg,
+  SubscribeBtn,
+  SubscribeWrapper,
+  SubscribeTitle,
+  SubscribeText,
 } from './SubscribeForm.styled';
 
 const SubscribeForm = () => {
   const isMobile = useMedia('(max-width: 1439px)');
   const { user } = useAuth();
-  console.log(user);
 
-  const handleSubmit = () => {};
+  // const handleSubmit = () => {};
   return (
-    <>
+    <div>
       {!isMobile && (
-        <div>
-          <h3>Subscribe to our Newsletter</h3>
-          <p>
+        <SubscribeWrapper>
+          <SubscribeTitle>Subscribe to our Newsletter</SubscribeTitle>
+          <SubscribeText>
             Subscribe up to our newsletter. Be in touch with latest news and
             special offers, etc.
-          </p>
-        </div>
+          </SubscribeText>
+        </SubscribeWrapper>
       )}
 
       <Formik
@@ -39,7 +45,7 @@ const SubscribeForm = () => {
         // }}
       >
         {props => (
-          <Form>
+          <FormStyled>
             <InputWrapper>
               <Input
                 type="email"
@@ -68,23 +74,25 @@ const SubscribeForm = () => {
               <MailIconStyled
                 stroke={
                   props.touched.email && props.errors.email
-                    ? '1px solid #E74A3B'
+                    ? '#E74A3B'
                     : props.touched.email && props.isValid
-                    ? '1px solid #3CBC81'
-                    : '1px solid #FAFAFA'
+                    ? '#3CBC81'
+                    : '#FAFAFA'
                 }
               />
+
+              {props.errors.email && props.touched.email ? (
+                <ErrMsg>{props.errors.email}</ErrMsg>
+              ) : null}
             </InputWrapper>
 
-            {props.errors.email && props.touched.email ? (
-              <ErrMsg>{props.errors.email}</ErrMsg>
-            ) : null}
-
-            <button>Subcribe</button>
-          </Form>
+            <SubscribeBtn type="submit" disabled={!props.isValid}>
+              Subcribe
+            </SubscribeBtn>
+          </FormStyled>
         )}
       </Formik>
-    </>
+    </div>
   );
 };
 

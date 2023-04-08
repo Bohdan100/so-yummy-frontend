@@ -1,6 +1,8 @@
+import { InfoList } from './FooterInfo.styled';
+
 export const FooterInfo = () => {
   return (
-    <ul>
+    <InfoList>
       <li>
         <p>Database of recipes that can be replenished</p>
       </li>
@@ -13,7 +15,7 @@ export const FooterInfo = () => {
       <li>
         <p>Convenient and easy to use</p>
       </li>
-    </ul>
+    </InfoList>
   );
 };
 

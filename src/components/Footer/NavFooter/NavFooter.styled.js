@@ -6,15 +6,15 @@ export const NavWraper = styled.ul`
   align-items: center;
   flex-direction: column;
   gap: 14px;
-  margin-bottom: 32px;
 
   @media screen and (min-width: 768px) {
     gap: 20px;
-    margin: 0;
     align-items: flex-start;
+    flex-grow: 1;
   }
   @media screen and (min-width: 1440px) {
     gap: 24px;
+    width: 89px;
   }
 `;
 

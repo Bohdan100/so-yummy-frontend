@@ -1,4 +1,7 @@
+import { useMedia } from 'react-use';
+
 import LogoFooter from './LogoFooter';
+import FooterInfo from './FooterInfo';
 import NavFooter from './NavFooter';
 import SubscribeForm from './SubscribeForm';
 
@@ -7,28 +10,36 @@ import SocNetworks from './SocNetworks';
 import {
   TopWrapper,
   FooterStyled,
-  FooterContainer,
-  FooterWrap,
-  BottomText,
-  Wrap,
-  WrapDesk,
+  BottomWrapper,
+  LogoNavWrapper,
+  WrapperForDesktop,
 } from './Footer.styled';
 
 const Footer = () => {
+  const isMobile = useMedia('(max-width: 767px)');
   return (
     <FooterStyled>
       <TopWrapper>
-        <LogoFooter />
-        <NavFooter />
-        <SubscribeForm />
+        <WrapperForDesktop>
+          <LogoNavWrapper isMobile={isMobile}>
+            <div>
+              <LogoFooter />
+              {!isMobile && <FooterInfo />}
+            </div>
+
+            <NavFooter />
+          </LogoNavWrapper>
+          <SubscribeForm />
+        </WrapperForDesktop>
+
         <SocNetworks />
       </TopWrapper>
 
-      <BottomText>
+      <BottomWrapper>
         <p>
           © 2023 All Rights Reserved. <span>Terms of Service</span>
         </p>
-      </BottomText>
+      </BottomWrapper>
     </FooterStyled>
   );
 };
