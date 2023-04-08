@@ -2,8 +2,8 @@ import styled, { keyframes } from 'styled-components';
 import { Form, Field } from 'formik';
 
 import { ReactComponent as CrossIcon } from '../../../images/icons/close-20.svg';
-import PlusIcon from '../../../images/icons/plus.svg';
 import { ReactComponent as UserIcon } from '../../../images/icons/user.svg';
+import PlusIcon from '../../../images/icons/plus.svg';
 
 const slideDown = keyframes`
   0% {
@@ -23,7 +23,7 @@ const slideUpAndFadeOut = keyframes`
   }
 `;
 
-export const UserInfoWrapper = styled.div`
+export const ModalWrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -169,7 +169,8 @@ export const NameLabel = styled.label`
 `;
 
 export const NameInput = styled(Field)`
-  width: 100%;
+  width: 282px;
+  height: 48px;
   padding: 14px;
   padding-left: 40px;
 
@@ -180,11 +181,14 @@ export const NameInput = styled(Field)`
   opacity: 0.8;
 
   outline: none;
-  border: 1px solid #23262a;
+  border: ${p => p.border};
+
   border-radius: ${p => p.theme.radii.btnStandart};
   background-color: transparent;
 
   @media screen and (min-width: 768px) {
+    width: 400px;
+    height: 58px;
     font-size: 18px;
     padding: 18px;
     padding-left: 51px;
@@ -201,7 +205,7 @@ export const UserIconStyled = styled(UserIcon)`
   position: absolute;
   width: 18px;
   height: 18px;
-  stroke: ${({ color }) => color};
+  stroke: ${p => p.stroke};
   top: 50%;
   left: 16.5px;
   transform: translateY(-50%);
@@ -242,17 +246,19 @@ export const EditBtn = styled.button`
 `;
 
 export const SubmitBtn = styled.button`
-  width: 100%;
-  padding: 14px;
+  width: 282px;
+  height: 49px;
+  padding: 14px 84px;
   background-color: ${p => p.theme.colors.mainAccent};
   border-radius: ${p => p.theme.radii.btnStandart};
+  border: none;
+
   font-family: ${p => p.theme.fonts.btnStandart};
-  font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.extraContent};
   font-size: 14px;
   white-space: nowrap;
+
   color: ${p => p.theme.colors.btnTextLight};
-  cursor: pointer;
   transition: ${p => p.theme.transitions.main};
 
   &:disabled {
@@ -261,6 +267,9 @@ export const SubmitBtn = styled.button`
   }
 
   @media screen and (min-width: 768px) {
+    width: 400px;
+    height: 59px;
+    padding: 18px 143px;
     font-size: 16px;
     line-height: ${p => p.theme.lineHeights.btnText};
   }
@@ -269,20 +278,6 @@ export const SubmitBtn = styled.button`
   &:focus {
     color: ${p => p.theme.colors.btnHoverBg};
   }
-`;
-
-export const FlagForInput = styled.svg`
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  box-sizing: border-box;
-  top: 50%;
-  right: 18px;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
 `;
 
 export const ErrorMessage = styled.p`

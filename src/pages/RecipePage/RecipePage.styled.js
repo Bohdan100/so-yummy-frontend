@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+export const RecipePageStyled = styled.div``;
+
 export const HeaderTable = styled.div`
   display: flex;
   align-items: center;

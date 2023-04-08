@@ -1,15 +1,21 @@
-// TODO: добавить в initialState name из редакса и аватарку
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks';
 import { Formik } from 'formik';
-import * as Yup from 'yup';
-import getColor from 'helpers/getColor';
-import sprite from '../../../images/icons/sprite.svg';
+import { toast } from 'react-toastify';
+import { updateUser } from 'redux/Auth/authOperations';
+
+import {
+  updateUserValidationSchema,
+  SUPPORTED_FORMATS,
+} from '../../../helpers';
+
 import { ReactComponent as CrossIcon } from '../../../images/icons/close-20.svg';
 import { ReactComponent as DefaultAvatar } from '../../../images/icons/user-40.svg';
 import { ReactComponent as EditIcon } from '../../../images/icons/edit-01.svg';
 
 import {
-  UserInfoWrapper,
+  ModalWrapper,
   CloseBtn,
   FormStyled,
   UserAvatarWrapper,
@@ -20,51 +26,48 @@ import {
   UserIconStyled,
   EditBtn,
   SubmitBtn,
-  FlagForInput,
   ErrorMessage,
 } from './UserInfoModal.styled';
 
-const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
-
-const validationSchema = Yup.object().shape({
-  avatar: Yup.mixed()
-    .nullable()
-    .test('type', 'Only PNG, JPEG and JPG formats are supported', value => {
-      return !value || (value && SUPPORTED_FORMATS.includes(value?.type));
-    })
-    .test('size', 'The image must be less than 2 MB', value => {
-      return !value || (value && value.size <= 2000000);
-    }),
-  name: Yup.string()
-    .trim()
-    .matches(/^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+$/, {
-      message: 'Special symbols are not allowed',
-    })
-    .min(1, 'Your name must be 1 character at least')
-    .max(16, '16 characters max'),
-});
-
 const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
-  // TODO: взять из редакса
-  //   const dispatch = useDispatch();
-  //   const userAvatar = useSelector(getAvatar);
-  const [pathToUserAvatar, setPathToUserAvatar] = useState('');
+  const { user } = useAuth();
+  const dispatch = useDispatch();
+  const [pathToUserAvatar, setPathToUserAvatar] = useState(user.avatar);
+
+  const handleSubmit = values => {
+    const formData = new FormData();
+
+    if (values.avatar === '') {
+      values.avatar = user.avatar;
+    }
+    formData.append('name', values.name.trim());
+    formData.append('avatar', values.avatar);
+
+    dispatch(updateUser(formData))
+      .unwrap()
+      .then(() => toast.success('You have successfully updated your details'))
+      .catch(() =>
+        toast.error('Something went wrong...Try reloading the page')
+      );
+    closeUserInfoModal();
+  };
 
   return (
-    <UserInfoWrapper isShown={isShown}>
+    <ModalWrapper isShown={isShown}>
       <CloseBtn type="button" onClick={closeUserInfoModal}>
         <CrossIcon />
       </CloseBtn>
+
       <Formik
         initialValues={{
           avatar: '',
-          name: '',
+          name: user.name,
         }}
-        validationSchema={validationSchema}
+        validationSchema={updateUserValidationSchema}
         onSubmit={(values, actions) => {
-          //   handleSubmit(values);
-          //   actions.setSubmitting(false);
-          //   actions.resetForm();
+          handleSubmit(values);
+          actions.setSubmitting(false);
+          actions.resetForm();
         }}
       >
         {props => (
@@ -100,14 +103,15 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
                       );
                       props.setFieldValue('avatar', event.target.files[0]);
                     }
-                    props.setFieldValue('avatar', event.target.files[0]);
+                  } else {
+                    setPathToUserAvatar(user.avatar);
                   }
                 }}
               />
             </UserAvatarWrapper>
-            {props.errors.avatar && props.touched.avatar ? (
+            {props.errors.avatar && (
               <ErrorMessage location="file">{props.errors.avatar}</ErrorMessage>
-            ) : null}
+            )}
 
             <InputButtonWrapper>
               <NameLabel htmlFor="name" id="labelName">
@@ -115,6 +119,14 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
                   type="text"
                   name="name"
                   id="name"
+                  value={props.values.name}
+                  border={
+                    props.touched.name && props.errors.name
+                      ? '1px solid #E74A3B'
+                      : props.touched.name && props.isValid
+                      ? '1px solid #3CBC81'
+                      : '1px solid #23262a'
+                  }
                   onBlur={() => {
                     props.setTouched({
                       name: true,
@@ -126,41 +138,27 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
                     });
                     props.setFieldValue('name', event.target.value);
                   }}
-                  color={getColor(
-                    props.errors.name,
-                    props.values.name,
-                    '#C4C4C4'
-                  )}
                 />
                 <UserIconStyled
-                  stroke={getColor(
-                    props.errors.name,
-                    props.values.name,
-                    '#C4C4C4'
-                  )}
+                  stroke={
+                    props.touched.name && props.errors.name
+                      ? '#E74A3B'
+                      : props.touched.name && props.isValid
+                      ? '#3CBC81'
+                      : '#23262a'
+                  }
                 />
 
-                {props.touched.name && props.values.name ? (
-                  <FlagForInput>
-                    <use
-                      href={`${sprite}${getColor(
-                        props.errors.name,
-                        props.values.name
-                      )}`}
-                    ></use>
-                  </FlagForInput>
-                ) : (
-                  props.values.name && (
-                    <EditBtn
-                      type="button"
-                      onClick={() => props.setFieldValue('name', '')}
-                    >
-                      <EditIcon />
-                    </EditBtn>
-                  )
+                {props.values.name && (
+                  <EditBtn
+                    type="button"
+                    onClick={() => props.setFieldValue('name', '')}
+                  >
+                    <EditIcon />
+                  </EditBtn>
                 )}
               </NameLabel>
-              {props.errors.name && props.touched.name ? (
+              {props.errors.name ? (
                 <ErrorMessage>{props.errors.name}</ErrorMessage>
               ) : null}
               <SubmitBtn
@@ -170,9 +168,9 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
                     (props.touched.name &&
                       props.values.name &&
                       !props.errors.name) ||
-                    (props.touched.picture &&
-                      props.values.picture &&
-                      !props.errors.picture)
+                    (props.touched.avatar &&
+                      props.values.avatar &&
+                      !props.errors.avatar)
                   )
                 }
               >
@@ -182,7 +180,7 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
           </FormStyled>
         )}
       </Formik>
-    </UserInfoWrapper>
+    </ModalWrapper>
   );
 };
 

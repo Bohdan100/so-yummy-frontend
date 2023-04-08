@@ -1,17 +1,52 @@
+import { useDispatch } from 'react-redux';
+
 import {
   RecipeItem,
   RecipeItemWrapper,
   ImageWrapper,
   TextContainer,
   NameIngredient,
+  DescriptionIngridient,
   WeighIngredient,
   CustomCheckbox,
   PickIconStyled,
   RealCheckbox,
 } from './RecipeIngredientsItem.styled';
 
-const RecipeIngredientsItem = ({ image, nameIngredient, weight }) => {
-  // пропом отримую інгрідієнти та айді рецепту
+import {
+  addProduct,
+  deleteProduct,
+} from 'redux/ShoppingList/shoppingListOperations';
+
+const RecipeIngredientsItem = ({
+  image,
+  nameIngredient,
+  descriptionIngredient,
+  weight,
+  recipeId,
+  inShoppingList,
+  list,
+}) => {
+  const dispatch = useDispatch();
+
+  const toggleToShoppingList = () => {
+    if (inShoppingList) {
+      const ingrid = list.find(item => item.recipeId === recipeId);
+      dispatch(deleteProduct(ingrid._id));
+      return;
+    }
+
+    dispatch(
+      addProduct({
+        strIngredient: nameIngredient,
+        weight,
+        image,
+        recipeId,
+      })
+    );
+    return;
+  };
+
   return (
     <RecipeItem>
       <RecipeItemWrapper>
@@ -20,13 +55,18 @@ const RecipeIngredientsItem = ({ image, nameIngredient, weight }) => {
         </ImageWrapper>
         <TextContainer>
           <NameIngredient>{nameIngredient}</NameIngredient>
+          {descriptionIngredient && (
+            <DescriptionIngridient>
+              {descriptionIngredient}
+            </DescriptionIngridient>
+          )}
         </TextContainer>
 
         <WeighIngredient>{weight}</WeighIngredient>
         <RealCheckbox
           type="checkbox"
-          // onChange={}
-          // checked={}
+          onChange={toggleToShoppingList}
+          checked={inShoppingList}
         />
         <CustomCheckbox>
           <PickIconStyled />

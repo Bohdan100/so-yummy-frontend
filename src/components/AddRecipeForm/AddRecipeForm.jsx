@@ -1,30 +1,48 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useState } from 'react';
+import RecipePageBtn from 'components/RecipePageBtn';
+import { Formik, Form, ErrorMessage, FieldArray, Field } from 'formik';
+import { useRef } from 'react';
 import * as Yup from 'yup';
-import FormikControl from './FormikControls';
+import {
+  Input,
+  InputContainer,
+  SelectIngredienContainer,
+  IngredienControler,
+  IngredienLenght,
+  ButtonClickIngredient,
+  TextAreaContainer,
+  Area,
+  Title,
+  InputContainerFile,
+  ButtonFile,
+  SelectContainer,
+  SelectTitle,
+  SelectStyled,
+  CloseIconStyled,
+  IconFile,
+  FirstTitle,
+} from './AddRecipePage.styled';
+import { PreviewImage } from './PreviewImage';
 import { TextError } from './TextError';
-import { nanoid } from 'nanoid';
 
 const Schema = Yup.object({
   item: Yup.string().required('Required'),
   about: Yup.string().required('Required'),
   selectCategory: Yup.string().required('Required'),
   selectTime: Yup.string().required('Required'),
+  file: Yup.mixed().required('File is required'),
 });
 
 export const AddRecipeForm = () => {
-  const [ingredients, setIngredients] = useState([]);
-
-  console.log(ingredients);
+  const fileRef = useRef(null);
 
   const dropdownOptions = [
     { key: 'Category', value: '' },
-    { key: 'Breakfast', value: 'breakfast' },
-    { key: 'Beef', value: 'beef' },
-    { key: 'Miscellaneous', value: 'miscellaneous' },
-    { key: 'Dessert', value: 'dessert' },
-    { key: 'Goat', value: 'goat' },
-    { key: 'Lamb', value: 'lamb' },
+    { key: 'breakfast', value: 'Breakfast' },
+    { key: 'beef', value: 'Beef' },
+    { key: 'miscellaneous', value: 'Miscellaneous' },
+    { key: 'dessert', value: 'Dessert' },
+    { key: 'goat', value: 'Goat' },
+    { key: 'lamb', value: 'Lamb' },
   ];
 
   const cookingTime = [
@@ -37,97 +55,183 @@ export const AddRecipeForm = () => {
     { key: '90 min', value: '90 min' },
   ];
 
-  const ingrediens = [
-    { key: 'choose ingredien', value: '' },
-    { key: 'apple', value: 'apple' },
-    { key: 'orange', value: 'orange' },
-    { key: 'banana', value: 'banana' },
-  ];
-
-  const addSelect = () => {
-    setIngredients([...ingredients, { id: nanoid(), ingredients }]);
-  };
-
-  const removeSelect = () => {
-    if (ingredients) {
-      setIngredients(ingredients.slice(1));
-    }
-  };
-
   return (
     <div>
-      <h1>Add recipe</h1>
+      <FirstTitle>Add recipe</FirstTitle>
       <Formik
         initialValues={{
           item: '',
           about: '',
           selectCategory: '',
           selectTime: '',
-          ingredient: [''],
+          ingredients: [],
+          file: null,
         }}
         onSubmit={values => {
-          // same shape as initial values
           console.log(values);
         }}
         validationSchema={Schema}
       >
         {formik => {
+          console.log(formik.dirty);
+          console.log(formik.isValid);
+          console.log(formik.values.selectCategory);
+          console.log(formik.values.selectTime);
           return (
             <Form>
-              <div>
-                <Field type="text" name="item" />
+              <InputContainerFile>
+                <input
+                  type="file"
+                  name="file"
+                  hidden
+                  ref={fileRef}
+                  onChange={event => {
+                    formik.setFieldValue('file', event.target.files[0]);
+                  }}
+                />
+                {formik.values.file && (
+                  <PreviewImage file={formik.values.file} />
+                )}
+                {!formik.values.file && (
+                  <ButtonFile
+                    type="button"
+                    onClick={() => {
+                      fileRef.current.click();
+                    }}
+                  >
+                    <IconFile />
+                  </ButtonFile>
+                )}
+                <ErrorMessage name="file" component={TextError} />
+              </InputContainerFile>
+              <InputContainer>
+                <Input type="text" name="item" placeholder="Enter item title" />
                 <ErrorMessage name="item" component={TextError} />
-              </div>
-              <div>
-                <Field type="text" name="about" />
+              </InputContainer>
+              <InputContainer>
+                <Input
+                  type="text"
+                  name="about"
+                  placeholder="Enter about recipe"
+                />
                 <ErrorMessage name="about" component={TextError} />
-              </div>
+              </InputContainer>
+              <SelectContainer>
+                <SelectTitle>Enter item title</SelectTitle>
+                <Field as={SelectStyled} name="selectCategory">
+                  {dropdownOptions.map(option => {
+                    return (
+                      <option key={option.value} value={option.value}>
+                        {option.key}
+                      </option>
+                    );
+                  })}
+                </Field>
+              </SelectContainer>
+              <ErrorMessage name="selectCategory" component={TextError} />
+              <SelectContainer>
+                <SelectTitle>Cooking time</SelectTitle>
+                <Field as={SelectStyled} name="selectTime">
+                  {cookingTime.map(option => {
+                    return (
+                      <option key={option.value} value={option.value}>
+                        {option.key}
+                      </option>
+                    );
+                  })}
+                </Field>
+              </SelectContainer>
+              <ErrorMessage name="selectTime" component={TextError} />
               <div>
-                <FormikControl
-                  control="select"
-                  name="selectCategory"
-                  options={dropdownOptions}
-                />
+                <FieldArray name="ingredients">
+                  {fieldArrayProps => {
+                    const { push, remove, form } = fieldArrayProps;
+                    const { values } = form;
+                    const { ingredients } = values;
+                    console.log(ingredients);
+
+                    const addSelect = () => {
+                      push('');
+                    };
+
+                    const deleteSelect = () => {
+                      ingredients.pop();
+                    };
+
+                    return (
+                      <InputContainer>
+                        <IngredienControler>
+                          <Title>Ingredients</Title>
+                          <IngredienLenght>
+                            {ingredients.length > 0 && (
+                              <ButtonClickIngredient
+                                type="buttom"
+                                onClick={deleteSelect}
+                              >
+                                -
+                              </ButtonClickIngredient>
+                            )}
+                            <span>{ingredients.length}</span>
+                            <ButtonClickIngredient
+                              type="buttom"
+                              onClick={addSelect}
+                            >
+                              +
+                            </ButtonClickIngredient>
+                          </IngredienLenght>
+                        </IngredienControler>
+                        {ingredients.map((_, index) => (
+                          <SelectIngredienContainer key={index}>
+                            <Field
+                              type="text"
+                              name={`ingredients[${index}].ingredien`}
+                            />
+
+                            <Field
+                              as="select"
+                              name={`ingredients[${index}].weight`}
+                            >
+                              {cookingTime.map(option => {
+                                return (
+                                  <option
+                                    key={option.value}
+                                    value={option.value}
+                                  >
+                                    {option.key}
+                                  </option>
+                                );
+                              })}
+                            </Field>
+                            {index >= 0 && (
+                              <ButtonClickIngredient
+                                type="button"
+                                onClick={() => remove(index)}
+                              >
+                                <CloseIconStyled />
+                              </ButtonClickIngredient>
+                            )}
+                          </SelectIngredienContainer>
+                        ))}
+                      </InputContainer>
+                    );
+                  }}
+                </FieldArray>
               </div>
-              <div>
-                <FormikControl
-                  control="select"
-                  name="selectTime"
-                  options={cookingTime}
-                />
-              </div>
-              <div>
-                <button type="button" onClick={removeSelect}>
-                  -
-                </button>
-                <span>{ingredients.length}</span>
-                <button type="button" onClick={addSelect}>
-                  +
-                </button>
-              </div>
-              <div>
-                {ingredients.map(({ id }) => (
-                  <FormikControl
-                    key={id}
-                    control="select"
-                    name="ingredient[index]"
-                    options={ingrediens}
-                  />
-                ))}
-              </div>
-              <div>
-                <FormikControl
-                  control="textarea"
-                  label="Recipe Preparation"
+              <TextAreaContainer>
+                <Title>Recipe Preparation</Title>
+                <Area
+                  as="textarea"
                   name="textarea"
+                  placeholder="Enter recipe"
                 />
-              </div>
-              <button
+                <ErrorMessage name="textarea" component={TextError} />
+              </TextAreaContainer>
+
+              <RecipePageBtn
+                text="Add"
                 type="submit"
                 disabled={!(formik.dirty && formik.isValid)}
-              >
-                Submit
-              </button>
+              ></RecipePageBtn>
             </Form>
           );
         }}
