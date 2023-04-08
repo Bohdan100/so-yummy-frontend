@@ -1,33 +1,40 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const Link = styled(NavLink)`
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: -0.02em;
-  color: ${p => p.theme.colors.mainWhite};
-  transition: ${p => p.theme.transitions.main};
-  &.active {
-    color: ${p => p.theme.colors.footerBtnBg};
-  }
-  :hover:not(.active),
-  :focus-visible:not(.active) {
-    color: ${p => p.theme.colors.footerBtnBg};
-  }
-`;
-
-export const NavWraper = styled.div`
+export const NavWraper = styled.ul`
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 14px;
-  margin-top: 32px;
+
   @media screen and (min-width: 768px) {
     gap: 20px;
-    margin: 0;
+    align-items: flex-start;
+    flex-grow: 1;
   }
   @media screen and (min-width: 1440px) {
     gap: 24px;
+    width: 89px;
+  }
+`;
+
+export const NavLinkStyled = styled(NavLink)`
+  font-weight: ${p => p.theme.fontWeights[1]};
+  font-size: 14px;
+  line-height: ${p => p.theme.lineHeights.extraContent};
+  letter-spacing: ${p => p.theme.letterSpacings.content};
+  color: ${p => p.theme.colors.bodyBg};
+
+  transition: ${p => p.theme.transitions.main};
+
+  &.active {
+    color: ${p => p.theme.colors.mainAccent};
+  }
+  :hover:not(.active),
+  :focus-visible:not(.active) {
+    color: ${p => p.theme.colors.mainAccent};
+  }
+
+  @media screen and (min-width: 768px) {
   }
 `;
