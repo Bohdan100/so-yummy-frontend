@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { toast } from 'react-toastify';
 import * as API from '../../../services/categories-API';
 import Loader from 'components/Loader/Loader';
 
@@ -19,8 +20,8 @@ const CategoriesList = () => {
         const { categoriesList } = await API.fetchAllCategories();
         setCategories(categoriesList);
       } catch (error) {
-        console.log(error.message);
         setError({ error });
+        toast.error(`Something went wrong. Plese try again...`);
       } finally {
         setIsLoading(false);
       }
