@@ -43,6 +43,14 @@ export const StyledForm = styled(Form)`
   }
 `;
 
+export const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: space-between;
+`;
+
+
 export const Title = styled.h1`
   margin-bottom: 18px;
   font-family: ${p => p.theme.fonts.main};
@@ -52,6 +60,7 @@ export const Title = styled.h1`
   line-height: ${p => p.theme.lineHeights.userLink};
   letter-spacing: ${p => p.theme.letterSpacings.content};
   font-feature-settings: 'liga' off;
+  overflow-wrap: normal;
   color: ${p => p.theme.colors.btnTextLight};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-bottom: 32px;
@@ -94,11 +103,17 @@ export const Input = styled(Field)`
   border-radius: ${p => p.theme.radii.btnStandart};
   border: ${p => p.theme.borders.inputStandart};
   transition: ${p => p.theme.transitions.main};
+  border-color: #fafafa30;
+  ${p => p.color === 'normal' && `border-color: #FAFAFA30`};
+  ${p => p.color === 'inValid' && `border-color: #E74A3B`};
+  ${p => p.color === 'notSecure' && `border-color: #F6C23E`};
+  ${p => p.color === 'valid' && `border-color: #3CBC81`};
+
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 18px;
     padding: 16px 16px 16px 50px;
   }
-  &:focus:not(:disabled),
+
   &:hover:not(:disabled) {
     border-color: ${p => p.theme.colors.inputPh};
     color: ${p => p.theme.colors.inputPh};
@@ -137,6 +152,7 @@ export const Button = styled.button`
   }
   &:disabled {
     cursor: not-allowed;
+    opacity: 0.8;
   }
 `;
 
@@ -158,15 +174,36 @@ export const StyledLink = styled(Link)`
   &:focus,
   &:hover {
     text-decoration: none;
+    outline: transparent;
   }
 `;
 
-export const ErrorBox = styled.div`
+export const StatusBox = styled.div`
   font-size: 14px;
   margin-top: 8px;
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.searchSelect};
-  color: ${p => p.theme.colors.inputPh};
   transition: ${p => p.theme.transitions.main};
+  color: #e74a3b;
+  ${p => p.color === 'notSecure' && `color: #F6C23E`};
+  ${p => p.color === 'valid' && `color: #3CBC81`};
+`;
+
+export const ErrorBox = styled.div`
+  max-width: 60%;
+  height: auto;
+  overflow-wrap: break-word;
+  align-self: baseline;
+  margin-bottom: 12px;
+  font-size: 12px;
+  text-align: end;
+  font-weight: ${p => p.theme.fontWeights[0]};
+  line-height: ${p => p.theme.lineHeights.searchSelect};
+  transition: ${p => p.theme.transitions.main};
+  color: #e74a3b;
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    font-size: 14px;
+    max-width: 70%;
+  }
 `;
 
