@@ -8,7 +8,7 @@ import RecipeIngredientsList from 'components/RecipeIngredientsList';
 import RecipePreparation from 'components/RecipePreparation';
 import Loader from 'components/Loader/Loader';
 
-import { HeaderTable } from './RecipePage.styled';
+import { HeaderTable, RecipePageStyled } from './RecipePage.styled';
 
 import * as API from '../../services/favorite-API';
 
@@ -36,7 +36,7 @@ const RecipePage = () => {
   }, [recipeId]);
 
   return (
-    <>
+    <RecipePageStyled>
       {error && <p>Whoops, something went wrong: {error.message}</p>}
       {isLoading && <Loader />}
 
@@ -63,7 +63,7 @@ const RecipePage = () => {
           </MainContainer>
         </>
       )}
-    </>
+    </RecipePageStyled>
   );
 };
 

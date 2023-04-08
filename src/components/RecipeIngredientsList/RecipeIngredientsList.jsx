@@ -9,13 +9,12 @@ import { IngredientsListStyled } from './RecipeIngredientsList.styled';
 
 const RecipeIngredientsList = ({ ingredients, recipeId }) => {
   const list = useSelector(selectProducts);
+
   const dispatche = useDispatch();
 
   useEffect(() => {
-    if (list.length === 0) {
-      dispatche(fetchProducts());
-    }
-  }, [dispatche, list.length]);
+    dispatche(fetchProducts());
+  }, [dispatche, list]);
 
   function getIngDescription(id) {
     if (list.length !== 0) {
@@ -26,19 +25,22 @@ const RecipeIngredientsList = ({ ingredients, recipeId }) => {
   }
 
   return (
-    <IngredientsListStyled>
-      {ingredients.map((ingredient, index) => (
-        <RecipeIngredientsItem
-          key={ingredient.id._id}
-          image={ingredient.id.thb}
-          nameIngredient={ingredient.id.ttl}
-          weight={ingredient.measure ? ingredient.measure : 'any'}
-          list={list}
-          recipeId={recipeId + index}
-          inShoppingList={getIngDescription(recipeId + index)}
-        />
-      ))}
-    </IngredientsListStyled>
+    <>
+      <IngredientsListStyled>
+        {ingredients.map((ingredient, index) => (
+          <RecipeIngredientsItem
+            key={ingredient.id._id}
+            image={ingredient.id.thb}
+            nameIngredient={ingredient.id.ttl}
+            descriptionIngredient={ingredient.id.desc}
+            weight={ingredient.measure ? ingredient.measure : 'any'}
+            list={list}
+            recipeId={recipeId + index}
+            inShoppingList={getIngDescription(recipeId + index)}
+          />
+        ))}
+      </IngredientsListStyled>
+    </>
   );
 };
 

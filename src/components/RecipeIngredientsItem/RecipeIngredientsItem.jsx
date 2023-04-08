@@ -6,6 +6,7 @@ import {
   ImageWrapper,
   TextContainer,
   NameIngredient,
+  DescriptionIngridient,
   WeighIngredient,
   CustomCheckbox,
   PickIconStyled,
@@ -20,22 +21,22 @@ import {
 const RecipeIngredientsItem = ({
   image,
   nameIngredient,
+  descriptionIngredient,
   weight,
   recipeId,
-  id,
   inShoppingList,
   list,
 }) => {
-  const dispatche = useDispatch();
+  const dispatch = useDispatch();
 
   const toggleToShoppingList = () => {
     if (inShoppingList) {
       const ingrid = list.find(item => item.recipeId === recipeId);
-      dispatche(deleteProduct(ingrid._id));
+      dispatch(deleteProduct(ingrid._id));
       return;
     }
 
-    dispatche(
+    dispatch(
       addProduct({
         strIngredient: nameIngredient,
         weight,
@@ -54,6 +55,11 @@ const RecipeIngredientsItem = ({
         </ImageWrapper>
         <TextContainer>
           <NameIngredient>{nameIngredient}</NameIngredient>
+          {descriptionIngredient && (
+            <DescriptionIngridient>
+              {descriptionIngredient}
+            </DescriptionIngridient>
+          )}
         </TextContainer>
 
         <WeighIngredient>{weight}</WeighIngredient>

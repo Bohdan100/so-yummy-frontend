@@ -21,7 +21,7 @@ const commonPendingReducer = state => {
 const addProductFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  console.log('action.payload', action.payload);
+
   state.items.push(action.payload);
 };
 
