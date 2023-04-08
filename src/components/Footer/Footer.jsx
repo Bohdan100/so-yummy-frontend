@@ -1,10 +1,12 @@
-import ArticleFooter from './ArticleFooter';
+import LogoFooter from './LogoFooter';
 import NavFooter from './NavFooter';
 import SubscribeForm from './SubscribeForm';
 
 import SocNetworks from './SocNetworks';
 
 import {
+  TopWrapper,
+  FooterStyled,
   FooterContainer,
   FooterWrap,
   BottomText,
@@ -14,23 +16,20 @@ import {
 
 const Footer = () => {
   return (
-    <FooterContainer>
-      <FooterWrap>
-        <WrapDesk>
-          <Wrap>
-            <ArticleFooter />
-            <NavFooter />
-          </Wrap>
-          <SubscribeForm />
-        </WrapDesk>
+    <FooterStyled>
+      <TopWrapper>
+        <LogoFooter />
+        <NavFooter />
+        <SubscribeForm />
         <SocNetworks />
-      </FooterWrap>
+      </TopWrapper>
+
       <BottomText>
         <p>
           © 2023 All Rights Reserved. <span>Terms of Service</span>
         </p>
       </BottomText>
-    </FooterContainer>
+    </FooterStyled>
   );
 };
 

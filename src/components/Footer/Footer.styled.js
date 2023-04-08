@@ -1,59 +1,79 @@
 import styled from 'styled-components';
 
-export const FooterContainer = styled.footer`
-  margin-top: auto;
-  width: 100%;
-
-  @media screen and (min-width: 1440px) {
-    padding-top: 64px;
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-bottom: 50px;
-  }
-`;
-
-export const WrapDesk = styled.div`
-  @media screen and (min-width: 1440px) {
-    display: flex;
-  }
-`;
-
-export const Wrap = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    gap: 173px;
-    width: 100%;
-    vertical-align: baseline;
-  }
-  @media screen and (min-width: 1440px) {
-    gap: 159px;
-    margin-right: 235px;
-  }
-`;
-
-export const FooterWrap = styled.div`
-  height: auto;
+export const FooterStyled = styled.footer`
   background-color: ${p => p.theme.colors.footerBg};
-  padding-top: 28px;
-  padding-bottom: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+`;
+
+export const TopWrapper = styled.div`
+  max-width: ${p => p.theme.breakpoints[0]};
+  margin: 0 auto;
+  padding: 28px 85px 18px 85px;
+
   @media screen and (min-width: 768px) {
-    padding-top: 50px;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-bottom: 24px;
-    text-align: left;
+    max-width: ${p => p.theme.breakpoints[1]};
+    padding: 50px 94px 24px 32px;
   }
+
   @media screen and (min-width: 1440px) {
-    padding-top: 64px;
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-bottom: 50px;
+    max-width: ${p => p.theme.breakpoints[2]};
+    padding: 64px 100px 50px 100px;
   }
 `;
+
+// export const FooterContainer = styled.footer`
+//   margin-top: auto;
+//   width: 100%;
+
+//   @media screen and (min-width: 1440px) {
+//     padding-top: 64px;
+//     padding-left: 100px;
+//     padding-right: 100px;
+//     padding-bottom: 50px;
+//   }
+// `;
+
+// export const WrapDesk = styled.div`
+//   @media screen and (min-width: 1440px) {
+//     display: flex;
+//   }
+// `;
+
+// export const Wrap = styled.div`
+//   @media screen and (min-width: 768px) {
+//     display: flex;
+//     gap: 173px;
+//     width: 100%;
+//     vertical-align: baseline;
+//   }
+//   @media screen and (min-width: 1440px) {
+//     gap: 159px;
+//     margin-right: 235px;
+//   }
+// `;
+
+// export const FooterWrap = styled.div`
+//   height: auto;
+//   background-color: ${p => p.theme.colors.footerBg};
+//   padding-top: 28px;
+//   padding-bottom: 18px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   text-align: center;
+//   @media screen and (min-width: 768px) {
+//     padding-top: 50px;
+//     padding-left: 32px;
+//     padding-right: 32px;
+//     padding-bottom: 24px;
+//     text-align: left;
+//   }
+//   @media screen and (min-width: 1440px) {
+//     padding-top: 64px;
+//     padding-left: 100px;
+//     padding-right: 100px;
+//     padding-bottom: 50px;
+//   }
+// `;
 
 export const BottomText = styled.div`
   width: 100%;

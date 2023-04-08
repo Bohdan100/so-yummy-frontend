@@ -71,7 +71,7 @@ export const theme = {
     mainSearchInput: '1px solid #F0F0F0',
     searchInput: '1px solid #F0F0F0',
     mainNavBord: '1px solid transparent',
-    inputStandart: '1px solid #FAFAFA30',
+    inputStandart: '1px solid #FAFAFA',
   },
   radii: {
     btnStandart: '6px',
