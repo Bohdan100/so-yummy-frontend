@@ -7,7 +7,7 @@ export const RecipeItem = styled.li`
   background-color: ${li => li.theme.colors.secondaryAccent};
 `;
 
-export const RecipeItemWrapper = styled.div`
+export const RecipeItemWrapper = styled.label`
   display: flex;
   align-items: center;
   padding: 14px 29px 14px 14px;
@@ -71,9 +71,24 @@ export const NameIngredient = styled.p`
   line-height: 1.17;
   letter-spacing: ${p => p.theme.letterSpacings.subheader};
   color: ${li => li.theme.colors.secondaryDark};
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 24px;
     line-height: ${p => p.theme.lineHeights.subheader};
+  }
+`;
+
+export const DescriptionIngridient = styled.p`
+  font-weight: ${p => p.theme.fontWeights[0]};
+  font-size: 8px;
+  line-height: 1.38;
+  letter-spacing: ${p => p.theme.letterSpacings.subheader};
+  color: ${p => p.theme.colors.mainGrey};
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    overflow-y: clip;
+
+    line-height: ${p => p.theme.lineHeights.subheader};
+    font-size: 14px;
+    line-height: 1.67;
   }
 `;
 
@@ -136,7 +151,7 @@ export const PickIconStyled = styled(PickIcon)`
 `;
 
 export const RealCheckbox = styled.input`
-  /* display: none; */
+  display: none;
   &:checked + ${CustomCheckbox} svg {
     transform: translate(-50%, -50%) scale(1);
   }

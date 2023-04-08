@@ -8,6 +8,9 @@ import CategoriesByName from '../components/CategoriesByName';
 import { useDispatch } from 'react-redux';
 import { refresh } from 'redux/Auth/authOperations';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Layout from 'components/Layout';
 import SharedLayout from 'components/SharedLayout';
 import PublicRoute from './Routes/PublicRoute';
@@ -70,6 +73,7 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      <ToastContainer />
     </ThemeProvider>
   );
 };
