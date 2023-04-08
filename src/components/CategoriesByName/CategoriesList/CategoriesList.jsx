@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { toast } from 'react-toastify';
 import * as API from '../../../services/categories-API';
-import NotFoundWrapp from './NotFoundWrapp/NotFoundWrapp';
+import NotFoundWrapp from '../NotFoundWrapp/';
 import Loader from 'components/Loader/Loader';
 
 const CategoriesList = () => {
