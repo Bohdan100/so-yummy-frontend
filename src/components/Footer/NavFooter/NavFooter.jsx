@@ -1,24 +1,37 @@
+import { scrollToTop } from 'helpers';
 import { NavLinkStyled, NavWraper } from './NavFooter.styled';
 
 const NavFooter = () => {
   return (
     <NavWraper>
       <li>
-        <NavLinkStyled to="/search" state={{ ingredient: true }}>
+        <NavLinkStyled
+          to="/search"
+          state={{ ingredient: true }}
+          onClick={scrollToTop}
+        >
           Ingredients
         </NavLinkStyled>
       </li>
       <li>
-        <NavLinkStyled to="/add">Add recipes</NavLinkStyled>
+        <NavLinkStyled to="/add" onClick={scrollToTop}>
+          Add recipes
+        </NavLinkStyled>
       </li>
       <li>
-        <NavLinkStyled to="/my">My recipes</NavLinkStyled>
+        <NavLinkStyled to="/my" onClick={scrollToTop}>
+          My recipes
+        </NavLinkStyled>
       </li>
       <li>
-        <NavLinkStyled to="/favorite">Favorite</NavLinkStyled>
+        <NavLinkStyled to="/favorite" onClick={scrollToTop}>
+          Favorite
+        </NavLinkStyled>
       </li>
       <li>
-        <NavLinkStyled to="/shopping-list">Shopping list</NavLinkStyled>
+        <NavLinkStyled to="/shopping-list" onClick={scrollToTop}>
+          Shopping list
+        </NavLinkStyled>
       </li>
     </NavWraper>
   );

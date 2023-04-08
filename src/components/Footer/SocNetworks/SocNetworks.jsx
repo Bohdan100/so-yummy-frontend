@@ -37,7 +37,7 @@ const SocNetworks = ({ location }) => {
       </li>
       <li>
         <a
-          href="https://www.twitter.com/"
+          href="https://www.instagram.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
