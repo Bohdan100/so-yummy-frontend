@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { toast } from 'react-toastify';
 import * as API from '../../../services/categories-API';
+import NotFoundWrapp from '../NotFoundWrapp/';
 import Loader from 'components/Loader/Loader';
 
 const CategoriesList = () => {
@@ -19,8 +21,8 @@ const CategoriesList = () => {
         const { categoriesList } = await API.fetchAllCategories();
         setCategories(categoriesList);
       } catch (error) {
-        console.log(error.message);
         setError({ error });
+        toast.error(`Something went wrong. Plese try again...`);
       } finally {
         setIsLoading(false);
       }
@@ -28,7 +30,6 @@ const CategoriesList = () => {
     getAllCategories();
   }, []);
 
-  // Пробую редірект на категорії.
   useEffect(() => {
     if (categories.length > 0) {
       const lowerCaseCategory = categories[tabValue].toLowerCase();
@@ -122,7 +123,11 @@ const CategoriesList = () => {
           </Tabs>
         </div>
       )}
-      {error && <p>Whoops, something went wrong: {error.message}</p>}
+      {error && (
+        <NotFoundWrapp>
+          Whoops, something went wrong: {error.message}
+        </NotFoundWrapp>
+      )}
     </>
   );
 };
