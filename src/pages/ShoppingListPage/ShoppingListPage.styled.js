@@ -21,7 +21,6 @@ export const ShopListTitle = styled.h1`
   }
 `;
 
-
 export const EmptyListMessage = styled.p`
   margin-top: 24px;
   font-size: 18px;

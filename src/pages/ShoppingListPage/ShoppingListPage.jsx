@@ -1,20 +1,20 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-import { useState, useEffect } from 'react';
-import {selectProducts} from '../../redux/ShoppingList/shoppingListSelectors';
-// import { fetchShoppingList } from '../../redux/shoppingList/actions';
+
+import { selectProducts } from '../../redux/ShoppingList/shoppingListSelectors';
 import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
+
 import MainContainer from 'components/MainContainer/MainContainer';
+import IngredientsShoppingList from '../../components/IngredientsShoppingList/IngredientsShoppingList';
+
 import {
   HeaderTable,
   ShopListTitle,
   EmptyListMessage,
   StyledLoaderWrapper,
 } from './ShoppingListPage.styled';
-import ReusableTitle from '../../components/ReusableComponents/ReusableTitle/ReusableTitle';
 import Loader from '../../components/Loader/Loader';
-import IngredientsShoppingList from '../../components/IngredientsShoppingList/IngredientsShoppingList';
 
 const isLoading = false;
 
@@ -23,12 +23,11 @@ const ShoppingListPage = () => {
   console.log(shoppingList);
 
   const dispatch = useDispatch();
-  // const shoppingList = useSelector((state) => state.shoppingList.shoppingList);
-  // const isLoading = useSelector((state) => state.shoppingList.isLoading);
 
-   useEffect(() => {
+  useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
+
   // const shoppingList = [
   //   {
   //     _id: '642ddb7a85c0cb3cc8effcb2',
@@ -54,11 +53,11 @@ const ShoppingListPage = () => {
     <MainContainer>
       <ShopListTitle>Shopping list</ShopListTitle>
       <HeaderTable>
-              <p>Ingridients</p>
-              <p>
-                Number <span>Add to list</span>
-              </p>
-            </HeaderTable>
+        <p>Ingridients</p>
+        <p>
+          Number <span>Add to list</span>
+        </p>
+      </HeaderTable>
       {isLoading ? (
         <StyledLoaderWrapper>
           <Loader />
@@ -70,9 +69,7 @@ const ShoppingListPage = () => {
               Your shopping list is currently empty
             </EmptyListMessage>
           ) : (
-            <IngredientsShoppingList
-              ingredients={shoppingList}
-            />
+            <IngredientsShoppingList ingredients={shoppingList} />
           )}
         </>
       )}

@@ -1,13 +1,7 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { selectProducts } from 'redux/ShoppingList/shoppingListSelectors';
-import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
-
 import IngredientsShoppingItem from 'components/IngredientsShoppingItem/IngredientsShoppingItem';
 import { IngredientsListStyled } from './IngredientsShoppingList.styled';
 
-const IngredientsShoppingList = ({ ingredients}) => {
+const IngredientsShoppingList = ({ ingredients }) => {
   // const list = useSelector(selectProducts);
 
   // const dispatche = useDispatch();
