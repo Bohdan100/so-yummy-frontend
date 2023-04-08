@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { toast } from 'react-toastify';
 import * as API from '../../../services/categories-API';
+import NotFoundWrapp from './NotFoundWrapp/NotFoundWrapp';
 import Loader from 'components/Loader/Loader';
 
 const CategoriesList = () => {
@@ -122,7 +123,11 @@ const CategoriesList = () => {
           </Tabs>
         </div>
       )}
-      {error && <p>Whoops, something went wrong: {error.message}</p>}
+      {error && (
+        <NotFoundWrapp>
+          Whoops, something went wrong: {error.message}
+        </NotFoundWrapp>
+      )}
     </>
   );
 };
