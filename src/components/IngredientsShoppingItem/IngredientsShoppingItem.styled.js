@@ -155,12 +155,12 @@ export const DeleteButton = styled.button`
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
-  color: #FFFFFF;
-  background-color: #EB5757;
+  color: #ffffff;
+  background-color: #eb5757;
   border-radius: 8px;
   cursor: pointer;
 
   &:hover {
-    background-color: #CC4C4C;
+    background-color: #cc4c4c;
   }
 `;
