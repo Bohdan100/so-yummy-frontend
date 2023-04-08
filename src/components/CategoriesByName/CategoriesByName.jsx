@@ -23,9 +23,6 @@ const CategoriesByName = () => {
           },
         } = await API.fetchRecipesByCategory(category);
         setRecipes(result);
-        if (result) {
-          toast.success(`Recipes with category ${category} was found!`);
-        }
       } catch (error) {
         setError({ error });
         toast.error(`Something went wrong. Plese try again...`);
