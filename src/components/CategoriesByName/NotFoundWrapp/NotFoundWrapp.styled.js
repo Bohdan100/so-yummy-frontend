@@ -24,7 +24,6 @@ export const Text = styled.p`
   line-height: ${p => p.theme.lineHeights.subheader};
   font-size: 14px;
   text-align: center;
-  //   font-feature-settings: 'liga' off;
   color: ${p => p.theme.colors.mainBlack};
   opacity: 0.5;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
