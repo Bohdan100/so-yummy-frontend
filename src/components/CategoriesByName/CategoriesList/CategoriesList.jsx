@@ -18,23 +18,23 @@ const CategoriesList = () => {
         setIsLoading(true);
         const { categoriesList } = await API.fetchAllCategories();
         setCategories(categoriesList);
-        const lowerCaseCategory = categoriesList[tabValue].toLowerCase();
-        navigate(`/categories/${lowerCaseCategory}`);
       } catch (error) {
+        console.log(error.message);
         setError({ error });
       } finally {
         setIsLoading(false);
       }
     }
     getAllCategories();
-  }, [navigate, tabValue]);
+  }, []);
 
   // Пробую редірект на категорії.
-  // useEffect(() => {
-  //   console.log('Це другий ефект');
-  //   const lowerCaseCategory = categories[tabValue].toLowerCase();
-  //   navigate(`/categories/${categories[tabValue]}`);
-  // }, [categories, navigate, tabValue]);
+  useEffect(() => {
+    if (categories.length > 0) {
+      const lowerCaseCategory = categories[tabValue].toLowerCase();
+      navigate(`/categories/${lowerCaseCategory}`);
+    }
+  }, [categories, navigate, tabValue]);
 
   const handleChange = (e, newCategory) => {
     navigate(`/categories/${e.target.textContent}`);
