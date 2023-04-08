@@ -5,6 +5,7 @@ import { RecipesList } from './CategoriesByName.styled';
 import * as API from '../../services/categories-API';
 import Loader from 'components/Loader/Loader';
 
+import NotFoundWrapp from './NotFoundWrapp/NotFoundWrapp';
 const CategoriesByName = () => {
   const { categoryName: category } = useParams();
   const [recipes, setRecipes] = useState([]);
@@ -32,14 +33,21 @@ const CategoriesByName = () => {
 
   return (
     <>
-      {error && <p>Whoops, something went wrong: {error.message}</p>}
+      {error && (
+        <NotFoundWrapp>
+          Whoops, something went wrong: {error.message}
+        </NotFoundWrapp>
+      )}
       {isLoading && <Loader />}
-      {recipes && (
+      {recipes.length > 0 && !error && !isLoading && (
         <RecipesList>
           {recipes.map(recipe => {
             return <RecipeCard dish={recipe} key={recipe._id} />;
           })}
         </RecipesList>
+      )}
+      {!isLoading && !error && recipes.length === 0 && (
+        <NotFoundWrapp>Try looking for something else...</NotFoundWrapp>
       )}
     </>
   );
