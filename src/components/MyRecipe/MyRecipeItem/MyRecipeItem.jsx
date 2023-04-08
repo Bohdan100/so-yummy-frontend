@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import {
   Item,
   MainBox,
@@ -10,18 +11,19 @@ import {
   WrapperUp,
   BtnBox,
   Container,
-  // ImageContainer,
   Image,
-  // IconBtn,
+  IconBtn,
 } from './MyRecipeItem.styled';
-// import ImageCard from '../ImgOwnRecipe/ImgOwnRecipe';
-import { ReactComponent as BtnIconDelete } from '../../../images/icons/btn-delete-recipe.svg';
 import { useDispatch } from 'react-redux';
 import { deleteOwnRecipe } from 'redux/OwnRecipes/OwnRecipesOperations';
 
 const MyRecipeItem = ({ description, preview, time, title, id }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const handleChange = id => {
+    navigate(`/recipes/${id}`);
+  };
   return (
     <Item key={id}>
       <MainBox>
@@ -34,8 +36,7 @@ const MyRecipeItem = ({ description, preview, time, title, id }) => {
                 type="button"
                 onClick={() => dispatch(deleteOwnRecipe(id))}
               >
-                {/* <IconBtn /> */}
-                <BtnIconDelete />
+                <IconBtn />
               </DeleteBtn>
             </BtnBox>
             <AboutRecipe>{description}</AboutRecipe>
@@ -43,7 +44,7 @@ const MyRecipeItem = ({ description, preview, time, title, id }) => {
 
           <WrapperUp>
             <Time>{time}</Time>
-            <BtnSee>See recipe</BtnSee>
+            <BtnSee onClick={() => handleChange(id)}>See recipe</BtnSee>
           </WrapperUp>
         </Container>
       </MainBox>

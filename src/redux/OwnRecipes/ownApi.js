@@ -23,7 +23,6 @@ export const addOwnRecipeAPI = body => {
 
 export const deleteOwnRecipeAPI = recipeId => {
   return axios.delete(`/ownRecipe/${recipeId}`).then(({ data }) => {
-    console.log('data', data);
     return recipeId;
   });
 };
