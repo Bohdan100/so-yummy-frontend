@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { toast } from 'react-toastify';
 import * as API from '../../services/categories-API';
 import Loader from 'components/Loader/Loader';
 import RecipeCard from 'components/ReusableComponents/RecipeCard/RecipeCard';
@@ -22,8 +23,10 @@ const CategoriesByName = () => {
           },
         } = await API.fetchRecipesByCategory(category);
         setRecipes(result);
+        toast.success(`Recipes with category ${category} was found!`);
       } catch (error) {
         setError({ error });
+        toast.error(`Something went wrong. Plese try again...`);
       } finally {
         setIsLoading(false);
       }
