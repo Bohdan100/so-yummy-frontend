@@ -1,26 +1,36 @@
 import ArticleFooter from './ArticleFooter';
 import NavFooter from './NavFooter';
 import SubscribeForm from './SubscribeForm';
-import MainContainer from 'components/MainContainer/MainContainer';
+
 import SocNetworks from './SocNetworks';
 
-import { FooterContainer } from './Footer.styled';
+import {
+  FooterContainer,
+  FooterWrap,
+  BottomText,
+  Wrap,
+  WrapDesk,
+} from './Footer.styled';
 
 const Footer = () => {
   return (
-    <MainContainer>
-      <FooterContainer>
-        <ArticleFooter />
-        <NavFooter />
-        <SubscribeForm />
+    <FooterContainer>
+      <FooterWrap>
+        <WrapDesk>
+          <Wrap>
+            <ArticleFooter />
+            <NavFooter />
+          </Wrap>
+          <SubscribeForm />
+        </WrapDesk>
         <SocNetworks />
-        <div>
-          <span>© 2023 All Rights Reserved.</span>
-          <span> Terms of Service</span>
-        </div>
-        <div></div>
-      </FooterContainer>
-    </MainContainer>
+      </FooterWrap>
+      <BottomText>
+        <p>
+          © 2023 All Rights Reserved. <span>Terms of Service</span>
+        </p>
+      </BottomText>
+    </FooterContainer>
   );
 };
 

@@ -10,37 +10,34 @@ import {
   WrapperUp,
   BtnBox,
   Container,
-  ImageContainer,
+  // ImageContainer,
   Image,
   // IconBtn,
 } from './MyRecipeItem.styled';
-
+// import ImageCard from '../ImgOwnRecipe/ImgOwnRecipe';
 import { ReactComponent as BtnIconDelete } from '../../../images/icons/btn-delete-recipe.svg';
+import { useDispatch } from 'react-redux';
+import { deleteOwnRecipe } from 'redux/OwnRecipes/OwnRecipesOperations';
 
-const MyRecipeItem = ({
-  // category,
-  description,
-  preview,
-  time,
-  title,
-  id,
-  //   handelDelete,
-}) => {
+const MyRecipeItem = ({ description, preview, time, title, id }) => {
+  const dispatch = useDispatch();
+
   return (
     <Item key={id}>
       <MainBox>
-        <ImageContainer>
-          <Image src={preview} alt={title} />
-        </ImageContainer>
+        <Image src={preview} alt={title} />
         <Container>
           <WrapperBox>
             <TitleRecipe>{title}</TitleRecipe>
             <BtnBox>
-              <DeleteBtn>
+              <DeleteBtn
+                type="button"
+                onClick={() => dispatch(deleteOwnRecipe(id))}
+              >
+                {/* <IconBtn /> */}
                 <BtnIconDelete />
               </DeleteBtn>
             </BtnBox>
-
             <AboutRecipe>{description}</AboutRecipe>
           </WrapperBox>
 

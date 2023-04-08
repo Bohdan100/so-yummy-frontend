@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-// import { ReactComponent as BtnIconDelete } from '../../../images/icons/btn-delete-recipe.svg';
+import { ReactComponent as BtnIconDelete } from '../../../images/icons/btn-delete-recipe.svg';
 
 export const Item = styled.li`
   height: 152px;
-  width: 100%;
-  // border: 1px solid red;
+  // width: 100%;
+  // border: 2px solid red;
   padding: 14px 9px;
+  background-color: ${p => p.theme.colors.mainWhite}
 
   &:not(:last-child) {
     margin-bottom: 18px;
@@ -19,12 +20,33 @@ export const Item = styled.li`
   }
 `;
 
-export const ImageContainer = styled.div`
-  // border: 1px solid green;
-  // width: 100%;
+// export const ImageContainer = styled.div`
+//   border: 2px solid green;
+//   border-radius: ${p => p.theme.radii.image};
+//   object-fit: cover;
+
+//   // width: 100%;
+//   // width: 124px;
+//   // heigth: 124px;
+
+//   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+//     // width: 228px;
+//     // heigth: 232px;
+//   }
+//   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
+//     // width: 318px;
+//     // heigth: 324px;
+//   }
+// `;
+export const Image = styled.img`
+  // border: 2px solid red;
+  display: block;
+  // max-width: 100%;
+  height: auto;
+  border-radius: ${p => p.theme.radii.image};
+  object-fit: cover;
   width: 124px;
   heigth: 124px;
-
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 228px;
     heigth: 232px;
@@ -34,25 +56,8 @@ export const ImageContainer = styled.div`
     heigth: 324px;
   }
 `;
-export const Image = styled.img`
-  display: block;
-  max-width: 100%;
-  height: auto;
-  // width: 124px;
-  // heigth: 124px;
-  object-fit: cover;
-  border-radius: ${p => p.theme.radii.image};
-  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    // width: 228px;
-    // heigth: 232px;
-  }
-  @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
-    // width: 318px;
-    // heigth: 324px;
-  }
-`;
 export const MainBox = styled.div`
-  // border: 1px solid purple;
+  // border: 2px solid purple;
   width: 100%;
   height: 100%;
   display: flex;
@@ -61,28 +66,30 @@ export const MainBox = styled.div`
 
 export const Container = styled.div`
   width: 187px;
-  // border: 1px solid blue;
-  margin-left: 14px;
+  // border: 2px solid blue;
+  // margin-left: 14px;
   display: flex;
   flex-direction: column;
 
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    margin-left: 24px;
+    // margin-left: 24px;
     width: 404px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
-    margin-left: 54px;
+    // margin-left: 54px;
     width: 788px;
   }
 `;
 
 export const WrapperBox = styled.div`
   position: relative;
+  // border: 2px solid pink;
+
   display: flex;
   flex-direction: column;
   // justify-content: space-between;
   align-items: flex-start;
-  //   margin-bottom: 10px;
+  // margin-bottom: 10px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     // margin-bottom: 14px;
   }
@@ -98,7 +105,7 @@ export const TitleRecipe = styled.p`
   font-size: 14px;
   line-height: ${p => p.theme.lineHeights.userLink};
   letter-spacing: ${p => p.theme.letterSpacings.subheader}
-  color: black;
+  color: ${p => p.theme.colors.secondaryDark};
   margin: 0px;
   text-align: left;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
@@ -122,10 +129,11 @@ export const DeleteBtn = styled.button`
   border-radius: ${p => p.theme.radii.btnIcon};
   border: none;
   outline: none;
-  // padding: 5px;
+  padding: 5px;
   justify-content: center;
   align-items: center;
   text-align: center;
+
   background-color: ${p => p.theme.colors.mainAccent};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 38px;
@@ -137,24 +145,23 @@ export const DeleteBtn = styled.button`
   }
 `;
 
-// export const IconBtn = styled(BtnIconDelete)`
-//   display: inline-block;
-//   margin: 0;
-//   padding: 0;
-//   width: 14px;
-//   height: 14px;
-//   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-//     width: 17px;
-//     height: 18px;
-//   }
-//   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
-//     width: 18px;
-//     height: 20px;
-//   }
-// `;
+export const IconBtn = styled(BtnIconDelete)`
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 14px;
+  height: 14px;
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 17px;
+    height: 18px;
+  }
+  @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
+    width: 18px;
+    height: 20px;
+  }
+`;
 
 export const AboutRecipe = styled.p`
-  // display: block;
   font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   margin-top: 14px;
@@ -176,15 +183,17 @@ export const AboutRecipe = styled.p`
 `;
 export const WrapperUp = styled.div`
   display: flex;
+  // border: 2px solid green;
+
   flex-grow: 2;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 24px;
+  // margin-top: 24px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    margin-top: 28px;
+    // margin-top: 28px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
-    margin-top: 66px;
+    // margin-top: 66px;
   }
 `;
 
@@ -242,5 +251,10 @@ export const BtnSee = styled.button`
     margin-left: 569px;
 
     line-height: ${p => p.theme.lineHeights.searchSelect};
+  }
+  &:hover {
+    background-color: ${p => p.theme.colors.mainWhite};
+    color: ${p => p.theme.colors.mainAccent};
+    border: 1px solid ${p => p.theme.colors.mainAccent};
   }
 `;

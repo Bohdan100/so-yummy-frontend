@@ -1,15 +1,21 @@
-// TODO: Добавить логику по взятию инфо про юзера из редакса
 import { useState } from 'react';
-import { UserButton, UserAvatarImg } from './UserLogo.styled';
+import { useAuth } from 'hooks';
+
 import Modal from 'components/Modal';
 import UserLogoModal from '../UserLogoModal';
 import UserInfoModal from '../UserInfoModal';
 import LogoutModal from '../LogoutModal';
 
+import { UserButton, UserAvatarImg } from './UserLogo.styled';
+
+export const DEFAULT_AVATAR =
+  'https://res.cloudinary.com/db5awxaxs/image/upload/v1680863981/%D0%B7%D0%B0%D0%B2%D0%B0%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_1_sycrzf.jpg';
+
 const UserLogo = () => {
   const [isUserLogoModalOpen, setIsUserLogoModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const { user } = useAuth();
 
   const closeUserLogoModal = () => {
     setIsUserLogoModalOpen(false);
@@ -37,11 +43,8 @@ const UserLogo = () => {
         type="button"
         onClick={() => setIsUserLogoModalOpen(!isUserLogoModalOpen)}
       >
-        <UserAvatarImg
-          src="https://res.cloudinary.com/ddbvbv5sp/image/upload/v1679336722/images_s8wrdd.jpg"
-          alt="user avatar"
-        />
-        <p>User name</p>
+        <UserAvatarImg src={user.avatar || DEFAULT_AVATAR} alt="user avatar" />
+        <p>{user.name || 'User name'}</p>
       </UserButton>
 
       {isUserLogoModalOpen && (
@@ -64,9 +67,12 @@ const UserLogo = () => {
         </Modal>
       )}
 
-      {isLogoutModalOpen && !isUserLogoModalOpen && (
+      {!isUserLogoModalOpen && isLogoutModalOpen && (
         <Modal onClose={closeLogoutModal}>
-          <LogoutModal closeLogoutModal={closeLogoutModal} />
+          <LogoutModal
+            isShown={isLogoutModalOpen}
+            closeLogoutModal={closeLogoutModal}
+          />
         </Modal>
       )}
     </>

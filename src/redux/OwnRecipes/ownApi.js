@@ -5,9 +5,8 @@ axios.defaults.baseURL = 'https://so-yummy-98ev.onrender.com';
 export const getOwnRecipesAPI = (page, limit) => {
   if (page && limit) {
     return axios
-      .get(`/api/ownRecipe?page=${page}&per_page=${limit}`)
+      .get(`/ownRecipe?page=${page}&limit=${limit}`)
       .then(({ data }) => {
-        console.log('data', data);
         return data;
       });
   }
@@ -15,8 +14,6 @@ export const getOwnRecipesAPI = (page, limit) => {
     return data;
   });
 };
-
-getOwnRecipesAPI();
 
 export const addOwnRecipeAPI = body => {
   return axios.post('/ownRecipe', body).then(({ data }) => {
@@ -26,6 +23,7 @@ export const addOwnRecipeAPI = body => {
 
 export const deleteOwnRecipeAPI = recipeId => {
   return axios.delete(`/ownRecipe/${recipeId}`).then(({ data }) => {
-    return data;
+    console.log('data', data);
+    return recipeId;
   });
 };
