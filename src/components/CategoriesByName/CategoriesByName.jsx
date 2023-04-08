@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import RecipeCard from 'components/ReusableComponents/RecipeCard/RecipeCard';
-import { RecipesList } from './CategoriesByName.styled';
+import { toast } from 'react-toastify';
 import * as API from '../../services/categories-API';
 import Loader from 'components/Loader/Loader';
-
+import RecipeCard from 'components/ReusableComponents/RecipeCard/RecipeCard';
 import NotFoundWrapp from './NotFoundWrapp/NotFoundWrapp';
+import { RecipesList } from './CategoriesByName.styled';
+
 const CategoriesByName = () => {
   const { categoryName: category } = useParams();
   const [recipes, setRecipes] = useState([]);
@@ -24,6 +25,7 @@ const CategoriesByName = () => {
         setRecipes(result);
       } catch (error) {
         setError({ error });
+        toast.error(`Something went wrong. Plese try again...`);
       } finally {
         setIsLoading(false);
       }
