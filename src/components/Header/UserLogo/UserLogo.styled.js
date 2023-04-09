@@ -10,7 +10,7 @@ export const UserButton = styled.button`
 
   font-weight: ${p => p.theme.fontWeights[3]};
   font-size: 12px;
-  color: ${p => p.theme.colors.userName};
+  color: ${p => p.color};
   line-height: ${p => p.theme.lineHeights.userLink};
 
   @media screen and (min-width: 768px) {

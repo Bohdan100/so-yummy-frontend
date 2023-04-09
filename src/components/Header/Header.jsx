@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useMedia } from 'react-use';
+import { selectTheme } from 'redux/Theme/themeSelectors';
 
 import MainContainer from 'components/MainContainer';
 import Logo from 'components/Logo';
@@ -18,6 +21,12 @@ import {
 } from './Header.styled';
 
 const Header = () => {
+  const { pathname } = useLocation();
+  const theme = useSelector(selectTheme);
+  const isRecipesPage = pathname.includes('recipes');
+
+  const color = isRecipesPage || theme === 'light' ? '#22252A' : '#FAFAFA';
+
   const [isMobMenuOpen, setIsMobMenuOpen] = useState(false);
   const isMobileDevice = useMedia('(max-width: 1439px)');
 
@@ -38,9 +47,9 @@ const Header = () => {
           {!isMobileDevice && <Navigation />}
 
           <UserMenuWrapper>
-            <UserLogo />
+            <UserLogo color={color} />
             <BurgerBtn type="button" onClick={openMobMenu}>
-              <BurgerIconStyled />
+              <BurgerIconStyled stroke={color} />
             </BurgerBtn>
             {!isMobileDevice && <ThemeToggler />}
           </UserMenuWrapper>

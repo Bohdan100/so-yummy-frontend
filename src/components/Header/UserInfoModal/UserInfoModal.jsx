@@ -1,22 +1,23 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from 'hooks';
 import { Formik } from 'formik';
 import { toast } from 'react-toastify';
 import { updateUser } from 'redux/Auth/authOperations';
+import { selectTheme } from 'redux/Theme/themeSelectors';
 
 import {
   updateUserValidationSchema,
   SUPPORTED_FORMATS,
 } from '../../../helpers';
 
-import { ReactComponent as CrossIcon } from '../../../images/icons/close-20.svg';
 import { ReactComponent as DefaultAvatar } from '../../../images/icons/user-40.svg';
 import { ReactComponent as EditIcon } from '../../../images/icons/edit-01.svg';
 
 import {
   ModalWrapper,
   CloseBtn,
+  CrossIconStyled,
   FormStyled,
   UserAvatarWrapper,
   UserImgWrapper,
@@ -33,6 +34,7 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
   const { user } = useAuth();
   const dispatch = useDispatch();
   const [pathToUserAvatar, setPathToUserAvatar] = useState(user.avatar);
+  const theme = useSelector(selectTheme);
 
   const handleSubmit = values => {
     const formData = new FormData();
@@ -55,7 +57,7 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
   return (
     <ModalWrapper isShown={isShown}>
       <CloseBtn type="button" onClick={closeUserInfoModal}>
-        <CrossIcon />
+        <CrossIconStyled />
       </CloseBtn>
 
       <Formik
@@ -125,7 +127,9 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
                       ? '1px solid #E74A3B'
                       : props.touched.name && props.isValid
                       ? '1px solid #3CBC81'
-                      : '1px solid #23262a'
+                      : theme === 'light'
+                      ? '1px solid #23262a'
+                      : '1px solid #FAFAFA'
                   }
                   onBlur={() => {
                     props.setTouched({
@@ -145,7 +149,9 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
                       ? '#E74A3B'
                       : props.touched.name && props.isValid
                       ? '#3CBC81'
-                      : '#23262a'
+                      : theme === 'light'
+                      ? '#23262a'
+                      : '#FAFAFA'
                   }
                 />
 

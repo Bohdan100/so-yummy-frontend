@@ -82,6 +82,10 @@ export const CloseBtn = styled.button`
     top: 24px;
     right: 32px;
   }
+
+  svg {
+    stroke: ${p => p.theme.colors.mainBtnText};
+  }
 `;
 
 export const ThemeTogglerWrapper = styled.div`
