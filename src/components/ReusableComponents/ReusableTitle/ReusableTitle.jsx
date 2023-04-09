@@ -5,6 +5,7 @@ const ReusableTitle = ({ children }) => {
   return (
     <>
       <BackgroundDots />
+
       <Title>{children}</Title>
     </>
   );
