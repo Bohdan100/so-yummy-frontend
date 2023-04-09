@@ -7,7 +7,7 @@ export const LogOutBtnStyled = styled.button`
   align-items: center;
   width: 125px;
   height: 43px;
-  background-color: ${p => p.theme.colors.mainAccent};
+  background-color: ${p => p.theme.colors.logOutBtnBg};
 
   font-size: 14px;
   line-height: 1.5;
@@ -25,7 +25,11 @@ export const LogOutBtnStyled = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${p => p.theme.colors.btnHoverBg};
+    color: ${p => p.theme.colors.btnHoverBg};
+
+    svg {
+      stroke: ${p => p.theme.colors.btnHoverBg};
+    }
   }
 
   @media screen and (min-width: 768px) {
@@ -37,4 +41,6 @@ export const LogOutBtnStyled = styled.button`
 export const ArrowIconStyled = styled(ArrowIcon)`
   width: 18px;
   height: 18px;
+  stroke: ${p => p.theme.colors.btnTextLight};
+  transition: ${p => p.theme.transitions.main};
 `;

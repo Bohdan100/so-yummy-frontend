@@ -38,13 +38,13 @@ export const Input = styled(Field)`
   font-size: 10px;
   line-height: ${p => p.theme.lineHeights.searchSelect};
   letter-spacing: ${p => p.theme.letterSpacings.content};
-  color: ${p => p.theme.colors.bodyBg};
+  color: ${p => p.theme.colors.subscribeInputText};
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 259px;
     height: 50px;
-    padding: 15px 51px 15px 40px;
+    padding: 15px 40px 15px 51px;
     font-size: 14px;
   }
 
@@ -52,7 +52,7 @@ export const Input = styled(Field)`
     font-size: 18px;
     width: 338px;
     height: 59px;
-    padding: 17.5px 52px 17.5px 40px;
+    padding: 17.5px 40px 17.5px 51px;
   }
 `;
 

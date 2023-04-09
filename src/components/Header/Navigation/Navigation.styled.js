@@ -26,7 +26,7 @@ export const NavLinkStyled = styled(NavLink)`
   font-size: 18px;
   font-weight: ${p => p.theme.fontWeights[1]};
   line-height: ${p => p.theme.lineHeights.subheader};
-  color: ${p => p.theme.colors.mainHeaderText};
+  color: ${p => p.color};
   letter-spacing: ${p => p.theme.letterSpacings.content};
   /* transition: ${p => p.theme.transitions}; */
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -64,7 +64,7 @@ export const SerchWrapperNavLink = styled.div`
 `;
 
 export const SearchIconStyled = styled(SearchIcon)`
-  stroke: ${p => p.theme.colors.mainHeaderText};
+  stroke: ${p => p.color};
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
   width: 20px;
   height: 20px;

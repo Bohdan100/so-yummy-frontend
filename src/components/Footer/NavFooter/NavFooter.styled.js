@@ -23,16 +23,16 @@ export const NavLinkStyled = styled(NavLink)`
   font-size: 14px;
   line-height: ${p => p.theme.lineHeights.extraContent};
   letter-spacing: ${p => p.theme.letterSpacings.content};
-  color: ${p => p.theme.colors.bodyBg};
+  color: ${p => p.theme.colors.navLinkFooter};
 
   transition: ${p => p.theme.transitions.main};
 
   &.active {
-    color: ${p => p.theme.colors.mainAccent};
+    color: ${p => p.theme.colors.navLinkFooterHover};
   }
   :hover:not(.active),
   :focus-visible:not(.active) {
-    color: ${p => p.theme.colors.mainAccent};
+    color: ${p => p.theme.colors.navLinkFooterHover};
   }
 
   @media screen and (min-width: 768px) {
