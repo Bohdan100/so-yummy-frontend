@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { selectIsLoading } from 'redux/Auth/authSelectors';
 import { register } from 'redux/Auth/authOperations';
-import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
 import {
   registerValidationSchema,
   ErrorStatus,
-  ErrorMessages,
+  getPassErrorStatus,
 } from '../../helpers';
 import { useAuth } from '../../hooks';
 import { setError } from '../../redux/Auth/authSlice';
@@ -48,24 +47,10 @@ const RegisterForm = () => {
     }
   }, [dispatch, error]);
 
-  const handleSubmitForm = async ({ name, email, password }, { resetForm }) => {
-    await dispatch(register({ name, email, password })).then(
+  const handleSubmitForm = ({ name, email, password }, { resetForm }) => {
+    dispatch(register({ name, email, password })).then(
       res => !res.error && resetForm()
     );
-    await dispatch(fetchProducts()).then(res => !res.error && resetForm());
-  };
-
-  const getPassErrorStatus = (error, dirty) => {
-    if (!error && dirty) {
-      return 'valid';
-    }
-    if (!error && !dirty) {
-      return 'normal';
-    } else if (error === ErrorMessages.password) {
-      return 'notSecure';
-    } else if (error !== ErrorMessages.password) {
-      return 'inValid';
-    }
   };
 
   const statusIcon = {
