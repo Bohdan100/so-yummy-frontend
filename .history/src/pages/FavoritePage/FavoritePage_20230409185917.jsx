@@ -76,6 +76,20 @@ const FavoritePage = () => {
             handleChange={handleChange}
           />
         )}
+
+        {/* <PaginationWrapper>
+          <ReactPaginate
+            previousLabel={'<'}
+            nextLabel={'>'}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={'paginationBtns'}
+            previousLinkClassName={'previousBtn'}
+            nextLinkClassName={'nextBtn'}
+            disabledClassName={'paginationDisabled'}
+            activeClassName={'paginationActive'}
+          />
+        </PaginationWrapper> */}
         {error && <p>Whoops, something went wrong: {error.message}</p>}
       </Container>
     </>
