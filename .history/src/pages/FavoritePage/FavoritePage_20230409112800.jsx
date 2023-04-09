@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import ReactPaginate from 'react-paginate';
 import { toast } from 'react-toastify';
 import {
   fetchFavoriteRacipes,
@@ -9,7 +9,9 @@ import Loader from 'components/Loader/Loader';
 import ReusableTitle from 'components/ReusableComponents/ReusableTitle/ReusableTitle';
 import Container from '../../components/MainContainer/';
 import FavoriteList from 'components/FavoriteList/FavoriteList';
+// import { PaginationWrapper } from './FavoritePage.styled';
 import { PaginationComp } from 'components/Pagination/pagination';
+
 import { NotFavorites } from 'components/FavoriteList/FavoriteList.styled';
 
 const FavoritePage = () => {
@@ -17,16 +19,17 @@ const FavoritePage = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
-  const [total, setTotal] = useState(0);
-  const history = useNavigate();
+  // const favoritesPerPage = 4;
+  // const pagesVisited = pageNumber * favoritesPerPage;
 
   useEffect(() => {
     async function getFavoriteRacipes() {
       try {
         setIsLoading(true);
         const response = await fetchFavoriteRacipes();
+        const total = response.total;
+        console.log(total);
         setRecipes(response.data);
-        setTotal(response.total);
       } catch (error) {
         setError({ error });
         toast.error(`Something went wrong. Plese try again...`);
@@ -37,11 +40,25 @@ const FavoritePage = () => {
     getFavoriteRacipes();
   }, []);
 
-  useEffect(() => {
-    history(`?page=${pageNumber}`);
-  }, [history, pageNumber]);
+  // const displayFavorites = Array.isArray(recipes.result)
+  //   ? recipes.result.slice(pagesVisited, pagesVisited + favoritesPerPage)
+  //   : [];
+  // console.log(displayFavorites);
+  // const pageCount =
+  //   recipes &&
+  //   recipes.result &&
+  //   recipes.result.length > 0 &&
+  //   Math.ceil(recipes.result.length / favoritesPerPage);
 
-  const limit = 4;
+  // const changePage = ({ selected }) => {
+  //   if (selected >= 0 && selected < pageCount) {
+  //     setPageNumber(selected + 1);
+  //   }
+  // };
+
+  // const total = response.total;
+  // console.log(total);
+  // const limit = 4;
   const handleChange = (event, value) => {
     console.log('value', value);
     setPageNumber(value);
@@ -68,7 +85,7 @@ const FavoritePage = () => {
         )}
         {recipes && recipes.result && recipes.result.length > 0 && (
           <PaginationComp
-            count={Math.ceil(total / limit)}
+            // count={Math.ceil(total / limit)}
             page={pageNumber}
             handleChange={handleChange}
           />

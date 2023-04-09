@@ -19,7 +19,7 @@ import {
   RecipePageBtn,
 } from './FavoriteCard.styled';
 
-const FavoriteCard = ({ id, title, preview, description, time, onDelete }) => {
+const FavoriteCard = ({ title, preview, description, time, onDelete }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   if (isMobile) {
@@ -66,7 +66,7 @@ const FavoriteCard = ({ id, title, preview, description, time, onDelete }) => {
             </TextWrapper>
             <CookingWrapper>
               <Time>{time} min</Time>
-              <Link to={`/recipes/${id}`}>
+              <Link to={`/recipe/:recipeId`}>
                 <RecipePageBtn>See recipie</RecipePageBtn>
               </Link>
             </CookingWrapper>

@@ -8,11 +8,10 @@ const FavoriteList = ({ recipes, handleDelete }) => {
       {recipes.map(recipe => (
         <FavoriteCard
           key={recipe._id}
-          id={recipe._id}
-          title={recipe.recipe.title}
-          preview={recipe.recipe.preview}
-          description={recipe.recipe.description}
-          time={recipe.recipe.time}
+          title={recipe.title}
+          preview={recipe.preview}
+          description={recipe.description}
+          time={recipe.time}
           onDelete={() => handleDelete(recipe._id)}
         />
       ))}

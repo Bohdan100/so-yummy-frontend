@@ -1,32 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import ReactPaginate from 'react-paginate';
 import { toast } from 'react-toastify';
-import {
-  fetchFavoriteRacipes,
-  removeRecipeFromFavorites,
-} from '../../services/favorite-API';
+import { fetchFavoriteRacipes } from '../../services/favorite-API';
+// import NotFoundWrapp from 'components/';
 import Loader from 'components/Loader/Loader';
 import ReusableTitle from 'components/ReusableComponents/ReusableTitle/ReusableTitle';
 import Container from '../../components/MainContainer/';
 import FavoriteList from 'components/FavoriteList/FavoriteList';
-import { PaginationComp } from 'components/Pagination/pagination';
-import { NotFavorites } from 'components/FavoriteList/FavoriteList.styled';
+// import { PaginationWrapper } from './FavoritePage.styled';
+// import { initialState } from 'components/FavoriteList/myFavorite';
 
 const FavoritePage = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [total, setTotal] = useState(0);
-  const history = useNavigate();
+  // const [pageNumber, setPageNumber] = useState(0);
+  // const favoritesPerPage = 4;
+  // const pagesVisited = pageNumber * favoritesPerPage;
 
   useEffect(() => {
     async function getFavoriteRacipes() {
       try {
         setIsLoading(true);
-        const response = await fetchFavoriteRacipes();
-        setRecipes(response.data);
-        setTotal(response.total);
+        const { data } = await fetchFavoriteRacipes();
+        console.log(data);
+        setRecipes([data.result]);
       } catch (error) {
         setError({ error });
         toast.error(`Something went wrong. Plese try again...`);
@@ -36,44 +34,32 @@ const FavoritePage = () => {
     }
     getFavoriteRacipes();
   }, []);
+  // useEffect(() => {
+  //   setRecipes(initialState);
+  // }, []);
 
-  useEffect(() => {
-    history(`?page=${pageNumber}`);
-  }, [history, pageNumber]);
+  console.log(recipes);
 
-  const limit = 4;
-  const handleChange = (event, value) => {
-    console.log('value', value);
-    setPageNumber(value);
+  // const displayFavorites = Array.isArray(recipes)
+  //   ? recipes.slice(pagesVisited, pagesVisited + favoritesPerPage)
+  //   : [];
+  // console.log(displayFavorites);
+  // const pageCount = Math.ceil(recipes.length / favoritesPerPage);
+
+  // const changePage = ({ selected }) => {
+  //   setPageNumber(selected);
+  // };
+  const handleDelete = recipeId => {
+    const updatedRecipes = recipes.filter(recipe => recipe._id !== recipeId);
+    setRecipes(updatedRecipes);
   };
 
-  const handleRemoveRecipe = async id => {
-    await removeRecipeFromFavorites(id);
-    setRecipes(recipes.filter(recipe => recipe.id !== id));
-  };
   return (
     <>
       {isLoading && <Loader />}
       <Container>
         <ReusableTitle>Favorites</ReusableTitle>
-        {recipes && recipes.result && recipes.result.length > 0 ? (
-          <FavoriteList
-            recipes={recipes.result}
-            handleDelete={handleRemoveRecipe}
-          />
-        ) : (
-          <NotFavorites>
-            You currently don't have any favorite recipes added. Let's add some♥
-          </NotFavorites>
-        )}
-        {recipes && recipes.result && recipes.result.length > 0 && (
-          <PaginationComp
-            count={Math.ceil(total / limit)}
-            page={pageNumber}
-            handleChange={handleChange}
-          />
-        )}
-
+        <FavoriteList recipes={recipes} handleDelete={handleDelete} />
         {/* <PaginationWrapper>
           <ReactPaginate
             previousLabel={'<'}

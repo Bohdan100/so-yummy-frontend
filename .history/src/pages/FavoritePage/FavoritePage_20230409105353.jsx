@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 import { toast } from 'react-toastify';
 import {
   fetchFavoriteRacipes,
@@ -9,24 +9,23 @@ import Loader from 'components/Loader/Loader';
 import ReusableTitle from 'components/ReusableComponents/ReusableTitle/ReusableTitle';
 import Container from '../../components/MainContainer/';
 import FavoriteList from 'components/FavoriteList/FavoriteList';
-import { PaginationComp } from 'components/Pagination/pagination';
+import { PaginationWrapper } from './FavoritePage.styled';
 import { NotFavorites } from 'components/FavoriteList/FavoriteList.styled';
-
 const FavoritePage = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
-  const [total, setTotal] = useState(0);
-  const history = useNavigate();
+  const favoritesPerPage = 4;
+  const pagesVisited = pageNumber * favoritesPerPage;
 
   useEffect(() => {
     async function getFavoriteRacipes() {
       try {
         setIsLoading(true);
         const response = await fetchFavoriteRacipes();
+
         setRecipes(response.data);
-        setTotal(response.total);
       } catch (error) {
         setError({ error });
         toast.error(`Something went wrong. Plese try again...`);
@@ -37,19 +36,19 @@ const FavoritePage = () => {
     getFavoriteRacipes();
   }, []);
 
-  useEffect(() => {
-    history(`?page=${pageNumber}`);
-  }, [history, pageNumber]);
+  const displayFavorites = Array.isArray(recipes.result)
+    ? recipes.result.slice(pagesVisited, pagesVisited + favoritesPerPage)
+    : [];
+  console.log(displayFavorites);
+  const pageCount = Math.ceil(recipes.length / favoritesPerPage);
 
-  const limit = 4;
-  const handleChange = (event, value) => {
-    console.log('value', value);
-    setPageNumber(value);
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
   };
 
   const handleRemoveRecipe = async id => {
     await removeRecipeFromFavorites(id);
-    setRecipes(recipes.filter(recipe => recipe.id !== id));
+    setRecipes(recipes.results.filter(recipe => recipe.id !== id));
   };
   return (
     <>
@@ -66,15 +65,7 @@ const FavoritePage = () => {
             You currently don't have any favorite recipes added. Let's add some♥
           </NotFavorites>
         )}
-        {recipes && recipes.result && recipes.result.length > 0 && (
-          <PaginationComp
-            count={Math.ceil(total / limit)}
-            page={pageNumber}
-            handleChange={handleChange}
-          />
-        )}
-
-        {/* <PaginationWrapper>
+        <PaginationWrapper>
           <ReactPaginate
             previousLabel={'<'}
             nextLabel={'>'}
@@ -86,7 +77,7 @@ const FavoritePage = () => {
             disabledClassName={'paginationDisabled'}
             activeClassName={'paginationActive'}
           />
-        </PaginationWrapper> */}
+        </PaginationWrapper>
         {error && <p>Whoops, something went wrong: {error.message}</p>}
       </Container>
     </>

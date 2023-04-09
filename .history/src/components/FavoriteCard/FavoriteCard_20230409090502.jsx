@@ -66,7 +66,7 @@ const FavoriteCard = ({ id, title, preview, description, time, onDelete }) => {
             </TextWrapper>
             <CookingWrapper>
               <Time>{time} min</Time>
-              <Link to={`/recipes/${id}`}>
+              <Link to={`/recipe/${id}`}>
                 <RecipePageBtn>See recipie</RecipePageBtn>
               </Link>
             </CookingWrapper>
