@@ -1,12 +1,12 @@
 import { RecipePageBtnStyle } from './RecipePageBtn.styled';
 
-const RecipePageBtn = ({ text, fn }) => {
+const RecipePageBtn = ({ text, fn, type }) => {
   const onClick = e => {
     if (!fn) return;
     fn(e);
   };
   return (
-    <RecipePageBtnStyle type="button" onClick={onClick}>
+    <RecipePageBtnStyle type={type} onClick={onClick}>
       {text}
     </RecipePageBtnStyle>
   );
