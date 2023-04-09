@@ -117,7 +117,7 @@ export const darkTheme = {
     paginationText: 'rgba(255, 255, 255, 0.6)',
     mainSearchInput: '#2A2C36',
     paginationShadow: '0px 4px 4px rgba(31, 30, 30, 0.2)',
-    userName: '#22252A',
+    userName: '#FAFAFA',
     searchSelectBg: 'transparent',
     searchSelectText: '#FAFAFA',
     searchDropDownBg: '#8BAA36',
