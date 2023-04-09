@@ -1,10 +1,9 @@
-import { inputAdornmentClasses } from '@mui/material';
 import { StyledDiv } from './BackgroundDots.styled';
-import { selectTheme } from 'redux/Theme/themeSelectors';
-import { useSelector } from 'react-redux';
+// import { selectTheme } from 'redux/Theme/themeSelectors';
+// import { useSelector } from 'react-redux';
 
 const BackgroundDots = () => {
-  const theme = useSelector(selectTheme);
+  //   const theme = useSelector(selectTheme);
 
   return <StyledDiv />;
 };
