@@ -7,7 +7,6 @@ import { Route, Routes } from 'react-router-dom';
 import CategoriesByName from '../components/CategoriesByName';
 import { useDispatch, useSelector } from 'react-redux';
 import { refresh } from 'redux/Auth/authOperations';
-import { setTheme } from 'redux/Theme/themeSlice';
 import { selectTheme } from 'redux/Theme/themeSelectors';
 
 import { ToastContainer } from 'react-toastify';
