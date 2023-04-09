@@ -7,15 +7,13 @@ import Loader from 'components/Loader/Loader';
 
 const CategoriesPage = () => {
   return (
-    <div>
-      <MainContainer>
-        <ReusableTitle>Categories</ReusableTitle>
-        <CategoriesList />
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-      </MainContainer>
-    </div>
+    <MainContainer>
+      <ReusableTitle>Categories</ReusableTitle>
+      <CategoriesList />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
+    </MainContainer>
   );
 };
 

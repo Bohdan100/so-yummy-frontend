@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import * as API from '../../../services/categories-API';
 import NotFoundWrapp from '../NotFoundWrapp/';
 import Loader from 'components/Loader/Loader';
+import BackgroundDots from 'components/ReusableComponents/BackgroundDots/BackgroundDots';
 
 const CategoriesList = () => {
   const [tabValue, setTabValue] = useState(0);
@@ -44,6 +45,7 @@ const CategoriesList = () => {
 
   return (
     <>
+      <BackgroundDots />
       {isLoading && <Loader />}
       {categories && (
         <div>
