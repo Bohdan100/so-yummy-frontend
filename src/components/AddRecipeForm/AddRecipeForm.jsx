@@ -21,6 +21,7 @@ import {
   IconFile,
   FirstTitle,
 } from './AddRecipePage.styled';
+import CustomSelect from './CustomSelect';
 import { PreviewImage } from './PreviewImage';
 import { TextError } from './TextError';
 
@@ -37,6 +38,16 @@ export const AddRecipeForm = () => {
 
   const dropdownOptions = [
     { key: 'Category', value: '' },
+    { key: 'breakfast', value: 'Breakfast' },
+    { key: 'beef', value: 'Beef' },
+    { key: 'miscellaneous', value: 'Miscellaneous' },
+    { key: 'dessert', value: 'Dessert' },
+    { key: 'goat', value: 'Goat' },
+    { key: 'lamb', value: 'Lamb' },
+  ];
+
+  const options = [
+    { key: '', value: '' },
     { key: 'breakfast', value: 'Breakfast' },
     { key: 'beef', value: 'Beef' },
     { key: 'miscellaneous', value: 'Miscellaneous' },
@@ -182,14 +193,21 @@ export const AddRecipeForm = () => {
                         </IngredienControler>
                         {ingredients.map((_, index) => (
                           <SelectIngredienContainer key={index}>
+                            <CustomSelect
+                              type="select"
+                              name={`ingredients[${index}].igredient`}
+                              options={options}
+                              placeholder="Select an ingredients"
+                              isSearchable={true}
+                            />
                             <Field
                               type="text"
-                              name={`ingredients[${index}].ingredien`}
+                              name={`ingredients[${index}].weight`}
                             />
 
                             <Field
                               as="select"
-                              name={`ingredients[${index}].weight`}
+                              name={`ingredients[${index}].measure`}
                             >
                               {cookingTime.map(option => {
                                 return (
