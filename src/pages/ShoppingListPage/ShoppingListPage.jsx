@@ -20,13 +20,12 @@ const isLoading = false;
 
 const ShoppingListPage = () => {
   const shoppingList = useSelector(selectProducts);
-  console.log(shoppingList);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch]);
+  }, [dispatch, shoppingList.length]);
 
   return (
     <MainContainer>

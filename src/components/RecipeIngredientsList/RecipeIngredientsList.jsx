@@ -1,12 +1,21 @@
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
+import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
 import { selectProducts } from 'redux/ShoppingList/shoppingListSelectors';
 
 import RecipeIngredientsItem from 'components/RecipeIngredientsItem';
 import { IngredientsListStyled } from './RecipeIngredientsList.styled';
 
 const RecipeIngredientsList = ({ ingredients, recipeId }) => {
+  const dispatch = useDispatch();
+
   const list = useSelector(selectProducts);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch, list.length]);
 
   function getIngDescription(id) {
     if (list.length !== 0) {

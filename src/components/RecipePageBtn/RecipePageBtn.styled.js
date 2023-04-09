@@ -11,7 +11,7 @@ export const RecipePageBtnStyle = styled.button`
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.subheader};
   font-size: 10px;
-  color: ${p => p.theme.colors.mainBtnText};
+  color: #23262a;
   padding: 10px 18px;
   background-color: transparent;
 
