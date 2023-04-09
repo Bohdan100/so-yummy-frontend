@@ -4,7 +4,7 @@ import { ReactComponent as BtnIconDelete } from '../../../images/icons/btn-delet
 export const Item = styled.li`
   height: 152px;
   padding: 14px 9px;
-  background-color: ${p => p.theme.colors.mainWhite}
+  background-color: ${p => p.theme.colors.recipeBlockBg}
 
   &:not(:last-child) {
     margin-bottom: 18px;
@@ -66,7 +66,7 @@ export const TitleRecipe = styled.p`
   font-weight: ${p => p.theme.fontWeights[1]};
   font-size: 14px;
   line-height: ${p => p.theme.lineHeights.userLink};
-  letter-spacing: ${p => p.theme.letterSpacings.subheader}
+  letter-spacing: ${p => p.theme.letterSpacings.subheader};
   color: ${p => p.theme.colors.secondaryDark};
   margin: 0px;
   text-align: left;
@@ -95,7 +95,7 @@ export const DeleteBtn = styled.button`
   align-items: center;
   text-align: center;
   color: ${p => p.theme.colors.mainWhite};
-  background-color: ${p => p.theme.colors.mainAccent};
+  background-color: ${p => p.theme.colors.deleteBtnRecipe};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 38px;
     height: 38px;
@@ -106,7 +106,7 @@ export const DeleteBtn = styled.button`
     padding: 12px;
   }
   svg {
-    stroke: ${p => p.theme.colors.mainWhite};
+    stroke: ${p => p.theme.colors.iconDlt};
   }
   &:hover,
   &:focus {
@@ -145,7 +145,7 @@ export const AboutRecipe = styled.p`
   font-size: 8px;
   letter-spacing: ${p => p.theme.letterSpacings.content}
   line-height: ${p => p.theme.lineHeights.description};
-  color: ${p => p.theme.colors.mainDark};
+  color: ${p => p.theme.colors.aboutRecipe};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 14px;
     margin-top: 28px;

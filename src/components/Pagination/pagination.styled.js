@@ -55,8 +55,8 @@ export const PaginationWrapper = styled.div`
     height: 27px;
     &:hover,
     &:focus {
-      background-color: ${p => p.theme.colors.btnHoverBg};
-      color: ${p => p.theme.colors.mainWhite};
+      background-color: ${p => p.theme.colors.paginationBg};
+      color: ${p => p.theme.colors.paginationText};
     }
   }
 `;
