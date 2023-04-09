@@ -68,7 +68,7 @@ const SubscribeForm = () => {
                     ? '1px solid #E74A3B'
                     : props.touched.email && props.isValid
                     ? '1px solid #3CBC81'
-                    : '1px solid #FAFAFA'
+                    : '1px solid rgba(255, 255, 255, 0.3)'
                 }
                 onBlur={() => {
                   props.setTouched({
