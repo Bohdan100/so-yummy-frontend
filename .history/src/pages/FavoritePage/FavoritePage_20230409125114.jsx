@@ -49,9 +49,7 @@ const FavoritePage = () => {
   const handleRemoveRecipe = async id => {
     await removeRecipeFromFavorites(id);
     console.log(recipes);
-    const { result } = recipes;
-    console.log(result);
-    const newRecipes = result.filter(recipe => recipe._id !== id);
+    const newRecipes = recipes.filter(recipe => recipe.id !== id);
     setRecipes(newRecipes);
   };
   return (

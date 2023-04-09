@@ -13,7 +13,7 @@ const FavoriteList = ({ recipes, handleDelete }) => {
           preview={recipe.recipe.preview}
           description={recipe.recipe.description}
           time={recipe.recipe.time}
-          onDelete={() => handleDelete(recipe.recipe._id)}
+          onDelete={() => handleDelete(recipe._id)}
         />
       ))}
     </FavList>

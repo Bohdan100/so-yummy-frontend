@@ -19,12 +19,12 @@ const FavoritePage = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [total, setTotal] = useState(0);
   const history = useNavigate();
-  const limit = 4;
+
   useEffect(() => {
     async function getFavoriteRacipes() {
       try {
         setIsLoading(true);
-        const response = await fetchFavoriteRacipes(pageNumber, limit);
+        const response = await fetchFavoriteRacipes();
         setRecipes(response.data);
         setTotal(response.total);
       } catch (error) {
@@ -41,6 +41,7 @@ const FavoritePage = () => {
     history(`?page=${pageNumber}`);
   }, [history, pageNumber]);
 
+  const limit = 4;
   const handleChange = (event, value) => {
     console.log('value', value);
     setPageNumber(value);
@@ -48,11 +49,7 @@ const FavoritePage = () => {
 
   const handleRemoveRecipe = async id => {
     await removeRecipeFromFavorites(id);
-    console.log(recipes);
-    const { result } = recipes;
-    console.log(result);
-    const newRecipes = result.filter(recipe => recipe._id !== id);
-    setRecipes(newRecipes);
+    setRecipes(recipes.filter(recipe => recipe.id !== id));
   };
   return (
     <>

@@ -51,7 +51,7 @@ const FavoritePage = () => {
     console.log(recipes);
     const { result } = recipes;
     console.log(result);
-    const newRecipes = result.filter(recipe => recipe._id !== id);
+    const newRecipes = result.filter(recipe => result.recipe.recipe._id !== id);
     setRecipes(newRecipes);
   };
   return (
