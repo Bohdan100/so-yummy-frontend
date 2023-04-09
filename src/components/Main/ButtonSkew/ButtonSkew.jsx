@@ -17,3 +17,4 @@ export const ButtonSkew = ({ type, fn, styled, text, location }) => {
     </ButtonSkewStyle>
   );
 };
+//
