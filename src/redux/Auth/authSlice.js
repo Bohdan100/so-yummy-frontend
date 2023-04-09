@@ -55,12 +55,8 @@ const authSlice = createSlice({
     isRefreshing: false,
     isLoading: false,
     error: null,
-    theme: 'Dark',
   },
   reducers: {
-    setTheme(state, action) {
-      state.theme = action.payload;
-    },
     setError(state, action) {
       state.error = action.payload;
     },
@@ -81,4 +77,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const { setTheme, setError } = authSlice.actions;
+export const { setError } = authSlice.actions;

@@ -1,12 +1,13 @@
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../constants';
+import { theme as lightMode, darkTheme as darkMode } from '../constants';
 import { GlobalStyle } from './GlobalStyle';
 
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import CategoriesByName from '../components/CategoriesByName';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { refresh } from 'redux/Auth/authOperations';
+import { selectTheme } from 'redux/Theme/themeSelectors';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -31,13 +32,15 @@ const RecipePage = lazy(() => import('pages/RecipePage'));
 
 export const App = () => {
   const dispatch = useDispatch();
+  const theme = useSelector(selectTheme);
+  const userThemeMode = theme === 'light' ? lightMode : darkMode;
 
   useEffect(() => {
     dispatch(refresh());
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={userThemeMode}>
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Layout />}>
