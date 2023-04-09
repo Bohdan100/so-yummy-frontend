@@ -3,6 +3,8 @@ import { ReactComponent as BurgerIcon } from '../../images/icons/burger-menu-mob
 
 export const HeaderStyled = styled.header`
   padding-top: 18px;
+  position: relative;
+  z-index: 10;
 
   @media screen and (min-width: 1440px) {
     padding-top: 14px;
