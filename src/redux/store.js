@@ -14,17 +14,23 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './Auth/authSlice';
 import { shoppingListReducer } from './ShoppingList/shoppingListSlice';
 import { ownRecipesReduser } from './OwnRecipes/OwnRecipesSlice';
+import { themeReducer } from './Theme/themeSlice';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'theme'],
+  whitelist: ['token'],
 };
 
 const ownRecipesPersistConfig = {
   key: 'ownRecipes',
   storage,
   whitelist: ['ownRecipes'],
+};
+
+const themePersistConfig = {
+  key: 'theme',
+  storage,
 };
 
 const middleware = getDefaultMiddleware =>
@@ -39,6 +45,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     shoppingList: shoppingListReducer,
     ownRecipes: persistReducer(ownRecipesPersistConfig, ownRecipesReduser),
+    theme: persistReducer(themePersistConfig, themeReducer),
   },
   middleware,
 });

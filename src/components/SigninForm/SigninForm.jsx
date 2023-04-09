@@ -7,7 +7,7 @@ import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
 import {
   loginValidationSchema,
   ErrorStatus,
-  ErrorMessages,
+  getPassErrorStatus,
 } from '../../helpers';
 import { useAuth } from '../../hooks';
 import { setError } from '../../redux/Auth/authSlice';
@@ -47,24 +47,13 @@ const SigninForm = () => {
     }
   }, [dispatch, error]);
 
-  const handleSubmitForm = async ({ email, password }, { resetForm }) => {
-    await dispatch(login({ email, password })).then(
-      res => !res.error && resetForm()
-    );
-    await dispatch(fetchProducts()).then(res => !res.error && resetForm());
-  };
-
-  const getPassErrorStatus = (error, dirty) => {
-    if (!error && dirty) {
-      return 'valid';
-    }
-    if (!error && !dirty) {
-      return 'normal';
-    } else if (error === ErrorMessages.password) {
-      return 'notSecure';
-    } else if (error !== ErrorMessages.password) {
-      return 'inValid';
-    }
+  const handleSubmitForm = ({ email, password }, { resetForm }) => {
+    dispatch(login({ email, password })).then(res => {
+      if (!res.error) {
+        dispatch(fetchProducts());
+        resetForm();
+      }
+    });
   };
 
   const statusIcon = {

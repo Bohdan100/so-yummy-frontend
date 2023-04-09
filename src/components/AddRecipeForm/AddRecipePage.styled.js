@@ -99,7 +99,7 @@ export const SelectStyled = styled.select`
 
 export const SelectIngredienContainer = styled.div`
   display: grid;
-  grid-template-columns: 60% 30% 10%;
+  grid-template-columns: 45% 25% 25% 5%;
   row-gap: 20px;
   column-gap: 10px;
 `;

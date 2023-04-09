@@ -22,9 +22,10 @@ export const Text = styled.p`
   line-height: ${p => p.theme.lineHeights.subheader};
   font-size: 14px;
   text-align: center;
-  //   font-feature-settings: 'liga' off;
+  font-feature-settings: 'liga' off;
   color: ${p => p.theme.colors.mainBlack};
   opacity: 0.5;
+  margin-bottom: 10px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 24px;
   }

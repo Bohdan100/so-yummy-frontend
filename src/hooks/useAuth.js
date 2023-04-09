@@ -3,7 +3,6 @@ import {
   selectIsLoggedIn,
   selectUser,
   selectIsRefreshing,
-  selectTheme,
   selectError,
 } from 'redux/Auth/authSelectors';
 
@@ -12,7 +11,6 @@ export const useAuth = () => {
     isLoggedIn: useSelector(selectIsLoggedIn),
     isRefreshing: useSelector(selectIsRefreshing),
     user: useSelector(selectUser),
-    userTheme: useSelector(selectTheme),
     error: useSelector(selectError),
   };
 };

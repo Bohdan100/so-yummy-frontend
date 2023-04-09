@@ -24,6 +24,11 @@ export const RecipeHeroConteiner = styled.div`
   margin-left: auto;
   margin-right: auto;
 
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+
   @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
     (-webkit-min-device-pixel-ratio: 2),

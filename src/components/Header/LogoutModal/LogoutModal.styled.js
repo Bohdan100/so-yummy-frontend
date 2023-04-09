@@ -67,6 +67,7 @@ export const CrossBtb = styled.button`
 export const CrossIconStyled = styled(CrossIcon)`
   width: 20px;
   height: 20px;
+  stroke: ${p => p.theme.colors.mainBtnText};
 
   @media screen and (min-width: 768px) {
     width: 24px;
@@ -113,7 +114,7 @@ export const LogoutBtn = styled.button`
   font-size: 14px;
   line-height: ${p => p.theme.lineHeights.extraContent};
   text-align: center;
-  color: ${p => p.theme.colors.bodyBg};
+  color: ${p => p.theme.colors.btnTextLight};
   transition: ${p => p.theme.transitions.main};
 
   @media screen and (min-width: 768px) {
@@ -127,7 +128,8 @@ export const LogoutBtn = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${p => p.theme.colors.btnHoverBg};
+    background-color: ${p => p.theme.colors.logOutBtnHoverBg};
+    color: ${p => p.theme.colors.logOutBtnHoverText};
   }
 `;
 

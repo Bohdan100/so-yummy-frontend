@@ -69,6 +69,7 @@ export const CloseBtn = styled.button`
 export const CrossIconStyled = styled(CrossIcon)`
   width: 20px;
   height: 20px;
+  stroke: ${p => p.theme.colors.mainBtnText};
 
   @media screen and (min-width: 768px) {
     width: 24px;

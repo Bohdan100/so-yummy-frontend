@@ -1,11 +1,10 @@
 export {
   loginValidationSchema,
-  registerValidationSchema,
-  ErrorMessages,
+  registerValidationSchema
 } from './authValidationShemas';
 
 export * from './updateUserValidationSchema';
 
-export { ErrorStatus } from './ErrorStatus';
+export { ErrorStatus, getPassErrorStatus } from './ErrorStatus';
 
 export * from './scrollToTop';
