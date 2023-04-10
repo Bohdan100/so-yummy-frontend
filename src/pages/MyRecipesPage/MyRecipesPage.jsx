@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { PaginationComp } from '../../components/Pagination/pagination';
 import { WrapText } from 'components/WrapText/WrapText';
+
 import {
   getOwnRecipesList,
   getTotalOwnRecipes,
@@ -44,15 +45,10 @@ const MyRecipesPage = () => {
     history(`?page=${pageNumber}`);
   }, [history, pageNumber]);
 
-  // useEffect(() => {
-  //   dispatch(getOwnRecipes());
-  // }, [dispatch]);
-
   return (
     <div>
       <MainContainer>
         <ReusableTitle>My Recipes</ReusableTitle>
-        {/* <h2>My Recipes</h2> */}
         <>
           {recipes && recipes.length > 0 ? (
             <MyRecipeList data={recipes} />

@@ -46,6 +46,7 @@ export const LayoutStyled = styled.div`
 `;
 
 export const ContentContainer = styled.div`
+background-color: ${p => p.theme.colors.mainBg}
   flex: 1;
 `;
 
