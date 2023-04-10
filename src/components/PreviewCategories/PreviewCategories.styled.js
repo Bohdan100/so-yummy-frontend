@@ -58,7 +58,7 @@ export const SeeAllBtn = styled(NavLink)`
   &:hover {
     background-color: ${p => p.theme.colors.mainBtnBGHover};
     border: ${p => p.theme.borders.mainNavBord};
-    color: ${p => p.theme.colors.mainBtnCategoryText};
+    color: ${p => p.theme.colors.mainBtnCategoryTextHover};
   }
 `;
 
