@@ -121,7 +121,7 @@ export const DeleteBtn = styled.button`
   }
   &:hover,
   &:focus {
-    background-color: ${p => p.theme.colors.mainWhite};
+    background-color: ${p => p.theme.colors.hoverBgBtn};
     color: ${p => p.theme.colors.mainAccent};
     border: 1px solid ${p => p.theme.colors.mainAccent};
   }
@@ -232,7 +232,7 @@ export const BtnSee = styled.button`
   }
   &:hover,
   &:focus {
-    background-color: ${p => p.theme.colors.mainWhite};
+    background-color: ${p => p.theme.colors.hoverBgBtn};
     color: ${p => p.theme.colors.mainAccent};
     border: 1px solid ${p => p.theme.colors.mainAccent};
   }
