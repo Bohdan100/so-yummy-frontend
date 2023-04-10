@@ -13,6 +13,7 @@ export const theme = {
     mainNavLinkHover: '#23262A',
     mainHeaderText: '#22252A',
     mainBtnText: '#22252A',
+    mainBtnCategory: '#8AA936',
     bodyBg: '#FAFAFA',
     footerBg: '#22252A',
     footerSMlinks: '#8BAA36',
