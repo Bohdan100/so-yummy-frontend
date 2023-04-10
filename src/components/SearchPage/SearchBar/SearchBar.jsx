@@ -1,5 +1,5 @@
-import { SearchForm } from '../SearchForm';
-// import { SearchBarCont } from './SearchBar.styled';
+import SearchForm from '../../SearchForm/index';
+import { SearchBarCont } from './SearchBar.styled';
 import SearchTypeSelector from './SearchTypeSelector/SearchTypeSelector';
 import { useState } from 'react';
 
@@ -12,14 +12,14 @@ export const SearchBar = ({ onSubmit, startType, startQuery }) => {
   };
 
   return (
-    <div>
+    <SearchBarCont>
       <SearchForm
-        // styled={'olive'}
+        styled={'olive'}
         type={type}
-        onSubmit={onSubmit}
+        handleOnSubmit={onSubmit}
         startQuery={startQuery}
       />
       <SearchTypeSelector startType={startType} typeSubmit={typeSubmit} />
-    </div>
+    </SearchBarCont>
   );
 };

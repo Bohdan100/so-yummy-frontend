@@ -13,7 +13,8 @@ export const SkewBtn = styled.button`
   font-size: 14px;
   color: ${p => p.theme.colors.mainBtnCategoryText};
   padding: 16px 32px;
-  background-color: ${p => p.theme.colors.mainBTn};
+  background-color: ${p =>
+    p.styled === 'olive' ? p.theme.colors.mainAccent : p.theme.colors.mainBTn};
   outline: none;
   border: none;
   border-top-left-radius: 30px;
@@ -25,7 +26,10 @@ export const SkewBtn = styled.button`
   transition: ${p => p.theme.transitions.main};
 
   &:hover {
-    background-color: ${p => p.theme.colors.mainBtnBGCategory};
+    background-color: ${p =>
+      p.styled === 'olive'
+        ? p.theme.colors.mainBTn
+        : p.theme.colors.mainAccent};
     color: ${p => p.theme.colors.mainBtnCategoryTextHover};
   }
 
