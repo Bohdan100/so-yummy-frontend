@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const RecipeCardWrapper = styled.li`
@@ -6,20 +7,14 @@ export const RecipeCardWrapper = styled.li`
   width: 100%;
   border-radius: ${p => p.theme.radii.image};
   transition: ${p => p.theme.transitions.main};
-
-  & a {
-    display: block;
-    overflow: hidden;
-    transition: ${p => p.theme.transitions.main};
-    :hover {
-      transform: scale(1.05);
-    }
-    /* Для збільшення img пр ховері */
-    /* :hover img {
+  &:hover a {
+    transform: scale(1.05);
+  }
+  /* Для збільшення img пр ховері */
+  /* :hover img {
       transform: scale(1.25);
       filter: contrast(130%);
     } */
-  }
 
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: calc((100% - 32px) / 2);
@@ -74,4 +69,19 @@ export const RecipeTitle = styled.p`
   letter-spacing: ${p => p.theme.letterSpacings.subheader};
   padding: 16px;
   color: ${p => p.theme.colors.mainHeaderText};
+`;
+
+export const RecipeLink = styled(Link)`
+  height: 323px;
+  width: 343px;
+  display: block;
+  overflow: hidden;
+  transition: ${p => p.theme.transitions.main};
+
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 336px;
+  }
+  @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
+    width: 300px;
+  }
 `;

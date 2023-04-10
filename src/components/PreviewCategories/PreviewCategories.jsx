@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 import { useMedia } from 'react-use';
 import { toast } from 'react-toastify';
 import * as API from 'services/categories-API';
@@ -22,7 +22,7 @@ const PreviewCategories = () => {
   const [recipesByMainCategories, setRecipesByMainCategories] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   useEffect(() => {
     let count;
     if (isDesctopDevice) {
@@ -49,9 +49,10 @@ const PreviewCategories = () => {
     getRecipesByFourCategory();
   }, [isDesctopDevice, isTabletDevice]);
 
-  const onClick = ({ category }) => {
-    navigate(`/categories/${category}`);
-  };
+  // const onClick = ({ category }) => {
+  //   navigate(`/categories/${category}`);
+  //   console.log(category);
+  // };
   return (
     <>
       {error && (
@@ -62,19 +63,23 @@ const PreviewCategories = () => {
       {isLoading && <Loader />}
       <CategoryList>
         {recipesByMainCategories &&
-          Object.entries(recipesByMainCategories).map(([category, recipes]) => (
-            <li key={category}>
-              <Title sx={{ marginTop: '0', marginBottom: '50' }}>
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </Title>
-              <CardList>
-                {recipes.map(recipe => (
-                  <RecipeCard key={recipe._id} dish={recipe} />
-                ))}
-              </CardList>
-              <SeeAllBtn onClick={() => onClick(category)}>See all</SeeAllBtn>
-            </li>
-          ))}
+          Object.entries(recipesByMainCategories).map(([category, recipes]) => {
+            return (
+              <>
+                <li key={category}>
+                  <Title sx={{ marginTop: '0', marginBottom: '50' }}>
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </Title>
+                  <CardList>
+                    {recipes.map(recipe => (
+                      <RecipeCard key={recipe._id} dish={recipe} />
+                    ))}
+                  </CardList>
+                  <SeeAllBtn to={`/categories/${category}`}>See all</SeeAllBtn>
+                </li>
+              </>
+            );
+          })}
       </CategoryList>
       <OtherBtn to={'/categories'}>Other categories</OtherBtn>
     </>
