@@ -51,11 +51,14 @@ export const Container = styled.div`
   width: 187px;
   display: flex;
   flex-direction: column;
+  margin-left: 14px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 404px;
+    margin-left: 24px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     width: 788px;
+    margin-left: 54px;
   }
 `;
 
@@ -76,7 +79,9 @@ export const TitleRecipe = styled.p`
   color: ${p => p.theme.colors.secondaryDark};
   margin: 0px;
   text-align: left;
+  padding-right: 28px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    padding-right: 40px;
     font-size: 24px;
     line-height: ${p => p.theme.lineHeights.subheader};
   }
