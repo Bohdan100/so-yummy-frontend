@@ -67,7 +67,7 @@ const SearchPage = () => {
     }
 
     SearchRecipes();
-  }, [searchParams]);
+  }, [query, type, searchParams]);
 
   return (
     <MainContainer>
