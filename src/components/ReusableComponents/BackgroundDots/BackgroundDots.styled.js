@@ -10,6 +10,7 @@ import greenkDesc from '../../../images/elements/rectangle/rectangle_green_9Desk
 export const StyledDiv = styled.div`
   z-index: -1;
   position: absolute;
+  top: 71px;
   width: 345px;
   height: 192px;
   background-image: url(${greenkMob}), url(${blackMob}), url(${greenkMob});
@@ -19,6 +20,7 @@ export const StyledDiv = styled.div`
     left 332px top 46px;
 
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    top: 74px;
     width: 718px;
     height: 240px;
     background-image: url(${greenkTab}), url(${blackTab}), url(${greenkTab});
@@ -27,6 +29,7 @@ export const StyledDiv = styled.div`
       left 695px top 31px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
+    top: 67px;
     width: 1180px;
     height: 240px;
     background-image: url(${greenkDesc}), url(${blackDesc}), url(${greenkDesc});
