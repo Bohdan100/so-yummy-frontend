@@ -1,4 +1,4 @@
-// import { ButtonSkewStyle } from 'components/ButtonSkew/buttonSkew.styled';
+import { ButtonSkewStyle } from 'components/ButtonSkew/ButtonSkew';
 import { theme } from 'constants';
 import styled from 'styled-components';
 // import { theme } from '';

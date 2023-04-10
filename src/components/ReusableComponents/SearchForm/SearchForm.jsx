@@ -1,6 +1,6 @@
 // import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
 import React, { useState } from 'react';
-import { Search, SearchIn, SearchInput } from './SearchForm.styled';
+import { Search } from './SearchForm.styled';
 
 export const SearchForm = ({ onSubmit, type, startQuery }) => {
   const [searchValue, setInputValue] = useState(startQuery ?? '');
