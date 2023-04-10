@@ -88,20 +88,12 @@ export const SelectTitle = styled.span`
 export const SelectStyled = styled.select`
   border: none;
   outline: none;
-  background-color: transparent;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
   line-height: 14px;
   color: #000000;
-`;
-
-export const SelectIngredienContainer = styled.div`
-  display: grid;
-  grid-template-columns: 45% 25% 25% 5%;
-  row-gap: 20px;
-  column-gap: 10px;
 `;
 
 export const IngredienControler = styled.div`
@@ -128,20 +120,32 @@ export const ButtonClickIngredient = styled.button`
   background-color: transparent;
 `;
 
-export const ListStyle = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  row-gap: 20px;
-  column-gap: 20px;
-`;
-
 export const CloseIconStyled = styled(CloseIcon)`
   margin-right: 5px;
   stroke: black;
   display: inline-block;
   width: 14px;
   height: 14px;
+`;
+
+export const SelectIngredienContainer = styled.div`
+  display: grid;
+  grid-template-columns: 70% 25% 5%;
+  row-gap: 20px;
+  column-gap: 10px;
+`;
+
+export const Selectfield = styled.div`
+  width: 84px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  display: flex;
+`;
+
+export const InputWeight = styled.input`
+  width: 100%;
+  border: none;
+  outline: none;
 `;
 
 export const TextAreaContainer = styled.div`

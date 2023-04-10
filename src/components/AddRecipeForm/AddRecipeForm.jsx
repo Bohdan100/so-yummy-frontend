@@ -20,6 +20,8 @@ import {
   CloseIconStyled,
   IconFile,
   FirstTitle,
+  Selectfield,
+  InputWeight,
 } from './AddRecipePage.styled';
 import CustomSelect from './CustomSelect';
 import { PreviewImage } from './PreviewImage';
@@ -46,16 +48,6 @@ export const AddRecipeForm = () => {
     { key: 'lamb', value: 'Lamb' },
   ];
 
-  const options = [
-    { key: '', value: '' },
-    { key: 'breakfast', value: 'Breakfast' },
-    { key: 'beef', value: 'Beef' },
-    { key: 'miscellaneous', value: 'Miscellaneous' },
-    { key: 'dessert', value: 'Dessert' },
-    { key: 'goat', value: 'Goat' },
-    { key: 'lamb', value: 'Lamb' },
-  ];
-
   const cookingTime = [
     { key: 'Cooking time', value: '' },
     { key: '20 min', value: '20 min' },
@@ -64,6 +56,19 @@ export const AddRecipeForm = () => {
     { key: '50 min', value: '50 min' },
     { key: '60 min', value: '60 min' },
     { key: '90 min', value: '90 min' },
+  ];
+
+  const measure = [
+    { key: 'tbs', value: 'tbs' },
+    { key: 'tsp', value: 'tsp' },
+    { key: 'kg', value: 'kg' },
+    { key: 'g', value: 'g' },
+  ];
+
+  const options = [
+    { value: 'option1', label: 'Option 1' },
+    { value: 'option2', label: 'Option 2' },
+    { value: 'option3', label: 'Option 3' },
   ];
 
   return (
@@ -199,26 +204,29 @@ export const AddRecipeForm = () => {
                               placeholder="Select an ingredients"
                               isSearchable={true}
                             />
-                            <Field
-                              type="text"
-                              name={`ingredients[${index}].weight`}
-                            />
+                            <Selectfield>
+                              <Field
+                                as={InputWeight}
+                                type="text"
+                                name={`ingredients[${index}].weight`}
+                              />
+                              <Field
+                                as={SelectStyled}
+                                name={`ingredients[${index}].measure`}
+                              >
+                                {measure.map(option => {
+                                  return (
+                                    <option
+                                      key={option.value}
+                                      value={option.value}
+                                    >
+                                      {option.key}
+                                    </option>
+                                  );
+                                })}
+                              </Field>
+                            </Selectfield>
 
-                            <Field
-                              as="select"
-                              name={`ingredients[${index}].measure`}
-                            >
-                              {cookingTime.map(option => {
-                                return (
-                                  <option
-                                    key={option.value}
-                                    value={option.value}
-                                  >
-                                    {option.key}
-                                  </option>
-                                );
-                              })}
-                            </Field>
                             {index >= 0 && (
                               <ButtonClickIngredient
                                 type="button"
