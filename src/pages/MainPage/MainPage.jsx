@@ -1,10 +1,11 @@
+import MainHero from 'components/Main/MainHero/MainHero';
 import MainContainer from 'components/MainContainer/MainContainer';
 import PreviewCategories from 'components/PreviewCategories/PreviewCategories';
 
 const MainPage = () => {
   return (
     <MainContainer>
-      <div>MainPage</div>
+      <MainHero />
       <PreviewCategories />
     </MainContainer>
   );
