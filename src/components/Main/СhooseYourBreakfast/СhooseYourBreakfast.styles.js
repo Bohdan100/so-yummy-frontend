@@ -19,8 +19,8 @@ export const ChooseBlock = styled.div`
     width: 261px;
     height: 100px;
     position: absolute;
-    right: 32px;
-    top: 372px;
+    right: 62px;
+    top: 434px;
   }
   @media (min-width: 1440px) {
     line-height: 20px;
@@ -29,7 +29,7 @@ export const ChooseBlock = styled.div`
     height: 114px;
     position: absolute;
     right: 122px;
-    top: 462px;
+    top: 514px;
   }
 `;
 
@@ -78,13 +78,13 @@ export const ChooseLink = styled(NavLink)`
   align-items: center;
   justify-content: flex-end;
   transform: ${theme.transitions.main};
-&:hover {
+  &:hover {
     color: ${theme.colors.mainAccent};
     svg path {
       stroke: ${theme.colors.mainAccent};
     }
   }
-  
+
   @media (min-width: 768px) {
     font-size: 14px;
   }
@@ -101,5 +101,4 @@ export const RightArrow = styled.svg`
   stroke: ${p => p.theme.colors.secondaryDark};
   transition: ${p => p.theme.transitions.main};
   transform: ${theme.transitions.main};
-  
 `;

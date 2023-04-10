@@ -1,6 +1,9 @@
 import SearchForm from 'components/SearchForm';
 import СhooseYourBreakfast from 'components/Main/СhooseYourBreakfast';
-
+// import { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import {
   MainPageBg,
   MainPageH1,
@@ -10,6 +13,18 @@ import {
 } from './MainHero.styled';
 
 const MainHero = () => {
+  const navigate = useNavigate();
+
+  const handleOnSubmit = (query, type) => {
+    if (query === '') {
+      toast.error(`You didn't enter anything to search`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      return;
+    }
+    navigate(`/search?query=${query}&type=${type}`);
+  };
+
   return (
     <MainPageBg>
       <MainPageDiv>
@@ -22,7 +37,7 @@ const MainHero = () => {
           future.
         </MainPageText>
         <СhooseYourBreakfast />
-        <SearchForm styled={'black'} />
+        <SearchForm styled={'black'} handleOnSubmit={handleOnSubmit} />
       </MainPageDiv>
     </MainPageBg>
   );

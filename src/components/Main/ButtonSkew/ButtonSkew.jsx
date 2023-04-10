@@ -1,4 +1,4 @@
-import { ButtonSkewStyle } from './buttonSkew.styled';
+import { ButtonSkewStyle } from './ButtonSkew.styled';
 
 const ButtonSkew = ({ type, fn, styled, text, location }) => {
   const onClick = e => {
