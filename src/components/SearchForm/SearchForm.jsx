@@ -1,4 +1,4 @@
-import ButnSkew from 'components/ButtonSkew/ButtonSkew';
+import ButnSkew from 'components/ButtonSkew';
 import React, { useState } from 'react';
 import { SearchBlock, SearchIn, SearchInput } from './SearchForm.styled';
 
