@@ -18,6 +18,7 @@ const logoutFulfilledReducer = state => {
   state.error = null;
 };
 const refreshFulfilledReducer = (state, action) => {
+  console.log('action.payload', action.payload);
   state.user = action.payload;
   state.isLoggedIn = true;
   state.isRefreshing = false;
