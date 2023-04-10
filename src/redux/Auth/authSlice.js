@@ -52,7 +52,7 @@ const authSlice = createSlice({
     },
     token: null,
     isLoggedIn: false,
-    isRefreshing: false,
+    isRefreshing: true,
     isLoading: false,
     error: null,
   },
