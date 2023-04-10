@@ -30,9 +30,11 @@ const SearchPage = () => {
   };
 
   const handleChange = (event, value) => {
+    console.log(value);
     setPage(value);
-    console.log(page);
-    setSearchParams({ type, query, page, perPage });
+    console.log('page', page);
+    setSearchParams({ type, query, page: value, perPage });
+    console.log(searchParams);
     scrollToTop();
   };
 
@@ -65,7 +67,7 @@ const SearchPage = () => {
     }
 
     SearchRecipes();
-  }, [type, query, page, searchParams]);
+  }, [searchParams]);
 
   return (
     <MainContainer>
@@ -84,7 +86,7 @@ const SearchPage = () => {
           })}
         </RecipesList>
       )}
-      {recipes && recipes.length >= perPage && (
+      {recipes && recipes.length >= 0 && (
         <PaginationComp
           count={Math.ceil(totalHits / perPage)}
           page={page}
