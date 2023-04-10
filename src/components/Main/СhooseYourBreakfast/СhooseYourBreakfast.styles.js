@@ -1,5 +1,3 @@
-import { theme } from 'constants/theme';
-
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
@@ -34,12 +32,12 @@ export const ChooseBlock = styled.div`
 `;
 
 export const ChooseText = styled.p`
-  font-family: ${theme.fonts.main};
+  font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
-  letter-spacing: ${theme.letterSpacings.subheader};
+  letter-spacing: ${p => p.theme.letterSpacings.subheader};
   color: ${p => p.theme.colors.secondaryDark};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 14px;
@@ -66,7 +64,7 @@ export const ChooseSpan = styled.span`
   }
 `;
 export const ChooseLink = styled(NavLink)`
-  font-family: ${theme.fonts.main};
+  font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
