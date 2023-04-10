@@ -9,9 +9,23 @@ import {
   MainPageDiv,
   SpanGr,
 } from './MainHero.styled';
+import { useDesktopCheck } from 'hooks/desktopCheck';
 
 const MainHero = () => {
+  const { isTablet, isDesktop } = useDesktopCheck();
   const navigate = useNavigate();
+
+  const perPageItems = () => {
+    let perPage;
+    if (isDesktop) {
+      perPage = 12;
+    } else if (isTablet) {
+      perPage = 6;
+    } else {
+      perPage = 6;
+    }
+    return perPage;
+  };
 
   const handleOnSubmit = (query, type) => {
     if (query === '') {
@@ -20,7 +34,9 @@ const MainHero = () => {
       });
       return;
     }
-    navigate(`/search?query=${query}&type=${type}`);
+    navigate(
+      `/search?query=${query}&type=${type}&page=1&perPage=${perPageItems()}`
+    );
   };
 
   return (

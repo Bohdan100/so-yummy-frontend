@@ -11,6 +11,7 @@ import RecipeCard from 'components/ReusableComponents/RecipeCard';
 import { scrollToTop } from 'helpers';
 import { PaginationComp } from 'components/Pagination/pagination';
 import { FetchSearchedMeals } from 'services/search-meals-API';
+import { useDesktopCheck } from 'hooks/desktopCheck';
 
 const SearchPage = () => {
   const [error, setError] = useState(null);
@@ -19,22 +20,31 @@ const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(1);
   const [totalHits, setTotalHits] = useState();
+  const { isTablet, isDesktop } = useDesktopCheck();
   const query = searchParams.get('query') ?? '';
   const type = searchParams.get('type') ?? 'Title';
 
-  let perPage = 6;
+  const perPageItems = () => {
+    let perPage;
+    if (isDesktop) {
+      perPage = 12;
+    } else if (isTablet) {
+      perPage = 6;
+    } else {
+      perPage = 6;
+    }
+    return perPage;
+  };
 
   const onSubmit = (query, type) => {
     setPage(1);
-    setSearchParams({ type, query, page, perPage });
+    setError(null);
+    setSearchParams({ type, query, page, perPage: perPageItems() });
   };
 
   const handleChange = (event, value) => {
-    console.log(value);
     setPage(value);
-    console.log('page', page);
-    setSearchParams({ type, query, page: value, perPage });
-    console.log(searchParams);
+    setSearchParams({ type, query, page: value, perPage: perPageItems() });
     scrollToTop();
   };
 
@@ -45,7 +55,7 @@ const SearchPage = () => {
       try {
         setIsLoading(true);
         const recipes = await FetchSearchedMeals(searchParams);
-        console.log(recipes);
+
         if (recipes.length === 0) {
           toast.error(
             'Sorry, there are no recipes matching your search query. Please, try again.',
@@ -58,7 +68,7 @@ const SearchPage = () => {
         setTotalHits(recipes.totalHits);
       } catch (error) {
         toast.error('Something went wrong. Please, reload the page.', {
-          position: 'top-center',
+          position: 'top-right',
         });
         setError(error);
       } finally {
@@ -67,7 +77,7 @@ const SearchPage = () => {
     }
 
     SearchRecipes();
-  }, [query, type, searchParams]);
+  }, [type, query, searchParams]);
 
   return (
     <MainContainer>
@@ -86,23 +96,16 @@ const SearchPage = () => {
           })}
         </RecipesList>
       )}
-      {recipes && recipes.length >= 0 && (
+      {recipes && recipes.length > 0 && (
         <PaginationComp
-          count={Math.ceil(totalHits / perPage)}
+          count={Math.ceil(totalHits / perPageItems())}
           page={page}
           handleChange={handleChange}
         />
       )}
       {!isLoading && !error && recipes.length === 0 && (
-        <NotFoundWrapp>Try looking for something else...</NotFoundWrapp>
-      )}
-      {/* {isLoading ? (
-        <Loader />
-      ) : recipes < 1 ? (
         <NotFoundWrapp>Try looking for something else..</NotFoundWrapp>
-      ) : (
-        <p>Recepies will be here</p>
-      )} */}
+      )}
     </MainContainer>
   );
 };
