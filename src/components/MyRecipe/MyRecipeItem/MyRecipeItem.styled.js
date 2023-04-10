@@ -4,7 +4,7 @@ import { ReactComponent as BtnIconDelete } from '../../../images/icons/btn-delet
 export const Item = styled.li`
   height: 152px;
   padding: 14px 9px;
-  background-color: ${p => p.theme.colors.recipeBlockBg}
+  background-color: ${p => p.theme.colors.recipeBlockBg};
 
   &:not(:last-child) {
     margin-bottom: 18px;
@@ -12,9 +12,15 @@ export const Item = styled.li`
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     padding: 28px 24px;
     height: 288px;
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     height: 404px;
+    &:not(:last-child) {
+      margin-bottom: 50px;
+    }
   }
 `;
 
