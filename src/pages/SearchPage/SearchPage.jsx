@@ -2,34 +2,51 @@ import React, { useEffect, useState } from 'react';
 import MainContainer from 'components/MainContainer/MainContainer';
 import ReusableTitle from 'components/ReusableComponents/ReusableTitle/ReusableTitle';
 import { SearchBar } from 'components/SearchPage/SearchBar/SearchBar';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { NoSearchResult } from 'components/SearchPage/NoSearchResult/NoSearchResult';
-
 import NotFoundWrapp from 'components/CategoriesByName/NotFoundWrapp';
 import Loader from 'components/Loader/Loader';
+import { RecipesList } from 'components/CategoriesByName/CategoriesByName.styled';
+import RecipeCard from 'components/ReusableComponents/RecipeCard';
+import { scrollToTop } from 'helpers';
+import { PaginationComp } from 'components/Pagination/pagination';
 
 const SearchPage = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [page, setPage] = useState(1);
+  const [totalHits, setTotalHits] = useState();
   const query = searchParams.get('query') ?? '';
   const type = searchParams.get('type') ?? 'Title';
+  const history = useNavigate();
+
+  let perPage = 6;
 
   const onSubmit = (query, type) => {
-    let page = 1;
-    let perPage = 5;
+    setPage(1);
     setSearchParams({ type, query, page, perPage });
+  };
+
+  const handleChange = (event, value) => {
+    setPage(value);
+    console.log(page);
+    setSearchParams({ type, query, page, perPage });
+    scrollToTop();
   };
 
   async function FetchSearchedMeals(searchParams) {
     const response = await axios.get(`/search`, { params: searchParams });
 
-    console.log(response.data.meals);
-    return response.data.meals;
+    console.log(response);
+    return response.data;
   }
+
+  useEffect(() => {
+    history(`?page=${page}`);
+  }, [history, page]);
 
   useEffect(() => {
     if (query === '' || type === '') return;
@@ -47,7 +64,9 @@ const SearchPage = () => {
             }
           );
         }
-        setRecipes(recipes);
+        setRecipes(recipes.meals);
+        setTotalHits(recipes.totalHits);
+        console.log(recipes);
       } catch (error) {
         toast.error('Something went wrong. Please, reload the page.', {
           position: 'top-center',
@@ -59,19 +78,42 @@ const SearchPage = () => {
     }
 
     SearchRecipes();
-  }, [type, query]);
+  }, [type, query, page, searchParams]);
 
   return (
     <MainContainer>
       <ReusableTitle>Search</ReusableTitle>
       <SearchBar onSubmit={onSubmit} startType={type} startQuery={query} />
-      {isLoading ? (
+      {error && (
+        <NotFoundWrapp>
+          Whoops, something went wrong: {error.message}
+        </NotFoundWrapp>
+      )}
+      {isLoading && <Loader />}
+      {recipes.length > 0 && !error && !isLoading && (
+        <RecipesList>
+          {recipes.map(recipe => {
+            return <RecipeCard dish={recipe} key={recipe._id} />;
+          })}
+        </RecipesList>
+      )}
+      {recipes && recipes.length >= perPage && (
+        <PaginationComp
+          count={Math.ceil(totalHits / perPage)}
+          page={page}
+          handleChange={handleChange}
+        />
+      )}
+      {!isLoading && !error && recipes.length === 0 && (
+        <NotFoundWrapp>Try looking for something else...</NotFoundWrapp>
+      )}
+      {/* {isLoading ? (
         <Loader />
       ) : recipes < 1 ? (
         <NotFoundWrapp>Try looking for something else..</NotFoundWrapp>
       ) : (
         <p>Recepies will be here</p>
-      )}
+      )} */}
     </MainContainer>
   );
 };
