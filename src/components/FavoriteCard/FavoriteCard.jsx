@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+// import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { selectTheme } from 'redux/Theme/themeSelectors';
 import {
   CardWrapper,
   ImageWrapper,
@@ -13,7 +16,6 @@ import {
   DeleteIconStyled,
   DeleteButton,
   TitleBox,
-  IconSpan,
   TextWrapper,
   Box,
   RecipePageBtn,
@@ -21,27 +23,26 @@ import {
 
 const FavoriteCard = ({ id, title, preview, description, time, onDelete }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-
+  const theme = useSelector(selectTheme);
   if (isMobile) {
     return (
-      <CardWrapper>
-        <ImageWrapper>
-          <Img src={preview} alt={title} />
-        </ImageWrapper>
-        <InfoWrapper>
-          <Title>{title}</Title>
-          <Text>{description}</Text>
-          <CookingWrapper>
-            <Time>{time} min</Time>
-
-            <DeleteButton onClick={onDelete}>
-              <IconSpan>
+      <Link to={`/recipes/${id}`}>
+        <CardWrapper>
+          <ImageWrapper>
+            <Img src={preview} alt={title} />
+          </ImageWrapper>
+          <InfoWrapper>
+            <Title>{title}</Title>
+            <Text>{description}</Text>
+            <CookingWrapper>
+              <Time>{time} min</Time>
+              <DeleteButton onClick={onDelete}>
                 <DeleteIconStyled />
-              </IconSpan>
-            </DeleteButton>
-          </CookingWrapper>
-        </InfoWrapper>
-      </CardWrapper>
+              </DeleteButton>
+            </CookingWrapper>
+          </InfoWrapper>
+        </CardWrapper>
+      </Link>
     );
   } else {
     return (
@@ -55,9 +56,9 @@ const FavoriteCard = ({ id, title, preview, description, time, onDelete }) => {
               <Title>{title}</Title>
             </div>
             <DeleteButton onClick={onDelete}>
-              <IconSpan>
-                <DeleteIconStyled />
-              </IconSpan>
+              <DeleteIconStyled
+                stroke={theme === 'light' ? '#22252A' : '#FAFAFA'}
+              />
             </DeleteButton>
           </TitleBox>
           <Box>
@@ -67,7 +68,7 @@ const FavoriteCard = ({ id, title, preview, description, time, onDelete }) => {
             <CookingWrapper>
               <Time>{time} min</Time>
               <Link to={`/recipes/${id}`}>
-                <RecipePageBtn>See recipie</RecipePageBtn>
+                <RecipePageBtn>See recipe</RecipePageBtn>
               </Link>
             </CookingWrapper>
           </Box>
