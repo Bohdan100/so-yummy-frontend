@@ -1,11 +1,34 @@
 import styled from 'styled-components';
 
+export const NotFoundContainer = styled.div`
+  padding-top: 143px;
+  padding-bottom: 100px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 184px;
+    padding-bottom: 204px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding-top: 236px;
+    padding-bottom: 203px;
+  }
+`;
+
 export const ImageCont = styled.div`
   width: 259px;
-  height: 170px;
-  left: 58px;
-  top: 164px;
+  height: 171px;
   margin: 0 auto;
+  margin-top: -28px;
+  @media screen and (min-width: 768px) {
+    width: 498px;
+    height: 327px;
+    margin-top: -76px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 498px;
+    height: 331px;
+    margin-top: -110px;
+  }
 `;
 
 export const TextNotFound = styled.div`
@@ -21,7 +44,7 @@ export const TextNotFound = styled.div`
     line-height: 20px;
     letter-spacing: -0.02em;
     font-feature-settings: 'liga' off;
-    color: #000000;
+    color: ${p => p.theme.colors.mainLight};
     margin-bottom: 8px;
     @media screen and (min-width: 768px) {
       font-size: 24px;
@@ -37,7 +60,7 @@ export const TextNotFound = styled.div`
     text-align: center;
     letter-spacing: -0.02em;
     font-feature-settings: 'liga' off;
-    color: #000000;
+    color: ${p => p.theme.colors.mainLight};
     opacity: 0.5;
     @media screen and (min-width: 768px) {
       font-size: 18px;
