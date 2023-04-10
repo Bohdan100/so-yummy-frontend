@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import MainContainer from 'components/MainContainer/MainContainer';
 import ReusableTitle from 'components/ReusableComponents/ReusableTitle/ReusableTitle';
 import { SearchBar } from 'components/SearchPage/SearchBar/SearchBar';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import axios from 'axios';
+import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import NotFoundWrapp from 'components/CategoriesByName/NotFoundWrapp';
+import NotFoundWrapp from 'components/ReusableComponents/NotFoundWrapp/index';
 import Loader from 'components/Loader/Loader';
 import { RecipesList } from 'components/CategoriesByName/CategoriesByName.styled';
 import RecipeCard from 'components/ReusableComponents/RecipeCard';
 import { scrollToTop } from 'helpers';
 import { PaginationComp } from 'components/Pagination/pagination';
+import { FetchSearchedMeals } from 'services/search-meals-API';
 
 const SearchPage = () => {
   const [error, setError] = useState(null);
@@ -21,7 +21,6 @@ const SearchPage = () => {
   const [totalHits, setTotalHits] = useState();
   const query = searchParams.get('query') ?? '';
   const type = searchParams.get('type') ?? 'Title';
-  const history = useNavigate();
 
   let perPage = 6;
 
@@ -36,17 +35,6 @@ const SearchPage = () => {
     setSearchParams({ type, query, page, perPage });
     scrollToTop();
   };
-
-  async function FetchSearchedMeals(searchParams) {
-    const response = await axios.get(`/search`, { params: searchParams });
-
-    console.log(response);
-    return response.data;
-  }
-
-  useEffect(() => {
-    history(`?page=${page}`);
-  }, [history, page]);
 
   useEffect(() => {
     if (query === '' || type === '') return;
@@ -66,7 +54,6 @@ const SearchPage = () => {
         }
         setRecipes(recipes.meals);
         setTotalHits(recipes.totalHits);
-        console.log(recipes);
       } catch (error) {
         toast.error('Something went wrong. Please, reload the page.', {
           position: 'top-center',
