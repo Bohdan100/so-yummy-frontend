@@ -1,18 +1,3 @@
-// import styled from 'styled-components';
-
-// export const ButtonSkewStyle = styled.button`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: fit-content;
-//   white-space: nowrap;
-//   box-sizing: border-box;
-//   font-family: ${p => p.theme.fonts.main};
-//   font-weight: ${p => p.theme.fontWeights[0]};
-//   line-height: 15px;
-//   font-size: 14px;
-// `;
-
 import styled from 'styled-components';
 
 export const ButtonSkewStyle = styled.button`
@@ -26,7 +11,6 @@ export const ButtonSkewStyle = styled.button`
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.subheader};
   font-size: 14px;
-
   color: ${p =>
     p.styled === 'black'
       ? p.theme.colors.btnTextLight
@@ -53,17 +37,13 @@ export const ButtonSkewStyle = styled.button`
       : p.styled === 'transparent'
       ? 'transparent'
       : 'red'};
-
   outline: none;
   border: none;
-
   border-top-left-radius: 30px;
   border-top-right-radius: 80px;
   border-bottom-left-radius: 80px;
   border-bottom-right-radius: 30px;
-
   text-align: center;
-
   border: ${({ styled, theme }) => {
     switch (styled) {
       case 'other':
@@ -119,7 +99,7 @@ export const ButtonSkewStyle = styled.button`
         : '1px solid transparent'};
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     padding: ${p =>
       p.location === 'favorite' || p.location === 'recipes'
         ? '12px 32px'
@@ -127,7 +107,7 @@ export const ButtonSkewStyle = styled.button`
     min-width: 130px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     font-size: 16px;
     line-height: ${p => p.theme.lineHeights.btnText};
     padding: ${p =>

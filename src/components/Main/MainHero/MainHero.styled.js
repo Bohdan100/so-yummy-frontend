@@ -12,6 +12,7 @@ import bgrImageDesk2 from '../../../images/bgPages/mainPage/main_hero2x_desktop.
   top: 0; */
 
 export const MainPageBg = styled.div`
+  position: relative;
   display: flex;
   height: 777px;
   padding: 0 16px;
