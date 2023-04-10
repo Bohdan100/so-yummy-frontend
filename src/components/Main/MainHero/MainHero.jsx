@@ -1,4 +1,4 @@
-// import SearchForm from 'components/SearchForm';
+import SearchForm from 'components/SearchForm';
 import СhooseYourBreakfast from 'components/Main/СhooseYourBreakfast';
 
 import {
@@ -22,7 +22,7 @@ const MainHero = () => {
           future.
         </MainPageText>
         <СhooseYourBreakfast />
-        {/* <SearchForm styled={'black'} /> */}
+        <SearchForm styled={'black'} />
       </MainPageDiv>
     </MainPageBg>
   );
