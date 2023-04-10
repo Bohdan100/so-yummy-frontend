@@ -1,7 +1,5 @@
 import SearchForm from 'components/SearchForm';
 import СhooseYourBreakfast from 'components/Main/СhooseYourBreakfast';
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import {

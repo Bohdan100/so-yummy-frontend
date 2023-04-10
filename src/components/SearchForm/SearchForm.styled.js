@@ -1,4 +1,3 @@
-import { ButtonSkewStyle } from 'components/Main/ButtonSkew/ButtonSkew.styled';
 import styled from 'styled-components';
 import { theme } from 'constants/theme';
 
@@ -31,25 +30,6 @@ export const SearchBlock = styled.div`
     height: 71px;
     font-size: 16px;
     line-height: 24px;
-  }
-  ${ButtonSkewStyle} {
-    width: 113px;
-    height: 52px;
-    position: absolute;
-    top: -0.5px;
-    right: -0.5px;
-  }
-  @media (min-width: 768px) {
-    ${ButtonSkewStyle} {
-      width: 161px;
-      height: 59px;
-    }
-  }
-  @media (min-width: 1440px) {
-    ${ButtonSkewStyle} {
-      width: 161px;
-      height: 70px;
-    }
   }
 `;
 

@@ -1,5 +1,3 @@
-import { theme } from 'constants/theme';
-
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
@@ -11,7 +9,7 @@ export const ChooseBlock = styled.div`
   padding: 8px;
   margin-left: 88px;
   margin-bottom: 115px;
-  @media (min-width: 768px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 14px;
     padding: 12px;
     line-height: 20px;
@@ -19,76 +17,75 @@ export const ChooseBlock = styled.div`
     width: 261px;
     height: 100px;
     position: absolute;
-    right: 62px;
-    top: 434px;
+    right: 16px;
+    top: 356px;
   }
-  @media (min-width: 1440px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     line-height: 20px;
     padding: 16px;
     width: 298px;
     height: 114px;
     position: absolute;
-    right: 122px;
-    top: 514px;
+    right: 97px;
+    top: 440px;
   }
 `;
 
 export const ChooseText = styled.p`
-  font-family: ${theme.fonts.main};
+  font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
-  letter-spacing: ${theme.letterSpacings.subheader};
+  letter-spacing: ${p => p.theme.letterSpacings.subheader};
   color: ${p => p.theme.colors.secondaryDark};
-  @media (min-width: 768px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 14px;
     line-height: 18px;
   }
-  @media (min-width: 1440px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     line-height: 20px;
   }
 `;
 
 export const ChooseSpan = styled.span`
-  color: ${theme.colors.mainAccent};
-  font-family: ${theme.fonts.main};
+  color: ${p => p.theme.colors.mainAccent};
+  font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
-  letter-spacing: ${theme.letterSpacings.subheader};
-  @media (min-width: 768px) {
+  letter-spacing: ${p => p.theme.letterSpacings.subheader};
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 14px;
   }
-  @media (min-width: 1440px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     line-height: 20px;
   }
 `;
 export const ChooseLink = styled(NavLink)`
-  font-family: ${theme.fonts.main};
+  font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  letter-spacing: ${theme.letterSpacings.content};
+  letter-spacing: ${p => p.theme.letterSpacings.content};
   color: ${p => p.theme.colors.secondaryDark};
   margin-top: 4px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  transform: ${theme.transitions.main};
+  transform: ${p => p.theme.transitions.main};
   &:hover {
-    color: ${theme.colors.mainAccent};
+    color: ${p => p.theme.colors.mainAccent};
     svg path {
-      stroke: ${theme.colors.mainAccent};
+      stroke: ${p => p.theme.colors.mainAccent};
     }
   }
-
-  @media (min-width: 768px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 14px;
   }
-  @media (min-width: 1440px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     line-height: 20px;
   }
 `;
@@ -100,5 +97,5 @@ export const RightArrow = styled.svg`
   display: flex;
   stroke: ${p => p.theme.colors.secondaryDark};
   transition: ${p => p.theme.transitions.main};
-  transform: ${theme.transitions.main};
+  transform: ${p => p.theme.transitions.main};
 `;

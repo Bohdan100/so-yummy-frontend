@@ -5,14 +5,14 @@ export const CategoryList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  margin-top: 64px;
+  /* margin-top: 64px; */
   @media screen and (min-width: 768px) {
     gap: 50px;
-    margin-top: 72px;
+    /* margin-top: 72px; */
   }
   @media screen and (min-width: 1440px) {
     gap: 100px;
-    margin-top: 100px;
+    /* margin-top: 100px; */
   }
 `;
 export const Title = styled.h1`
@@ -58,7 +58,7 @@ export const SeeAllBtn = styled(NavLink)`
   &:hover {
     background-color: ${p => p.theme.colors.mainBtnBGHover};
     border: ${p => p.theme.borders.mainNavBord};
-    color: ${p => p.theme.colors.mainBtnCategoryText};
+    color: ${p => p.theme.colors.mainBtnCategoryTextHover};
   }
 `;
 
