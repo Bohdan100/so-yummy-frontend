@@ -12,6 +12,7 @@ export const FavList = styled.li`
 export const NotFavorites = styled.p`
   opacity: 0.5;
   font-size: 14px;
+  padding-bottom: 100px;
   font-weight: ${p => p.theme.fontWeights[1]};
   line-height: ${p => p.theme.lineHeights.subheader};
   letter-spacing: ${p => p.theme.letterSpacings.subheader};

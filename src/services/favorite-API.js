@@ -24,9 +24,8 @@ export const fetchOwnRacipes = async () => {
 };
 
 // API запит на отримання списку улюблених рецептів
-export const fetchFavoriteRacipes = async () => {
-  const url = `favorite/`;
-  const { data } = await axios.get(url);
+export const fetchFavoriteRacipes = async (page, limit) => {
+  const { data } = await axios.get(`/favorite?page=${page}&limit=${limit}`);
   return data;
 };
 

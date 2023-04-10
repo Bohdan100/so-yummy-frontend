@@ -99,9 +99,6 @@ export const CookingWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 25px;
-  /* @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    margin-top: 58px;
-  } */
 `;
 
 export const Time = styled.span`
@@ -120,10 +117,17 @@ export const DeleteButton = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
+  padding: 0;
   width: 24px;
   height: 24px;
   background: ${p => p.theme.colors.secondaryAccent};
   border-radius: ${p => p.theme.radii.btnIcon};
+  & svg {
+    stroke: ${p => p.theme.colors.logOutBtnHoverBg};
+    width: 9px;
+    height: 10px;
+  }
+
   &:hover {
     stroke: ${p => p.theme.colors.btnTextLight};
     background-color: ${p => p.theme.colors.mainHeaderText};
@@ -135,6 +139,10 @@ export const DeleteButton = styled.button`
     width: 38px;
     height: 38px;
     margin-left: 101px;
+    & svg {
+      width: 24px;
+      height: 24px;
+    }
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     width: 44px;
@@ -144,18 +152,13 @@ export const DeleteButton = styled.button`
 `;
 export const IconSpan = styled.span`
   text-align: center;
+  margin: 0;
+  padding: 0;
 `;
 export const DeleteIconStyled = styled(DeleteIcon)`
-  display: block;
-  margin: auto;
-  path {
-    width: 9px;
-    height: 10px;
-  }
-  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    width: 24px;
-    height: 24px;
-  }
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 `;
 
 export const TitleBox = styled.div`
