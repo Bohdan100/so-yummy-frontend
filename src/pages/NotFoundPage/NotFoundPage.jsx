@@ -7,7 +7,7 @@ const NotFoundPage = () => {
   return (
     <div>
       <Container>
-        <ReusableTitle>Not Found Page</ReusableTitle>
+        <ReusableTitle></ReusableTitle>
         <ImageCont>
           <img src={notFoundDesktop} alt="Error" />
         </ImageCont>
