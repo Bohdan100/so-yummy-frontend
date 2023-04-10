@@ -37,26 +37,28 @@ export const Title = styled.h1`
   }
 `;
 
-export const SeeAllBtn = styled.button`
+export const SeeAllBtn = styled(NavLink)`
+  margin-left: auto;
+  margin-right: 0;
   border-radius: 6px;
   font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: ${p => p.theme.colors.btnTextLight};
+  color: ${p => p.theme.colors.mainBtnCategoryText};
   border: ${p => p.theme.borders.mainNavBord};
   padding: 10px 24px;
-  background-color: ${p => p.theme.colors.mainBtnCategory};
+  background-color: ${p => p.theme.colors.mainBtnBGCategory};
   cursor: pointer;
   float: right;
   transition: ${({ theme }) => {
     return theme.transitions.main;
   }};
   &:hover {
-    background-color: ${p => p.theme.colors.mainNavLinkHover};
+    background-color: ${p => p.theme.colors.mainBtnBGHover};
     border: ${p => p.theme.borders.mainNavBord};
-    color: ${p => p.theme.colors.searchDropDownBg};
+    color: ${p => p.theme.colors.mainBtnCategoryText};
   }
 `;
 
@@ -89,7 +91,7 @@ export const OtherBtn = styled(NavLink)`
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.searchSelect};
   font-size: 14px;
-  color: ${p => p.theme.colors.btnHoverText};
+  color: ${p => p.theme.colors.mainBtnText};
   padding: 14px 32px;
   background-color: transparent;
   outline: none;
