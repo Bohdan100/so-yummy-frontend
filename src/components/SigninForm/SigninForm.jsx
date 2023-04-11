@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { selectIsLoading } from 'redux/Auth/authSelectors';
 import { login } from 'redux/Auth/authOperations';
 import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
@@ -16,8 +17,10 @@ import {
   EmailIconStyled,
   LockIconStyled,
   ErrorIconStyled,
-  WarnIconStyled,
   CheckIconStyled,
+  PassWarnIconStyled,
+  PassErrorIconStyled,
+  PassValidIconStyled,
 } from '../../components/AuthIcons';
 
 import {
@@ -32,9 +35,12 @@ import {
   StatusBox,
   ErrorBox,
   TitleContainer,
+  ShowPasswordBtn,
+  PassIconBox,
 } from './SigninForm.styled';
 
 const SigninForm = () => {
+  const [isShowPassword, setIsShowPassword] = useState(false);
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
   const { error } = useAuth();
@@ -59,7 +65,12 @@ const SigninForm = () => {
   const statusIcon = {
     valid: <CheckIconStyled />,
     inValid: <ErrorIconStyled />,
-    notSecure: <WarnIconStyled />,
+  };
+
+  const passStatusIcon = {
+    valid: <PassValidIconStyled />,
+    inValid: <PassErrorIconStyled />,
+    notSecure: <PassWarnIconStyled />,
   };
 
   return (
@@ -100,7 +111,7 @@ const SigninForm = () => {
               </Label>
               <Label htmlFor="password">
                 <Input
-                  type="password"
+                  type={isShowPassword ? 'text' : 'password'}
                   name="password"
                   placeholder="Password"
                   disabled={isLoading}
@@ -115,8 +126,20 @@ const SigninForm = () => {
                     getPassErrorStatus(errors.password, dirty)
                   }
                 />
-                {touched.password &&
-                  statusIcon[getPassErrorStatus(errors.password, dirty)]}
+                <PassIconBox>
+                  <ShowPasswordBtn
+                    type="button"
+                    onClick={() => setIsShowPassword(!isShowPassword)}
+                  >
+                    {isShowPassword ? (
+                      <AiOutlineEye size="24px" />
+                    ) : (
+                      <AiOutlineEyeInvisible size="24px" />
+                    )}
+                  </ShowPasswordBtn>
+                  {touched.password &&
+                    passStatusIcon[getPassErrorStatus(errors.password, dirty)]}
+                </PassIconBox>
                 <StatusBox
                   color={
                     touched.password &&
