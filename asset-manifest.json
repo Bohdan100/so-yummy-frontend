@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/so-yummy-frontend/static/css/main.439fb797.css",
+    "main.css": "/so-yummy-frontend/static/css/main.83a9cd10.css",
     "main.js": "/so-yummy-frontend/static/js/main.9893fbe8.js",
     "static/js/932.7f9e85b3.chunk.js": "/so-yummy-frontend/static/js/932.7f9e85b3.chunk.js",
     "static/js/144.925eadbd.chunk.js": "/so-yummy-frontend/static/js/144.925eadbd.chunk.js",
@@ -100,7 +100,7 @@
     "static/media/close.svg": "/so-yummy-frontend/static/media/close.50c53548a76bc45f9feb6aed36be9fd3.svg",
     "static/media/arrow-right.svg": "/so-yummy-frontend/static/media/arrow-right.cc6d38fdeeca33904a5b9607f2712b52.svg",
     "static/media/burger-menu-mob.svg": "/so-yummy-frontend/static/media/burger-menu-mob.70b9971a05767a6e6176fc5011841e4b.svg",
-    "main.439fb797.css.map": "/so-yummy-frontend/static/css/main.439fb797.css.map",
+    "main.83a9cd10.css.map": "/so-yummy-frontend/static/css/main.83a9cd10.css.map",
     "main.9893fbe8.js.map": "/so-yummy-frontend/static/js/main.9893fbe8.js.map",
     "932.7f9e85b3.chunk.js.map": "/so-yummy-frontend/static/js/932.7f9e85b3.chunk.js.map",
     "144.925eadbd.chunk.js.map": "/so-yummy-frontend/static/js/144.925eadbd.chunk.js.map",
@@ -123,7 +123,7 @@
     "516.53e686b2.chunk.js.map": "/so-yummy-frontend/static/js/516.53e686b2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.439fb797.css",
+    "static/css/main.83a9cd10.css",
     "static/js/main.9893fbe8.js"
   ]
 }
