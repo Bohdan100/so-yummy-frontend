@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as DeleteIcon } from '../../images/icons/delete-black.svg';
+import { ReactComponent as DeleteIcon } from '../../images/icons/btn-delete.svg';
 
 export const CardWrapper = styled.div`
   display: flex;
@@ -8,7 +8,10 @@ export const CardWrapper = styled.div`
   max-width: 343px;
   height: 152px;
   padding: 14px;
-  background-color: ${p => p.theme.colors.mainWhite};
+  background-color: ${p => p.theme.colors.recipeBlockBg};
+  &:not(:last-child) {
+    margin-bottom: 18px;
+  }
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 704px;
     height: 288px;
@@ -16,11 +19,17 @@ export const CardWrapper = styled.div`
     padding-bottom: 28px;
     padding-left: 24px;
     padding-right: 24px;
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     max-width: 1240px;
     height: 404px;
     padding: 40px;
+    &:not(:last-child) {
+      margin-bottom: 50px;
+    }
   }
 `;
 
@@ -77,7 +86,7 @@ export const Text = styled.p`
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.description};
   letter-spacing: ${p => p.theme.letterSpacings.content};
-  color: ${p => p.theme.colors.mainDark};
+  color: ${p => p.theme.colors.aboutRecipe};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 14px;
   }
@@ -123,7 +132,7 @@ export const DeleteButton = styled.button`
   background: ${p => p.theme.colors.secondaryAccent};
   border-radius: ${p => p.theme.radii.btnIcon};
   & svg {
-    stroke: ${p => p.theme.colors.logOutBtnHoverBg};
+    stroke: ${p => p.theme.colors.paginationText};
     width: 9px;
     height: 10px;
   }
@@ -186,9 +195,9 @@ export const RecipePageBtn = styled.button`
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.subheader};
   font-size: 10px;
-  color: ${p => p.theme.colors.bodyBg};
+  color: #fafafa;
   padding: 10px 18px;
-  background-color: ${p => p.theme.colors.mainHeaderText};
+  background-color: ${p => p.theme.colors.mainBTn};
   outline: none;
   border: none;
   border-top-left-radius: 30px;
@@ -202,7 +211,7 @@ export const RecipePageBtn = styled.button`
   }};
   &:hover {
     color: ${p => p.theme.colors.btnTextLight};
-    background-color: ${p => p.theme.colors.mainAccent};
+    background-color: ${p => p.theme.colors.deleteBtnRecipe};
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 16px;

@@ -75,42 +75,48 @@ const FavoritePage = () => {
       {isLoading && <Loader />}
       <Container>
         <ReusableTitle>Favorites</ReusableTitle>
-        {recipes && recipes.result && recipes.result.length > 0 ? (
-          <FavoriteList
-            recipes={recipes.result}
-            handleDelete={handleRemoveRecipe}
-          />
+        {isLoading ? (
+          <Loader />
         ) : (
-          <Wrapper>
-            <ImgWrapper>
-              <picture>
-                <source
-                  media="(min-width: 1440px)"
-                  srcSet={`${Desktop1}, ${Desktop2} 2x`}
-                />
-                <source
-                  media="(min-width: 768px)"
-                  srcSet={`${Tablet1}, ${Tablet2} 2x`}
-                />
-                <img
-                  src={Mob1}
-                  srcSet={`${Mob1}, ${Mob2} 2x`}
-                  alt="no recipes"
-                />
-              </picture>
-            </ImgWrapper>
-            <NotFavorites>
-              You currently don't have any favorite recipes added. Let's add
-              some♥
-            </NotFavorites>
-          </Wrapper>
-        )}
-        {recipes && recipes.result && recipes.result.length > 0 && (
-          <PaginationComp
-            count={Math.ceil(total / limit)}
-            page={pageNumber}
-            handleChange={handleChange}
-          />
+          <>
+            {recipes && recipes.result && recipes.result.length > 0 ? (
+              <FavoriteList
+                recipes={recipes.result}
+                handleDelete={handleRemoveRecipe}
+              />
+            ) : (
+              <Wrapper>
+                <ImgWrapper>
+                  <picture>
+                    <source
+                      media="(min-width: 1440px)"
+                      srcSet={`${Desktop1}, ${Desktop2} 2x`}
+                    />
+                    <source
+                      media="(min-width: 768px)"
+                      srcSet={`${Tablet1}, ${Tablet2} 2x`}
+                    />
+                    <img
+                      src={Mob1}
+                      srcSet={`${Mob1}, ${Mob2} 2x`}
+                      alt="no recipes"
+                    />
+                  </picture>
+                </ImgWrapper>
+                <NotFavorites>
+                  You currently don't have any favorite recipes added. Let's add
+                  some♥
+                </NotFavorites>
+              </Wrapper>
+            )}
+            {recipes && recipes.result && recipes.result.length > 0 && (
+              <PaginationComp
+                count={Math.ceil(total / limit)}
+                page={pageNumber}
+                handleChange={handleChange}
+              />
+            )}
+          </>
         )}
         {error && <p>Whoops, something went wrong: {error.message}</p>}
       </Container>

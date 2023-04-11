@@ -5,7 +5,7 @@ export const Item = styled.li`
   height: 152px;
   padding: 14px 9px;
   background-color: ${p => p.theme.colors.recipeBlockBg};
-
+  border-radius: 8px;
   &:not(:last-child) {
     margin-bottom: 18px;
   }
