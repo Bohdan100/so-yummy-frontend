@@ -6,7 +6,6 @@ import { useMedia } from 'react-use';
 import blackMob from '../../../images/elements/rectangle/rectangle_black_ 8Mob.png';
 import greenkMob from '../../../images/elements/rectangle/rectangle_green_11Mob.png';
 import whiteMob from '../../../images/elements/rectangle/rectangle _white_micro.png';
-
 import blackTab from '../../../images/elements/rectangle//rectangle_black_8Tab.png';
 import whiteTab from '../../../images/elements/rectangle/rectangle_white_small.png';
 import greenkTab from '../../../images/elements/rectangle/rectangle_green_11Mob.png';
