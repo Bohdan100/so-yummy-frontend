@@ -2,12 +2,11 @@ import { useDispatch } from 'react-redux';
 
 import {
   IngredientItem,
-  IngredientItemWrapper,
   ImageWrapper,
   TextContainer,
   NameIngredient,
   WeighIngredient,
-  PickIconStyled,
+  DelIconStyled,
   DeleteButton,
 } from './IngredientsShoppingItem.styled';
 
@@ -18,13 +17,11 @@ const IngredientsShoppingItem = ({
   id,
   nameIngredient,
   weight,
-  recipeId,
 }) => {
   const dispatch = useDispatch();
 
   return (
     <IngredientItem>
-      <IngredientItemWrapper>
         <ImageWrapper>
           <img src={image} alt={nameIngredient} />
         </ImageWrapper>
@@ -33,9 +30,8 @@ const IngredientsShoppingItem = ({
         </TextContainer>
         <WeighIngredient>{weight}</WeighIngredient>
         <DeleteButton type="buton" onClick={() => dispatch(deleteProduct(id))}>
-          <PickIconStyled />
+          <DelIconStyled />
         </DeleteButton>
-      </IngredientItemWrapper>
     </IngredientItem>
   );
 };
