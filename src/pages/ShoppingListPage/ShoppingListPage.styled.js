@@ -5,40 +5,7 @@ export const ShoppingListPageWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 64px;
-
   margin-left: 16px;
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-  }
-  @media (min-width: ${p => p.theme.breakpoints[2]}) {
-  }
-`;
-
-export const ShopListTitle = styled.h1`
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 28px;
-  line-height: ${p => p.theme.lineHeights.subheader};
-  color: #001833;
-  margin-top: 50px;
-  margin-bottom: 50px;
-
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    font-size: 32px;
-    margin-top: 85px;
-    margin-bottom: 72px;
-  }
-  @media (min-width: ${p => p.theme.breakpoints[2]}) {
-    font-size: 44px;
-  }
-`;
-
-export const EmptyListMessage = styled.p`
-  margin-top: 24px;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 27px;
-  color: #828282;
 `;
 
 export const StyledLoaderWrapper = styled.div`
@@ -54,13 +21,15 @@ export const HeaderTable = styled.div`
   border-radius: ${div => div.theme.radii.image};
   height: 42px;
   padding: 10px;
+  margin-top: 50px;
   margin-bottom: 32px;
-  color: ${p => p.theme.colors.mainWhite};
+  color: ${p => p.theme.colors.mainBtnCategoryText};
   background-color: ${p => p.theme.colors.mainAccent};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     height: 58px;
     padding: 20px;
     margin-bottom: 50px;
+    margin-top: 72px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     height: 60px;
@@ -76,13 +45,12 @@ export const HeaderTable = styled.div`
     }
   }
   span {
-    margin-left: 16px;
+    margin-left: 24px;
     @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-      margin-left: 38px;
+      margin-left: 78px;
     }
     @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
-      margin-left: 110px;
+      margin-left: 142px;
     }
   }
 `;
-// 24 78 142

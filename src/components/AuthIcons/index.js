@@ -1,1 +1,1 @@
-export { UserIconStyled, EmailIconStyled, LockIconStyled, ErrorIconStyled, WarnIconStyled, CheckIconStyled } from './AuthIcons.styled';
+export { UserIconStyled, EmailIconStyled, LockIconStyled, ErrorIconStyled, PassWarnIconStyled, CheckIconStyled, PassValidIconStyled, PassErrorIconStyled } from './AuthIcons.styled';

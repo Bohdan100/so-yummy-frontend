@@ -4,17 +4,23 @@ import { ReactComponent as BtnIconDelete } from '../../../images/icons/btn-delet
 export const Item = styled.li`
   height: 152px;
   padding: 14px 9px;
-  background-color: ${p => p.theme.colors.recipeBlockBg}
-
+  background-color: ${p => p.theme.colors.recipeBlockBg};
+  border-radius: 8px;
   &:not(:last-child) {
     margin-bottom: 18px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     padding: 28px 24px;
     height: 288px;
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     height: 404px;
+    &:not(:last-child) {
+      margin-bottom: 50px;
+    }
   }
 `;
 
@@ -45,11 +51,14 @@ export const Container = styled.div`
   width: 187px;
   display: flex;
   flex-direction: column;
+  margin-left: 14px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 404px;
+    margin-left: 24px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     width: 788px;
+    margin-left: 54px;
   }
 `;
 
@@ -70,7 +79,9 @@ export const TitleRecipe = styled.p`
   color: ${p => p.theme.colors.secondaryDark};
   margin: 0px;
   text-align: left;
+  padding-right: 28px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    padding-right: 40px;
     font-size: 24px;
     line-height: ${p => p.theme.lineHeights.subheader};
   }
@@ -94,6 +105,7 @@ export const DeleteBtn = styled.button`
   justify-content: center;
   align-items: center;
   text-align: center;
+  border: 1px solid transparent;
   color: ${p => p.theme.colors.mainWhite};
   background-color: ${p => p.theme.colors.deleteBtnRecipe};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
@@ -103,14 +115,13 @@ export const DeleteBtn = styled.button`
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     width: 44px;
     height: 44px;
-    padding: 12px;
   }
   svg {
     stroke: ${p => p.theme.colors.iconDlt};
   }
   &:hover,
   &:focus {
-    background-color: ${p => p.theme.colors.mainWhite};
+    background-color: ${p => p.theme.colors.hoverBgBtn};
     color: ${p => p.theme.colors.mainAccent};
     border: 1px solid ${p => p.theme.colors.mainAccent};
   }
@@ -126,7 +137,6 @@ export const IconBtn = styled(BtnIconDelete)`
   padding: 0;
   width: 14px;
   height: 14px;
-
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 22px;
     height: 22px;
@@ -221,7 +231,7 @@ export const BtnSee = styled.button`
   }
   &:hover,
   &:focus {
-    background-color: ${p => p.theme.colors.mainWhite};
+    background-color: ${p => p.theme.colors.hoverBgBtn};
     color: ${p => p.theme.colors.mainAccent};
     border: 1px solid ${p => p.theme.colors.mainAccent};
   }

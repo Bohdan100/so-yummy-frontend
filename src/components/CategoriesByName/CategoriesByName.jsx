@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { toast } from 'react-toastify';
-import * as API from '../../services/categories-API';
+import * as API from 'services/categories-API';
 import Loader from 'components/Loader/Loader';
 import RecipeCard from 'components/ReusableComponents/RecipeCard/RecipeCard';
-import NotFoundWrapp from './NotFoundWrapp/NotFoundWrapp';
+import NotFoundWrapp from 'components/ReusableComponents/NotFoundWrapp';
 import { RecipesList } from './CategoriesByName.styled';
 
 const CategoriesByName = () => {
@@ -35,11 +35,7 @@ const CategoriesByName = () => {
 
   return (
     <>
-      {error && (
-        <NotFoundWrapp>
-          Whoops, something went wrong: {error.message}
-        </NotFoundWrapp>
-      )}
+      {error && <NotFoundWrapp>Whoops, something went wrong...</NotFoundWrapp>}
       {isLoading && <Loader />}
       {recipes.length > 0 && !error && !isLoading && (
         <RecipesList>

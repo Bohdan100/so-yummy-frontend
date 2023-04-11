@@ -8,12 +8,13 @@ export const PaginationWrapper = styled.div`
   height: 51px;
   margin: 0 auto;
   margin-top: 50px;
+  margin-bottom: 100px;
   padding: 12px 26px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  background-color: ${p => p.theme.colors.mainWhite};
+  background-color: ${p => p.theme.colors.recipeBlockBg};
   box-shadow: ${p => p.theme.colors.paginationShadow};
   border-radius: ${p => p.theme.radii.pagination};
   & nav {
@@ -23,10 +24,12 @@ export const PaginationWrapper = styled.div`
     max-width: 324px;
     height: 55px;
     padding: 14px 24px;
+    margin-bottom: 200px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     max-width: 436px;
     padding: 14px 24px;
+    margin-bottom: 100px;
   }
   & .MuiPagination-ul {
     margin-top: 0;

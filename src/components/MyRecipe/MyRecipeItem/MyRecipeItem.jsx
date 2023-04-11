@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 import {
   Item,
   MainBox,
@@ -34,7 +35,9 @@ const MyRecipeItem = ({ description, preview, time, title, id }) => {
             <BtnBox>
               <DeleteBtn
                 type="button"
-                onClick={() => dispatch(deleteOwnRecipe(id))}
+                onClick={() =>
+                  dispatch(deleteOwnRecipe(id), toast.success(`Recipe deleted`))
+                }
               >
                 <IconBtn />
               </DeleteBtn>

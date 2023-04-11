@@ -1,27 +1,19 @@
 import styled from 'styled-components';
 
-import { ReactComponent as PickIcon } from '../../images/icons/close-20.svg';
+import { ReactComponent as DelIcon } from '../../images/icons/del-ing.svg';
 
 export const IngredientItem = styled.li`
-  border-radius: ${li => li.theme.radii.image};
-  background-color: ${li => li.theme.colors.secondaryAccent};
-  border-bottom: 2px solid rgba(126, 126, 126, 0.5);
-`;
-
-export const IngredientItemWrapper = styled.label`
   display: flex;
   align-items: start;
-  padding: 29px 22px;
-  background: ${p => p.theme.colors.mainWhite};
-  &:hover {
-    cursor: pointer;
-  }
-  @media screen and (${p => p.theme.breakpoints[1]}) {
-    padding: 32px 42px;
-  }
-  @media screen and (${p => p.theme.breakpoints[2]}) {
-    padding: 50px 146px;
-  }
+  padding: 0px 16px 24px 16px;
+  border-bottom: ${p => p.theme.borders.productListBorder};
+}
+@media screen and (${p => p.theme.breakpoints[1]}) {
+  padding: 32px 42px;
+}
+@media screen and (${p => p.theme.breakpoints[2]}) {
+  padding: 50px 146px;
+}
 `;
 
 export const ImageWrapper = styled.div`
@@ -29,7 +21,8 @@ export const ImageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 10px;
-
+  background-color: ${p => p.theme.colors.ingredientsBgrCol};
+  border-radius: 6px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-right: 16px;
   }
@@ -94,7 +87,7 @@ export const WeighIngredient = styled.p`
   font-weight: ${p => p.theme.fontWeights[2]};
   font-size: 10px;
   line-height: ${p => p.theme.lineHeights.time};
-  color: ${p => p.theme.colors.mainWhite};
+  color: ${p => p.theme.colors.mainBtnCategoryText};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     min-width: 68px;
     max-width: 150px;
@@ -106,35 +99,42 @@ export const WeighIngredient = styled.p`
 `;
 
 export const DeleteButton = styled.button`
-  margin-left: 39px;
+  margin-left: 46px;
+  margin-right: 10px;
   position: relative;
   display: inline-block;
   width: 18px;
   height: 18px;
-  background: ${p => p.theme.colors.mainWhite};
+  background: transparent;
   border-color: transparent;
+  &:hover svg,
+  &:focus svg {
+    stroke: ${p => p.theme.colors.mainAccent};
+  }
 
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 35px;
     height: 35px;
-    margin-left: 78px;
+    margin-left: 110px;
+    margin-right: 23px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
-    margin-left: 151px;
+    margin-left: 174px;
+    margin-right: 43px;
   }
 `;
 
-export const PickIconStyled = styled(PickIcon)`
+export const DelIconStyled = styled(DelIcon)`
   display: inline-block;
-  width: 9px;
-  height: 9px;
-  color: ${p => p.theme.colors.mainWhite};
+  width: 14px;
+  height: 14px;
+  stroke: ${p => p.theme.colors.mainBlack};
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    width: 17px;
-    height: 17px;
+    width: 20px;
+    height: 20px;
   }
 `;

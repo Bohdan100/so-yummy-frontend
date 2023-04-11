@@ -7,10 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { PaginationComp } from '../../components/Pagination/pagination';
 import { WrapText } from 'components/WrapText/WrapText';
+import Loader from 'components/Loader/Loader';
 import {
   getOwnRecipesList,
   getTotalOwnRecipes,
-  // selectIsLoading,
+  selectIsLoading,
 } from '../../redux/OwnRecipes/OwnRecipesSelectors';
 import { getOwnRecipes } from 'redux/OwnRecipes/OwnRecipesOperations';
 import ReusableTitle from '../../components/ReusableComponents/ReusableTitle/ReusableTitle';
@@ -20,7 +21,7 @@ const MyRecipesPage = () => {
   const dispatch = useDispatch();
   const recipes = useSelector(getOwnRecipesList);
   const total = useSelector(getTotalOwnRecipes);
-  // const isFetching = useSelector(selectIsLoading);
+  const isFetching = useSelector(selectIsLoading);
   const limit = 4;
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -44,29 +45,28 @@ const MyRecipesPage = () => {
     history(`?page=${pageNumber}`);
   }, [history, pageNumber]);
 
-  // useEffect(() => {
-  //   dispatch(getOwnRecipes());
-  // }, [dispatch]);
-
   return (
     <div>
       <MainContainer>
         <ReusableTitle>My Recipes</ReusableTitle>
-        {/* <h2>My Recipes</h2> */}
-        <>
-          {recipes && recipes.length > 0 ? (
-            <MyRecipeList data={recipes} />
-          ) : (
-            <WrapText />
-          )}
-          {recipes && recipes.length > 0 && (
-            <PaginationComp
-              count={Math.ceil(total / limit)}
-              page={pageNumber}
-              handleChange={handleChange}
-            />
-          )}
-        </>
+        {isFetching ? (
+          <Loader />
+        ) : (
+          <>
+            {recipes && recipes.length > 0 ? (
+              <MyRecipeList data={recipes} />
+            ) : (
+              <WrapText />
+            )}
+            {recipes && recipes.length > 0 && (
+              <PaginationComp
+                count={Math.ceil(total / limit)}
+                page={pageNumber}
+                handleChange={handleChange}
+              />
+            )}
+          </>
+        )}
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
