@@ -75,9 +75,6 @@ const RegisterForm = () => {
 
   return (
     <Container>
-      <GoogleLink to="http://localhost:8000/api/auth/google">
-        <GoogleIcon />
-      </GoogleLink>
       <Formik
         initialValues={{ name: '', email: '', password: '' }}
         onSubmit={handleSubmitForm}
@@ -172,6 +169,9 @@ const RegisterForm = () => {
                 </StatusBox>
               </Label>
             </InputContainer>
+            <GoogleLink to="http://localhost:8000/api/auth/google">
+              <GoogleIcon />
+            </GoogleLink>
             <Button
               type="submit"
               name="button"
