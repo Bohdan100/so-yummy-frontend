@@ -4,7 +4,6 @@ import { useMedia } from 'react-use';
 import { toast } from 'react-toastify';
 import * as API from 'services/categories-API';
 import Loader from 'components/Loader/Loader';
-// import RecipeCard from 'components/ReusableComponents/RecipeCard/RecipeCard';
 import NotFoundWrapp from 'components/ReusableComponents/NotFoundWrapp';
 import RecipeCard from 'components/ReusableComponents/RecipeCard/RecipeCard';
 
@@ -22,7 +21,7 @@ const PreviewCategories = () => {
   const [recipesByMainCategories, setRecipesByMainCategories] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  // const navigate = useNavigate();
+
   useEffect(() => {
     let count;
     if (isDesctopDevice) {
@@ -49,10 +48,6 @@ const PreviewCategories = () => {
     getRecipesByFourCategory();
   }, [isDesctopDevice, isTabletDevice]);
 
-  // const onClick = ({ category }) => {
-  //   navigate(`/categories/${category}`);
-  //   console.log(category);
-  // };
   return (
     <>
       {error && (
@@ -63,10 +58,10 @@ const PreviewCategories = () => {
       {isLoading && <Loader />}
       <CategoryList>
         {recipesByMainCategories &&
-          Object.entries(recipesByMainCategories).map(([category, recipes]) => {
-            return (
-              <>
-                <li key={category}>
+          Object.entries(recipesByMainCategories).map(
+            ([category, recipes], idx) => {
+              return (
+                <li key={`${category}-${idx}`} category={category}>
                   <Title sx={{ marginTop: '0', marginBottom: '50' }}>
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </Title>
@@ -77,9 +72,9 @@ const PreviewCategories = () => {
                   </CardList>
                   <SeeAllBtn to={`/categories/${category}`}>See all</SeeAllBtn>
                 </li>
-              </>
-            );
-          })}
+              );
+            }
+          )}
       </CategoryList>
       <OtherBtn to={'/categories'}>Other categories</OtherBtn>
     </>
