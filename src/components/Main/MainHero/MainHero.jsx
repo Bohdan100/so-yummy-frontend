@@ -9,6 +9,7 @@ import {
   MainPageDiv,
   SpanGr,
 } from './MainHero.styled';
+import { Container } from 'components/MainContainer/MainContainer.styled';
 
 const MainHero = () => {
   const navigate = useNavigate();
@@ -25,18 +26,19 @@ const MainHero = () => {
 
   return (
     <MainPageBg>
-      <MainPageDiv>
-        <MainPageH1>
-          <SpanGr>So</SpanGr>Yummy
-        </MainPageH1>
-        <MainPageText>
-          "What to cook?" is not only a recipe app, it is, in fact, <br /> your
-          cookbook. You can add your own recipes to <br /> save them for the
-          future.
-        </MainPageText>
-        <СhooseYourBreakfast />
-        <SearchForm styled={'black'} handleOnSubmit={handleOnSubmit} />
-      </MainPageDiv>
+      <Container>
+        <MainPageDiv>
+          <MainPageH1>
+            <SpanGr>So</SpanGr>Yummy
+          </MainPageH1>
+          <MainPageText>
+            "What to cook?" is not only a recipe app, it is, in fact, your
+            cookbook. You can add your own recipes to save them for the future.
+          </MainPageText>
+          <СhooseYourBreakfast />
+          <SearchForm styled={'black'} handleOnSubmit={handleOnSubmit} />
+        </MainPageDiv>
+      </Container>
     </MainPageBg>
   );
 };

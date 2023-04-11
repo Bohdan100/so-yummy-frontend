@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SearchBlock, SearchIn, SearchInput } from './SearchForm.styled';
 import ButnSkew from 'components/ButtonSkew';
+
 const SearchForm = ({ handleOnSubmit, type = 'title', styled, startQuery }) => {
   const [searchValue, setInputValue] = useState(startQuery ?? '');
 
@@ -19,9 +20,10 @@ const SearchForm = ({ handleOnSubmit, type = 'title', styled, startQuery }) => {
         <SearchInput
           type="text"
           value={searchValue}
+          placeholder="Beef"
           onChange={handleInputChange}
         />
-        <ButnSkew type="submit" text="Search"></ButnSkew>
+        <ButnSkew type="submit" text="Search" />
       </SearchIn>
     </SearchBlock>
   );
