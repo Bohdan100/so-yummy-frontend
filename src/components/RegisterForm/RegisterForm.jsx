@@ -32,6 +32,8 @@ import {
   StatusBox,
   ErrorBox,
   TitleContainer,
+  GoogleIcon,
+  GoogleLink,
 } from './RegisterForm.styled';
 
 const RegisterForm = () => {
@@ -61,6 +63,9 @@ const RegisterForm = () => {
 
   return (
     <Container>
+      <GoogleLink to="http://localhost:8000/api/auth/google">
+        <GoogleIcon />
+      </GoogleLink>
       <Formik
         initialValues={{ name: '', email: '', password: '' }}
         onSubmit={handleSubmitForm}

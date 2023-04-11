@@ -10,8 +10,10 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 24px;
-  @media screen and (${p => p.theme.breakpoints[1]}) {
+  padding-bottom: 40px;
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     gap: 32px;
+    padding-bottom: 80px;
   }
 `;
 
@@ -25,7 +27,6 @@ export const Text = styled.p`
   font-feature-settings: 'liga' off;
   color: ${p => p.theme.colors.mainBlack};
   opacity: 0.5;
-  margin-bottom: 10px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 24px;
   }
