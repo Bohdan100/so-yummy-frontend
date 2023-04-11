@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Field, Form } from 'formik';
+import { ReactComponent as Google } from 'images/icons/google.svg';
 
 export const Container = styled.div`
   max-width: ${p => p.theme.breakpoints[0]};
@@ -64,6 +65,29 @@ export const Title = styled.h1`
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-bottom: 32px;
     font-size: 28px;
+  }
+`;
+
+export const GoogleLink = styled(Link)``;
+
+export const GoogleIcon = styled(Google)`
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: 50px;
+  top: 40px;
+  animation: pulse 2s infinite;
+
+  @media screen and (min-width: 768px) {
+    width: 30px;
+    height: 30px;
+    right: 80px;
+    top: 50px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 32px;
+    height: 32px;
+    right: 50px;
   }
 `;
 

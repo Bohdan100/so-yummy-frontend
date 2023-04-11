@@ -1,38 +1,12 @@
 import styled from 'styled-components';
 
-
 export const ShoppingListPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 64px;
-
   margin-left: 16px;
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-  }
-  @media (min-width: ${p => p.theme.breakpoints[2]}) {
-  }
 `;
-
-// export const ShopListTitle = styled.h1`
-//   font-family: 'Poppins';
-//   font-style: normal;
-//   font-weight: 600;
-//   font-size: 28px;
-//   line-height: ${p => p.theme.lineHeights.subheader};
-//   color: ${p => p.theme.colors.sectionHeader};
-//   margin-top: 50px;
-//   margin-bottom: 50px;
-
-//   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-//     font-size: 32px;
-//     margin-top: 85px;
-//     margin-bottom: 72px;
-//   }
-//   @media (min-width: ${p => p.theme.breakpoints[2]}) {
-//     font-size: 44px;
-//   }
-// `;
 
 export const EmptyListMessage = styled.p`
   margin: 10px 167px 10px 10px;
@@ -88,4 +62,3 @@ export const HeaderTable = styled.div`
     }
   }
 `;
-// 24 78 142

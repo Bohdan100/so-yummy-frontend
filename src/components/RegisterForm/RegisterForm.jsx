@@ -37,6 +37,8 @@ import {
   TitleContainer,
   ShowPasswordBtn,
   PassIconBox,
+  GoogleIcon,
+  GoogleLink,
 } from './RegisterForm.styled';
 
 const RegisterForm = () => {
@@ -73,6 +75,9 @@ const RegisterForm = () => {
 
   return (
     <Container>
+      <GoogleLink to="https://so-yummy-98ev.onrender.com/api/auth/google">
+        <GoogleIcon />
+      </GoogleLink>
       <Formik
         initialValues={{ name: '', email: '', password: '' }}
         onSubmit={handleSubmitForm}

@@ -10,11 +10,6 @@ export const RecipeCardWrapper = styled.li`
   &:hover a {
     transform: scale(1.05);
   }
-  /* Для збільшення img пр ховері */
-  /* :hover img {
-      transform: scale(1.25);
-      filter: contrast(130%);
-    } */
 
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: calc((100% - 32px) / 2);

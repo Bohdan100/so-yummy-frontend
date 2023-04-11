@@ -6,8 +6,7 @@ export const IngredientItem = styled.li`
   display: flex;
   align-items: start;
   padding: 0px 16px 24px 16px;
-
-  &:not(:last-child) {border-bottom: 1px solid #E0E0E0};
+  border-bottom: 1px solid #E0E0E0
 }
 @media screen and (${p => p.theme.breakpoints[1]}) {
   padding: 32px 42px;
@@ -130,7 +129,6 @@ export const DelIconStyled = styled(DelIcon)`
   width: 14px;
   height: 14px;
   stroke: ${p => p.theme.colors.mainBlack};
-  // stroke: black;
   position: absolute;
   left: 50%;
   top: 50%;

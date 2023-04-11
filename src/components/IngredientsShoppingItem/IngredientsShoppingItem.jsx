@@ -12,26 +12,21 @@ import {
 
 import { deleteProduct } from 'redux/ShoppingList/shoppingListOperations';
 
-const IngredientsShoppingItem = ({
-  image,
-  id,
-  nameIngredient,
-  weight,
-}) => {
+const IngredientsShoppingItem = ({ image, id, nameIngredient, weight }) => {
   const dispatch = useDispatch();
 
   return (
     <IngredientItem>
-        <ImageWrapper>
-          <img src={image} alt={nameIngredient} />
-        </ImageWrapper>
-        <TextContainer>
-          <NameIngredient>{nameIngredient}</NameIngredient>
-        </TextContainer>
-        <WeighIngredient>{weight}</WeighIngredient>
-        <DeleteButton type="buton" onClick={() => dispatch(deleteProduct(id))}>
-          <DelIconStyled />
-        </DeleteButton>
+      <ImageWrapper>
+        <img src={image} alt={nameIngredient} />
+      </ImageWrapper>
+      <TextContainer>
+        <NameIngredient>{nameIngredient}</NameIngredient>
+      </TextContainer>
+      <WeighIngredient>{weight}</WeighIngredient>
+      <DeleteButton type="buton" onClick={() => dispatch(deleteProduct(id))}>
+        <DelIconStyled />
+      </DeleteButton>
     </IngredientItem>
   );
 };
