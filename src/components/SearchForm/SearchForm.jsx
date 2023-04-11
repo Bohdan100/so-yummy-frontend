@@ -4,7 +4,7 @@ import { SearchBlock, SearchIn, SearchInput } from './SearchForm.styled';
 
 const SearchForm = ({ handleOnSubmit, type = 'Title', styled, startQuery }) => {
   const [searchValue, setInputValue] = useState(startQuery ?? '');
-  console.log(styled);
+
   function handleInputChange(event) {
     setInputValue(event.target.value);
   }
