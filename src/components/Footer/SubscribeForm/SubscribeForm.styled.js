@@ -84,7 +84,7 @@ export const ErrMsg = styled.p`
   top: 37px;
   left: 6px;
   font-size: 10px;
-  color: #e74a3b;
+  color: ${p => p.theme.colors.errMsgText};
 
   @media screen and (min-width: 768px) {
     top: 51px;

@@ -1,259 +1,277 @@
-import RecipePageBtn from 'components/RecipePageBtn';
-import { Formik, Form, ErrorMessage, FieldArray, Field } from 'formik';
-import { useRef } from 'react';
-import * as Yup from 'yup';
+import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 import {
-  Input,
-  InputContainer,
-  SelectIngredienContainer,
-  IngredienControler,
-  IngredienLenght,
-  ButtonClickIngredient,
-  TextAreaContainer,
-  Area,
-  Title,
-  InputContainerFile,
-  ButtonFile,
-  SelectContainer,
-  SelectTitle,
-  SelectStyled,
-  CloseIconStyled,
-  IconFile,
-  FirstTitle,
-} from './AddRecipePage.styled';
-import CustomSelect from './CustomSelect';
-import { PreviewImage } from './PreviewImage';
-import { TextError } from './TextError';
+  addRecipeValidationSchema,
+  storageServices,
+  createObjErrorResipeForm,
+} from 'helpers';
 
-const Schema = Yup.object({
-  item: Yup.string().required('Required'),
-  about: Yup.string().required('Required'),
-  selectCategory: Yup.string().required('Required'),
-  selectTime: Yup.string().required('Required'),
-  file: Yup.mixed().required('File is required'),
-});
+import { fetchAllCategories } from 'services/categories-API';
+import { addOwnRecipeAPI } from 'redux/OwnRecipes/ownApi';
+import { getAllIngredients } from 'services/ingredients-API';
 
-export const AddRecipeForm = () => {
-  const fileRef = useRef(null);
+import RecipeFormDescriptionFields from './RecipeFormDescriptionFields';
+import RecipeFormIngredientsFields from './RecipeFormIngredientsFields';
+import RecipeFormPreparationFields from './RecipeFormPreparationFields';
+import Loader from 'components/Loader';
 
-  const dropdownOptions = [
-    { key: 'Category', value: '' },
-    { key: 'breakfast', value: 'Breakfast' },
-    { key: 'beef', value: 'Beef' },
-    { key: 'miscellaneous', value: 'Miscellaneous' },
-    { key: 'dessert', value: 'Dessert' },
-    { key: 'goat', value: 'Goat' },
-    { key: 'lamb', value: 'Lamb' },
-  ];
+import { Form, WrapperLoader, SubmitBtn } from './AddRecipeForm.styled';
 
-  const options = [
-    { key: '', value: '' },
-    { key: 'breakfast', value: 'Breakfast' },
-    { key: 'beef', value: 'Beef' },
-    { key: 'miscellaneous', value: 'Miscellaneous' },
-    { key: 'dessert', value: 'Dessert' },
-    { key: 'goat', value: 'Goat' },
-    { key: 'lamb', value: 'Lamb' },
-  ];
+const STORAGE_KEY_ADDING_RESIPE = 'added-data-recipe';
 
-  const cookingTime = [
-    { key: 'Cooking time', value: '' },
-    { key: '20 min', value: '20 min' },
-    { key: '30 min', value: '30 min' },
-    { key: '40 min', value: '40 min' },
-    { key: '50 min', value: '50 min' },
-    { key: '60 min', value: '60 min' },
-    { key: '90 min', value: '90 min' },
-  ];
+let isLoadAllCategory = false;
+let isLoadAllIngredients = false;
+
+const AddRecipeForm = () => {
+  const [allCategory, setAllCategory] = useState([]);
+  const [allIngredients, setAllIngredients] = useState([]);
+  const [preview, setPreview] = useState(null);
+  const [title, setTitle] = useState(
+    () => storageServices.get(STORAGE_KEY_ADDING_RESIPE)?.title || ''
+  );
+  const [description, setDescription] = useState(
+    () => storageServices.get(STORAGE_KEY_ADDING_RESIPE)?.description || ''
+  );
+
+  const [category, setCategory] = useState(
+    () => storageServices.get(STORAGE_KEY_ADDING_RESIPE)?.category || 'Beef'
+  );
+
+  const [time, setTime] = useState(
+    () => storageServices.get(STORAGE_KEY_ADDING_RESIPE)?.time || '15 min'
+  );
+
+  const [ingredients, setIngredients] = useState(
+    () => storageServices.get(STORAGE_KEY_ADDING_RESIPE)?.ingredients || []
+  );
+
+  const [instructions, setInstructions] = useState(
+    () => storageServices.get(STORAGE_KEY_ADDING_RESIPE)?.instructions || ''
+  );
+
+  const [formErrors, setFormErrors] = useState({});
+  const [isShowErrors, setIsShowErrors] = useState(false);
+  const [isAddRecipe, setIsAddRecipe] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isWaitResoinse, setIsWaitResoinse] = useState(false);
+
+  const navigate = useNavigate();
+
+  const formData = useMemo(
+    () => ({
+      preview,
+      // thumb: preview,
+      title: title.trim(),
+      description: description.trim(),
+      category,
+      time,
+      ingredients: ingredients.map(({ _id, unit, amount }) => ({
+        _id,
+        measure: `${(amount, unit)}`,
+      })),
+      instructions: instructions.trim(),
+    }),
+    [category, description, preview, ingredients, instructions, time, title]
+  );
+
+  useEffect(() => {
+    storageServices.save(STORAGE_KEY_ADDING_RESIPE, {
+      category,
+      description,
+      preview,
+      ingredients,
+      instructions,
+      time,
+      title,
+    });
+    return () => {};
+  }, [category, description, preview, ingredients, instructions, time, title]);
+
+  useEffect(() => {
+    if (allCategory.length || isLoadAllCategory) return;
+    isLoadAllCategory = true;
+
+    const getCategories = async () => {
+      const categoriesList = (await fetchAllCategories()) || [];
+      return categoriesList;
+    };
+
+    setIsLoading(true);
+
+    getCategories()
+      .then(({ categoriesList }) => {
+        if (categoriesList.length > 0 && !category) {
+          setCategory(categoriesList[0]);
+        }
+        setAllCategory(categoriesList);
+      })
+      .catch(() => {}) // ???
+      .finally(() => {
+        isLoadAllCategory = false;
+        setIsLoading(false);
+      });
+  }, [allCategory.length, category]);
+
+  useEffect(() => {
+    if (!isShowErrors) return;
+    async function validateForm() {
+      try {
+        await addRecipeValidationSchema.validate(formData, {
+          abortEarly: false,
+        });
+        setFormErrors({});
+        return true;
+      } catch (error) {
+        const errors = error.inner.reduce(createObjErrorResipeForm, {});
+        setFormErrors(errors);
+        return false;
+      }
+    }
+    validateForm();
+  }, [formData, isShowErrors]);
+
+  useEffect(() => {
+    if (isLoadAllIngredients) return;
+    isLoadAllIngredients = true;
+
+    const getAllIngredientsList = async () => {
+      const ingredientsList = (await getAllIngredients()) || [];
+      return ingredientsList;
+    };
+    setIsLoading(true);
+    getAllIngredientsList()
+      .then(data => {
+        setAllIngredients(data);
+      })
+      .catch(() => {})
+      .finally(() => {
+        isLoadAllIngredients = false;
+        setIsLoading(false);
+      });
+  }, []);
+
+  const handleDeleteIngridient = id => {
+    const filteredData = ingredients.filter(el => el.idInput !== id);
+    setIngredients(filteredData);
+  };
+
+  const resetDataFormInLocalStorage = () => {
+    setPreview(null);
+    storageServices.save(STORAGE_KEY_ADDING_RESIPE, null);
+  };
+
+  const onUpdateDataInInputIngridient = (idInput, ingridientData) => {
+    const changeData = ingredients.map(elem => {
+      if (elem.idInput === idInput) {
+        return { ...elem, ...ingridientData };
+      } else {
+        return elem;
+      }
+    });
+    setIngredients([...changeData]);
+  };
+
+  const onSubmitHandler = e => {
+    e.preventDefault();
+    if (isAddRecipe) {
+      return;
+    }
+
+    const isValid = addRecipeValidationSchema.isValidSync(formData);
+    if (!isValid) {
+      toast.error('Not all fields were validated, follow the prompts!!');
+      setIsShowErrors(true);
+      return;
+    }
+    setIsAddRecipe(true);
+
+    const dataForSend = {
+      preview,
+      // thumb: preview,
+      title: title.trim(),
+      description: description.trim(),
+      category,
+      time: time.slice(0, time.indexOf(' ')),
+      ingredients: ingredients.map(({ id, unit, amount }) => ({
+        id,
+        measure: amount + ' ' + unit,
+      })),
+      instructions: instructions
+        .trim()
+        .split('\n')
+        .filter(el => el.length !== 0)
+        .join('\r\n'),
+    };
+    console.log('dataForSend', dataForSend);
+
+    setIsWaitResoinse(true);
+
+    addOwnRecipeAPI(dataForSend)
+      .then(data => {
+        setIsAddRecipe(false);
+        setIsWaitResoinse(false);
+        if (data?.error) {
+          toast.error(data.error.response.data.message);
+          return;
+        }
+        toast.success(`Your recipe ${title} has been created`);
+        resetDataFormInLocalStorage();
+        setIsShowErrors(false);
+        navigate('/my');
+      })
+      .catch(e => {
+        toast.error('Something went wrong, try add your recipe again');
+        setIsAddRecipe(false);
+        setIsWaitResoinse(false);
+      });
+  };
+
+  const isDisabledBtnSubmit =
+    isAddRecipe || (isShowErrors && Object.keys(formErrors).length > 0);
 
   return (
-    <div>
-      <FirstTitle>Add recipe</FirstTitle>
-      <Formik
-        initialValues={{
-          item: '',
-          about: '',
-          selectCategory: '',
-          selectTime: '',
-          ingredients: [],
-          file: null,
-        }}
-        onSubmit={values => {
-          console.log(values);
-        }}
-        validationSchema={Schema}
+    <Form onSubmit={onSubmitHandler}>
+      {isWaitResoinse && <Loader />}
+      {isLoading && (
+        <WrapperLoader>
+          <Loader />
+        </WrapperLoader>
+      )}
+
+      <RecipeFormDescriptionFields
+        allCategory={allCategory}
+        image={{ preview, setPreview }}
+        name={{ title, setTitle }}
+        descriptionData={{ description, setDescription }}
+        categoryData={{ category, setCategory }}
+        cokingTime={{ time, setTime }}
+        formErrors={formErrors}
+      />
+      <RecipeFormIngredientsFields
+        ingredients={ingredients}
+        setIngredients={setIngredients}
+        onDeleteIngridient={handleDeleteIngridient}
+        formErrors={formErrors}
+        allIngredients={allIngredients}
+        onUpdateIngridient={onUpdateDataInInputIngridient}
+      />
+      <RecipeFormPreparationFields
+        value={instructions}
+        onChange={setInstructions}
+        formErrors={formErrors}
+      />
+
+      <SubmitBtn
+        type="submit"
+        onSubmit={onSubmitHandler}
+        disabled={isDisabledBtnSubmit}
       >
-        {formik => {
-          console.log(formik.dirty);
-          console.log(formik.isValid);
-          console.log(formik.values.selectCategory);
-          console.log(formik.values.selectTime);
-          return (
-            <Form>
-              <InputContainerFile>
-                <input
-                  type="file"
-                  name="file"
-                  hidden
-                  ref={fileRef}
-                  onChange={event => {
-                    formik.setFieldValue('file', event.target.files[0]);
-                  }}
-                />
-                {formik.values.file && (
-                  <PreviewImage file={formik.values.file} />
-                )}
-                {!formik.values.file && (
-                  <ButtonFile
-                    type="button"
-                    onClick={() => {
-                      fileRef.current.click();
-                    }}
-                  >
-                    <IconFile />
-                  </ButtonFile>
-                )}
-                <ErrorMessage name="file" component={TextError} />
-              </InputContainerFile>
-              <InputContainer>
-                <Input type="text" name="item" placeholder="Enter item title" />
-                <ErrorMessage name="item" component={TextError} />
-              </InputContainer>
-              <InputContainer>
-                <Input
-                  type="text"
-                  name="about"
-                  placeholder="Enter about recipe"
-                />
-                <ErrorMessage name="about" component={TextError} />
-              </InputContainer>
-              <SelectContainer>
-                <SelectTitle>Enter item title</SelectTitle>
-                <Field as={SelectStyled} name="selectCategory">
-                  {dropdownOptions.map(option => {
-                    return (
-                      <option key={option.value} value={option.value}>
-                        {option.key}
-                      </option>
-                    );
-                  })}
-                </Field>
-              </SelectContainer>
-              <ErrorMessage name="selectCategory" component={TextError} />
-              <SelectContainer>
-                <SelectTitle>Cooking time</SelectTitle>
-                <Field as={SelectStyled} name="selectTime">
-                  {cookingTime.map(option => {
-                    return (
-                      <option key={option.value} value={option.value}>
-                        {option.key}
-                      </option>
-                    );
-                  })}
-                </Field>
-              </SelectContainer>
-              <ErrorMessage name="selectTime" component={TextError} />
-              <div>
-                <FieldArray name="ingredients">
-                  {fieldArrayProps => {
-                    const { push, remove, form } = fieldArrayProps;
-                    const { values } = form;
-                    const { ingredients } = values;
-                    console.log(ingredients);
-
-                    const addSelect = () => {
-                      push('');
-                    };
-
-                    const deleteSelect = () => {
-                      ingredients.pop();
-                    };
-
-                    return (
-                      <InputContainer>
-                        <IngredienControler>
-                          <Title>Ingredients</Title>
-                          <IngredienLenght>
-                            {ingredients.length > 0 && (
-                              <ButtonClickIngredient
-                                type="buttom"
-                                onClick={deleteSelect}
-                              >
-                                -
-                              </ButtonClickIngredient>
-                            )}
-                            <span>{ingredients.length}</span>
-                            <ButtonClickIngredient
-                              type="buttom"
-                              onClick={addSelect}
-                            >
-                              +
-                            </ButtonClickIngredient>
-                          </IngredienLenght>
-                        </IngredienControler>
-                        {ingredients.map((_, index) => (
-                          <SelectIngredienContainer key={index}>
-                            <CustomSelect
-                              type="select"
-                              name={`ingredients[${index}].igredient`}
-                              options={options}
-                              placeholder="Select an ingredients"
-                              isSearchable={true}
-                            />
-                            <Field
-                              type="text"
-                              name={`ingredients[${index}].weight`}
-                            />
-
-                            <Field
-                              as="select"
-                              name={`ingredients[${index}].measure`}
-                            >
-                              {cookingTime.map(option => {
-                                return (
-                                  <option
-                                    key={option.value}
-                                    value={option.value}
-                                  >
-                                    {option.key}
-                                  </option>
-                                );
-                              })}
-                            </Field>
-                            {index >= 0 && (
-                              <ButtonClickIngredient
-                                type="button"
-                                onClick={() => remove(index)}
-                              >
-                                <CloseIconStyled />
-                              </ButtonClickIngredient>
-                            )}
-                          </SelectIngredienContainer>
-                        ))}
-                      </InputContainer>
-                    );
-                  }}
-                </FieldArray>
-              </div>
-              <TextAreaContainer>
-                <Title>Recipe Preparation</Title>
-                <Area
-                  as="textarea"
-                  name="textarea"
-                  placeholder="Enter recipe"
-                />
-                <ErrorMessage name="textarea" component={TextError} />
-              </TextAreaContainer>
-
-              <RecipePageBtn
-                text="Add"
-                type="submit"
-                disabled={!(formik.dirty && formik.isValid)}
-              ></RecipePageBtn>
-            </Form>
-          );
-        }}
-      </Formik>
-    </div>
+        Add
+      </SubmitBtn>
+    </Form>
   );
 };
+
+export default AddRecipeForm;

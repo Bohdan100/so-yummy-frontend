@@ -7,7 +7,7 @@ import { SocLinkList } from './SocNetworks.styled';
 
 const SocNetworks = ({ location }) => {
   return (
-    <SocLinkList>
+    <SocLinkList location={location}>
       <li>
         <a
           href="https://www.facebook.com/"

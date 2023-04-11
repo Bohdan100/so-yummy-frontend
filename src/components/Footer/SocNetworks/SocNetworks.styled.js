@@ -15,7 +15,10 @@ export const SocLinkList = styled.ul`
     transition: ${p => p.theme.transitions.main};
 
     :hover {
-      fill: ${p => p.theme.colors.footerSMlinksHover};
+      fill: ${p =>
+        p.location === 'footer'
+          ? p => p.theme.colors.footerSMlinksHover
+          : p => p.theme.colors.footerSMlinksHoverAddRecipePge};
     }
   }
 `;
