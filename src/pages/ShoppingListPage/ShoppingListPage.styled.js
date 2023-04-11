@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const ShoppingListPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -13,28 +14,28 @@ export const ShoppingListPageWrapper = styled.div`
   }
 `;
 
-export const ShopListTitle = styled.h1`
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 28px;
-  line-height: ${p => p.theme.lineHeights.subheader};
-  color: #001833;
-  margin-top: 50px;
-  margin-bottom: 50px;
+// export const ShopListTitle = styled.h1`
+//   font-family: 'Poppins';
+//   font-style: normal;
+//   font-weight: 600;
+//   font-size: 28px;
+//   line-height: ${p => p.theme.lineHeights.subheader};
+//   color: ${p => p.theme.colors.sectionHeader};
+//   margin-top: 50px;
+//   margin-bottom: 50px;
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    font-size: 32px;
-    margin-top: 85px;
-    margin-bottom: 72px;
-  }
-  @media (min-width: ${p => p.theme.breakpoints[2]}) {
-    font-size: 44px;
-  }
-`;
+//   @media (min-width: ${p => p.theme.breakpoints[1]}) {
+//     font-size: 32px;
+//     margin-top: 85px;
+//     margin-bottom: 72px;
+//   }
+//   @media (min-width: ${p => p.theme.breakpoints[2]}) {
+//     font-size: 44px;
+//   }
+// `;
 
 export const EmptyListMessage = styled.p`
-  margin-top: 24px;
+  margin: 10px 167px 10px 10px;
   font-size: 18px;
   font-weight: 500;
   line-height: 27px;
@@ -54,13 +55,15 @@ export const HeaderTable = styled.div`
   border-radius: ${div => div.theme.radii.image};
   height: 42px;
   padding: 10px;
+  margin-top: 50px;
   margin-bottom: 32px;
-  color: ${p => p.theme.colors.mainWhite};
+  color: ${p => p.theme.colors.mainBtnCategoryText};
   background-color: ${p => p.theme.colors.mainAccent};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     height: 58px;
     padding: 20px;
     margin-bottom: 50px;
+    margin-top: 72px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     height: 60px;
@@ -76,12 +79,12 @@ export const HeaderTable = styled.div`
     }
   }
   span {
-    margin-left: 16px;
+    margin-left: 24px;
     @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-      margin-left: 38px;
+      margin-left: 78px;
     }
     @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
-      margin-left: 110px;
+      margin-left: 142px;
     }
   }
 `;

@@ -7,10 +7,11 @@ import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
 
 import MainContainer from 'components/MainContainer';
 import IngredientsShoppingList from 'components/IngredientsShoppingList';
+import ReusableTitle from '../../components/ReusableComponents/ReusableTitle/ReusableTitle'
 
 import {
   HeaderTable,
-  ShopListTitle,
+  // ShopListTitle,
   EmptyListMessage,
   StyledLoaderWrapper,
 } from './ShoppingListPage.styled';
@@ -21,6 +22,9 @@ const isLoading = false;
 const ShoppingListPage = () => {
   const shoppingList = useSelector(selectProducts);
 
+  const revers = arr => arr.map((_, index) => arr[arr.length - 1 - index]);
+  const reversedShoppingList = revers(shoppingList);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,11 +33,11 @@ const ShoppingListPage = () => {
 
   return (
     <MainContainer>
-      <ShopListTitle>Shopping list</ShopListTitle>
+      <ReusableTitle>Shopping list</ReusableTitle>
       <HeaderTable>
-        <p>Ingridients</p>
+        <p>Products</p>
         <p>
-          Number <span>Add to list</span>
+          Number <span>Remove</span>
         </p>
       </HeaderTable>
       {isLoading ? (
@@ -47,7 +51,7 @@ const ShoppingListPage = () => {
               Your shopping list is currently empty
             </EmptyListMessage>
           ) : (
-            <IngredientsShoppingList ingredients={shoppingList} />
+            <IngredientsShoppingList ingredients={reversedShoppingList} />
           )}
         </>
       )}
