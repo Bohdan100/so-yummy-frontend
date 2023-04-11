@@ -35,11 +35,7 @@ const CategoriesByName = () => {
 
   return (
     <>
-      {error && (
-        <NotFoundWrapp>
-          Whoops, something went wrong: {error.message}
-        </NotFoundWrapp>
-      )}
+      {error && <NotFoundWrapp>Whoops, something went wrong...</NotFoundWrapp>}
       {isLoading && <Loader />}
       {recipes.length > 0 && !error && !isLoading && (
         <RecipesList>

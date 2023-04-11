@@ -17,8 +17,8 @@ export const ChooseBlock = styled.div`
     width: 261px;
     height: 100px;
     position: absolute;
-    right: 16px;
-    top: 356px;
+    right: 27px;
+    top: 370px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     line-height: 20px;
@@ -26,7 +26,7 @@ export const ChooseBlock = styled.div`
     width: 298px;
     height: 114px;
     position: absolute;
-    right: 97px;
+    right: 141px;
     top: 440px;
   }
 `;

@@ -5,14 +5,17 @@ export const CategoryList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  /* margin-top: 64px; */
+  margin-top: 713px;
+  margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     gap: 50px;
-    /* margin-top: 72px; */
+    margin-top: 712px;
+    margin-bottom: 32px;
   }
   @media screen and (min-width: 1440px) {
     gap: 100px;
-    /* margin-top: 100px; */
+    margin-top: 900px;
+    margin-bottom: 14px;
   }
 `;
 export const Title = styled.h1`

@@ -1,4 +1,5 @@
-@import-normalize; /* bring in normalize.css styles */
+@import-normalize;
+/* bring in normalize.css styles */
 
 body {
   margin: 0;
@@ -12,4 +13,14 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:root {
+  --toastify-color-light: #EBF3D4;
+  --toastify-color-info: #1e1f28bf;
+  --toastify-color-success: #8BAA36;
+  --toastify-color-warning: #F6C23E;
+  --toastify-color-error: #E74A3B;
+  --toastify-font-family: Poppins, sans-serif;
+  --toastify-text-color-light: #8BAA36;
 }

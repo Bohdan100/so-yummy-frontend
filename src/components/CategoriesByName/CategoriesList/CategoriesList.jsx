@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import { useParams } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { toast } from 'react-toastify';
@@ -8,6 +9,7 @@ import NotFoundWrapp from 'components/ReusableComponents/NotFoundWrapp';
 import Loader from 'components/Loader/Loader';
 
 const CategoriesList = () => {
+  const { categoryName: category } = useParams();
   const [tabValue, setTabValue] = useState(0);
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
@@ -20,6 +22,12 @@ const CategoriesList = () => {
         setIsLoading(true);
         const { categoriesList } = await API.fetchAllCategories();
         setCategories(categoriesList);
+        if (category) {
+          const categoryCapitalize =
+            category[0].toUpperCase() + category.slice(1);
+          const indexOfCategory = categoriesList.indexOf(categoryCapitalize);
+          if (indexOfCategory > 0) setTabValue(indexOfCategory);
+        }
       } catch (error) {
         setError({ error });
         toast.error(`Something went wrong. Plese try again...`);
@@ -28,7 +36,7 @@ const CategoriesList = () => {
       }
     }
     getAllCategories();
-  }, []);
+  }, [category]);
 
   useEffect(() => {
     if (categories.length > 0) {
@@ -123,11 +131,7 @@ const CategoriesList = () => {
           </Tabs>
         </div>
       )}
-      {error && (
-        <NotFoundWrapp>
-          Whoops, something went wrong: {error.message}
-        </NotFoundWrapp>
-      )}
+      {error && <NotFoundWrapp>Whoops, something went wrong...</NotFoundWrapp>}
     </>
   );
 };

@@ -11,6 +11,7 @@ export const LoaderWrap = styled.div`
   position: absolute;
   bottom: 50%;
   left: 50%;
+
   display: flex;
   justify-content: center;
   align-items: center;
