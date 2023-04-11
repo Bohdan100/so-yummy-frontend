@@ -79,6 +79,8 @@ const SearchPage = () => {
     SearchRecipes();
   }, [type, query, searchParams]);
 
+  const style = { marginBottom: 40 };
+
   return (
     <MainContainer>
       <ReusableTitle>Search</ReusableTitle>
@@ -90,7 +92,7 @@ const SearchPage = () => {
       )}
       {isLoading && <Loader />}
       {recipes.length > 0 && !error && !isLoading && (
-        <RecipesList>
+        <RecipesList style={style}>
           {recipes.map(recipe => {
             return <RecipeCard dish={recipe} key={recipe._id} />;
           })}
