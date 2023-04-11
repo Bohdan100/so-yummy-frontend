@@ -1,9 +1,6 @@
-import { ButtonSkewStyle } from 'components/ButtonSkew/ButtonSkew';
-import { theme } from 'constants';
 import styled from 'styled-components';
-// import { theme } from '';
 
-export const Search = styled.div`
+export const SearchBlock = styled.div`
   width: 295px;
   height: 52px;
   background-color: ${p => p.theme.colors.mainSearchInput};
@@ -13,44 +10,25 @@ export const Search = styled.div`
   border-bottom-right-radius: 30px;
   margin: 0 24px 83px;
   border: ${p => p.theme.borders.mainSearchInput};
-  color: ${theme.colors.disabledGrey};
-  font-family: ${theme.fonts.main};
+  color: ${p => p.theme.colors.disabledGrey};
+  font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
   position: relative;
-  @media (min-width: 768px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 369px;
     height: 59px;
     font-size: 16px;
     line-height: 24px;
     margin: 0 0 195px;
   }
-  @media (min-width: 1440px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     width: 510px;
     height: 71px;
     font-size: 16px;
     line-height: 24px;
-  }
-  ${ButtonSkewStyle} {
-    width: 113px;
-    height: 52px;
-    position: absolute;
-    top: -0.5px;
-    right: -0.5px;
-  }
-  @media (min-width: 768px) {
-    ${ButtonSkewStyle} {
-      width: 161px;
-      height: 59px;
-    }
-  }
-  @media (min-width: 1440px) {
-    ${ButtonSkewStyle} {
-      width: 161px;
-      height: 70px;
-    }
   }
 `;
 
@@ -59,6 +37,13 @@ export const SearchIn = styled.form`
   justify-content: flex-end;
   border-radius: 30px, 80px;
   height: 100%;
+  width: 295px;
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 362px;
+  }
+  @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
+    width: 510px;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -67,14 +52,14 @@ export const SearchInput = styled.input`
   border-bottom-left-radius: 80px;
   border: none;
   background-color: transparent;
-  font-family: ${theme.fonts.main};
+  font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
   padding-left: 32px;
-  color: ${theme.colors.disabledGrey};
-  @media (min-width: 768px) {
+  color: ${p => p.theme.colors.disabledGrey};
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
@@ -92,11 +77,11 @@ export const SearchInput = styled.input`
     outline: none;
   }
   &::placeholder {
-    font-family: ${theme.fonts.main};
+    font-family: ${p => p.theme.fonts.main};
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: ${theme.colors.disabledGrey};
+    color: ${p => p.theme.colors.disabledGrey};
   }
 `;

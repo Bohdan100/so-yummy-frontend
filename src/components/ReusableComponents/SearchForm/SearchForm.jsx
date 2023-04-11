@@ -1,8 +1,8 @@
-// import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
+import ButnSkew from 'components/ButtonSkew';
 import React, { useState } from 'react';
-import { Search } from './SearchForm.styled';
+import { SearchBlock, SearchIn, SearchInput } from './SearchForm.styled';
 
-export const SearchForm = ({ onSubmit, type, startQuery }) => {
+const SearchForm = ({ handleOnSubmit, type = 'Title', startQuery }) => {
   const [searchValue, setInputValue] = useState(startQuery ?? '');
 
   function handleInputChange(event) {
@@ -11,20 +11,22 @@ export const SearchForm = ({ onSubmit, type, startQuery }) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    onSubmit(searchValue, type);
+    handleOnSubmit(searchValue, type);
   }
 
   return (
-    <Search>
-      <form onSubmit={handleSubmit}>
-        <input
+    <SearchBlock>
+      <SearchIn onSubmit={handleSubmit}>
+        <SearchInput
           type="text"
-          placeholder="Please type here, what you are looking for"
           value={searchValue}
+          placeholder="Beef"
           onChange={handleInputChange}
         />
-        <button type="submit" text="Search"></button>
-      </form>
-    </Search>
+        <ButnSkew type="submit" text="Search" />
+      </SearchIn>
+    </SearchBlock>
   );
 };
+
+export default SearchForm;
