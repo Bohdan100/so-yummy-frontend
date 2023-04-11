@@ -105,6 +105,7 @@ export const DeleteBtn = styled.button`
   justify-content: center;
   align-items: center;
   text-align: center;
+  border: 1px solid transparent;
   color: ${p => p.theme.colors.mainWhite};
   background-color: ${p => p.theme.colors.deleteBtnRecipe};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
@@ -114,7 +115,6 @@ export const DeleteBtn = styled.button`
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     width: 44px;
     height: 44px;
-    padding: 12px;
   }
   svg {
     stroke: ${p => p.theme.colors.iconDlt};
@@ -137,7 +137,6 @@ export const IconBtn = styled(BtnIconDelete)`
   padding: 0;
   width: 14px;
   height: 14px;
-
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 22px;
     height: 22px;
