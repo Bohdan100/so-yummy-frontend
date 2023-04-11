@@ -63,7 +63,7 @@ const RegisterForm = () => {
 
   return (
     <Container>
-      <GoogleLink to="https://so-yummy-98ev.onrender.com/api/auth/google">
+      <GoogleLink to="http://localhost:8000/api/auth/google">
         <GoogleIcon />
       </GoogleLink>
       <Formik
