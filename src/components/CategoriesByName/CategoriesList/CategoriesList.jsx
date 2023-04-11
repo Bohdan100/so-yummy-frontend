@@ -22,10 +22,12 @@ const CategoriesList = () => {
         setIsLoading(true);
         const { categoriesList } = await API.fetchAllCategories();
         setCategories(categoriesList);
-        const categoryCapitalize =
-          category[0].toUpperCase() + category.slice(1);
-        const indexOfCategory = categoriesList.indexOf(categoryCapitalize);
-        setTabValue(indexOfCategory);
+        if (category) {
+          const categoryCapitalize =
+            category[0].toUpperCase() + category.slice(1);
+          const indexOfCategory = categoriesList.indexOf(categoryCapitalize);
+          if (indexOfCategory > 0) setTabValue(indexOfCategory);
+        }
       } catch (error) {
         setError({ error });
         toast.error(`Something went wrong. Plese try again...`);
@@ -129,11 +131,7 @@ const CategoriesList = () => {
           </Tabs>
         </div>
       )}
-      {error && (
-        <NotFoundWrapp>
-          Whoops, something went wrong: {error.message}
-        </NotFoundWrapp>
-      )}
+      {error && <NotFoundWrapp>Whoops, something went wrong...</NotFoundWrapp>}
     </>
   );
 };
