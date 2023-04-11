@@ -169,7 +169,7 @@ const RegisterForm = () => {
                 </StatusBox>
               </Label>
             </InputContainer>
-            <GoogleLink to="http://localhost:8000/api/auth/google">
+            <GoogleLink to="https://so-yummy-98ev.onrender.com/api/auth/google">
               <GoogleIcon />
             </GoogleLink>
             <Button
