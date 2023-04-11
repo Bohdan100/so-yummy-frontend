@@ -7,11 +7,10 @@ import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
 
 import MainContainer from 'components/MainContainer';
 import IngredientsShoppingList from 'components/IngredientsShoppingList';
-import ReusableTitle from '../../components/ReusableComponents/ReusableTitle/ReusableTitle'
+import ReusableTitle from '../../components/ReusableComponents/ReusableTitle/ReusableTitle';
 
 import {
   HeaderTable,
-  // ShopListTitle,
   EmptyListMessage,
   StyledLoaderWrapper,
 } from './ShoppingListPage.styled';
