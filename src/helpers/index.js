@@ -1,6 +1,6 @@
 export {
   loginValidationSchema,
-  registerValidationSchema
+  registerValidationSchema,
 } from './authValidationShemas';
 
 export * from './updateUserValidationSchema';

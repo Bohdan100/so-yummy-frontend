@@ -8,7 +8,9 @@ import CategoriesByName from '../components/CategoriesByName';
 import { useDispatch, useSelector } from 'react-redux';
 import { refresh } from 'redux/Auth/authOperations';
 import { selectTheme } from 'redux/Theme/themeSelectors';
+import { selectIsRefreshing } from 'redux/Auth/authSelectors';
 
+import Loader from 'components/Loader/Loader';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -33,13 +35,17 @@ const RecipePage = lazy(() => import('pages/RecipePage'));
 export const App = () => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
+  const isRefreshUser = useSelector(selectIsRefreshing);
+
   const userThemeMode = theme === 'light' ? lightMode : darkMode;
 
   useEffect(() => {
     dispatch(refresh());
   }, [dispatch]);
 
-  return (
+  return isRefreshUser ? (
+    <Loader />
+  ) : (
     <ThemeProvider theme={userThemeMode}>
       <GlobalStyle />
       <Routes>

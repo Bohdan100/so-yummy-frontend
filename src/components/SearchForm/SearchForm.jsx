@@ -1,8 +1,8 @@
+import ButnSkew from 'components/ButtonSkew';
 import React, { useState } from 'react';
 import { SearchBlock, SearchIn, SearchInput } from './SearchForm.styled';
-import ButnSkew from 'components/ButtonSkew';
 
-const SearchForm = ({ handleOnSubmit, type = 'title', styled, startQuery }) => {
+const SearchForm = ({ handleOnSubmit, type = 'title', startQuery }) => {
   const [searchValue, setInputValue] = useState(startQuery ?? '');
 
   function handleInputChange(event) {
