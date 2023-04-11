@@ -14,7 +14,7 @@ export const PaginationWrapper = styled.div`
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  background-color: ${p => p.theme.colors.mainWhite};
+  background-color: ${p => p.theme.colors.recipeBlockBg};
   box-shadow: ${p => p.theme.colors.paginationShadow};
   border-radius: ${p => p.theme.radii.pagination};
   & nav {
