@@ -68,29 +68,6 @@ export const Title = styled.h1`
   }
 `;
 
-export const GoogleLink = styled(Link)``;
-
-export const GoogleIcon = styled(Google)`
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  right: 50px;
-  top: 40px;
-  animation: pulse 2s infinite;
-
-  @media screen and (min-width: 768px) {
-    width: 30px;
-    height: 30px;
-    right: 80px;
-    top: 50px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 32px;
-    height: 32px;
-    right: 50px;
-  }
-`;
-
 export const InputContainer = styled.div`
   width: 100%;
   height: auto;
@@ -156,7 +133,7 @@ export const Button = styled.button`
   font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   font-size: 16px;
-  margin-top: 28px;
+  margin-top: 8px;
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.btnText};
   color: ${p => p.theme.colors.btnTextLight};
@@ -167,7 +144,7 @@ export const Button = styled.button`
   cursor: pointer;
   transition: ${p => p.theme.transitions.main};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    margin-top: 50px;
+    margin-top: 20px;
   }
   &:focus:not(:disabled),
   &:hover:not(:disabled) {
@@ -272,5 +249,24 @@ export const ShowPasswordBtn = styled.button`
     width: 24px;
     height: 24px;
     transform: translateY(-5%);
+  }
+`;
+
+export const GoogleLink = styled(Link)`
+  align-self: center;
+`;
+
+export const GoogleIcon = styled(Google)`
+  width: 20px;
+  height: 20px;
+  animation: pulse 2s infinite;
+  @media screen and (min-width: 768px) {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 32px;
+    height: 32px;
   }
 `;
