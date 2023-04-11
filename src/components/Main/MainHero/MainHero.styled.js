@@ -3,16 +3,16 @@ import styled from 'styled-components';
 import bgrImageMob from '../../../images/bgPages/mainPage/main_hero1x_mob.png';
 import bgrImageTab from '../../../images/bgPages/mainPage/main_hero1x_tablet.png';
 import bgrImageDesk from '../../../images/bgPages/mainPage/main_hero1x_desktop.png';
-
 import bgrImageMob2 from '../../../images/bgPages/mainPage/main_hero2x_mob.png';
 import bgrImageTab2 from '../../../images/bgPages/mainPage/main_hero2x_tablet.png';
 import bgrImageDesk2 from '../../../images/bgPages/mainPage/main_hero2x_desktop.png';
-/* position: absolute;
-  left: 0;
-  top: 0; */
 
 export const MainPageBg = styled.div`
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 0);
   display: flex;
   height: 777px;
   padding: 0 16px;
@@ -20,7 +20,7 @@ export const MainPageBg = styled.div`
   background-image: url(${bgrImageMob});
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-color: ${p => p.theme.colors.bodyBg};
 
   @media screen and (min-device-pixel-ratio: 2),
@@ -29,7 +29,11 @@ export const MainPageBg = styled.div`
     screen and (min-resolution: 2dppx) {
     background-image: url(${bgrImageMob2});
   }
+  @media screen and (min-width: ${p => p.theme.breakpoints[0]}) {
+    width: 375px;
+  }
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 768px;
     background-image: url(${bgrImageTab});
     height: 640px;
     padding: 0 32px;
@@ -42,6 +46,7 @@ export const MainPageBg = styled.div`
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     background-image: url(${bgrImageDesk});
+    width: 1440px;
     height: 800px;
     padding: 0 100px;
     @media screen and (min-device-pixel-ratio: 2),
@@ -57,12 +62,12 @@ export const MainPageDiv = styled.div`
   display: block;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     display: flex;
-    margin-right: 368px;
+    margin-right: 340px;
     flex-wrap: wrap;
     justify-content: flex-start;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
-    margin-right: 830px;
+    margin-right: 800px;
   }
 `;
 
@@ -113,6 +118,7 @@ export const SpanGr = styled.span`
 `;
 
 export const MainPageText = styled.p`
+  width: 248px;
   margin: 14px 40px 157px 40px;
   color: ${p => p.theme.colors.secondaryDark};
   font-family: ${p => p.theme.fonts.main};
@@ -122,19 +128,16 @@ export const MainPageText = styled.p`
   line-height: 18px;
   text-align: center;
   letter-spacing: ${p => p.theme.letterSpacings.content};
-  & br {
-    display: none;
-  }
+
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 362px;
     margin: 24px 0 32px;
     font-size: 14px;
     line-height: 18px;
     text-align: left;
-    & br {
-      display: flex;
-    }
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
+    width: 465px;
     margin: 14px 0 50px;
     font-size: 18px;
     line-height: 24px;
