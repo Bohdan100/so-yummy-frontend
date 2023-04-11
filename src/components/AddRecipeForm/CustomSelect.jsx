@@ -13,7 +13,6 @@ const CustomSelect = ({
     <Field name={name}>
       {({ field }) => (
         <Select
-          type="select"
           options={options}
           onChange={onChange}
           onBlur={onBlur}

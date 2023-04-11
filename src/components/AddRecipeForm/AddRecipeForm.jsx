@@ -199,6 +199,7 @@ export const AddRecipeForm = () => {
                         {ingredients.map((_, index) => (
                           <SelectIngredienContainer key={index}>
                             <CustomSelect
+                              type="select"
                               name={`ingredients[${index}].igredient`}
                               options={options}
                               placeholder="Select an ingredients"
