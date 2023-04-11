@@ -87,6 +87,7 @@ export const theme = {
     searchInput: '1px solid #F0F0F0',
     mainNavBord: '1px solid transparent',
     inputStandart: '1px solid #FAFAFA',
+    productListBorder: '1px solid #E0E0E0',
   },
   radii: {
     btnStandart: '6px',
@@ -198,6 +199,7 @@ export const darkTheme = {
     searchInput: '1px solid rgba(255, 255, 255, 0.2)',
     mainNavBord: '1px solid #8BAA36',
     inputStandart: '1px solid #FAFAFA30',
+    productListBorder: '1px solid rgba(250, 250, 250, 0.3)',
   },
   radii: {
     btnStandart: '6px',

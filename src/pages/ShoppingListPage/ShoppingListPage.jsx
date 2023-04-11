@@ -9,12 +9,9 @@ import MainContainer from 'components/MainContainer';
 import IngredientsShoppingList from 'components/IngredientsShoppingList';
 import ReusableTitle from '../../components/ReusableComponents/ReusableTitle/ReusableTitle';
 
-import {
-  HeaderTable,
-  EmptyListMessage,
-  StyledLoaderWrapper,
-} from './ShoppingListPage.styled';
+import { HeaderTable, StyledLoaderWrapper } from './ShoppingListPage.styled';
 import Loader from 'components/Loader/Loader';
+import NotFoundWrapp from 'components/ReusableComponents/NotFoundWrapp';
 
 const isLoading = false;
 
@@ -46,9 +43,7 @@ const ShoppingListPage = () => {
       ) : (
         <>
           {shoppingList.length === 0 ? (
-            <EmptyListMessage>
-              Your shopping list is currently empty
-            </EmptyListMessage>
+            <NotFoundWrapp>Your shopping list is currently empty</NotFoundWrapp>
           ) : (
             <IngredientsShoppingList ingredients={reversedShoppingList} />
           )}
