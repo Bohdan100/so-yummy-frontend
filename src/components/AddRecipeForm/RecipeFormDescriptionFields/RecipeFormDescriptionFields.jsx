@@ -1,5 +1,3 @@
-// TODO перепроверить стили InfoWrapper
-
 import { useRef, useState } from 'react';
 
 import { allTime } from 'data/dataForAddRecipeForm';
@@ -45,8 +43,8 @@ const RecipeFormDescriptionFields = ({
     <InfoWrapper>
       <ImgWrapperForError>
         <ImgWithPreview imgAdd={preview} setImgAdd={setPreview} />
-        {formErrors?.fullImage && (
-          <ErrMsgForImg>{formErrors?.fullImage}</ErrMsgForImg>
+        {formErrors?.preview && (
+          <ErrMsgForImg>{formErrors?.preview}</ErrMsgForImg>
         )}
       </ImgWrapperForError>
 

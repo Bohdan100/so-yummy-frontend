@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://so-yummy-98ev.onrender.com';
+axios.defaults.baseURL = 'https://so-yummy-98ev.onrender.com/api';
 
 export const getOwnRecipesAPI = (page, limit) => {
   if (page && limit) {
@@ -15,10 +15,13 @@ export const getOwnRecipesAPI = (page, limit) => {
   });
 };
 
-export const addOwnRecipeAPI = body => {
-  console.log('body', body);
+export const addOwnRecipeAPI = formData => {
   return axios
-    .post('http://localhost:8000/api/ownRecipe/', body)
+    .post('/ownRecipe', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
     .then(({ data }) => {
       return data;
     });

@@ -49,7 +49,7 @@ const Header = () => {
           {!isMobileDevice && <Navigation />}
 
           <UserMenuWrapper>
-            <UserLogo color={color} />
+            <UserLogo />
             <BurgerBtn type="button" onClick={openMobMenu}>
               <BurgerIconStyled stroke={color} />
             </BurgerBtn>
