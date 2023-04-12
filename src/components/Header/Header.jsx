@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useMedia } from 'react-use';
 import { selectTheme } from 'redux/Theme/themeSelectors';
 
-import MainContainer from 'components/MainContainer';
+import { MainContainerTwo } from './Header.styled';
 import Logo from 'components/Logo';
 import Navigation from './Navigation';
 import UserLogo from './UserLogo';
@@ -42,7 +42,7 @@ const Header = () => {
 
   return (
     <HeaderStyled>
-      <MainContainer>
+      <MainContainerTwo>
         <HeaderWrapper>
           <Logo inv={'true'} />
 
@@ -62,7 +62,7 @@ const Header = () => {
             <MobileMenu isShown={isMobMenuOpen} closeMobMenu={closeMobMenu} />
           </Modal>
         )}
-      </MainContainer>
+      </MainContainerTwo>
     </HeaderStyled>
   );
 };

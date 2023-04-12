@@ -106,9 +106,10 @@ const FavoritePage = () => {
   };
 
   const handleRemoveRecipe = async id => {
-    await removeRecipeFromFavorites(id);
     try {
       setIsLoading(true);
+      await removeRecipeFromFavorites(id);
+
       const response = await fetchFavoriteRacipes(pageNumber, limit);
 
       setRecipes(response.data);
