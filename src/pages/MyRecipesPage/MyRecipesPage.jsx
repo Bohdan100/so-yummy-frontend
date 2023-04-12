@@ -29,13 +29,6 @@ const MyRecipesPage = () => {
     dispatch(getOwnRecipes({ page: pageNumber, limit: limit }));
   }, [dispatch, pageNumber]);
 
-  useEffect(() => {
-    if (recipes.length < limit)
-      dispatch(getOwnRecipes({ page: pageNumber, limit: limit }));
-    if (recipes.length <= 0)
-      dispatch(getOwnRecipes({ page: pageNumber - 1, limit: limit }));
-  }, [dispatch, recipes.length, pageNumber]);
-
   const handleChange = (event, value) => {
     console.log('value', value);
     setPageNumber(value);
