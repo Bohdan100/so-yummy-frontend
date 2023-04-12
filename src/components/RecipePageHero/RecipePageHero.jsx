@@ -52,7 +52,7 @@ const RecipePageHero = ({ recipeObj, recipeId }) => {
         const { data } = await API.fetchOwnRacipes();
 
         if (data.result !== undefined) {
-          const recipe = data.result.some(recipe => recipe === recipeId);
+          const recipe = data.result.some(el => el._id === recipeId);
 
           setIsOwn(recipe);
         }
@@ -63,7 +63,7 @@ const RecipePageHero = ({ recipeObj, recipeId }) => {
 
     async function getFavoriteRacipes() {
       try {
-        const { data } = await API.fetchFavoriteRacipes();
+        const { data } = await API.fetchFavoriteRacipes(1, 50000);
 
         if (data.result !== undefined) {
           const recipe = data.result.some(el => el.recipe._id === recipeId);
