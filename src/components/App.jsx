@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Layout from 'components/Layout';
 import SharedLayout from 'components/SharedLayout';
+import GoogleRedirect from 'components/GoogleRedirect';
 import PublicRoute from './Routes/PublicRoute';
 import PrivateRoute from './Routes/PrivateRoute';
 
@@ -66,10 +67,17 @@ export const App = () => {
           />
         </Route>
         <Route
+          path="/google-redirect"
+          element={
+            <PublicRoute component={GoogleRedirect} redirectTo="/main" />
+          }
+        />
+        <Route
           path="/"
           element={<PrivateRoute component={SharedLayout} redirectTo="/" />}
         >
           <Route path="/main" element={<MainPage />} />
+          {/* <Route path="/google-redirect" element={<GoogleRedirect />} /> */}
           <Route path="/categories" element={<CategoriesPage />}>
             <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
