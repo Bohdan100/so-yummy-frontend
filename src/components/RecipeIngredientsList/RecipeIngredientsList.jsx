@@ -1,23 +1,14 @@
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-// import { v4 as uuidv4 } from 'uuid';
 
-import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
+import { v4 as uuidv4 } from 'uuid';
+
 import { selectProducts } from 'redux/ShoppingList/shoppingListSelectors';
 
 import RecipeIngredientsItem from 'components/RecipeIngredientsItem';
 import { IngredientsListStyled } from './RecipeIngredientsList.styled';
 
 const RecipeIngredientsList = ({ ingredients, recipeId }) => {
-  const dispatch = useDispatch();
-
   const list = useSelector(selectProducts);
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch, list.length]);
-
   function getIngDescription(id) {
     if (list.length !== 0) {
       const ingridID = list.some(ingrid => ingrid.recipeId === id);
@@ -31,7 +22,7 @@ const RecipeIngredientsList = ({ ingredients, recipeId }) => {
       <IngredientsListStyled>
         {ingredients.map((ingredient, index) => (
           <RecipeIngredientsItem
-            key={ingredient.id._id}
+            key={uuidv4()}
             image={ingredient.id.thb}
             nameIngredient={ingredient.id.ttl}
             descriptionIngredient={ingredient.id.desc}
