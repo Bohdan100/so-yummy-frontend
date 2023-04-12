@@ -10,22 +10,6 @@ export const Form = styled.form`
   }
 `;
 
-export const WrapperLoader = styled.div`
-  position: absolute;
-  top: -45px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  @media screen and (min-width: 768px) {
-    top: -60px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    top: -60px;
-    left: 78%;
-  }
-`;
-
 export const SubmitBtn = styled.button`
   display: flex;
   align-items: center;

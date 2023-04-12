@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useAuth } from 'hooks';
+import { selectTheme } from 'redux/Theme/themeSelectors';
 
 import Modal from 'components/Modal';
 import UserLogoModal from '../UserLogoModal';
@@ -11,11 +14,18 @@ import { UserButton, UserAvatarImg } from './UserLogo.styled';
 export const DEFAULT_AVATAR =
   'https://res.cloudinary.com/db5awxaxs/image/upload/v1680863981/%D0%B7%D0%B0%D0%B2%D0%B0%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_1_sycrzf.jpg';
 
-const UserLogo = ({ color }) => {
+const UserLogo = () => {
   const [isUserLogoModalOpen, setIsUserLogoModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const { user } = useAuth();
+
+  const { pathname } = useLocation();
+  const theme = useSelector(selectTheme);
+  const isRecipesPage = pathname.includes('recipes');
+
+  const color = isRecipesPage || theme === 'light' ? '#22252A' : '#FAFAFA';
+
   const closeUserLogoModal = () => {
     setIsUserLogoModalOpen(false);
   };

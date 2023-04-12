@@ -10,7 +10,7 @@ export const Backdrop = styled.div`
 export const LoaderWrap = styled.div`
   position: absolute;
   bottom: 50%;
-  left: 50%;
+  left: 47%;
 
   display: flex;
   justify-content: center;

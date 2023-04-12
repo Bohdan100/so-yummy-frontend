@@ -1,5 +1,4 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'https://so-yummy-98ev.onrender.com/api';
 
 export const getProducts = async () => {
   const { data } = await axios.get('/shopping-list');
