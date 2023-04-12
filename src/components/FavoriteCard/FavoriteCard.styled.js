@@ -3,11 +3,12 @@ import { ReactComponent as DeleteIcon } from '../../images/icons/btn-delete.svg'
 
 export const CardWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   margin-bottom: 18px;
   border-radius: ${p => p.theme.radii.image};
   max-width: 343px;
   height: 152px;
-  padding: 14px;
+  padding: 14px 9px;
   background-color: ${p => p.theme.colors.recipeBlockBg};
   &:not(:last-child) {
     margin-bottom: 18px;
@@ -48,6 +49,7 @@ export const ImageWrapper = styled.div`
 `;
 export const Img = styled.img`
   display: block;
+  height: 100%;
   object-fit: cover;
   border-radius: ${p => p.theme.radii.image};
 `;
@@ -106,8 +108,8 @@ export const CookingWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 25px;
+  align-items: flex-end;
+  /* margin-top: 25px; */
 `;
 
 export const Time = styled.span`
@@ -173,8 +175,8 @@ export const DeleteIconStyled = styled(DeleteIcon)`
 export const TitleBox = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 18px;
+  /* align-items: center; */
+  margin-bottom: 4px;
 `;
 
 export const Box = styled.div`
@@ -185,10 +187,13 @@ export const Box = styled.div`
   /* align-content: space-between; */
 `;
 export const RecipePageBtn = styled.button`
-  display: flex;
+  /* display: flex; */
+  display: block;
   align-items: center;
   justify-content: center;
-  width: fit-content;
+  /* width: fit-content; */
+  width: 87px;
+  height: 27px;
   white-space: nowrap;
   box-sizing: border-box;
   font-family: ${p => p.theme.fonts.main};
@@ -214,10 +219,14 @@ export const RecipePageBtn = styled.button`
     background-color: ${p => p.theme.colors.deleteBtnRecipe};
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 138px;
+    height: 45px;
     font-size: 16px;
     padding: 12px 32px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
+    width: 172px;
+    height: 59px;
     font-size: 16px;
     padding: 14px 38px;
   }

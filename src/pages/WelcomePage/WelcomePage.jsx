@@ -10,13 +10,13 @@ import {
   Image,
 } from './WelcomePage.styled';
 
-import MainContainer from '../../components/MainContainer/MainContainer';
-
+// import MainContainer from '../../components/MainContainer/MainContainer';
+import { MainContainerTwo } from '../../components/Header/Header.styled';
 import Logo from '../../images/icons/logo-desktop.svg';
 
 const WelcomePage = () => {
   return (
-    <MainContainer>
+    <MainContainerTwo>
       <Container>
         <Box>
           <Image src={Logo} width={68} height={68} />
@@ -34,7 +34,7 @@ const WelcomePage = () => {
           </BoxLink>
         </Box>
       </Container>
-    </MainContainer>
+    </MainContainerTwo>
   );
 };
 
