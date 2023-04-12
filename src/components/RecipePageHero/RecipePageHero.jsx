@@ -16,9 +16,8 @@ import {
 } from './RecipePageHero.styled';
 
 const RecipePageHero = ({ recipeObj, recipeId }) => {
-  // const [isOwn, setIsOwn] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
-  console.log('начальний стейт', isFavorite);
+
   const { title, description, time, owner } = recipeObj;
 
   const userId = useAuth().user.userId;
@@ -57,7 +56,6 @@ const RecipePageHero = ({ recipeObj, recipeId }) => {
       try {
         const { data } = await API.isFavorites(recipeId);
         setIsFavorite(data.result);
-        console.log(data.result);
       } catch (error) {
         console.log(error);
       }
