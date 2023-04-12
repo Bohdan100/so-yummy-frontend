@@ -24,7 +24,6 @@ export const SkewBtn = styled.button`
   text-align: center;
   cursor: pointer;
   transition: ${p => p.theme.transitions.main};
-
   &:hover {
     background-color: ${p =>
       p.styled === 'olive'
@@ -32,12 +31,10 @@ export const SkewBtn = styled.button`
         : p.theme.colors.mainAccent};
     color: ${p => p.theme.colors.mainBtnCategoryTextHover};
   }
-
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     padding: 18px 52px;
     min-width: 130px;
   }
-
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     font-size: 16px;
     line-height: ${p => p.theme.lineHeights.btnText};
