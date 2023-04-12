@@ -231,7 +231,7 @@ const AddRecipeForm = () => {
     isAddRecipe || (isShowErrors && Object.keys(formErrors).length > 0);
 
   return (
-    <Form>
+    <Form onSubmit={onSubmitHandler}>
       {isWaitResoinse && <Loader />}
       {isLoading && (
         <WrapperLoader>
