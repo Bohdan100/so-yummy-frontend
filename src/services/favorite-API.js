@@ -40,3 +40,10 @@ export const removeRecipeFromFavorites = async id => {
   const { data } = await axios.delete(url);
   return data;
 };
+
+// API запит на перевірку чи належить рецепт користувачу
+export const isFavorites = async id => {
+  const url = `favorite/${id}`;
+  const { data } = await axios.get(url);
+  return data;
+};
