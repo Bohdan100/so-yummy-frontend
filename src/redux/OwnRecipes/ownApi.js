@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+axios.defaults.baseURL = 'https://so-yummy-98ev.onrender.com/api';
+
 export const getOwnRecipesAPI = (page, limit) => {
   if (page && limit) {
     return axios
