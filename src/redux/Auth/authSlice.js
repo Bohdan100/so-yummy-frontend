@@ -49,6 +49,7 @@ const authSlice = createSlice({
       name: null,
       email: null,
       avatar: null,
+      userId: null,
     },
     token: null,
     isLoggedIn: false,

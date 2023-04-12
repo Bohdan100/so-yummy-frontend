@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Field, Form } from 'formik';
+import { ReactComponent as Google } from 'images/icons/google.svg';
 
 export const Container = styled.div`
   max-width: ${p => p.theme.breakpoints[0]};
@@ -132,7 +133,7 @@ export const Button = styled.button`
   font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   font-size: 16px;
-  margin-top: 28px;
+  margin-top: 8px;
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.btnText};
   color: ${p => p.theme.colors.btnTextLight};
@@ -143,7 +144,7 @@ export const Button = styled.button`
   cursor: pointer;
   transition: ${p => p.theme.transitions.main};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    margin-top: 50px;
+    margin-top: 20px;
   }
   &:focus:not(:disabled),
   &:hover:not(:disabled) {
@@ -248,5 +249,24 @@ export const ShowPasswordBtn = styled.button`
     width: 24px;
     height: 24px;
     transform: translateY(-5%);
+  }
+`;
+
+export const GoogleLink = styled(Link)`
+  align-self: center;
+`;
+
+export const GoogleIcon = styled(Google)`
+  width: 20px;
+  height: 20px;
+  animation: pulse 2s infinite;
+  @media screen and (min-width: 768px) {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 32px;
+    height: 32px;
   }
 `;

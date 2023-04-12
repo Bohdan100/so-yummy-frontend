@@ -1,13 +1,6 @@
 import axios from 'axios';
-// const token =
-//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmVlODlkOTYzMzIyNjQyNDI2OWE2MyIsImlhdCI6MTY4MDc5NTgwNSwiZXhwIjoxNjgwODgyMjA1fQ.4QOpOIoAbSZz1cFG1_UZ3P5lqzfBToRJq231QAuA0Vw';
-
-// const config = {
-//   headers: { Authorization: 'Bearer ' + token },
-// };
 
 // API запит на отримання рецепту по ID
-
 export const fetchOneRacipes = async id => {
   const url = `/recipes/${id}`;
   const { data } = await axios.get(url);
@@ -23,7 +16,8 @@ export const fetchOwnRacipes = async () => {
 
 // API запит на отримання списку улюблених рецептів
 export const fetchFavoriteRacipes = async (page, limit) => {
-  const { data } = await axios.get(`/favorite?page=${page}&limit=${limit}`);
+  const url = `/favorite`;
+  const { data } = await axios.get(`${url}?page=${page}&limit=${limit}`);
   return data;
 };
 

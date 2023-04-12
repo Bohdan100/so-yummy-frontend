@@ -15,17 +15,12 @@ import { authReducer } from './Auth/authSlice';
 import { shoppingListReducer } from './ShoppingList/shoppingListSlice';
 import { ownRecipesReduser } from './OwnRecipes/OwnRecipesSlice';
 import { themeReducer } from './Theme/themeSlice';
+import { favoritesReducer } from './Favorites/favoritesSlice';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
-};
-
-const ownRecipesPersistConfig = {
-  key: 'ownRecipes',
-  storage,
-  whitelist: ['ownRecipes'],
 };
 
 const themePersistConfig = {
@@ -44,7 +39,8 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     shoppingList: shoppingListReducer,
-    ownRecipes: persistReducer(ownRecipesPersistConfig, ownRecipesReduser),
+    favorites: favoritesReducer,
+    ownRecipes: ownRecipesReduser,
     theme: persistReducer(themePersistConfig, themeReducer),
   },
   middleware,
