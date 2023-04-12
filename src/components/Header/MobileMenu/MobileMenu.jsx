@@ -1,13 +1,13 @@
 import Logo from 'components/Logo';
 import Navigation from '../Navigation';
 import ThemeToggler from '../ThemeToggler';
-import { ReactComponent as CrossIcon } from '../../../images/icons/close.svg';
 
 import {
   MobileContainer,
   LogoWrapper,
   CloseBtn,
   ThemeTogglerWrapper,
+  CrossIconStyled,
 } from './MobileMenu.styled';
 
 const MobileMenu = ({ isShown, closeMobMenu }) => {
@@ -18,7 +18,7 @@ const MobileMenu = ({ isShown, closeMobMenu }) => {
       </LogoWrapper>
 
       <CloseBtn type="button" onClick={closeMobMenu}>
-        <CrossIcon size={32} />
+        <CrossIconStyled />
       </CloseBtn>
 
       <Navigation closeMobMenu={closeMobMenu} />

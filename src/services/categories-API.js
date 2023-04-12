@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://so-yummy-98ev.onrender.com/api/';
-
 // API запит на отримання всіх категорій
 export const fetchAllCategories = async () => {
   try {

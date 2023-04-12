@@ -2,9 +2,6 @@ import * as Yup from 'yup';
 
 export const addRecipeValidationSchema = Yup.object().shape({
   preview: Yup.mixed()
-    .test('required', 'Photo is required', value => {
-      return !value || (value && value.name.length > 0);
-    })
     .test('fileType', 'Only picture files are allowed', value => {
       return (
         !value ||
