@@ -20,7 +20,6 @@ const SearchForm = ({ handleOnSubmit, type = 'Title', startQuery }) => {
         <SearchInput
           type="text"
           value={searchValue}
-          placeholder="Beef"
           onChange={handleInputChange}
         />
         <ButnSkew type="submit" text="Search" />
