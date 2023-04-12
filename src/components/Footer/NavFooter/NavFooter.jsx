@@ -6,7 +6,7 @@ const NavFooter = () => {
     <NavWraper>
       <li>
         <NavLinkStyled
-          to="/search"
+          to="/search?type=Ingredients"
           state={{ ingredient: true }}
           onClick={scrollToTop}
         >
