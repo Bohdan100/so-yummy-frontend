@@ -34,7 +34,7 @@ const RecipeIngredientsItem = ({
       const ingrid = list.find(item => {
         return item.recipeId === recipeId;
       });
-
+      console.log('жмакнув по id', ingrid._id);
       dispatch(deleteProduct(ingrid._id));
       return;
     }

@@ -8,6 +8,10 @@ import {
 import { logout } from '../Auth/authOperations';
 
 const extraActions = [fetchProducts, addProduct, deleteProduct, logout];
+
+console.log(addProduct);
+console.log(deleteProduct);
+
 const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
 
 const fetchProductsFulfilledReducer = (state, action) => {
@@ -21,14 +25,18 @@ const commonPendingReducer = state => {
 const addProductFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
-
+  console.log('action', action);
   state.items.push(action.payload);
 };
 
 const deleteProductFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
+
+  console.log('action', action);
+  console.log('action.payload.id', action.payload.id);
   const index = state.items.findIndex(item => item.id === action.payload.id);
+  console.log('index', index);
   state.items.splice(index, 1);
 };
 
