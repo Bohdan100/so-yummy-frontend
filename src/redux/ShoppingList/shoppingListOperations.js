@@ -39,7 +39,6 @@ export const deleteProduct = createAsyncThunk(
   'products/deleteProduct',
   async (id, { rejectWithValue }) => {
     try {
-      console.log('createAsyncThunk id', id);
       const data = await deleteProductAPI(id);
       toast.success(`The  ingredient has been removed from the shopping list`);
       return data;

@@ -9,9 +9,6 @@ import { logout } from '../Auth/authOperations';
 
 const extraActions = [fetchProducts, addProduct, deleteProduct, logout];
 
-console.log(addProduct);
-console.log(deleteProduct);
-
 const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
 
 const fetchProductsFulfilledReducer = (state, action) => {
@@ -25,7 +22,7 @@ const commonPendingReducer = state => {
 const addProductFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  console.log('action', action);
+
   state.items.push(action.payload);
 };
 
@@ -33,10 +30,8 @@ const deleteProductFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
 
-  console.log('action', action);
-  console.log('action.payload', action.payload);
-  const index = state.items.findIndex(item => item.id === action.payload.id);
-  console.log('index', index);
+  const index = state.items.findIndex(item => item._id === action.payload.id);
+
   state.items.splice(index, 1);
 };
 
@@ -83,70 +78,3 @@ const shoppingListSlice = createSlice({
 });
 
 export const shoppingListReducer = shoppingListSlice.reducer;
-
-// __________________________________
-
-// import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-// import {
-//   fetchProducts,
-//   // addProduct,
-//   // deleteProduct,
-// } from './shoppingListOperations';
-
-// // import { logout } from '../Auth/authOperations';
-
-// const handlePendig = state => {
-//   state.isLoading = true;
-// };
-
-// const handleRejected = (state, action) => {
-//   state.error = action.payload;
-//   state.isLoading = false;
-// };
-
-// const initialState = {
-//   items: [],
-//   isLoading: false,
-//   error: null,
-// };
-
-// const shoppingListSlice = createSlice({
-//   name: 'products',
-//   initialState,
-//   extraReducers: {
-//     [fetchProducts.pending]: handlePendig,
-//     [fetchProducts.fulfilled](state, action) {
-//       state.contactsIsLoading = false;
-//       state.contactsError = null;
-//       state.items = action.payload;
-//     },
-//     [fetchProducts.rejected]: handleRejected,
-
-//     // [addContact.pending]: handlePendig,
-//     // [addContact.fulfilled](state, action) {
-//     //   state.contactsIsLoading = false;
-//     //   state.contactsError = null;
-//     //   state.items.push(action.payload);
-//     // },
-//     // [addContact.rejected]: handleRejected,
-
-//     // [deleteContact.pending]: handlePendig,
-//     // [deleteContact.fulfilled](state, action) {
-//     //   state.contactsIsLoading = false;
-//     //   state.contactsError = null;
-//     //   const index = state.items.findIndex(
-//     //     contact => contact.id === action.payload.id
-//     //   );
-//     //   state.items.splice(index, 1);
-//     // },
-//     // [deleteContact.rejected]: handleRejected,
-
-//     // [logOut.fulfilled](state) {
-//     //   state.contactsIsLoading = false;
-//     //   state.contactsError = null;
-//     //   state.items = [];
-//     // },
-//   },
-// });
-
-// export const shoppingListReducer = shoppingListSlice.reducer;
