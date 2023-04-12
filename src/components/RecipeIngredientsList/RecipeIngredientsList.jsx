@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+// import { v4 as uuidv4 } from 'uuid';
 
 import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
 import { selectProducts } from 'redux/ShoppingList/shoppingListSelectors';
