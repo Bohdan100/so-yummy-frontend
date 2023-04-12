@@ -68,29 +68,6 @@ export const Title = styled.h1`
   }
 `;
 
-export const GoogleLink = styled(Link)``;
-
-export const GoogleIcon = styled(Google)`
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  right: 50px;
-  top: 40px;
-  animation: pulse 2s infinite;
-
-  @media screen and (min-width: 768px) {
-    width: 30px;
-    height: 30px;
-    right: 80px;
-    top: 50px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 32px;
-    height: 32px;
-    right: 50px;
-  }
-`;
-
 export const InputContainer = styled.div`
   width: 100%;
   height: auto;
@@ -134,7 +111,7 @@ export const Input = styled(Field)`
 
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 18px;
-    padding: 16px 16px 16px 50px;
+    padding: 16px 70px 16px 50px;
   }
 
   &:hover:not(:disabled) {
@@ -156,7 +133,7 @@ export const Button = styled.button`
   font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   font-size: 16px;
-  margin-top: 28px;
+  margin-top: 8px;
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.btnText};
   color: ${p => p.theme.colors.btnTextLight};
@@ -167,7 +144,7 @@ export const Button = styled.button`
   cursor: pointer;
   transition: ${p => p.theme.transitions.main};
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    margin-top: 50px;
+    margin-top: 20px;
   }
   &:focus:not(:disabled),
   &:hover:not(:disabled) {
@@ -202,7 +179,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const StatusBox = styled.div`
-  font-size: 14px;
+  font-size: 12px;
   margin-top: 8px;
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.searchSelect};
@@ -210,6 +187,9 @@ export const StatusBox = styled.div`
   color: #e74a3b;
   ${p => p.color === 'notSecure' && `color: #F6C23E`};
   ${p => p.color === 'valid' && `color: #3CBC81`};
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    font-size: 14px;
+  }
 `;
 
 export const ErrorBox = styled.div`
@@ -227,5 +207,66 @@ export const ErrorBox = styled.div`
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 14px;
     max-width: 70%;
+  }
+`;
+
+export const PassIconBox = styled.div`
+  position: absolute;
+  display: flex;
+  gap: 6px;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+  padding-top: 16px;
+  padding-right: 14px;
+  transition: ${p => p.theme.transitions.main};
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    padding-right: 18px;
+    padding-top: 20px;
+    gap: 10px;
+  }
+`;
+
+export const ShowPasswordBtn = styled.button`
+  top: 0px;
+  right: 0px;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-25%);
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  color: #fafafa80;
+  transition: ${p => p.theme.transitions.main};
+  &:focus,
+  &:hover {
+    color: #fafafa;
+  }
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 24px;
+    height: 24px;
+    transform: translateY(-5%);
+  }
+`;
+
+export const GoogleLink = styled(Link)`
+  align-self: center;
+`;
+
+export const GoogleIcon = styled(Google)`
+  width: 20px;
+  height: 20px;
+  animation: pulse 2s infinite;
+  @media screen and (min-width: 768px) {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 32px;
+    height: 32px;
   }
 `;

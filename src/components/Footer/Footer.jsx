@@ -32,7 +32,7 @@ const Footer = () => {
           <SubscribeForm />
         </WrapperForDesktop>
 
-        <SocNetworks />
+        <SocNetworks location={'footer'} />
       </TopWrapper>
 
       <BottomWrapper>

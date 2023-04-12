@@ -97,17 +97,32 @@ export const CheckIconStyled = styled(CheckIcon)`
   }
 `;
 
-export const WarnIconStyled = styled(WarnIcon)`
-  position: absolute;
-  top: 16px;
-  right: 14px;
+export const PassWarnIconStyled = styled(WarnIcon)`
   width: 14px;
   height: 14px;
   pointer-events: none;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 20px;
     height: 20px;
-    right: 18px;
-    top: 20px;
+  }
+`;
+
+export const PassErrorIconStyled = styled(ErrorIcon)`
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export const PassValidIconStyled = styled(CheckIcon)`
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 20px;
+    height: 20px;
   }
 `;

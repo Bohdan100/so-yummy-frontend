@@ -50,7 +50,6 @@ export const TitleContainer = styled.div`
   justify-content: space-between;
 `;
 
-
 export const Title = styled.h1`
   margin-bottom: 18px;
   font-family: ${p => p.theme.fonts.main};
@@ -111,7 +110,7 @@ export const Input = styled(Field)`
 
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 18px;
-    padding: 16px 16px 16px 50px;
+    padding: 16px 70px 16px 50px;
   }
 
   &:hover:not(:disabled) {
@@ -179,7 +178,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const StatusBox = styled.div`
-  font-size: 14px;
+  font-size: 12px;
   margin-top: 8px;
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.searchSelect};
@@ -187,6 +186,9 @@ export const StatusBox = styled.div`
   color: #e74a3b;
   ${p => p.color === 'notSecure' && `color: #F6C23E`};
   ${p => p.color === 'valid' && `color: #3CBC81`};
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    font-size: 14px;
+  }
 `;
 
 export const ErrorBox = styled.div`
@@ -207,3 +209,44 @@ export const ErrorBox = styled.div`
   }
 `;
 
+export const PassIconBox = styled.div`
+  position: absolute;
+  display: flex;
+  gap: 6px;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+  padding-top: 16px;
+  padding-right: 14px;
+  transition: ${p => p.theme.transitions.main};
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    padding-right: 18px;
+    padding-top: 20px;
+    gap: 10px;
+  }
+`;
+
+export const ShowPasswordBtn = styled.button`
+  top: 0px;
+  right: 0px;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-25%);
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  color: #fafafa80;
+  transition: ${p => p.theme.transitions.main};
+  &:focus,
+  &:hover {
+    color: #fafafa;
+  }
+  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 24px;
+    height: 24px;
+    transform: translateY(-5%);
+  }
+`;

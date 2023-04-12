@@ -4,7 +4,7 @@ import { ReactComponent as PickIcon } from '../../images/icons/pick.svg';
 
 export const RecipeItem = styled.li`
   border-radius: ${li => li.theme.radii.image};
-  background-color: ${li => li.theme.colors.secondaryAccent};
+  background-color: ${li => li.theme.colors.ingredientsBgrCol};
 `;
 
 export const RecipeItemWrapper = styled.label`

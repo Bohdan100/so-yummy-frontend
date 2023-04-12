@@ -8,14 +8,6 @@ export const ShoppingListPageWrapper = styled.div`
   margin-left: 16px;
 `;
 
-export const EmptyListMessage = styled.p`
-  margin: 10px 167px 10px 10px;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 27px;
-  color: #828282;
-`;
-
 export const StyledLoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
