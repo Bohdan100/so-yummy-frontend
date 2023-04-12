@@ -31,7 +31,10 @@ const RecipeIngredientsItem = ({
 
   const toggleToShoppingList = () => {
     if (inShoppingList) {
-      const ingrid = list.find(item => item.recipeId === recipeId);
+      const ingrid = list.find(item => {
+        return item.recipeId === recipeId;
+      });
+
       dispatch(deleteProduct(ingrid._id));
       return;
     }

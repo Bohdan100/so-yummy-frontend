@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 
 import MainContainer from 'components/MainContainer/MainContainer';
 import RecipePageHero from 'components/RecipePageHero';
-// import RecipeIngredientsList from 'components/RecipeIngredientsList';
-// import RecipePreparation from 'components/RecipePreparation';
+import RecipeIngredientsList from 'components/RecipeIngredientsList';
+import RecipePreparation from 'components/RecipePreparation';
 import Loader from 'components/Loader/Loader';
 
 import { HeaderTable, RecipePageStyled } from './RecipePage.styled';
@@ -52,14 +52,14 @@ const RecipePage = () => {
               </p>
             </HeaderTable>
 
-            {/* <RecipeIngredientsList
+            <RecipeIngredientsList
               ingredients={recipeObj.ingredients}
               recipeId={recipeId}
             />
             <RecipePreparation
               image={recipeObj.thumb}
               instructions={recipeObj.instructions}
-            /> */}
+            />
           </MainContainer>
         </>
       )}

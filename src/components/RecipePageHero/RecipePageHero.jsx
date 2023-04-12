@@ -25,7 +25,6 @@ const RecipePageHero = ({ recipeObj, recipeId }) => {
   const isOwn = owner !== undefined && owner === userId;
 
   async function delFromFavorite() {
-    console.log('delFromFavorite');
     try {
       await API.removeRecipeFromFavorites(recipeId);
       setIsFavorite(false);
