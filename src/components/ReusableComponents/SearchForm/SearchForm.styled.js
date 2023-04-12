@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const SearchBlock = styled.div`
   width: 295px;
   height: 52px;
@@ -10,6 +9,7 @@ export const SearchBlock = styled.div`
   border-bottom-right-radius: 30px;
   margin: 0 24px 83px;
   border: ${p => p.theme.borders.mainSearchInput};
+  background-color: ${p => p.theme.colors.mainBtnInput};
   color: ${p => p.theme.colors.disabledGrey};
   font-family: ${p => p.theme.fonts.main};
   font-style: normal;
@@ -38,6 +38,7 @@ export const SearchIn = styled.form`
   border-radius: 30px, 80px;
   height: 100%;
   width: 295px;
+
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 362px;
   }
@@ -51,7 +52,7 @@ export const SearchInput = styled.input`
   border-top-left-radius: 30px;
   border-bottom-left-radius: 80px;
   border: none;
-  background-color: transparent;
+  background-color: ${p => p.theme.colors.mainBtnInput};
   font-family: ${p => p.theme.fonts.main};
   font-style: normal;
   font-weight: 400;
@@ -80,8 +81,8 @@ export const SearchInput = styled.input`
     font-family: ${p => p.theme.fonts.main};
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 13px;
+    line-height: 22px;
     color: ${p => p.theme.colors.disabledGrey};
   }
 `;

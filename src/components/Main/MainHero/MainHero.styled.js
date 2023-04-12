@@ -1,65 +1,11 @@
 import styled from 'styled-components';
 
-import bgrImageMob from '../../../images/bgPages/mainPage/main_hero1x_mob.png';
-import bgrImageTab from '../../../images/bgPages/mainPage/main_hero1x_tablet.png';
-import bgrImageDesk from '../../../images/bgPages/mainPage/main_hero1x_desktop.png';
-import bgrImageMob2 from '../../../images/bgPages/mainPage/main_hero2x_mob.png';
-import bgrImageTab2 from '../../../images/bgPages/mainPage/main_hero2x_tablet.png';
-import bgrImageDesk2 from '../../../images/bgPages/mainPage/main_hero2x_desktop.png';
-
-export const MainPageBg = styled.div`
-  position: absolute;
-  top: 0;
-  left: 50%;
-  right: 50%;
-  transform: translate(-50%, 0);
-  display: flex;
-  height: 777px;
-  padding: 0 16px;
-  width: 100%;
-  background-image: url(${bgrImageMob});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-color: ${p => p.theme.colors.bodyBg};
-
-  @media screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 192dpi),
-    (-webkit-min-device-pixel-ratio: 2),
-    screen and (min-resolution: 2dppx) {
-    background-image: url(${bgrImageMob2});
-  }
-  @media screen and (min-width: ${p => p.theme.breakpoints[0]}) {
-    width: 375px;
-  }
-  @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    width: 768px;
-    background-image: url(${bgrImageTab});
-    height: 640px;
-    padding: 0 32px;
-    @media screen and (min-device-pixel-ratio: 2),
-      screen and (min-resolution: 192dpi),
-      (-webkit-min-device-pixel-ratio: 2),
-      screen and (min-resolution: 2dppx) {
-      background-image: url(${bgrImageTab2});
-    }
-  }
-  @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
-    background-image: url(${bgrImageDesk});
-    width: 1440px;
-    height: 800px;
-    padding: 0 100px;
-    @media screen and (min-device-pixel-ratio: 2),
-      screen and (min-resolution: 192dpi),
-      (-webkit-min-device-pixel-ratio: 2),
-      screen and (min-resolution: 2dppx) {
-      background-image: url(${bgrImageDesk2});
-    }
-  }
-`;
-
 export const MainPageDiv = styled.div`
-  display: block;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     display: flex;
     margin-right: 340px;
@@ -67,12 +13,12 @@ export const MainPageDiv = styled.div`
     justify-content: flex-start;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
-    margin-right: 800px;
+    align-items: stretch;
   }
 `;
 
 export const MainPageH1 = styled.h1`
-  margin: 132px 12px 0px 12px;
+  margin: 68px 0px 0px 12px;
   color: ${p => p.theme.colors.mainHeaderText};
   font-family: ${p => p.theme.fonts.main};
   font-style: normal;
@@ -84,7 +30,8 @@ export const MainPageH1 = styled.h1`
   letter-spacing: -0.005em;
 
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    margin: 204px 0 0px;
+    margin-top: 140px;
+    margin-left: 0;
     font-size: 72px;
     line-height: 72px;
     text-align: left;

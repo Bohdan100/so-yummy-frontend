@@ -3,7 +3,6 @@ import СhooseYourBreakfast from 'components/Main/СhooseYourBreakfast';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import {
-  MainPageBg,
   MainPageH1,
   MainPageText,
   MainPageDiv,
@@ -11,6 +10,7 @@ import {
 } from './MainHero.styled';
 import { Container } from 'components/MainContainer/MainContainer.styled';
 import { useDesktopCheck } from 'hooks/desktopCheck';
+import HeroBg from '../HeroBG/HeroBg.jsx';
 
 const MainHero = () => {
   const { isTablet, isDesktop } = useDesktopCheck();
@@ -41,7 +41,7 @@ const MainHero = () => {
   };
 
   return (
-    <MainPageBg>
+    <>
       <Container>
         <MainPageDiv>
           <MainPageH1>
@@ -54,8 +54,9 @@ const MainHero = () => {
           <СhooseYourBreakfast />
           <SearchForm styled={'black'} handleOnSubmit={handleOnSubmit} />
         </MainPageDiv>
+        <HeroBg />
       </Container>
-    </MainPageBg>
+    </>
   );
 };
 

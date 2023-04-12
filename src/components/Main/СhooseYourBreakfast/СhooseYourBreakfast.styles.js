@@ -7,7 +7,7 @@ export const ChooseBlock = styled.div`
   background-color: ${p => p.theme.colors.recipeBlockBg};
   border-radius: 8px;
   padding: 8px;
-  margin-left: 88px;
+  margin-left: 40px;
   margin-bottom: 115px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 14px;
@@ -17,8 +17,8 @@ export const ChooseBlock = styled.div`
     width: 261px;
     height: 100px;
     position: absolute;
-    right: 27px;
-    top: 370px;
+    right: -360px;
+    top: 320px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     line-height: 20px;
@@ -26,8 +26,8 @@ export const ChooseBlock = styled.div`
     width: 298px;
     height: 114px;
     position: absolute;
-    right: 141px;
-    top: 440px;
+    right: -425px;
+    top: 370px;
   }
 `;
 
