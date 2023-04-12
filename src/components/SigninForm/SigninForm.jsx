@@ -39,7 +39,7 @@ import {
   ShowPasswordBtn,
   PassIconBox,
   GoogleIcon,
-  GoogleLink
+  GoogleLink,
 } from './SigninForm.styled';
 
 const SigninForm = () => {
@@ -156,7 +156,7 @@ const SigninForm = () => {
                 </StatusBox>
               </Label>
             </InputContainer>
-            <GoogleLink to="https://so-yummy-98ev.onrender.com/api/auth/google-login">
+            <GoogleLink to="https://so-yummy-98ev.onrender.com/api/auth/google">
               <GoogleIcon />
             </GoogleLink>
             <Button
