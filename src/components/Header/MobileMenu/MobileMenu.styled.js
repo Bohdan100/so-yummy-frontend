@@ -3,6 +3,7 @@ import bgMob1x from '../../../images/elements/leaves/leaves-mobile-menu@1x.png';
 import bgMob2x from '../../../images/elements/leaves/leaves-mobile-menu@2x.png';
 import bgTab1x from '../../../images/elements/leaves/leaves-mobile-menu-@1-1.png';
 import bgTab2x from '../../../images/elements/leaves/leaves-mobile-menu-@2-2.png';
+import { ReactComponent as CrossIcon } from '../../../images/icons/close-32.svg';
 
 const slideDown = keyframes`
   0% {
@@ -77,15 +78,18 @@ export const CloseBtn = styled.button`
   right: 16px;
   border: none;
   background-color: transparent;
+  color: ${p => p.theme.colors.mainBtnText};
 
   @media screen and (min-width: 768px) {
     top: 24px;
     right: 32px;
   }
+`;
 
-  svg {
-    stroke: ${p => p.theme.colors.mainBtnText};
-  }
+export const CrossIconStyled = styled(CrossIcon)`
+  stroke: ${p => p.theme.colors.mainBtnText};
+  width: 32px;
+  height: 32px;
 `;
 
 export const ThemeTogglerWrapper = styled.div`

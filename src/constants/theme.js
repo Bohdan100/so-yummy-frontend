@@ -13,7 +13,7 @@ export const theme = {
     secondaryAccent: '#EBF3D4',
     mainNavLinkHover: '#23262A',
     mainHeaderText: '#22252A',
-    mainBTnText: '#22252A',
+    mainBtnText: '#22252A',
     mainBTn: '#22252A',
     mainBtnCategoryText: '#FAFAFA',
     mainBtnBGCategory: '#8AA936',
