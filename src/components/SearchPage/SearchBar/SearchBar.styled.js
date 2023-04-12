@@ -1,4 +1,4 @@
-import { SearchBlock } from 'components/SearchForm/SearchForm.styled';
+import { SearchBlock } from 'components/ReusableComponents/SearchForm/SearchForm.styled';
 import styled from 'styled-components';
 
 export const SearchBarCont = styled.div`

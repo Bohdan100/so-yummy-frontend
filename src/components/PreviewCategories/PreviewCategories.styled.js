@@ -76,7 +76,7 @@ export const CardList = styled.ul`
     gap: 31px;
   }
   @media (min-width: 1440px) {
-    margin-bottom: 13px;
+    margin-bottom: 50px;
     gap: 14px;
   }
 `;
