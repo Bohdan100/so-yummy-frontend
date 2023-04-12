@@ -38,12 +38,9 @@ import {
   TitleContainer,
   ShowPasswordBtn,
   PassIconBox,
-} from './SigninForm.styled';
-
-import {
   GoogleIcon,
-  GoogleLink,
-} from 'components/RegisterForm/RegisterForm.styled';
+  GoogleLink
+} from './SigninForm.styled';
 
 const SigninForm = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
