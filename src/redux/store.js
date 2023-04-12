@@ -15,6 +15,7 @@ import { authReducer } from './Auth/authSlice';
 import { shoppingListReducer } from './ShoppingList/shoppingListSlice';
 import { ownRecipesReduser } from './OwnRecipes/OwnRecipesSlice';
 import { themeReducer } from './Theme/themeSlice';
+import {favoritesReducer} from './Favorites/favoritesSlice'
 
 const authPersistConfig = {
   key: 'auth',
@@ -44,6 +45,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     shoppingList: shoppingListReducer,
+    favorites: favoritesReducer,
     ownRecipes: persistReducer(ownRecipesPersistConfig, ownRecipesReduser),
     theme: persistReducer(themePersistConfig, themeReducer),
   },

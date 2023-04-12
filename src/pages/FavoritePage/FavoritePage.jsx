@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+//
+// import { useDispatch, useSelector } from 'react-redux';
+// import { selectFavorites, selectIsLoading, selectError } from 'redux/Favorites/favoritesSelectors';
+// import { fetchFavorites, addFavorite, deleteFavorite } from 'redux/Favorites/favoritesOperations';
+//
 import {
   fetchFavoriteRacipes,
   removeRecipeFromFavorites,
@@ -27,6 +32,52 @@ const FavoritePage = () => {
   const [total, setTotal] = useState(0);
   const history = useNavigate();
   const limit = 4;
+
+  //
+  //
+  //
+  // Це основа коду для роботи через redux (фукції я скопіював твої) інше я не чіпав. Я не перевіряв все детально, можливо будуть недоліки
+  //
+  // const dispatch = useDispatch();
+  // const isLoading = useSelector(selectIsLoading);
+  // const favorites = useSelector(selectFavorites);
+  // const error = useSelector(selectError);
+  // const [recipes, setRecipes] = useState([]);
+  // const total = favorites.length;
+  // const [pageNumber, setPageNumber] = useState(1);
+  // const history = useNavigate();
+  // const limit = 4;
+
+  // логіка видачі порції рецептів по сторнікам яка взята з redux
+
+  // useEffect(() => {
+  //   if (favorites.length > 0) {
+  // const skip = (pageNumber - 1) * limit;
+  // const maxIndex = limit * pageNumber - 1;
+  // const visibleResults = favorites.slice(skip, maxIndex)
+  // setRecipes(visibleResults);
+  // }
+  // }, [favorites, pageNumber, limit]);
+
+  // Це твої функції
+
+  // useEffect(() => {
+  //   history(`?page=${pageNumber}`);
+  // }, [history, pageNumber]);
+
+  // const handleChange = (event, value) => {
+  //   setPageNumber(value);
+  // };
+
+  // const handleRemoveRecipe = async id => {
+  //   dispatch(deleteFavorite(id));
+  // };
+
+  //
+  //
+  //
+  //
+
   useEffect(() => {
     async function getFavoriteRacipes() {
       try {

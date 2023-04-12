@@ -5,6 +5,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { selectIsLoading } from 'redux/Auth/authSelectors';
 import { login } from 'redux/Auth/authOperations';
 import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
+import { fetchFavorites } from 'redux/Favorites/favoritesOperations';
 import {
   loginValidationSchema,
   ErrorStatus,
@@ -57,6 +58,7 @@ const SigninForm = () => {
     dispatch(login({ email, password })).then(res => {
       if (!res.error) {
         dispatch(fetchProducts());
+        dispatch(fetchFavorites());
         resetForm();
       }
     });
