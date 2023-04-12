@@ -1,4 +1,4 @@
-import SearchForm from 'components/SearchForm';
+import SearchForm from 'components/ReusableComponents/SearchForm';
 import СhooseYourBreakfast from 'components/Main/СhooseYourBreakfast';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';

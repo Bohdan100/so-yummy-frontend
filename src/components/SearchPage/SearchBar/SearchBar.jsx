@@ -1,4 +1,4 @@
-import SearchForm from '../../SearchForm/index';
+import SearchForm from '../../ReusableComponents/SearchForm/index';
 import { SearchBarCont } from './SearchBar.styled';
 import SearchTypeSelector from './SearchTypeSelector/SearchTypeSelector';
 import { useState } from 'react';
