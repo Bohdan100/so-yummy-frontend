@@ -4,7 +4,8 @@ import { toast } from 'react-toastify';
 import * as API from '../../services/favorite-API';
 
 import RecipePageBtn from '../RecipePageBtn';
-// import Loader from 'components/Loader/Loader';
+
+import { useAuth } from '../../hooks/useAuth';
 
 import {
   RecipeHeroConteiner,
@@ -15,10 +16,13 @@ import {
 } from './RecipePageHero.styled';
 
 const RecipePageHero = ({ recipeObj, recipeId }) => {
-  const [isOwn, setIsOwn] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const { title, description, time } = recipeObj;
+  const { title, description, time, owner } = recipeObj;
+
+  const userId = useAuth().user.userId;
+
+  const isOwn = owner !== undefined && owner === userId;
 
   async function delFromFavorite() {
     try {
@@ -47,33 +51,16 @@ const RecipePageHero = ({ recipeObj, recipeId }) => {
   }
 
   useEffect(() => {
-    async function getOwnRacipes() {
+    async function getIsFavorites() {
       try {
-        const { data } = await API.fetchOwnRacipes();
-
-        if (data.result !== undefined) {
-          const recipe = data.result.some(recipe => recipe === recipeId);
-
-          setIsOwn(recipe);
-        }
-      } catch (error) {}
+        const { data } = await API.isFavorites(recipeId);
+        setIsFavorite(data.result);
+      } catch (error) {
+        console.log(error);
+      }
     }
 
-    getOwnRacipes();
-
-    async function getFavoriteRacipes() {
-      try {
-        const { data } = await API.fetchFavoriteRacipes();
-
-        if (data.result !== undefined) {
-          const recipe = data.result.some(el => el.recipe._id === recipeId);
-
-          setIsFavorite(recipe);
-        }
-      } catch (error) {}
-    }
-
-    getFavoriteRacipes();
+    getIsFavorites();
   }, [recipeId]);
 
   return (

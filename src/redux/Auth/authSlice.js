@@ -11,7 +11,7 @@ const authFulfilledReducer = (state, action) => {
   state.isLoading = false;
 };
 const logoutFulfilledReducer = state => {
-  state.user = { name: null, email: null, avatar: null };
+  state.user = { name: null, email: null, avatar: null, userId: null };
   state.isLoggedIn = false;
   state.token = null;
   state.isLoading = false;

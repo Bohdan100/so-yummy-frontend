@@ -18,6 +18,7 @@ export const theme = {
     mainBtnCategoryText: '#FAFAFA',
     mainBtnBGCategory: '#8AA936',
     mainBtnBGHover: '#1E1F28',
+    mainBtnInput: '#ffffff',
     bodyBg: '#FAFAFA',
     footerBg: '#22252A',
     footerSMlinks: '#8BAA36',
@@ -98,7 +99,7 @@ export const theme = {
   borders: {
     btnStandart: '2px solid #FAFAFA',
     btnHover: '2px solid #8BAA36',
-    mainSearchInput: '1px solid #F0F0F0',
+    mainSearchInput: '0.5px solid #F0F0F0',
     searchInput: '1px solid #F0F0F0',
     mainNavBord: '1px solid transparent',
     inputStandart: '1px solid #FAFAFA',
@@ -147,6 +148,7 @@ export const darkTheme = {
     mainBtnCategoryHover: '#D9D9D96',
 
     mainBtnBGCategory: '#8AA936',
+    mainBtnInput: '#1e1f28',
     bodyBg: '#1E1F28',
     footerBg: '#8BAA36',
     footerSMlinks: '#FAFAFA',
