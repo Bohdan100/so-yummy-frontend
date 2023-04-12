@@ -34,7 +34,7 @@ const deleteProductFulfilledReducer = (state, action) => {
   state.error = null;
 
   console.log('action', action);
-  console.log('action.payload.id', action.payload.id);
+  console.log('action.payload', action.payload);
   const index = state.items.findIndex(item => item.id === action.payload.id);
   console.log('index', index);
   state.items.splice(index, 1);
