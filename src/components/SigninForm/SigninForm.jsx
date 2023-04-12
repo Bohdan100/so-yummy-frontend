@@ -39,6 +39,11 @@ import {
   PassIconBox,
 } from './SigninForm.styled';
 
+import {
+  GoogleIcon,
+  GoogleLink,
+} from 'components/RegisterForm/RegisterForm.styled';
+
 const SigninForm = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const isLoading = useSelector(selectIsLoading);
@@ -152,6 +157,9 @@ const SigninForm = () => {
                 </StatusBox>
               </Label>
             </InputContainer>
+            <GoogleLink to="https://so-yummy-98ev.onrender.com/api/auth/google-login">
+              <GoogleIcon />
+            </GoogleLink>
             <Button
               type="submit"
               name="button"

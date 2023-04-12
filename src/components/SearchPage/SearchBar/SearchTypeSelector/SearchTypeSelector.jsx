@@ -16,6 +16,10 @@ const SearchTypeSelector = ({ startType, typeSubmit }) => {
     typeSubmit(selectedOption);
   }, [selectedOption, typeSubmit]);
 
+  useEffect(() => {
+    setSelectedOption({ value: startType, label: startType });
+  }, [startType]);
+
   return (
     <SelectCon>
       <span>Search by:</span>
@@ -26,6 +30,7 @@ const SearchTypeSelector = ({ startType, typeSubmit }) => {
         }}
         onChange={setSelectedOption}
         options={options}
+        value={selectedOption}
         isSearchable={false}
         classNamePrefix="react-select"
       />
