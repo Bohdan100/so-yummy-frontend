@@ -17,7 +17,7 @@ import RecipeFormIngredientsFields from './RecipeFormIngredientsFields';
 import RecipeFormPreparationFields from './RecipeFormPreparationFields';
 import Loader from 'components/Loader';
 
-import { Form, WrapperLoader, SubmitBtn } from './AddRecipeForm.styled';
+import { Form, SubmitBtn } from './AddRecipeForm.styled';
 
 const STORAGE_KEY_ADDING_RESIPE = 'added-data-recipe';
 
@@ -55,20 +55,19 @@ const AddRecipeForm = () => {
   const [isShowErrors, setIsShowErrors] = useState(false);
   const [isAddRecipe, setIsAddRecipe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isWaitResoinse, setIsWaitResoinse] = useState(false);
+  const [isWaitResponse, setIsWaitResponse] = useState(false);
 
   const navigate = useNavigate();
 
   const formData = useMemo(
     () => ({
-      preview,
-      // thumb: preview,
+      preview: preview || undefined,
       title: title.trim(),
       description: description.trim(),
       category,
       time,
-      ingredients: ingredients.map(({ _id, unit, amount }) => ({
-        _id,
+      ingredients: ingredients.map(({ id, unit, amount }) => ({
+        id,
         measure: `${(amount, unit)}`,
       })),
       instructions: instructions.trim(),
@@ -107,7 +106,7 @@ const AddRecipeForm = () => {
         }
         setAllCategory(categoriesList);
       })
-      .catch(() => {}) // ???
+      .catch(() => {})
       .finally(() => {
         isLoadAllCategory = false;
         setIsLoading(false);
@@ -189,7 +188,6 @@ const AddRecipeForm = () => {
 
     const dataForSend = {
       preview,
-      // thumb: preview,
       title: title.trim(),
       description: description.trim(),
       category,
@@ -204,14 +202,13 @@ const AddRecipeForm = () => {
         .filter(el => el.length !== 0)
         .join('\r\n'),
     };
-    console.log('dataForSend', dataForSend);
 
-    setIsWaitResoinse(true);
+    setIsWaitResponse(true);
 
     addOwnRecipeAPI(dataForSend)
       .then(data => {
         setIsAddRecipe(false);
-        setIsWaitResoinse(false);
+        setIsWaitResponse(false);
         if (data?.error) {
           toast.error(data.error.response.data.message);
           return;
@@ -224,7 +221,7 @@ const AddRecipeForm = () => {
       .catch(e => {
         toast.error('Something went wrong, try add your recipe again');
         setIsAddRecipe(false);
-        setIsWaitResoinse(false);
+        setIsWaitResponse(false);
       });
   };
 
@@ -233,12 +230,7 @@ const AddRecipeForm = () => {
 
   return (
     <Form onSubmit={onSubmitHandler}>
-      {isWaitResoinse && <Loader />}
-      {isLoading && (
-        <WrapperLoader>
-          <Loader />
-        </WrapperLoader>
-      )}
+      {isWaitResponse || (isLoading && <Loader />)}
 
       <RecipeFormDescriptionFields
         allCategory={allCategory}
