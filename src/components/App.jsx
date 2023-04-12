@@ -77,7 +77,6 @@ export const App = () => {
           element={<PrivateRoute component={SharedLayout} redirectTo="/" />}
         >
           <Route path="/main" element={<MainPage />} />
-          {/* <Route path="/google-redirect" element={<GoogleRedirect />} /> */}
           <Route path="/categories" element={<CategoriesPage />}>
             <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>

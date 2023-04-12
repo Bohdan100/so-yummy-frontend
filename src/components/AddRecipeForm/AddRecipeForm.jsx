@@ -204,7 +204,6 @@ const AddRecipeForm = () => {
         .filter(el => el.length !== 0)
         .join('\r\n'),
     };
-    console.log('dataForSend', dataForSend);
 
     setIsWaitResoinse(true);
 
@@ -232,12 +231,7 @@ const AddRecipeForm = () => {
     isAddRecipe || (isShowErrors && Object.keys(formErrors).length > 0);
 
   return (
-    <Form
-      action="http://localhost:8000/api/ownRecipe/"
-      method="post"
-      enctype="multipart/form-data"
-      onSubmit={onSubmitHandler}
-    >
+    <Form>
       {isWaitResoinse && <Loader />}
       {isLoading && (
         <WrapperLoader>
