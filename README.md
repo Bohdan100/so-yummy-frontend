@@ -25,4 +25,8 @@ ingredients to form a healthy way of eating.
 
 [https://so-yummy-98ev.onrender.com](https://so-yummy-98ev.onrender.com).
 
-(./assets/image.jpg)
+### Swagger
+
+[https://so-yummy-98ev.onrender.com/api-docs/](https://so-yummy-98ev.onrender.com/api-docs/).
+
+![](./assets/image.jpg)
