@@ -20,18 +20,27 @@ const RecipeIngredientsList = ({ ingredients, recipeId }) => {
   return (
     <>
       <IngredientsListStyled>
-        {ingredients.map((ingredient, index) => (
-          <RecipeIngredientsItem
-            key={uuidv4()}
-            image={ingredient.id.thb}
-            nameIngredient={ingredient.id.ttl}
-            descriptionIngredient={ingredient.id.desc}
-            weight={ingredient.measure ? ingredient.measure : 'any'}
-            list={list}
-            recipeId={recipeId + index}
-            inShoppingList={getIngDescription(recipeId + index)}
-          />
-        ))}
+        {ingredients.map((ingredient, index) => {
+          let image;
+          if (!ingredient.id.thb) {
+            image = ' ';
+          } else {
+            image = ingredient.id.thb;
+          }
+
+          return (
+            <RecipeIngredientsItem
+              key={uuidv4()}
+              image={image}
+              nameIngredient={ingredient.id.ttl}
+              descriptionIngredient={ingredient.id.desc}
+              weight={ingredient.measure ? ingredient.measure : 'any'}
+              list={list}
+              recipeId={recipeId + index}
+              inShoppingList={getIngDescription(recipeId + index)}
+            />
+          );
+        })}
       </IngredientsListStyled>
     </>
   );

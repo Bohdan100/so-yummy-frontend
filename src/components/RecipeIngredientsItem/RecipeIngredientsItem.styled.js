@@ -39,6 +39,8 @@ export const ImageWrapper = styled.div`
     border-radius: ${p => p.theme.radii.image};
     width: 57px;
     height: 57px;
+    object-fit: cover;
+
     @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
       width: 136px;
       height: 136px;
