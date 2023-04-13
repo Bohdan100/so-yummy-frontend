@@ -8,9 +8,9 @@ import {
   MainPageDiv,
   SpanGr,
 } from './MainHero.styled';
-import { Container } from 'components/MainContainer/MainContainer.styled';
 import { useDesktopCheck } from 'hooks/desktopCheck';
 import HeroBg from '../HeroBG/HeroBg.jsx';
+import { MainContainerTwo } from 'components/Header/Header.styled';
 
 const MainHero = () => {
   const { isTablet, isDesktop } = useDesktopCheck();
@@ -42,7 +42,7 @@ const MainHero = () => {
 
   return (
     <>
-      <Container>
+      <MainContainerTwo>
         <MainPageDiv>
           <MainPageH1>
             <SpanGr>So</SpanGr>Yummy
@@ -55,7 +55,7 @@ const MainHero = () => {
           <SearchForm styled={'black'} handleOnSubmit={handleOnSubmit} />
         </MainPageDiv>
         <HeroBg />
-      </Container>
+      </MainContainerTwo>
     </>
   );
 };
