@@ -7,6 +7,7 @@ export const SkewBtn = styled.button`
   width: fit-content;
   white-space: nowrap;
   box-sizing: border-box;
+  min-width: 113px;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.subheader};
