@@ -14,6 +14,7 @@ export const MainPageDiv = styled.div`
   }
   @media screen and (min-width: ${p => p.theme.breakpoints[2]}) {
     align-items: stretch;
+    height: 736px;
   }
 `;
 
