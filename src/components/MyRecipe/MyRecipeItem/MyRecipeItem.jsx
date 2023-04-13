@@ -46,7 +46,7 @@ const MyRecipeItem = ({ description, preview, time, title, id }) => {
           </WrapperBox>
 
           <WrapperUp>
-            <Time>{time}</Time>
+            <Time>{time} min</Time>
             <BtnSee onClick={() => handleChange(id)}>See recipe</BtnSee>
           </WrapperUp>
         </Container>
