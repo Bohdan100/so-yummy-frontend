@@ -191,7 +191,7 @@ const AddRecipeForm = () => {
       title: title.trim(),
       description: description.trim(),
       category,
-      time,
+      time: time.slice(0, time.indexOf(' ')),
       ingredients: ingredients.map(({ id, unit, amount }) => ({
         id,
         measure: amount + ' ' + unit,
@@ -202,7 +202,6 @@ const AddRecipeForm = () => {
         .filter(el => el.length !== 0)
         .join('\r\n'),
     };
-    console.log(dataForSend);
 
     setIsWaitResponse(true);
 
