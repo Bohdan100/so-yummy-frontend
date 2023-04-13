@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 
+import NotPhoto from '../../images/bgPages/recipePage/not-photo.png';
 import {
   RecipeItem,
   RecipeItemWrapper,
@@ -53,7 +54,11 @@ const RecipeIngredientsItem = ({
     <RecipeItem>
       <RecipeItemWrapper>
         <ImageWrapper>
-          <img src={image} alt={nameIngredient} />
+          {image ? (
+            <img src={image} alt={nameIngredient} />
+          ) : (
+            <img src={NotPhoto} alt="no ingredient" />
+          )}
         </ImageWrapper>
         <TextContainer>
           <NameIngredient>{nameIngredient}</NameIngredient>
