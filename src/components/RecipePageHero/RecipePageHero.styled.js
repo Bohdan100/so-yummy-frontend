@@ -75,7 +75,6 @@ export const RecipeHeroTitle = styled.title`
   font-weight: ${p => p.theme.fontWeights[2]};
   font-size: 24px;
   line-height: ${p => p.theme.lineHeights.content};
-  margin-top: 18px;
   color: ${p => p.theme.colors.mainAccent};
 
   max-width: 330px;

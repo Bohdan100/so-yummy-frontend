@@ -7,13 +7,13 @@ export const IngredientItem = styled.li`
   align-items: start;
   padding: 0px 16px 24px 16px;
   border-bottom: ${p => p.theme.borders.productListBorder};
-}
-@media screen and (${p => p.theme.breakpoints[1]}) {
-  padding: 32px 42px;
-}
-@media screen and (${p => p.theme.breakpoints[2]}) {
-  padding: 50px 146px;
-}
+
+  @media screen and (${p => p.theme.breakpoints[1]}) {
+    padding: 32px 42px;
+  }
+  @media screen and (${p => p.theme.breakpoints[2]}) {
+    padding: 50px 146px;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -34,6 +34,7 @@ export const ImageWrapper = styled.div`
     border-radius: ${p => p.theme.radii.image};
     width: 48px;
     height: 48px;
+    object-fit: cover;
     @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
       width: 81px;
       height: 81px;
