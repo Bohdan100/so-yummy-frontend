@@ -7,7 +7,7 @@ import {
   InstrWrapperImg,
 } from './RecipePreparation.styled';
 
-import { nanoid } from 'nanoid';
+import { v4 as uuidv4 } from 'uuid';
 
 const RecipePreparation = ({ image, instructions }) => {
   const items = instructions
@@ -26,7 +26,7 @@ const RecipePreparation = ({ image, instructions }) => {
         }
       }
       return (
-        <InstrText key={nanoid()}>
+        <InstrText key={uuidv4()}>
           <span>{index + 1}</span>
           <p>{slicedItem}</p>
         </InstrText>
