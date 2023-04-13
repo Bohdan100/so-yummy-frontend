@@ -11,6 +11,7 @@ import {
 } from './IngredientsShoppingItem.styled';
 
 import { deleteProduct } from 'redux/ShoppingList/shoppingListOperations';
+import NotPhoto from '../../images/bgPages/recipePage/not-photo.png';
 
 const IngredientsShoppingItem = ({ image, id, nameIngredient, weight }) => {
   const dispatch = useDispatch();
@@ -18,7 +19,11 @@ const IngredientsShoppingItem = ({ image, id, nameIngredient, weight }) => {
   return (
     <IngredientItem>
       <ImageWrapper>
-        <img src={image} alt={nameIngredient} />
+        {image !== ' ' ? (
+          <img src={image} alt={nameIngredient} />
+        ) : (
+          <img src={NotPhoto} alt="no ingredient" />
+        )}
       </ImageWrapper>
       <TextContainer>
         <NameIngredient>{nameIngredient}</NameIngredient>

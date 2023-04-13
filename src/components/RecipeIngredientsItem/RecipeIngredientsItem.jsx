@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 
-import NotPhoto from '../../images/bgPages/recipePage/not-photo.png';
 import {
   RecipeItem,
   RecipeItemWrapper,
@@ -18,6 +17,8 @@ import {
   addProduct,
   deleteProduct,
 } from 'redux/ShoppingList/shoppingListOperations';
+
+import NotPhoto from '../../images/bgPages/recipePage/not-photo.png';
 
 const RecipeIngredientsItem = ({
   image,
@@ -38,7 +39,6 @@ const RecipeIngredientsItem = ({
       dispatch(deleteProduct(ingrid._id));
       return;
     }
-
     dispatch(
       addProduct({
         strIngredient: nameIngredient,
@@ -54,7 +54,7 @@ const RecipeIngredientsItem = ({
     <RecipeItem>
       <RecipeItemWrapper>
         <ImageWrapper>
-          {image ? (
+          {image !== ' ' ? (
             <img src={image} alt={nameIngredient} />
           ) : (
             <img src={NotPhoto} alt="no ingredient" />
