@@ -73,9 +73,11 @@ export const NameIngredient = styled.p`
   line-height: 1.17;
   letter-spacing: ${p => p.theme.letterSpacings.subheader};
   color: ${li => li.theme.colors.secondaryDark};
+  margin-bottom: 8px;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: 24px;
     line-height: ${p => p.theme.lineHeights.subheader};
+    margin-bottom: 12px;
   }
 `;
 
