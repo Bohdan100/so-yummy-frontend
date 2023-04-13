@@ -32,10 +32,16 @@ export const SubmitBtn = styled.button`
 
   transition: ${p => p.theme.transitions.main};
 
-  &:hover,
-  &:focus {
+  &:focus:not(:disabled),
+  &:hover:not(:disabled) {
     color: ${p => p.theme.colors.addBtnHoverText};
     background-color: ${p => p.theme.colors.addBtnHoverBg};
+  }
+
+  &[disabled] {
+    opacity: 0.7;
+    pointer-events: none;
+    cursor: not-allowed;
   }
 
   @media screen and (min-width: 768px) {

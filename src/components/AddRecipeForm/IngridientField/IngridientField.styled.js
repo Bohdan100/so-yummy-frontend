@@ -125,8 +125,6 @@ export const SelectContentIngridients = styled.ul`
 `;
 
 export const SelectItem = styled.li`
-  /* color: ${p => p.color}; */
-
   &:not(:last-child) {
     margin-bottom: 6px;
   }
@@ -155,7 +153,7 @@ export const WrapperAmount = styled.div`
 export const InputAmount = styled.input`
   display: block;
   background-color: ${p => p.theme.colors.bgIngridientAddRecipe};
-  border: ${p => p.theme.borders.inputAddRecipe};
+  border: none;
 
   outline: transparent;
   height: 53px;
