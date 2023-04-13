@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { refresh } from 'redux/Auth/authOperations';
 import { selectTheme } from 'redux/Theme/themeSelectors';
 import { selectIsRefreshing } from 'redux/Auth/authSelectors';
-import { fetchProducts } from '../redux/ShoppingList/shoppingListOperations';
 
 import Loader from 'components/Loader/Loader';
 import { ToastContainer } from 'react-toastify';
@@ -43,7 +42,6 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(refresh());
-    dispatch(fetchProducts());
   }, [dispatch]);
 
   return isRefreshUser ? (
