@@ -18,7 +18,7 @@ export const SearchBlock = styled.div`
   line-height: 18px;
   position: relative;
   @media screen and (min-width: ${p => p.theme.breakpoints[1]}) {
-    width: 369px;
+    width: 362px;
     height: 59px;
     font-size: 16px;
     line-height: 24px;
