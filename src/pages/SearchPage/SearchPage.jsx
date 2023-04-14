@@ -98,7 +98,7 @@ const SearchPage = () => {
           })}
         </RecipesList>
       )}
-      {recipes && recipes.length > 0 && (
+      {recipes && totalHits - recipes.length > 0 && (
         <PaginationComp
           count={Math.ceil(totalHits / perPageItems())}
           page={page}
