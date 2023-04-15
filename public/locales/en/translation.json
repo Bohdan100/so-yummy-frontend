@@ -91,6 +91,9 @@
   },
   "mainHero": {
     "error": "You didn't enter anything to search",
-    "description": "'What to cook?' is not only a recipe app, it is, in fact, your cookbook. You can add your own recipes to save them for the future."
+    "description": "'What to cook?' is not only a recipe app, it is, in fact, your cookbook. You can add your own recipes to save them for the future.",
+    "chooseSpan": "Delicious and healthy",
+    "chooseText": "way to enjoy a variety of fresh ingredients in one satisfying meal",
+    "see": "See recipes"
   }
 }
