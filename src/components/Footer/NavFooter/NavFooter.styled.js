@@ -15,6 +15,7 @@ export const NavWraper = styled.ul`
   @media screen and (min-width: 1440px) {
     gap: 24px;
     width: 89px;
+    white-space: nowrap;
   }
 `;
 

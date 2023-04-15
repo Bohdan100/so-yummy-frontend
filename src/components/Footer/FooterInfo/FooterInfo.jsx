@@ -1,19 +1,21 @@
 import { InfoList } from './FooterInfo.styled';
+import { useTranslation } from 'react-i18next';
 
 export const FooterInfo = () => {
+  const { t } = useTranslation();
   return (
     <InfoList>
       <li>
-        <p>Database of recipes that can be replenished</p>
+        <p>{t('footer.info1')}</p>
       </li>
       <li>
-        <p>Flexible search for desired and unwanted ingredients</p>
+        <p>{t('footer.info2')}</p>
       </li>
       <li>
-        <p>Ability to add your own recipes with photos</p>
+        <p>{t('footer.info3')}</p>
       </li>
       <li>
-        <p>Convenient and easy to use</p>
+        <p>{t('footer.info4')}</p>
       </li>
     </InfoList>
   );

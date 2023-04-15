@@ -64,6 +64,29 @@
     "saveBtn": "Save changes",
     "success": "You have successfully updated your details",
     "error": "Something went wrong...Try reloading the page"
+  },
+  "footer": {
+    "rights": "© 2023 All Rights Reserved",
+    "terms": "Terms of Service",
+    "info1": "Database of recipes that can be replenished",
+    "info2": "Flexible search for desired and unwanted ingredients",
+    "info3": "Ability to add your own recipes with photos",
+    "info4": "Convenient and easy to use",
+    "nav": {
+      "ingredients": "Ingredients",
+      "addRecipes": "Add recipes",
+      "myRrecipes": "My recipes",
+      "favorites": "Favorites",
+      "shoppingList": "Shopping list"
+    }
+  },
+  "subscribe": {
+    "success": "You have successfully subscribed",
+    "error409": "This user have alredy subscribed",
+    "error": "Something went wrong. Try again...",
+    "title": "Subscribe to our Newsletter",
+    "description": "Subscribe up to our newsletter. Be in touch with latest news and special offers, etc.",
+    "placeholder": "Enter your email address",
+    "btn": "Subcribe"
   }
-  
 }

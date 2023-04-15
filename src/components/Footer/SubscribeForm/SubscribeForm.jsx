@@ -1,6 +1,7 @@
 import { useMedia } from 'react-use';
 import { Formik } from 'formik';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import { subscripbeValidationSchema } from 'helpers/subscripbeValidationSchema';
 import { useAuth } from 'hooks';
 import { subscribeUser } from '../../../services/subscribe-API.js';
@@ -19,16 +20,17 @@ import {
 const SubscribeForm = () => {
   const isMobile = useMedia('(max-width: 1439px)');
   const { user } = useAuth();
+  const { t } = useTranslation();
 
   const handleSubmit = async values => {
     try {
       await subscribeUser({ email: values.email });
-      toast.success('You have successfully subscribed');
+      toast.success(t('subscribe.success'));
     } catch (error) {
       if (error.response.status === 409) {
-        toast.error(`This user have alredy subscribed`);
+        toast.error(t('subscribe.error409'));
       } else {
-        toast.error(`Something went wrong. Try again...`);
+        toast.error(t('subscribe.error'));
       }
     }
   };
@@ -37,11 +39,8 @@ const SubscribeForm = () => {
     <div>
       {!isMobile && (
         <SubscribeWrapper>
-          <SubscribeTitle>Subscribe to our Newsletter</SubscribeTitle>
-          <SubscribeText>
-            Subscribe up to our newsletter. Be in touch with latest news and
-            special offers, etc.
-          </SubscribeText>
+          <SubscribeTitle>{t('subscribe.title')}</SubscribeTitle>
+          <SubscribeText>{t('subscribe.description')}</SubscribeText>
         </SubscribeWrapper>
       )}
 
@@ -62,7 +61,7 @@ const SubscribeForm = () => {
               <Input
                 type="email"
                 name="email"
-                placeholder="Enter your email address"
+                placeholder={t('subscribe.placeholder')}
                 border={
                   props.touched.email && props.errors.email
                     ? '1px solid #E74A3B'
@@ -98,7 +97,7 @@ const SubscribeForm = () => {
             </InputWrapper>
 
             <SubscribeBtn type="submit" disabled={!props.isValid}>
-              Subcribe
+              {t('subscribe.btn')}
             </SubscribeBtn>
           </FormStyled>
         )}
