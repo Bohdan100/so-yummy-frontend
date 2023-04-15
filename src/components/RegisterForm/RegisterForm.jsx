@@ -2,13 +2,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { useTranslation } from 'react-i18next';
 import { selectIsLoading } from 'redux/Auth/authSelectors';
 import { register } from 'redux/Auth/authOperations';
-import {
-  registerValidationSchema,
-  ErrorStatus,
-  getPassErrorStatus,
-} from '../../helpers';
+import { useValidation, useErrorStatus } from '../../helpers';
 import { useAuth } from '../../hooks';
 import { setError } from '../../redux/Auth/authSlice';
 
@@ -46,6 +43,9 @@ const RegisterForm = () => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
   const { error } = useAuth();
+  const { ErrorStatus, getPassErrorStatus } = useErrorStatus();
+  const { registerValidationSchema } = useValidation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (error !== null) {
@@ -84,7 +84,7 @@ const RegisterForm = () => {
         {({ errors, touched, isValid, dirty }) => (
           <StyledForm>
             <TitleContainer>
-              <Title>Registration</Title>
+              <Title>{t('auth.title.register')}</Title>
               {error && <ErrorBox>{ErrorStatus[error]}</ErrorBox>}
             </TitleContainer>
             <InputContainer>
@@ -92,7 +92,7 @@ const RegisterForm = () => {
                 <Input
                   type="text"
                   name="name"
-                  placeholder="Name"
+                  placeholder={t('auth.form.name')}
                   disabled={isLoading}
                   color={touched.name && getPassErrorStatus(errors.name, dirty)}
                 />
@@ -109,7 +109,7 @@ const RegisterForm = () => {
                 <Input
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder={t('auth.form.email')}
                   disabled={isLoading}
                   color={
                     touched.email && getPassErrorStatus(errors.email, dirty)
@@ -130,7 +130,7 @@ const RegisterForm = () => {
                 <Input
                   type={isShowPassword ? 'text' : 'password'}
                   name="password"
-                  placeholder="Password"
+                  placeholder={t('auth.form.password')}
                   disabled={isLoading}
                   color={
                     touched.password &&
@@ -165,7 +165,7 @@ const RegisterForm = () => {
                 >
                   {((dirty && touched.password) ||
                     (!dirty && touched.password && errors.password)) &&
-                    (errors.password || 'Password is secure')}
+                    (errors.password || t('auth.status.secure'))}
                 </StatusBox>
               </Label>
             </InputContainer>
@@ -177,9 +177,9 @@ const RegisterForm = () => {
               name="button"
               disabled={isLoading || !isValid || !dirty}
             >
-              Sign up
+              {t('auth.form.button.register')}
             </Button>
-            <StyledLink to="/signin">Sign In</StyledLink>
+            <StyledLink to="/signin">{t('auth.form.link.login')}</StyledLink>
           </StyledForm>
         )}
       </Formik>
