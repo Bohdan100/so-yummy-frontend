@@ -30,7 +30,6 @@ const MyRecipesPage = () => {
   }, [dispatch, pageNumber]);
 
   const handleChange = (event, value) => {
-    console.log('value', value);
     setPageNumber(value);
   };
 

@@ -6,6 +6,7 @@ export const SearchBarCont = styled.div`
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40px;
+    margin-top: 50px;
     @media screen and (min-width: 768px) {
       margin-bottom: 28px;
       margin-top: 40px;
