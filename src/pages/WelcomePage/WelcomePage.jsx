@@ -10,27 +10,26 @@ import {
   Image,
 } from './WelcomePage.styled';
 
-// import MainContainer from '../../components/MainContainer/MainContainer';
+import { useTranslation } from 'react-i18next';
+
 import { MainContainerTwo } from '../../components/Header/Header.styled';
 import Logo from '../../images/icons/logo-desktop.svg';
 
 const WelcomePage = () => {
-  return (
+  const { t } = useTranslation();
+
+   return (
     <MainContainerTwo>
       <Container>
         <Box>
           <Image src={Logo} width={68} height={68} />
           <TextBox>
-            <Title>Welcome to the app!</Title>
-            <Text>
-              This app offers more than just a collection of recipes - it is
-              designed to be your very own digital cookbook. You can easily save
-              and retrieve your own recipes at any time.
-            </Text>
+            <Title>{t('welcomePage.title')}</Title>
+            <Text>{t('welcomePage.description')}</Text>
           </TextBox>
           <BoxLink>
-            <LinkRegister to="/register">Registration</LinkRegister>
-            <LinkLogin to="/signin">Sign in</LinkLogin>
+            <LinkRegister to="/register">{t('button.register')}</LinkRegister>
+            <LinkLogin to="/signin">{t('button.login')}</LinkLogin>
           </BoxLink>
         </Box>
       </Container>

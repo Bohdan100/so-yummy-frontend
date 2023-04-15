@@ -11,6 +11,7 @@ import UserLogo from './UserLogo';
 import ThemeToggler from './ThemeToggler';
 import MobileMenu from './MobileMenu';
 import Modal from 'components/Modal';
+import LangSwitcher from 'components/LangSwitcher';
 
 import {
   HeaderStyled,
@@ -49,6 +50,7 @@ const Header = () => {
           {!isMobileDevice && <Navigation />}
 
           <UserMenuWrapper>
+            <LangSwitcher />
             <UserLogo />
             <BurgerBtn type="button" onClick={openMobMenu}>
               <BurgerIconStyled stroke={color} />

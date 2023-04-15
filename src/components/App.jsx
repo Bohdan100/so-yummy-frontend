@@ -20,6 +20,7 @@ import SharedLayout from 'components/SharedLayout';
 import GoogleRedirect from 'components/GoogleRedirect';
 import PublicRoute from './Routes/PublicRoute';
 import PrivateRoute from './Routes/PrivateRoute';
+import '../i18n';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
@@ -49,49 +50,53 @@ export const App = () => {
   return isRefreshUser ? (
     <Loader />
   ) : (
-    <ThemeProvider theme={userThemeMode}>
-      <GlobalStyle />
-      <Routes>
-        <Route path="/" element={<Layout />}>
+      <ThemeProvider theme={userThemeMode}>
+        <GlobalStyle />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route
+              index
+              element={
+                <PublicRoute component={WelcomePage} redirectTo="/main" />
+              }
+            />
+            <Route
+              path="register"
+              element={
+                <PublicRoute component={RegisterPage} redirectTo="/main" />
+              }
+            />
+            <Route
+              path="signin"
+              element={
+                <PublicRoute component={SigninPage} redirectTo="/main" />
+              }
+            />
+          </Route>
           <Route
-            index
-            element={<PublicRoute component={WelcomePage} redirectTo="/main" />}
-          />
-          <Route
-            path="register"
+            path="/google-redirect"
             element={
-              <PublicRoute component={RegisterPage} redirectTo="/main" />
+              <PublicRoute component={GoogleRedirect} redirectTo="/main" />
             }
           />
           <Route
-            path="signin"
-            element={<PublicRoute component={SigninPage} redirectTo="/main" />}
-          />
-        </Route>
-        <Route
-          path="/google-redirect"
-          element={
-            <PublicRoute component={GoogleRedirect} redirectTo="/main" />
-          }
-        />
-        <Route
-          path="/"
-          element={<PrivateRoute component={SharedLayout} redirectTo="/" />}
-        >
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/categories" element={<CategoriesPage />}>
-            <Route path=":categoryName" element={<CategoriesByName />} />
+            path="/"
+            element={<PrivateRoute component={SharedLayout} redirectTo="/" />}
+          >
+            <Route path="/main" element={<MainPage />} />
+            <Route path="/categories" element={<CategoriesPage />}>
+              <Route path=":categoryName" element={<CategoriesByName />} />
+            </Route>
+            <Route path="/add" element={<AddRecipePage />} />
+            <Route path="/my" element={<MyRecipesPage />} />
+            <Route path="/favorite" element={<FavoritePage />} />
+            <Route path="/shopping-list" element={<ShoppingListPage />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/recipes/:recipeId" element={<RecipePage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
-          <Route path="/add" element={<AddRecipePage />} />
-          <Route path="/my" element={<MyRecipesPage />} />
-          <Route path="/favorite" element={<FavoritePage />} />
-          <Route path="/shopping-list" element={<ShoppingListPage />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/recipes/:recipeId" element={<RecipePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-      <ToastContainer autoClose={3000} />
-    </ThemeProvider>
+        </Routes>
+        <ToastContainer autoClose={3000} />
+      </ThemeProvider>
   );
 };

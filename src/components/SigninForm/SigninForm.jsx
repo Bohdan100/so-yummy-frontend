@@ -2,15 +2,11 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { useTranslation } from 'react-i18next';
 import { selectIsLoading } from 'redux/Auth/authSelectors';
 import { login } from 'redux/Auth/authOperations';
 import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
-import { fetchFavorites } from 'redux/Favorites/favoritesOperations';
-import {
-  loginValidationSchema,
-  ErrorStatus,
-  getPassErrorStatus,
-} from '../../helpers';
+import { useValidation, useErrorStatus } from '../../helpers';
 import { useAuth } from '../../hooks';
 import { setError } from '../../redux/Auth/authSlice';
 
@@ -47,6 +43,9 @@ const SigninForm = () => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
   const { error } = useAuth();
+  const { ErrorStatus, getPassErrorStatus } = useErrorStatus();
+  const { loginValidationSchema } = useValidation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (error !== null) {
@@ -60,7 +59,6 @@ const SigninForm = () => {
     dispatch(login({ email, password })).then(res => {
       if (!res.error) {
         dispatch(fetchProducts());
-        dispatch(fetchFavorites());
         resetForm();
       }
     });
@@ -88,7 +86,7 @@ const SigninForm = () => {
         {({ errors, touched, isValid, dirty }) => (
           <StyledForm>
             <TitleContainer>
-              <Title>Sign In</Title>
+              <Title>{t('auth.title.login')}</Title>
               {error && <ErrorBox>{ErrorStatus[error]}</ErrorBox>}
             </TitleContainer>
             <InputContainer>
@@ -96,7 +94,7 @@ const SigninForm = () => {
                 <Input
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder={t('auth.form.email')}
                   disabled={isLoading}
                   color={
                     touched.email && getPassErrorStatus(errors.email, dirty)
@@ -117,7 +115,7 @@ const SigninForm = () => {
                 <Input
                   type={isShowPassword ? 'text' : 'password'}
                   name="password"
-                  placeholder="Password"
+                  placeholder={t('auth.form.password')}
                   disabled={isLoading}
                   color={
                     touched.password &&
@@ -152,7 +150,7 @@ const SigninForm = () => {
                 >
                   {((dirty && touched.password) ||
                     (!dirty && touched.password && errors.password)) &&
-                    (errors.password || 'Password is secure')}
+                    (errors.password || t('auth.status.secure'))}
                 </StatusBox>
               </Label>
             </InputContainer>
@@ -164,9 +162,11 @@ const SigninForm = () => {
               name="button"
               disabled={isLoading || !isValid || !dirty}
             >
-              Sign In
+              {t('auth.form.button.login')}
             </Button>
-            <StyledLink to="/register">Registration</StyledLink>
+            <StyledLink to="/register">
+              {t('auth.form.link.register')}
+            </StyledLink>
           </StyledForm>
         )}
       </Formik>
