@@ -95,7 +95,7 @@ export const ErrMsg = styled.p`
 `;
 
 export const SubscribeBtn = styled.button`
-  padding: 11px 71px;
+  text-align: center;
   border: none;
   background-color: ${p => p.theme.colors.footerBtnBg};
   border-radius: ${p => p.theme.radii.btnStandart};
@@ -121,13 +121,11 @@ export const SubscribeBtn = styled.button`
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: ${p => p.theme.lineHeights.btnText};
-    padding: 16px 50px;
     width: 171px;
     height: 50px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 21px 138px;
     width: 339px;
     height: 60px;
   }

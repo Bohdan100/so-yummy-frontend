@@ -9,19 +9,22 @@ import {
 } from './СhooseYourBreakfast.styles';
 import Arrow from '../HeroBG/Arrow';
 import Plate from '../HeroBG/Plate/Plate';
+import { useTranslation } from 'react-i18next';
 
 const СhooseYourBreakfast = () => {
   const isTabDevice = useMedia('(min-width: 768px)');
   const isDescDevice = useMedia('(min-width: 1440px)');
-  return (
+  const { t } = useTranslation();
+
+ return (
     <>
       <ChooseBlock>
         <ChooseText>
-          <ChooseSpan>Delicious and healthy &nbsp;</ChooseSpan>
-          way to enjoy a variety of fresh ingredients in one satisfying meal
+          <ChooseSpan>{t('mainHero.chooseSpan')} &nbsp;</ChooseSpan>
+          {t('mainHero.chooseText')}
         </ChooseText>
         <ChooseLink to="/categories/breakfast" onClick={scrollToTop}>
-          See recipes
+          {t('mainHero.see')}
           <RightArrow
             width="15"
             height="12"

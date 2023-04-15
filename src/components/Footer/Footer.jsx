@@ -1,4 +1,5 @@
 import { useMedia } from 'react-use';
+import { useTranslation } from 'react-i18next';
 
 import LogoFooter from './LogoFooter';
 import FooterInfo from './FooterInfo';
@@ -17,6 +18,7 @@ import {
 
 const Footer = () => {
   const isMobile = useMedia('(max-width: 767px)');
+  const { t } = useTranslation();
   return (
     <FooterStyled>
       <TopWrapper>
@@ -37,7 +39,8 @@ const Footer = () => {
 
       <BottomWrapper>
         <p>
-          © 2023 All Rights Reserved. <span>Terms of Service</span>
+          {t('footer.rights')}
+          <span>{t('footer.terms')}</span>
         </p>
       </BottomWrapper>
     </FooterStyled>
