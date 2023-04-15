@@ -1,4 +1,5 @@
 import LogoutBtn from '../LogoutBtn';
+import { useTranslation } from 'react-i18next';
 
 import {
   ModalWrapper,
@@ -12,6 +13,7 @@ const UserLogoModal = ({
   closeUserLogoModal,
   openLogoutModal,
 }) => {
+  const { t } = useTranslation();
   const onEditBtnClick = () => {
     closeUserLogoModal();
     openEditModal();
@@ -24,7 +26,7 @@ const UserLogoModal = ({
   return (
     <ModalWrapper isShown={isShown}>
       <EditButton type="button" onClick={onEditBtnClick}>
-        <span>Edit profile</span>
+        <span>{t('logout.edit')}</span>
         <EditIconStyled width={'14px'} height={'14'} />
       </EditButton>
       <LogoutBtn onLogoutClick={onLogoutBtn} />

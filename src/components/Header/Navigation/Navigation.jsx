@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useMedia } from 'react-use';
+import { useTranslation } from 'react-i18next';
 import { selectTheme } from 'redux/Theme/themeSelectors';
 
 import {
@@ -15,6 +16,7 @@ const Navigation = ({ closeMobMenu }) => {
   const { pathname } = useLocation();
   const theme = useSelector(selectTheme);
   const isRecipesPage = pathname.includes('recipes');
+  const { t } = useTranslation();
 
   let color;
 
@@ -29,22 +31,22 @@ const Navigation = ({ closeMobMenu }) => {
       <ListNavLinks>
         <li>
           <NavLinkStyled to="/categories" onClick={closeMobMenu} color={color}>
-            Categories
+            {t('header.categories')}
           </NavLinkStyled>
         </li>
         <li>
           <NavLinkStyled to="add" onClick={closeMobMenu} color={color}>
-            Add recipes
+            {t('header.addRecipes')}
           </NavLinkStyled>
         </li>
         <li>
           <NavLinkStyled to="/my" onClick={closeMobMenu} color={color}>
-            My recipes
+            {t('header.myRrecipes')}
           </NavLinkStyled>
         </li>
         <li>
           <NavLinkStyled to="/favorite" onClick={closeMobMenu} color={color}>
-            Favorites
+            {t('header.favorites')}
           </NavLinkStyled>
         </li>
         <li>
@@ -53,14 +55,14 @@ const Navigation = ({ closeMobMenu }) => {
             onClick={closeMobMenu}
             color={color}
           >
-            Shopping list
+            {t('header.shoppingList')}
           </NavLinkStyled>
         </li>
         <li>
           <NavLinkStyled to="/search" onClick={closeMobMenu} color={color}>
             <SerchWrapperNavLink>
               <SearchIconStyled stroke={color} />
-              {isMobileDivice && 'Search'}
+              {isMobileDivice && t('header.search')}
             </SerchWrapperNavLink>
           </NavLinkStyled>
         </li>
