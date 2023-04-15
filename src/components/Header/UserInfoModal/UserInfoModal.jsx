@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from 'hooks';
 import { Formik } from 'formik';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import { updateUser } from 'redux/Auth/authOperations';
 import { selectTheme } from 'redux/Theme/themeSelectors';
 
@@ -35,6 +36,7 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
   const dispatch = useDispatch();
   const [pathToUserAvatar, setPathToUserAvatar] = useState(user.avatar);
   const theme = useSelector(selectTheme);
+  const { t } = useTranslation();
 
   const handleSubmit = values => {
     const formData = new FormData();
@@ -47,10 +49,8 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
 
     dispatch(updateUser(formData))
       .unwrap()
-      .then(() => toast.success('You have successfully updated your details'))
-      .catch(() =>
-        toast.error('Something went wrong...Try reloading the page')
-      );
+      .then(() => toast.success(t('editUser.success')))
+      .catch(() => toast.error(t('editUser.error')));
     closeUserInfoModal();
   };
 
@@ -180,7 +180,7 @@ const UserInfoModal = ({ isShown, closeUserInfoModal }) => {
                   )
                 }
               >
-                Save changes
+                {t('editUser.saveBtn')}
               </SubmitBtn>
             </InputButtonWrapper>
           </FormStyled>

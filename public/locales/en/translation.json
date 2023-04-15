@@ -42,5 +42,28 @@
       "short": "Too Short! Min {{value}} symbols!",
       "long": "Too Long! Max {{value}} symbols!"
     }
+  },
+  "header": {
+    "categories": "Categories",
+    "addRecipes": "Add recipes",
+    "myRrecipes": "My recipes",
+    "favorites": "Favorites",
+    "shoppingList": "Shopping list",
+    "search": "Search"
+  },
+  "logout": {
+    "confirm": "Are you sure you want to log out?",
+    "acceptBtn": "Log out",
+    "cancel": "Cancel",
+    "success": "You have successfully logged out",
+    "error": "Something went wrong...Try reloading the page",
+    "edit": "Edit profile",
+    "logoutBtn": "Log out"
+  },
+  "editUser": {
+    "saveBtn": "Save changes",
+    "success": "You have successfully updated your details",
+    "error": "Something went wrong...Try reloading the page"
   }
+  
 }

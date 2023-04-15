@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import { logout } from 'redux/Auth/authOperations';
 import {
   ModalWrapper,
@@ -13,14 +14,13 @@ import {
 
 const LogoutModal = ({ isShown, closeLogoutModal }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleLogoutBtn = () => {
     dispatch(logout())
       .unwrap()
-      .then(() => toast.success('You have successfully logged out'))
-      .catch(() =>
-        toast.error('Something went wrong...Try reloading the page')
-      );
+      .then(() => toast.success(t('logout.success')))
+      .catch(() => toast.error(t('logout.error')));
     closeLogoutModal();
   };
   return (
@@ -28,13 +28,13 @@ const LogoutModal = ({ isShown, closeLogoutModal }) => {
       <CrossBtb type="button" onClick={closeLogoutModal}>
         <CrossIconStyled />
       </CrossBtb>
-      <ConfirmTitle>Are you sure you want to log out?</ConfirmTitle>
+      <ConfirmTitle>{t('logout.confirm')}</ConfirmTitle>
       <BtnWrapper>
         <LogoutBtn type="button" onClick={handleLogoutBtn}>
-          Log out
+          {t('logout.acceptBtn')}
         </LogoutBtn>
         <CancelBtn type="button" onClick={closeLogoutModal}>
-          Cancel
+          {t('logout.cancel')}
         </CancelBtn>
       </BtnWrapper>
     </ModalWrapper>
