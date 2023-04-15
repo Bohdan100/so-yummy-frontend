@@ -2,6 +2,7 @@ import SearchForm from 'components/ReusableComponents/SearchForm';
 import СhooseYourBreakfast from 'components/Main/СhooseYourBreakfast';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   MainPageH1,
   MainPageText,
@@ -15,7 +16,9 @@ import { MainContainerTwo } from 'components/Header/Header.styled';
 const MainHero = () => {
   const { isTablet, isDesktop } = useDesktopCheck();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
+  
   const perPageItems = () => {
     let perPage;
     if (isDesktop) {
@@ -30,7 +33,7 @@ const MainHero = () => {
 
   const handleOnSubmit = (query, type) => {
     if (query === '') {
-      toast.error(`You didn't enter anything to search`, {
+      toast.error(t('mainHero.error'), {
         position: toast.POSITION.TOP_CENTER,
       });
       return;
@@ -48,8 +51,7 @@ const MainHero = () => {
             <SpanGr>So</SpanGr>Yummy
           </MainPageH1>
           <MainPageText>
-            "What to cook?" is not only a recipe app, it is, in fact, your
-            cookbook. You can add your own recipes to save them for the future.
+            {t('mainHero.description')}
           </MainPageText>
           <СhooseYourBreakfast />
           <SearchForm styled={'black'} handleOnSubmit={handleOnSubmit} />
