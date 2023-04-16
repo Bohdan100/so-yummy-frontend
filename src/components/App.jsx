@@ -42,12 +42,9 @@ export const App = () => {
 
   const userThemeMode = theme === 'light' ? lightMode : darkMode;
   const token = useSelector(selectToken);
-  console.log('token', token);
-  console.log('isRefreshUser', isRefreshUser);
 
   useEffect(() => {
     if (!token) {
-      console.log('No token');
       return;
     }
     dispatch(refresh());
