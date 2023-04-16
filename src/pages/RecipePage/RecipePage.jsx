@@ -8,6 +8,7 @@ import RecipePageHero from 'components/RecipePageHero';
 import RecipeIngredientsList from 'components/RecipeIngredientsList';
 import RecipePreparation from 'components/RecipePreparation';
 import Loader from 'components/Loader/Loader';
+import { scrollToTop } from 'helpers/scrollToTop';
 
 import { HeaderTable, RecipePageStyled } from './RecipePage.styled';
 
@@ -20,6 +21,10 @@ const RecipePage = () => {
 
   const { recipeId } = useParams();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   useEffect(() => {
     async function getOneRecipe() {
