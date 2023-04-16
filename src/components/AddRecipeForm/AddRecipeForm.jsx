@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 import {
@@ -56,6 +57,7 @@ const AddRecipeForm = () => {
   const [isAddRecipe, setIsAddRecipe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isWaitResponse, setIsWaitResponse] = useState(false);
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -180,7 +182,7 @@ const AddRecipeForm = () => {
 
     const isValid = addRecipeValidationSchema.isValidSync(formData);
     if (!isValid) {
-      toast.error('Not all fields were validated, follow the prompts!!');
+      toast.error(t('addRecipeForm.errorFirst'));
       setIsShowErrors(true);
       return;
     }
@@ -219,7 +221,7 @@ const AddRecipeForm = () => {
         navigate('/my');
       })
       .catch(e => {
-        toast.error('Something went wrong, try add your recipe again');
+        toast.error(t('addRecipeForm.errorSecond'));
         setIsAddRecipe(false);
         setIsWaitResponse(false);
       });
@@ -260,7 +262,7 @@ const AddRecipeForm = () => {
         onSubmit={onSubmitHandler}
         disabled={isDisabledBtnSubmit}
       >
-        Add
+        {t('addRecipeForm.submitBtn')}
       </SubmitBtn>
     </Form>
   );

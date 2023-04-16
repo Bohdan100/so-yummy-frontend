@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { toast } from 'react-toastify';
@@ -15,6 +17,7 @@ const CategoriesList = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function getAllCategories() {
@@ -30,13 +33,13 @@ const CategoriesList = () => {
         }
       } catch (error) {
         setError({ error });
-        toast.error(`Something went wrong. Plese try again...`);
+        toast.error(t('categoriesList.error'));
       } finally {
         setIsLoading(false);
       }
     }
     getAllCategories();
-  }, [category]);
+  }, [category, t]);
 
   useEffect(() => {
     if (categories.length > 0) {
@@ -131,7 +134,7 @@ const CategoriesList = () => {
           </Tabs>
         </div>
       )}
-      {error && <NotFoundWrapp>Whoops, something went wrong...</NotFoundWrapp>}
+      {error && <NotFoundWrapp>{t('categoriesList.errorText')}</NotFoundWrapp>}
     </>
   );
 };

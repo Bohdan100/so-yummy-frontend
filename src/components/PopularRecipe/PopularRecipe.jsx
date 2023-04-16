@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { getPopularRecipes } from 'services/popularRecipes-API';
+import { useTranslation } from 'react-i18next';
 
+import { getPopularRecipes } from 'services/popularRecipes-API';
 import {
   PopularRecipesWrapper,
   Title,
@@ -16,6 +17,7 @@ import {
 
 const PopularRecipe = () => {
   const [popularRecipes, setPopularRecipes] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getPopular = async () => {
@@ -31,14 +33,12 @@ const PopularRecipe = () => {
         const normalizePopularRecipe = data.map(el => el.recipe);
         setPopularRecipes(normalizePopularRecipe);
       })
-      .catch(error =>
-        toast.error('Something went wrong...Try reloading the page ')
-      );
-  }, []);
+      .catch(error => toast.error(t('popularRecipe.error')));
+  }, [t]);
 
   return (
     <PopularRecipesWrapper>
-      <Title>Popular recipe</Title>
+      <Title>{t('popularRecipe.title')}</Title>
       {popularRecipes.length > 0 && (
         <PopularRecipesList>
           {popularRecipes.map(({ _id, title, preview, description }) => {
@@ -63,7 +63,7 @@ const PopularRecipe = () => {
           })}
         </PopularRecipesList>
       )}
-      {popularRecipes.length === 0 && <p>No popular recipes</p>}
+      {popularRecipes.length === 0 && <p>{t('popularRecipe.message')}</p>}
     </PopularRecipesWrapper>
   );
 };

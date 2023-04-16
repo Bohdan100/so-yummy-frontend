@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import MainContainer from 'components/MainContainer/MainContainer';
 import RecipePageHero from 'components/RecipePageHero';
@@ -18,6 +19,7 @@ const RecipePage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { recipeId } = useParams();
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function getOneRecipe() {
@@ -37,7 +39,11 @@ const RecipePage = () => {
 
   return (
     <RecipePageStyled>
-      {error && <p>Whoops, something went wrong: {error.message}</p>}
+      {error && (
+        <p>
+          {t('recipePage.errorText')} {error.message}
+        </p>
+      )}
       {isLoading && <Loader />}
 
       {recipeObj && (
@@ -46,9 +52,10 @@ const RecipePage = () => {
 
           <MainContainer>
             <HeaderTable>
-              <p>Ingridients</p>
+              <p>{t('recipePage.ingridients')}</p>
               <p>
-                Number <span>Add to list</span>
+                {t('recipePage.number')}
+                <span>{t('recipePage.addToList')}</span>
               </p>
             </HeaderTable>
 

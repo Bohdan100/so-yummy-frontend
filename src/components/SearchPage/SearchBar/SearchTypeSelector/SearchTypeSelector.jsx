@@ -1,7 +1,9 @@
-import { SelectCon, SelectStyled } from './SearchTypeSelector.styled';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { SelectCon, SelectStyled } from './SearchTypeSelector.styled';
 
 const SearchTypeSelector = ({ startType, typeSubmit }) => {
+  const { t } = useTranslation();
   const [selectedOption, setSelectedOption] = useState({
     value: startType,
     label: startType,
@@ -22,7 +24,7 @@ const SearchTypeSelector = ({ startType, typeSubmit }) => {
 
   return (
     <SelectCon>
-      <span>Search by:</span>
+      <span>{t('searchTypeSelector.selector')}</span>
       <SelectStyled
         defaultValue={{
           value: startType,

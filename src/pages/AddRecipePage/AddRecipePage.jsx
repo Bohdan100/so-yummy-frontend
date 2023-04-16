@@ -1,4 +1,5 @@
 import { useMedia } from 'react-use';
+import { useTranslation } from 'react-i18next';
 
 import MainContainer from 'components/MainContainer';
 import ReusableTitle from 'components/ReusableComponents/ReusableTitle';
@@ -14,15 +15,17 @@ import {
 
 const AddRecipePage = () => {
   const isDesktop = useMedia('(min-width: 1440px)');
+  const { t } = useTranslation();
+
   return (
     <MainContainer>
-      <ReusableTitle>Add recipe</ReusableTitle>
+      <ReusableTitle>{t('addRecipePage.title')}</ReusableTitle>
       <MainWrapper>
         <AddRecipeForm />
         <div>
           {isDesktop && (
             <FollowUsWrapper>
-              <FollowUsTitle>Follow us</FollowUsTitle>
+              <FollowUsTitle>{t('addRecipePage.text')}</FollowUsTitle>
               <SocNetworks location={'addRecipePage'} />
             </FollowUsWrapper>
           )}

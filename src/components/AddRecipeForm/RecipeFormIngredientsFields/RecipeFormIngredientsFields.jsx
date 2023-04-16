@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslation } from 'react-i18next';
 
 import { ReactComponent as DecreaseIcon } from '../../../images/icons/decrease.svg';
 import { ReactComponent as IncreaseIcon } from '../../../images/icons/increase.svg';
@@ -26,10 +27,12 @@ const RecipeFormIngredientsFields = ({
   allIngredients = [],
   formErrors = {},
 }) => {
+  const { t } = useTranslation();
+
   return (
     <IngridientsFieldsWrapper>
       <TitleWrapper>
-        <Title>Ingredients</Title>
+        <Title>{t('recipeFormIngredientsFields.title')}</Title>
         <BtnsWrapper>
           <BtnDecrease
             type="button"
@@ -72,7 +75,7 @@ const RecipeFormIngredientsFields = ({
 
       <WrapperTextErr>
         {ingredients.length === 0 && (
-          <TextNotify>Add the right ingredients to your recipe</TextNotify>
+          <TextNotify>{t('recipeFormIngredientsFields.textNotify')}</TextNotify>
         )}
         {ingredients.length === 0 && formErrors?.ingredients && (
           <ErrMessage>{formErrors.ingredients}</ErrMessage>

@@ -95,5 +95,106 @@
     "chooseSpan": "Delicious and healthy",
     "chooseText": "way to enjoy a variety of fresh ingredients in one satisfying meal",
     "see": "See recipes"
+  },
+  "searchForm": {
+    "btnText": "Search",
+    "btnPlaceholder": "Enter search value"
+  },
+  "PreviewCategories": {
+    "error": "Something went wrong. Plese try again...",
+    "errorText": "Whoops, something went wrong:",
+    "seeAllBtnText": "See all",
+    "otherBtnText": "Other categories"
+  },
+  "categoriesPage": {
+    "title": "Categories"
+  },
+  "categoriesList": {
+    "error": "Something went wrong. Plese try again...",
+    "errorText": "Whoops, something went wrong..."
+  },
+  "recipePage": {
+    "errorText": "Whoops, something went wrong:",
+    "ingridients": "Ingridients",
+    "number": "Number",
+    "addToList": "Add to list"
+  },
+  "recipePreparation": {
+    "title": "Recipe Preparation"
+  },
+  "recipePageHero": {
+    "error": "Something went wrong. Plese try again...",
+    "addTextBtn": "Add to favorite recipes",
+    "removeTextBtn": "Remove from favorite recipes",
+    "time": " min"
+  },
+  "addRecipePage": {
+    "title": "Add recipe",
+    "text": "Follow us"
+  },
+  "addRecipeForm": {
+    "errorFirst": "Not all fields were validated, follow the prompts!!",
+    "errorSecond": "Something went wrong, try add your recipe again",
+    "submitBtn": "Add"
+  },
+  "recipeFormDescriptionFields": {
+    "placeholderFirst": "Enter item title",
+    "placeholderSecond": "Enter about recipe",
+    "placeholderThird": "Category",
+    "placeholderForth": "Cooking time"
+  },
+  "recipeFormIngredientsFields": {
+    "title": "Ingredients",
+    "textNotify": "Add the right ingredients to your recipe"
+  },
+  "ingridientField": {
+    "placeholder": "Start enter ingredient"
+  },
+  "recipeFormPreparationFields": {
+    "title": "Recipe Preparation",
+    "placeholder": "Enter recipe"
+  },
+  "popularRecipe": {
+    "title": "Popular recipes",
+    "error": "Something went wrong...Try reloading the page",
+    "message": "No popular recipes"
+  },
+  "myRecipesPage": {
+    "title": "My Recipes"
+  },
+  "myRecipeItem": {
+    "success": "Recipe deleted",
+    "time": "min",
+    "btn": "See recipe"
+  },
+  "favoritePage": {
+    "title": "Favorites",
+    "error": "Something went wrong...Try reloading the page",
+    "notFavorites": "You currently don't have any favorite recipes added. Let's add some♥"
+  },
+  "favoriteCard": {
+    "time": "min",
+    "btn": "See recipe"
+  },
+  "shoppingListPage": {
+    "title": "Shopping list",
+    "products": "Products",
+    "number": "Number",
+    "remove": "Remove",
+    "notFoundText": "Your shopping list is currently empty"
+  },
+  "searchPage": {
+    "title": "Search",
+    "errorFirst": "Sorry, there are no recipes matching your search query. Please, try again.",
+    "errorSecond": "Something went wrong. Please, reload the page.",
+    "notFoundText": "Whoops, something went wrong:",
+    "notFoundTextSecond": "Try looking for something else..."
+  },
+  "searchTypeSelector": {
+    "selector": "Search by:"
+  },
+  "notFoundPage": {
+    "textMain": "We are sorry,",
+    "textAddition": "but the page you were looking for can’t be found.."
   }
 }

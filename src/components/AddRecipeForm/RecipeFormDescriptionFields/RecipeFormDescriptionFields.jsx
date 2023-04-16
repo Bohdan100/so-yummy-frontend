@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { allTime } from 'data/dataForAddRecipeForm';
 import { ReactComponent as Arrow } from '../../../images/icons/chevron-down.svg';
@@ -38,6 +39,7 @@ const RecipeFormDescriptionFields = ({
   const [isActiveCategory, setIsActiveCategory] = useState(false);
   const [isActiveTime, setIsActiveTime] = useState(false);
   const inputEl = useRef(null);
+  const { t } = useTranslation();
 
   return (
     <InfoWrapper>
@@ -55,7 +57,7 @@ const RecipeFormDescriptionFields = ({
             name="title"
             autoComplete="off"
             value={title}
-            placeholder="Enter item title"
+            placeholder={t('recipeFormDescriptionFields.placeholderFirst')}
             onChange={e => setTitle(e.target.value)}
           />
           {formErrors?.title && <ErrMessage>{formErrors?.title}</ErrMessage>}
@@ -66,7 +68,7 @@ const RecipeFormDescriptionFields = ({
             type="text"
             name="description"
             autoComplete="off"
-            placeholder="Enter about recipe"
+            placeholder={t('recipeFormDescriptionFields.placeholderSecond')}
             value={description}
             onChange={e => setDescription(e.target.value)}
           />
@@ -79,7 +81,7 @@ const RecipeFormDescriptionFields = ({
           <Input
             type="text"
             readOnly="readonly"
-            placeholder="Category"
+            placeholder={t('recipeFormDescriptionFields.placeholderThird')}
             style={{ cursor: 'pointer' }}
           />
           {formErrors?.category && (
@@ -120,7 +122,7 @@ const RecipeFormDescriptionFields = ({
         <WrapperCookingTime>
           <Input
             type="text"
-            placeholder="Cooking time"
+            placeholder={t('recipeFormDescriptionFields.placeholderForth')}
             style={{ cursor: 'pointer' }}
           />
           {formErrors?.time && <ErrMessage>{formErrors?.time}</ErrMessage>}

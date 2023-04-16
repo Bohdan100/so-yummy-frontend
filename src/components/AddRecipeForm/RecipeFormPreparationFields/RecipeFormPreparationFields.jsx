@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   WrapperTextarea,
   TitlePreparation,
@@ -6,12 +7,16 @@ import {
 } from './RecipeFormPreparationFields.styled';
 
 const RecipeFormPreparationFields = ({ value, onChange, formErrors }) => {
+  const { t } = useTranslation();
+
   return (
     <WrapperTextarea>
-      <TitlePreparation>Recipe Preparation</TitlePreparation>
+      <TitlePreparation>
+        {t('recipeFormPreparationFields.title')}
+      </TitlePreparation>
       <Textarea
         name="recipe"
-        placeholder="Enter recipe"
+        placeholder={t('recipeFormPreparationFields.placeholder')}
         value={value}
         onChange={e => onChange(e.target.value)}
       />
