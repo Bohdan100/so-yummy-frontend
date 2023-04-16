@@ -8,7 +8,7 @@ import CategoriesByName from './CategoriesByName';
 import { useDispatch, useSelector } from 'react-redux';
 import { refresh } from 'redux/Auth/authOperations';
 import { selectTheme } from 'redux/Theme/themeSelectors';
-import { selectIsRefreshing } from 'redux/Auth/authSelectors';
+import { selectIsRefreshing, selectToken } from 'redux/Auth/authSelectors';
 import { fetchProducts } from 'redux/ShoppingList/shoppingListOperations';
 
 import Loader from 'components/Loader/Loader';
@@ -41,62 +41,62 @@ export const App = () => {
   const isRefreshUser = useSelector(selectIsRefreshing);
 
   const userThemeMode = theme === 'light' ? lightMode : darkMode;
+  const token = useSelector(selectToken);
 
   useEffect(() => {
+    if (!token) {
+      return;
+    }
     dispatch(refresh());
     dispatch(fetchProducts());
-  }, [dispatch]);
+  }, [dispatch, token]);
 
   return isRefreshUser ? (
     <Loader />
   ) : (
-      <ThemeProvider theme={userThemeMode}>
-        <GlobalStyle />
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route
-              index
-              element={
-                <PublicRoute component={WelcomePage} redirectTo="/main" />
-              }
-            />
-            <Route
-              path="register"
-              element={
-                <PublicRoute component={RegisterPage} redirectTo="/main" />
-              }
-            />
-            <Route
-              path="signin"
-              element={
-                <PublicRoute component={SigninPage} redirectTo="/main" />
-              }
-            />
-          </Route>
+    <ThemeProvider theme={userThemeMode}>
+      <GlobalStyle />
+      <Routes>
+        <Route path="/" element={<Layout />}>
           <Route
-            path="/google-redirect"
+            index
+            element={<PublicRoute component={WelcomePage} redirectTo="/main" />}
+          />
+          <Route
+            path="register"
             element={
-              <PublicRoute component={GoogleRedirect} redirectTo="/main" />
+              <PublicRoute component={RegisterPage} redirectTo="/main" />
             }
           />
           <Route
-            path="/"
-            element={<PrivateRoute component={SharedLayout} redirectTo="/" />}
-          >
-            <Route path="/main" element={<MainPage />} />
-            <Route path="/categories" element={<CategoriesPage />}>
-              <Route path=":categoryName" element={<CategoriesByName />} />
-            </Route>
-            <Route path="/add" element={<AddRecipePage />} />
-            <Route path="/my" element={<MyRecipesPage />} />
-            <Route path="/favorite" element={<FavoritePage />} />
-            <Route path="/shopping-list" element={<ShoppingListPage />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/recipes/:recipeId" element={<RecipePage />} />
-            <Route path="*" element={<NotFoundPage />} />
+            path="signin"
+            element={<PublicRoute component={SigninPage} redirectTo="/main" />}
+          />
+        </Route>
+        <Route
+          path="/google-redirect"
+          element={
+            <PublicRoute component={GoogleRedirect} redirectTo="/main" />
+          }
+        />
+        <Route
+          path="/"
+          element={<PrivateRoute component={SharedLayout} redirectTo="/" />}
+        >
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/categories" element={<CategoriesPage />}>
+            <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
-        </Routes>
-        <ToastContainer autoClose={3000} />
-      </ThemeProvider>
+          <Route path="/add" element={<AddRecipePage />} />
+          <Route path="/my" element={<MyRecipesPage />} />
+          <Route path="/favorite" element={<FavoritePage />} />
+          <Route path="/shopping-list" element={<ShoppingListPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/recipes/:recipeId" element={<RecipePage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+      <ToastContainer autoClose={3000} />
+    </ThemeProvider>
   );
 };
