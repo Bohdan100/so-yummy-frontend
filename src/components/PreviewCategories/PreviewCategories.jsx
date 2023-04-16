@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-// import { useNavigate } from 'react-router';
 import { useMedia } from 'react-use';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import * as API from 'services/categories-API';
 import Loader from 'components/Loader/Loader';
@@ -21,6 +21,7 @@ const PreviewCategories = () => {
   const [recipesByMainCategories, setRecipesByMainCategories] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     let count;
@@ -40,19 +41,19 @@ const PreviewCategories = () => {
         setRecipesByMainCategories(recipes);
       } catch (error) {
         setError({ error });
-        toast.error(`Something went wrong. Plese try again...`);
+        toast.error(t('PreviewCategories.error'));
       } finally {
         setIsLoading(false);
       }
     }
     getRecipesByFourCategory();
-  }, [isDesctopDevice, isTabletDevice]);
+  }, [isDesctopDevice, isTabletDevice, t]);
 
   return (
     <>
       {error && (
         <NotFoundWrapp>
-          Whoops, something went wrong: {error.message}
+          {t('PreviewCategories.errorText')} {error.message}
         </NotFoundWrapp>
       )}
       {isLoading && <Loader />}
@@ -70,13 +71,17 @@ const PreviewCategories = () => {
                       <RecipeCard key={recipe._id} dish={recipe} />
                     ))}
                   </CardList>
-                  <SeeAllBtn to={`/categories/${category}`}>See all</SeeAllBtn>
+                  <SeeAllBtn to={`/categories/${category}`}>
+                    {t('PreviewCategories.seeAllBtnText')}
+                  </SeeAllBtn>
                 </li>
               );
             }
           )}
       </CategoryList>
-      <OtherBtn to={'/categories'}>Other categories</OtherBtn>
+      <OtherBtn to={'/categories'}>
+        {t('PreviewCategories.otherBtnText')}
+      </OtherBtn>
     </>
   );
 };

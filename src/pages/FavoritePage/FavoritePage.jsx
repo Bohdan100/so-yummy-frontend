@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-//
-// import { useDispatch, useSelector } from 'react-redux';
-// import { selectFavorites, selectIsLoading, selectError } from 'redux/Favorites/favoritesSelectors';
-// import { fetchFavorites, addFavorite, deleteFavorite } from 'redux/Favorites/favoritesOperations';
-//
+import { useTranslation } from 'react-i18next';
+
 import {
   fetchFavoriteRacipes,
   removeRecipeFromFavorites,
@@ -32,6 +29,7 @@ const FavoritePage = () => {
   const [total, setTotal] = useState(0);
   const history = useNavigate();
   const limit = 4;
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function getFavoriteRacipes() {
@@ -43,14 +41,14 @@ const FavoritePage = () => {
         setTotal(response.total);
       } catch (error) {
         setError({ error });
-        toast.error(`Something went wrong. Plese try again...`);
+        toast.error(t('favoritePage.error'));
       } finally {
         setIsLoading(false);
       }
     }
 
     getFavoriteRacipes();
-  }, [pageNumber]);
+  }, [pageNumber, t]);
 
   useEffect(() => {
     history(`?page=${pageNumber}`);
@@ -71,7 +69,7 @@ const FavoritePage = () => {
       setTotal(response.total);
     } catch (error) {
       setError({ error });
-      toast.error(`Something went wrong. Plese try again...`);
+      toast.error(t('favoritePage.error'));
     } finally {
       setIsLoading(false);
     }
@@ -81,7 +79,7 @@ const FavoritePage = () => {
     <>
       {isLoading && <Loader />}
       <Container>
-        <ReusableTitle>Favorites</ReusableTitle>
+        <ReusableTitle>{t('favoritePage.title')}</ReusableTitle>
         {isLoading ? (
           <Loader />
         ) : (
@@ -110,10 +108,7 @@ const FavoritePage = () => {
                     />
                   </picture>
                 </ImgWrapper>
-                <NotFavorites>
-                  You currently don't have any favorite recipes added. Let's add
-                  some♥
-                </NotFavorites>
+                <NotFavorites>{t('favoritePage.notFavorites')}</NotFavorites>
               </Wrapper>
             )}
             {recipes && recipes.result && recipes.result.length > 0 && (

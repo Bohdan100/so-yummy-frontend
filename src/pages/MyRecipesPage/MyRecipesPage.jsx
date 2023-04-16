@@ -1,20 +1,22 @@
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router';
 import { Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import MainContainer from 'components/MainContainer/MainContainer';
 import MyRecipeList from 'components/MyRecipe/MyRecipeList/MyRecipeList';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { PaginationComp } from '../../components/Pagination/pagination';
 import { WrapText } from 'components/WrapText/WrapText';
-import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader';
 import {
   getOwnRecipesList,
   getTotalOwnRecipes,
   selectIsLoading,
 } from '../../redux/OwnRecipes/OwnRecipesSelectors';
 import { getOwnRecipes } from 'redux/OwnRecipes/OwnRecipesOperations';
-import ReusableTitle from '../../components/ReusableComponents/ReusableTitle/ReusableTitle';
+import ReusableTitle from '../../components/ReusableComponents/ReusableTitle';
 
 const MyRecipesPage = () => {
   const history = useNavigate();
@@ -24,6 +26,7 @@ const MyRecipesPage = () => {
   const isFetching = useSelector(selectIsLoading);
   const limit = 4;
   const [pageNumber, setPageNumber] = useState(1);
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getOwnRecipes({ page: pageNumber, limit: limit }));
@@ -40,7 +43,7 @@ const MyRecipesPage = () => {
   return (
     <div>
       <MainContainer>
-        <ReusableTitle>My Recipes</ReusableTitle>
+        <ReusableTitle>{t('myRecipesPage.title')}</ReusableTitle>
         {isFetching ? (
           <Loader />
         ) : (

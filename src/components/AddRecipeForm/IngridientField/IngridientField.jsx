@@ -1,5 +1,7 @@
 import { useState, useRef, useMemo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
 import { ReactComponent as Arrow } from '../../../images/icons/chevron-down.svg';
 import { ReactComponent as CloseIcon } from '../../../images/icons/close-20.svg';
 
@@ -40,6 +42,7 @@ const IngridientField = ({
   const [amount, setAmount] = useState(dataInput.amount);
   const [unit, setUnit] = useState(dataInput.unit);
   const [filter, setFilter] = useState(() => dataInput?.ttl || '');
+  const { t } = useTranslation();
 
   useEffect(() => {
     const onClick = e => {
@@ -85,7 +88,7 @@ const IngridientField = ({
           type="text"
           name="ingridient"
           autoComplete="off"
-          placeholder="Start enter ingredient"
+          placeholder={t('ingridientField.placeholder')}
           value={filter}
           onChange={e => {
             setFilter(e.target.value);

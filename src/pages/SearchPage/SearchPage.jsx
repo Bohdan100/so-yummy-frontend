@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import MainContainer from 'components/MainContainer/MainContainer';
-import ReusableTitle from 'components/ReusableComponents/ReusableTitle/ReusableTitle';
-import { SearchBar } from 'components/SearchPage/SearchBar/SearchBar';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import NotFoundWrapp from 'components/ReusableComponents/NotFoundWrapp/index';
-import Loader from 'components/Loader/Loader';
-import { RecipesList } from 'components/CategoriesByName/CategoriesByName.styled';
+import { useTranslation } from 'react-i18next';
+
+import MainContainer from 'components/MainContainer/MainContainer';
+import ReusableTitle from 'components/ReusableComponents/ReusableTitle';
 import RecipeCard from 'components/ReusableComponents/RecipeCard';
+import { SearchBar } from 'components/SearchPage/SearchBar/SearchBar';
+import NotFoundWrapp from 'components/ReusableComponents/NotFoundWrapp';
+import Loader from 'components/Loader';
+import { RecipesList } from 'components/CategoriesByName/CategoriesByName.styled';
+
 import { scrollToTop } from 'helpers';
 import { PaginationComp } from 'components/Pagination/pagination';
 import { FetchSearchedMeals } from 'services/search-meals-API';
@@ -21,6 +24,8 @@ const SearchPage = () => {
   const [page, setPage] = useState(1);
   const [totalHits, setTotalHits] = useState();
   const { isTablet, isDesktop } = useDesktopCheck();
+  const { t } = useTranslation();
+
   const query = searchParams.get('query') ?? '';
   const type = searchParams.get('type') ?? 'Title';
 
@@ -57,17 +62,14 @@ const SearchPage = () => {
         const recipes = await FetchSearchedMeals(searchParams);
 
         if (recipes.length === 0) {
-          toast.error(
-            'Sorry, there are no recipes matching your search query. Please, try again.',
-            {
-              position: 'top-right',
-            }
-          );
+          toast.error(t('searchPage.errorFirst'), {
+            position: 'top-right',
+          });
         }
         setRecipes(recipes.meals);
         setTotalHits(recipes.totalHits);
       } catch (error) {
-        toast.error('Something went wrong. Please, reload the page.', {
+        toast.error(t('searchPage.errorSecond'), {
           position: 'top-right',
         });
         setError(error);
@@ -77,17 +79,17 @@ const SearchPage = () => {
     }
 
     SearchRecipes();
-  }, [type, query, searchParams]);
+  }, [type, query, searchParams, t]);
 
   const style = { marginBottom: 40 };
 
   return (
     <MainContainer>
-      <ReusableTitle>Search</ReusableTitle>
+      <ReusableTitle>{t('searchPage.title')}</ReusableTitle>
       <SearchBar onSubmit={onSubmit} startType={type} startQuery={query} />
       {error && (
         <NotFoundWrapp>
-          Whoops, something went wrong: {error.message}
+          {t('searchPage.notFoundText')} {error.message}
         </NotFoundWrapp>
       )}
       {isLoading && <Loader />}
@@ -106,7 +108,7 @@ const SearchPage = () => {
         />
       )}
       {!isLoading && !error && recipes.length === 0 && (
-        <NotFoundWrapp>Try looking for something else..</NotFoundWrapp>
+        <NotFoundWrapp>{t('searchPage.notFoundTextSecond')}</NotFoundWrapp>
       )}
     </MainContainer>
   );

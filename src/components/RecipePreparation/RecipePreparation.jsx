@@ -1,3 +1,6 @@
+import { v4 as uuidv4 } from 'uuid';
+import { useTranslation } from 'react-i18next';
+
 import {
   PreparationWrapper,
   InstrWrapper,
@@ -7,9 +10,8 @@ import {
   InstrWrapperImg,
 } from './RecipePreparation.styled';
 
-import { v4 as uuidv4 } from 'uuid';
-
 const RecipePreparation = ({ image, instructions }) => {
+  const { t } = useTranslation();
   const items = instructions
     .split('\r\n')
     .filter(elem => {
@@ -36,7 +38,7 @@ const RecipePreparation = ({ image, instructions }) => {
   return (
     <PreparationWrapper>
       <InstrWrapper>
-        <InstrTitle>Recipe Preparation</InstrTitle>
+        <InstrTitle>{t('recipePreparation.title')}</InstrTitle>
         <InstrList>{items}</InstrList>
       </InstrWrapper>
 

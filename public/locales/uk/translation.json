@@ -94,5 +94,106 @@
     "chooseSpan": "Смачно і корисно",
     "chooseText": "можливість насолодитися різними свіжими інгредієнтами в одній ситній страві",
     "see": "Дивитись рецепти"
+  },
+  "searchForm": {
+    "btnText": "Пошук",
+    "btnPlaceholder": "Введіть пошукове значення"
+  },
+  "PreviewCategories": {
+    "error": "Щось пішло не так. Будь ласка спробуйте ще раз...",
+    "errorText": "На жаль, щось пішло не так:",
+    "seeAllBtnText": "Побачити всі",
+    "otherBtnText": "Інші категорії"
+  },
+  "categoriesPage": {
+    "title": "Категорії"
+  },
+  "categoriesList": {
+    "error": "Щось пішло не так. Будь ласка спробуйте ще раз...",
+    "errorText": "На жаль, щось пішло не так..."
+  },
+  "recipePage": {
+    "errorText": "На жаль, щось пішло не так...",
+    "ingridients": "Інгредієнти",
+    "number": "Номер",
+    "addToList": "Додати до списку"
+  },
+  "recipePreparation": {
+    "title": "Рецепт для приготування"
+  },
+  "recipePageHero": {
+    "error": "Щось пішло не так. Будь ласка спробуйте ще раз...",
+    "addTextBtn": "Додати до улюблених рецептів",
+    "removeTextBtn": "Видалити з улюблених рецептів",
+    "time": " хв"
+  },
+  "addRecipePage": {
+    "title": "Додати рецепт",
+    "text": "Знайди нас"
+  },
+  "addRecipeForm": {
+    "errorFirst": "Не всі поля були вірно заповнені, слідуйте підказкам!!",
+    "errorSecond": "Щось пішло не так, спробуйте додати свій рецепт ще раз",
+    "submitBtn": "Додати"
+  },
+  "recipeFormDescriptionFields": {
+    "placeholderFirst": "Введіть назву рецепту",
+    "placeholderSecond": "Опишіть зміст рецепту",
+    "placeholderThird": "Категорія рецепту",
+    "placeholderForth": "Час приготування"
+  },
+  "recipeFormIngredientsFields": {
+    "title": "Інгредієнти",
+    "textNotify": "Додайте потрібні інгредієнти до свого рецепту"
+  },
+  "ingridientField": {
+    "placeholder": "Почніть вводити інгредієнт"
+  },
+  "recipeFormPreparationFields": {
+    "title": "Рецепт приготування",
+    "placeholder": "Введіть рецепт приготування"
+  },
+  "popularRecipe": {
+    "title": "Популярні рецепти",
+    "error": "Щось пішло не так... Спробуйте оновити сторінку",
+    "message": "Немає популярних рецептів"
+  },
+  "myRecipesPage": {
+    "title": "Мої рецепти"
+  },
+  "myRecipeItem": {
+    "success": "Рецепт видалено",
+    "time": "хв",
+    "btn": "Проглянути рецепт"
+  },
+  "favoritePage": {
+    "title": "Улюблені",
+    "error": "Щось пішло не так... Спробуйте оновити сторінку",
+    "notFavorites": "Зараз у вас немає улюблених рецептів. Давайте додамо декілька♥"
+  },
+  "favoriteCard": {
+    "time": "хв",
+    "btn": "Проглянути"
+  },
+  "shoppingListPage": {
+    "title": "Список покупок",
+    "products": "Продукти",
+    "number": "Номер",
+    "remove": "Видалити",
+    "notFoundText": "Ваш список покупок наразі порожній"
+  },
+  "searchPage": {
+    "title": "Пошук",
+    "errorFirst": "На жаль, немає рецептів, які відповідають вашому пошуковому запиту. Будь ласка спробуйте ще раз.",
+    "errorSecond": "Щось пішло не так. Будь-ласка перезавантажте сторінку.",
+    "notFoundText": "На жаль, щось пішло не так:",
+    "notFoundTextSecond": "Спробуйте пошукати щось інше..."
+  },
+  "searchTypeSelector": {
+    "selector": "Пошук за:"
+  },
+  "notFoundPage": {
+    "textMain": "Ми вибачаємося,",
+    "textAddition": "але сторінку, яку Ви шукали, не можна знайти.."
   }
 }
