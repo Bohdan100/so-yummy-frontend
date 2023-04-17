@@ -47,8 +47,9 @@ export const App = () => {
     if (!token) {
       return;
     }
-    dispatch(refresh());
-    dispatch(fetchProducts());
+    dispatch(refresh()).then(res => {if (!res.error) {
+        dispatch(fetchProducts())
+      }})
   }, [dispatch, token]);
 
   return isRefreshUser ? (
