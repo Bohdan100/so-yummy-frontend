@@ -14,6 +14,5 @@ i18n
       loadPath: '/so-yummy-frontend/locales/{{lng}}/{{ns}}.json',
     },
   });
-i18n.changeLanguage('en');
 
 export default i18n;

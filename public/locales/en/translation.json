@@ -160,7 +160,8 @@
     "message": "No popular recipes"
   },
   "myRecipesPage": {
-    "title": "My Recipes"
+    "title": "My Recipes",
+    "emptyList": "You currently don't have any own recipes added. Let's add some♥"
   },
   "myRecipeItem": {
     "success": "Recipe deleted",

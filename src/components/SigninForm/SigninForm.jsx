@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import PulseLoader from 'react-spinners/PulseLoader';
 import { useTranslation } from 'react-i18next';
 import { selectIsLoading } from 'redux/Auth/authSelectors';
 import { login } from 'redux/Auth/authOperations';
@@ -87,6 +88,7 @@ const SigninForm = () => {
           <StyledForm>
             <TitleContainer>
               <Title>{t('auth.title.login')}</Title>
+              <PulseLoader color="#8BAA36" size={12} loading={isLoading}/>
               {error && <ErrorBox>{ErrorStatus[error]}</ErrorBox>}
             </TitleContainer>
             <InputContainer>
