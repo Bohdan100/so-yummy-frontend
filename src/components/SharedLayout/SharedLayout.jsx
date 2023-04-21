@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import Loader from 'components/Loader/Loader';
+
 import {
   LayoutStyled,
   ContentContainer,
@@ -11,21 +11,21 @@ import {
 
 const SharedLayout = () => {
   return (
-    <LayoutStyled className="container">
-      <ContentContainer>
-        <Header />
+    <Suspense fallback={null}>
+      <LayoutStyled className="container">
+        <ContentContainer>
+          <Header />
 
-        <main>
-          <Suspense fallback={<Loader />}>
+          <main>
             <Outlet />
-          </Suspense>
-        </main>
-      </ContentContainer>
+          </main>
+        </ContentContainer>
 
-      <FooterContainer>
-        <Footer />
-      </FooterContainer>
-    </LayoutStyled>
+        <FooterContainer>
+          <Footer />
+        </FooterContainer>
+      </LayoutStyled>
+    </Suspense>
   );
 };
 
