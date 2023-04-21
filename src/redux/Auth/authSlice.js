@@ -1,35 +1,23 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { register, login, logout, refresh, updateUser } from './authOperations';
 
-const extraActions = [register, login, logout];
+const extraActions = [register, login, logout, refresh];
 const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
 
 const authFulfilledReducer = (state, action) => {
   state.user = action.payload.data.user;
   state.token = action.payload.data.token;
-  state.isLoggedIn = true;
-  state.isLoading = false;
 };
 const logoutFulfilledReducer = state => {
   state.user = { name: null, email: null, avatar: null, userId: null };
-  state.isLoggedIn = false;
   state.token = null;
-  state.isLoading = false;
   state.error = null;
+  state.isLoading = false;
 };
 const refreshFulfilledReducer = (state, action) => {
   state.user = action.payload;
-  state.isLoggedIn = true;
-  state.isRefreshing = false;
   state.isLoading = false;
 };
-const refreshPendingReducer = state => {
-  state.isRefreshing = true;
-};
-const refreshRejectedReducer = state => {
-  state.isRefreshing = false;
-};
-
 const updateUserFullfilledReducer = (state, action) => {
   state.user.name = action.payload.data.user.name;
   state.user.avatar = action.payload.data.user.avatar;
@@ -52,8 +40,6 @@ const authSlice = createSlice({
       userId: null,
     },
     token: null,
-    isLoggedIn: false,
-    isRefreshing: false,
     isLoading: false,
     error: null,
   },
@@ -64,14 +50,10 @@ const authSlice = createSlice({
     setGoogleAuth(state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      state.isLoggedIn = true;
-      state.isLoading = false;
     },
   },
   extraReducers: builder =>
     builder
-      .addCase(refresh.pending, refreshPendingReducer)
-      .addCase(refresh.rejected, refreshRejectedReducer)
       .addCase(refresh.fulfilled, refreshFulfilledReducer)
       .addCase(logout.fulfilled, logoutFulfilledReducer)
       .addCase(updateUser.fulfilled, updateUserFullfilledReducer)
