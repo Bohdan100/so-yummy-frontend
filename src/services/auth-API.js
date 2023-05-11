@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://so-yummy-98ev.onrender.com/api';
+axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
 
 export const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
